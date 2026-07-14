@@ -18,8 +18,8 @@
           "type": "html",
           "settings": {
             "title": "Home",
-            "html": "",
-            "page": "demos-short",
+            "html": "<div class=\"ga-mega-menu-grid\"><div class=\"ga-mega-column\"><h3 class=\"ga-mega-title\">Pure A2 Ghee</h3><ul class=\"ga-mega-links\"><li><a href=\"/collections/all\">Shop All Products</a></li><li><a href=\"/products/ghar-aangan-premium-a2-badri-cow-bilona-ghee\">A2 Badri Cow Ghee (Glass Jar)</a></li><li><a href=\"/collections/all\">Himalayan Bilona Ghee</a></li><li><a href=\"/pages/our-story\">Heritage Gift Boxes</a></li></ul></div><div class=\"ga-mega-column\"><h3 class=\"ga-mega-title\">Himalayan Heritage</h3><ul class=\"ga-mega-links\"><li><a href=\"/pages/our-story\">Our Story & Roots</a></li><li><a href=\"/pages/the-bilona-method\">The 5-Step Bilona Method</a></li><li><a href=\"/pages/our-story\">Mountain Cooperatives</a></li><li><a href=\"/pages/frequently-asked-questions\">Purity Lab Reports</a></li></ul></div><div class=\"ga-mega-column\"><h3 class=\"ga-mega-title\">Support & Purity</h3><ul class=\"ga-mega-links\"><li><a href=\"/pages/frequently-asked-questions\">Frequently Asked Questions</a></li><li><a href=\"/pages/contact\">Contact Our Collective</a></li><li><a href=\"/policies/shipping-policy\">Shipping & Delivery FAQs</a></li><li><a href=\"/policies/refund-policy\">Refund & Return Policies</a></li></ul></div><div class=\"ga-mega-promo\"><div class=\"ga-mega-promo-inner\"><span class=\"ga-promo-tag\">HIMALAYAN PURITY</span><h4 class=\"ga-promo-title\">100% Traditional Bilona</h4><p class=\"ga-promo-desc\">Churned slowly by hand in earthen pots on wood fires for authentic aroma and granularity.</p><a href=\"/collections/all\" class=\"ga-promo-btn\">Shop Himalayan Gold</a></div></div></div>",
+            "page": "",
             "mega_menu_colors": "",
             "mega_position": "center_on_screen",
             "mega_width": "full",
