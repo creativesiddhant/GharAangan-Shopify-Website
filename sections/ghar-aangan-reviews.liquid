@@ -147,6 +147,55 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
+
+  /* Luxury Navigation Arrows */
+  .ga-reviews-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4.8rem;
+    height: 4.8rem;
+    background-color: #ffffff;
+    border: 1px solid var(--ga-border-color);
+    box-shadow: 0 10px 25px rgba(26, 51, 44, 0.08);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--ga-forest-green);
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--ga-transition-smooth);
+    padding: 0;
+  }
+
+  .ga-reviews-arrow:hover {
+    background-color: var(--ga-forest-green);
+    color: var(--ga-organic-cream);
+    border-color: var(--ga-forest-green);
+    box-shadow: 0 12px 30px rgba(26, 51, 44, 0.15);
+  }
+
+  .ga-arrow-left {
+    left: -2.4rem;
+  }
+
+  .ga-arrow-right {
+    right: -2.4rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ga-arrow-left {
+      left: 0.5rem;
+    }
+    .ga-arrow-right {
+      right: 0.5rem;
+    }
+    .ga-reviews-arrow {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
 {%- endstyle -%}
 
 <div class="ga-reviews-section section-{{ section.id }}-padding">
@@ -163,7 +212,7 @@
     {%- endif -%}
 
     <div class="ga-reviews-wrapper">
-      <div class="ga-reviews-scroll">
+      <div class="ga-reviews-scroll" id="ga-reviews-scroll-{{ section.id }}">
         {%- for block in section.blocks -%}
           <div class="ga-review-item ga-reveal" {{ block.shopify_attributes }}>
             <div>
@@ -191,9 +240,95 @@
           </div>
         {%- endfor -%}
       </div>
+
+      {%- if section.settings.show_arrows -%}
+        <button class="ga-reviews-arrow ga-arrow-left" id="ga-arrow-left-{{ section.id }}" aria-label="Previous review">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <button class="ga-reviews-arrow ga-arrow-right" id="ga-arrow-right-{{ section.id }}" aria-label="Next review">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      {%- endif -%}
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var sectionId = "{{ section.id }}";
+    var scrollContainer = document.getElementById('ga-reviews-scroll-' + sectionId);
+    var btnLeft = document.getElementById('ga-arrow-left-' + sectionId);
+    var btnRight = document.getElementById('ga-arrow-right-' + sectionId);
+    
+    if (!scrollContainer) return;
+
+    var getScrollStep = function() {
+      var firstItem = scrollContainer.querySelector('.ga-review-item');
+      return firstItem ? firstItem.offsetWidth + 20 : scrollContainer.offsetWidth;
+    };
+
+    if (btnLeft && btnRight) {
+      btnLeft.addEventListener('click', function() {
+        var step = getScrollStep();
+        scrollContainer.scrollBy({ left: -step, behavior: 'smooth' });
+        {%- if section.settings.enable_autoplay -%}
+          resetAutoplay();
+        {%- endif -%}
+      });
+
+      btnRight.addEventListener('click', function() {
+        var step = getScrollStep();
+        if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 10) {
+          scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          scrollContainer.scrollBy({ left: step, behavior: 'smooth' });
+        }
+        {%- if section.settings.enable_autoplay -%}
+          resetAutoplay();
+        {%- endif -%}
+      });
+    }
+
+    {%- if section.settings.enable_autoplay -%}
+      var autoplayInterval;
+      var autoplaySpeed = {{ section.settings.autoplay_speed | times: 1000 }};
+      
+      var startAutoplay = function() {
+        autoplayInterval = setInterval(function() {
+          var step = getScrollStep();
+          if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 20) {
+            scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            scrollContainer.scrollBy({ left: step, behavior: 'smooth' });
+          }
+        }, autoplaySpeed);
+      };
+
+      var resetAutoplay = function() {
+        clearInterval(autoplayInterval);
+        startAutoplay();
+      };
+
+      startAutoplay();
+
+      scrollContainer.addEventListener('mouseenter', function() {
+        clearInterval(autoplayInterval);
+      });
+
+      scrollContainer.addEventListener('mouseleave', function() {
+        startAutoplay();
+      });
+
+      scrollContainer.addEventListener('touchstart', function() {
+        clearInterval(autoplayInterval);
+      }, { passive: true });
+
+      scrollContainer.addEventListener('touchend', function() {
+        startAutoplay();
+      }, { passive: true });
+    {%- endif -%}
+  });
+</script>
 
 {% schema %}
 {
@@ -218,6 +353,28 @@
       "id": "title",
       "label": "Section Title",
       "default": "Loved by Pure Food Connoisseurs"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Navigation Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable Auto-Scroll",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Auto-Scroll Interval",
+      "default": 5
     },
     {
       "type": "header",
