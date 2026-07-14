@@ -282,3 +282,235 @@
   --badge-color-secondary: #ffffff !important;
   border: none !important;
 }
+
+/* ==========================================================================
+   Ultra-Luxury Enhancements & Dripping Ghee Preloader
+   ========================================================================== */
+
+/* 1. Preloader Styles */
+.ga-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #faf8f5; /* var(--ga-organic-cream) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ga-preloader.ga-fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ga-preloader-inner {
+  text-align: center;
+}
+
+/* Ghee Dripper SVG Container */
+.ga-dripping-drop-container {
+  position: relative;
+  width: 90px;
+  height: 130px;
+  margin: 0 auto 1.5rem;
+}
+
+.ga-ghee-dripper {
+  width: 100%;
+  height: 100%;
+}
+
+/* Ghee drop stretch animation in SVG */
+.ga-hanging-drop {
+  animation: gaDropStretch 2.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: 50% 32px;
+}
+
+@keyframes gaDropStretch {
+  0% {
+    d: path("M50 32 Q50 32 50 32 Q50 32 50 32 Z");
+  }
+  35% {
+    /* Stretching into rounded shape */
+    d: path("M42 32 Q50 30 58 32 Q58 48 50 48 Q42 48 42 32 Z");
+  }
+  60% {
+    /* Dripping down string format */
+    d: path("M45 32 Q50 30 55 32 Q54 62 50 66 Q46 62 45 32 Z");
+  }
+  75%, 100% {
+    /* Snaps back empty */
+    d: path("M50 32 Q50 32 50 32 Q50 32 50 32 Z");
+  }
+}
+
+/* Falling Ghee Drop */
+.ga-falling-drop {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  width: 9px;
+  height: 13px;
+  background-color: var(--ga-gold-cream, #cda250);
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  transform: translateX(-50%) scale(0);
+  animation: gaDropFall 2.8s infinite cubic-bezier(0.4, 0, 1, 1);
+}
+
+@keyframes gaDropFall {
+  0%, 55% {
+    transform: translateX(-50%) translateY(0) scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 1;
+  }
+  74% {
+    transform: translateX(-50%) translateY(55px) scale(0.9);
+    opacity: 1;
+  }
+  75%, 100% {
+    transform: translateX(-50%) translateY(55px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Bottom Ghee Ripple */
+.ga-ripple {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  width: 32px;
+  height: 8px;
+  border: 1px solid var(--ga-gold-cream, #cda250);
+  border-radius: 50%;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  animation: gaRippleSpread 2.8s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+
+@keyframes gaRippleSpread {
+  0%, 72% {
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+  }
+  74% {
+    transform: translateX(-50%) scale(0.3);
+    opacity: 0.8;
+  }
+  88% {
+    transform: translateX(-50%) scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-50%) scale(2);
+    opacity: 0;
+  }
+}
+
+.ga-preloader-brand {
+  font-family: var(--ga-font-family-serif);
+  font-size: 2.8rem;
+  letter-spacing: 0.05em;
+  color: var(--ga-forest-green, #1a332c);
+  margin-bottom: 0.6rem;
+}
+
+.ga-preloader-brand .ga-brand-word-1 {
+  font-weight: 300;
+  color: var(--ga-gold-cream, #cda250);
+}
+
+.ga-preloader-brand .ga-brand-word-2 {
+  font-weight: 600;
+}
+
+.ga-preloader-subtitle {
+  font-family: var(--ga-font-family-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--ga-dark-text, #2d2d2d);
+  opacity: 0.6;
+}
+
+/* 2. Bold/Luxury Typography & Product Title Overrides */
+.hdt-product__title, 
+h1.hdt-product__title {
+  font-family: var(--ga-font-family-serif) !important;
+  font-weight: 700 !important; /* Bold luxurious weight */
+  color: var(--ga-forest-green) !important;
+  letter-spacing: -0.01em !important;
+  font-size: clamp(2.6rem, 4vw, 3.4rem) !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Bold prices to feel premium and highlight value */
+.hdt-price .hdt-money, 
+.hdt-compare-at-price .hdt-money, 
+.hdt-price-item {
+  font-weight: 600 !important;
+  font-family: var(--ga-font-family-sans) !important;
+}
+
+/* Bold on-sale price in gold-cream */
+.hdt-price .hdt-money {
+  color: var(--ga-gold-cream) !important;
+}
+
+/* Headers across website */
+.ga-title,
+.hdt-section-title,
+.hdt-heading-title,
+.hdt-heading,
+h1, h2, h3, h4, h5 {
+  font-family: var(--ga-font-family-serif) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--ga-forest-green) !important;
+}
+
+/* Elegant Subtitles */
+.ga-subtitle,
+.hdt-section-subtitle,
+.hdt-sub_heading {
+  font-family: var(--ga-font-family-sans) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2em !important;
+  color: var(--ga-gold-cream) !important;
+}
+
+/* Luxury Card Enhancement */
+.hdt-card-product {
+  transition: var(--ga-transition-smooth) !important;
+}
+
+.hdt-card-product:hover .hdt-pr-image__wrapper img {
+  transform: scale(1.08) !important;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hdt-card-product__title {
+  font-family: var(--ga-font-family-serif) !important;
+  font-weight: 600 !important;
+  color: var(--ga-forest-green) !important;
+}
+
+/* Buttons weight */
+.ga-btn-primary,
+.ga-btn-secondary,
+.hdt-btn,
+.hdt-product-buy-button button {
+  font-family: var(--ga-font-family-sans) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.15em !important;
+}
