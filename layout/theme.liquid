@@ -65,16 +65,11 @@
     <!-- Premium Ghar Aangan Preloader -->
     <div id="ga-preloader" class="ga-preloader">
       <div class="ga-preloader-inner">
-        <div class="ga-pulse-drop-container">
-          <svg class="ga-pulse-drop" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 15 C50 15 80 55 80 70 C80 86.5 66.5 100 50 100 C33.5 100 20 86.5 20 70 C20 55 50 15 50 15 Z" fill="var(--ga-gold-cream)"/>
-          </svg>
-          <div class="ga-pulse-ring"></div>
-        </div>
-        <div class="ga-preloader-brand">
-          घर आँगन
-        </div>
+        <div class="ga-preloader-brand">घर आँगन</div>
         <div class="ga-preloader-subtitle">THE ESSENCE OF UTTARAKHAND</div>
+        <div class="ga-preloader-progress-bar">
+          <div class="ga-preloader-progress-line"></div>
+        </div>
       </div>
     </div>
 
@@ -121,13 +116,12 @@
               preloader.classList.add('ga-fade-out');
               setTimeout(function() {
                 preloader.style.display = 'none';
-              }, 600);
+              }, 500);
             }
           };
-          // Maximum wait time of 1s to make sure it's quick and snappy
-          var timeoutId = setTimeout(fadeOut, 1000);
+          // Snappy 900ms load matching progress bar animation
+          var timeoutId = setTimeout(fadeOut, 900);
           
-          // Trigger earlier if the whole page finishes loading before 1s
           window.addEventListener('load', function() {
             clearTimeout(timeoutId);
             fadeOut();

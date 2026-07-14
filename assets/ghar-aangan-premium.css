@@ -301,7 +301,7 @@
   z-index: 9999999;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ga-preloader.ga-fade-out {
@@ -312,82 +312,64 @@
 
 .ga-preloader-inner {
   text-align: center;
+  animation: gaPreloaderContentReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Pulsing Ghee Drop Container */
-.ga-pulse-drop-container {
-  position: relative;
-  width: 75px;
-  height: 75px;
-  margin: 0 auto 1.8rem;
-}
-
-.ga-pulse-drop {
-  width: 100%;
-  height: 100%;
-  animation: gaDropPulse 1.4s infinite ease-in-out;
-}
-
-@keyframes gaDropPulse {
-  0%, 100% {
-    transform: scale(0.88);
-    opacity: 0.95;
-  }
-  50% {
-    transform: scale(1.06);
-    opacity: 1;
-  }
-}
-
-/* Expanding ripple ring around the drop */
-.ga-pulse-ring {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 1px solid var(--ga-gold-cream, #cda250);
-  border-radius: 50%;
-  transform: scale(0.8);
-  opacity: 0;
-  animation: gaRingPulse 1.4s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
-}
-
-@keyframes gaRingPulse {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(1.6);
+@keyframes gaPreloaderContentReveal {
+  from {
     opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
 .ga-preloader-brand {
   font-family: var(--ga-font-family-serif);
-  font-size: 2.8rem;
+  font-size: 3.6rem;
+  font-weight: 500;
   letter-spacing: 0.05em;
   color: var(--ga-forest-green, #1a332c);
   margin-bottom: 0.6rem;
-}
-
-.ga-preloader-brand .ga-brand-word-1 {
-  font-weight: 300;
-  color: var(--ga-gold-cream, #cda250);
-}
-
-.ga-preloader-brand .ga-brand-word-2 {
-  font-weight: 600;
 }
 
 .ga-preloader-subtitle {
   font-family: var(--ga-font-family-sans);
   font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.35em;
-  color: var(--ga-dark-text, #2d2d2d);
-  opacity: 0.6;
+  letter-spacing: 0.4em;
+  color: var(--ga-gold-cream, #cda250);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+/* Minimal Luxury Progress Bar */
+.ga-preloader-progress-bar {
+  width: 120px;
+  height: 1px;
+  background-color: rgba(26, 51, 44, 0.08);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+}
+
+.ga-preloader-progress-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: var(--ga-gold-cream, #cda250);
+  animation: gaProgressLoad 0.9s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes gaProgressLoad {
+  to {
+    width: 100%;
+  }
 }
 
 /* 2. Bold/Luxury Typography & Product Title Overrides */
