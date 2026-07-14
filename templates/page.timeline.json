@@ -15,7 +15,7 @@
         "5ecb9555-19e4-433b-8817-1ccaa3a41384": {
           "type": "1",
           "settings": {
-            "heading": "Timeline",
+            "heading": "Our Journey",
             "hidden_on_mobile": false,
             "heading_size": "h3",
             "text_color": "hdt-s-text",
@@ -45,7 +45,7 @@
         "time_line_Vqz6ja": {
           "type": "_time-line",
           "settings": {
-            "time": "1980",
+            "time": "2021",
             "image": "shopify://shop_images/timeline1.webp",
             "content_position": "end"
           },
@@ -77,7 +77,7 @@
             "heading_KeCEzH": {
               "type": "heading",
               "settings": {
-                "heading": "<h3>Inception and Brand Establishment</h3>",
+                "heading": "The Vision & Inception",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "heading_size": "h3",
@@ -101,7 +101,7 @@
             "text_YqDhYY": {
               "type": "text",
               "settings": {
-                "text": "<p>Inception, in the context of brand establishment, refers to the initial phase of creating and introducing a brand to the market. It involves laying down the foundational elements that will define the brand's identity, values, and positioning in the minds of consumers.</p>",
+                "text": "<p>Ghar Aangan was conceived in the high-altitude valleys of Uttarakhand. Our founder set out to study traditional Himalayan dairy habits, locate native Badri cow herds, and partner with local farming families.</p>",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "text_size": "base",
@@ -125,7 +125,7 @@
         "time_line_Rd9pWc": {
           "type": "_time-line",
           "settings": {
-            "time": "2000",
+            "time": "2022",
             "image": "shopify://shop_images/timeline2.webp",
             "content_position": "start"
           },
@@ -157,7 +157,7 @@
             "heading_RAHyG9": {
               "type": "heading",
               "settings": {
-                "heading": "<h3>Debut Collection and Market Entry</h3>",
+                "heading": "Reviving Wood-Fired Bilona Churns",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "heading_size": "h3",
@@ -181,7 +181,7 @@
             "text_APmhWp": {
               "type": "text",
               "settings": {
-                "text": "<p>Entering the market with a debut collection requires careful planning, creativity, and perseverance. By following these steps and staying true to your vision, you can increase your chances of success in the fashion industry.</p>",
+                "text": "<p>We established our first Bilona churning cooperative in the hills. We hired local rural women's collectives, trained them in wood-fired earthen methods, and set up the back-and-forth wooden churning process.</p>",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "text_size": "base",
@@ -205,7 +205,7 @@
         "time_line_TKjidP": {
           "type": "_time-line",
           "settings": {
-            "time": "2010",
+            "time": "2023",
             "image": "shopify://shop_images/timeline3.webp",
             "content_position": "end"
           },
@@ -237,7 +237,7 @@
             "heading_CRTPw6": {
               "type": "heading",
               "settings": {
-                "heading": "<h3>Growth and Recognition</h3>",
+                "heading": "Lab Certified Purity & Launch",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "heading_size": "h3",
@@ -261,7 +261,7 @@
             "text_M4wxeN": {
               "type": "text",
               "settings": {
-                "text": "<p>During the Growth and Recognition phase of a brand's journey, several key elements come into play to propel its expansion and solidify its position in the market. Here's an outline of what typically occurs during this phase</p>",
+                "text": "<p>Every batch of our golden granular ghee underwent rigorous laboratory testing to verify 100% purity, zero heavy metals, and A2 beta-casein concentration, launching Ghar Aangan for pure food connoisseurs.</p>",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "text_size": "base",
@@ -285,7 +285,7 @@
         "time_line_R3DKTr": {
           "type": "_time-line",
           "settings": {
-            "time": "2025",
+            "time": "2026",
             "image": "shopify://shop_images/timeline4.webp",
             "content_position": "start"
           },
@@ -317,7 +317,7 @@
             "heading_NDQwXR": {
               "type": "heading",
               "settings": {
-                "heading": "<h3>Sustainable Initiatives</h3>",
+                "heading": "Empowering Mountain Communities",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "heading_size": "h3",
@@ -341,7 +341,7 @@
             "text_gyYD6P": {
               "type": "text",
               "settings": {
-                "text": "<p>Sustainable initiatives play a crucial role in the growth and development of a brand, especially in today's environmentally conscious and socially responsible market landscape. Here are some examples of sustainable initiatives that brands may undertake</p>",
+                "text": "<p>Today, Ghar Aangan provides direct, sustainable livelihood to over 150+ mountain families, ensuring fair trade practices while protecting the native Badri cow breed and preserving organic Himalayan ecosystems.</p>",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "text_size": "base",
