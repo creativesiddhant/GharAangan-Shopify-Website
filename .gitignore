@@ -1,0 +1,17 @@
+# Shopify CLI files
+.shopify/
+
+# Node dependencies
+node_modules/
+package-lock.json
+
+# Local backups and extraction folders
+ghar_aangan_backup/
+ecomus_extracted/
+
+# Zip files
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db

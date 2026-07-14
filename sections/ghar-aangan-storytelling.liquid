@@ -1,0 +1,266 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .ga-story-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ga-story-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 5.5rem;
+    }
+  }
+
+  .ga-story-card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid var(--ga-border-color);
+    overflow: hidden;
+    box-shadow: var(--ga-card-shadow);
+    transition: var(--ga-transition-smooth);
+    border-radius: 8px;
+  }
+
+  .ga-story-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 45px rgba(26, 51, 44, 0.08);
+    border-color: var(--ga-gold-cream);
+  }
+
+  .ga-story-image-wrap {
+    position: relative;
+    padding-bottom: 75%; /* Taller 4:3 aspect ratio to show packaging detail */
+    overflow: hidden;
+  }
+
+  .ga-story-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ga-story-card:hover .ga-story-image {
+    transform: scale(1.06);
+  }
+
+  .ga-story-content {
+    padding: 4.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ga-story-content {
+      padding: 3rem 2.5rem;
+    }
+  }
+
+  .ga-story-card-title {
+    margin-top: 1rem;
+    margin-bottom: 1.6rem;
+    font-size: clamp(2.2rem, 3vw, 2.6rem);
+    font-weight: 500;
+  }
+
+  .ga-story-text {
+    font-size: 1.55rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+    font-weight: 300;
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding" style="background-color: {{ section.settings.background_color }};">
+  <div class="page-width">
+    {%- if section.settings.header_title != blank or section.settings.header_subtitle != blank -%}
+      <div class="ga-section-header ga-reveal">
+        {%- if section.settings.header_subtitle != blank -%}
+          <span class="ga-subtitle">{{ section.settings.header_subtitle | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.header_title != blank -%}
+          <h2 class="ga-title">{{ section.settings.header_title | escape }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="ga-story-container">
+      <!-- Block 1: Founder's Story -->
+      <div class="ga-story-card ga-reveal">
+        <div class="ga-story-image-wrap">
+          {%- if section.settings.block1_image != blank or true -%}
+            <img
+              class="ga-story-image"
+              src="{% if section.settings.block1_image != blank %}{{ section.settings.block1_image | image_url: width: 800 }}{% else %}{{ 'ghar-aangan-lifestyle.jpg' | asset_url }}{% endif %}"
+              alt="{{ section.settings.block1_title | escape }}"
+              loading="lazy"
+              width="800"
+              height="480"
+            >
+          {%- endif -%}
+        </div>
+        <div class="ga-story-content">
+          {%- if section.settings.block1_subtitle != blank -%}
+            <span class="ga-subtitle" style="font-size: 1.2rem;">{{ section.settings.block1_subtitle | escape }}</span>
+          {%- endif -%}
+          <h3 class="ga-title ga-story-card-title">{{ section.settings.block1_title | escape }}</h3>
+          <p class="ga-body ga-story-text">{{ section.settings.block1_description | escape }}</p>
+        </div>
+      </div>
+
+      <!-- Block 2: Heritage / Uttarakhand Story -->
+      <div class="ga-story-card ga-reveal">
+        <div class="ga-story-image-wrap">
+          {%- if section.settings.block2_image != blank or true -%}
+            <img
+              class="ga-story-image"
+              src="{% if section.settings.block2_image != blank %}{{ section.settings.block2_image | image_url: width: 800 }}{% else %}{{ 'ghar-aangan-product-ghee.jpg' | asset_url }}{% endif %}"
+              alt="{{ section.settings.block2_title | escape }}"
+              loading="lazy"
+              width="800"
+              height="480"
+            >
+          {%- endif -%}
+        </div>
+        <div class="ga-story-content">
+          {%- if section.settings.block2_subtitle != blank -%}
+            <span class="ga-subtitle" style="font-size: 1.2rem;">{{ section.settings.block2_subtitle | escape }}</span>
+          {%- endif -%}
+          <h3 class="ga-title ga-story-card-title">{{ section.settings.block2_title | escape }}</h3>
+          <p class="ga-body ga-story-text">{{ section.settings.block2_description | escape }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "GA Storytelling Split",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background",
+      "default": "#faf8f5"
+    },
+    {
+      "type": "text",
+      "id": "header_subtitle",
+      "label": "Section Subtitle",
+      "default": "OUR ROOTS & HERITAGE"
+    },
+    {
+      "type": "text",
+      "id": "header_title",
+      "label": "Section Title",
+      "default": "Crafted with Intent, Churned with Tradition"
+    },
+    {
+      "type": "header",
+      "content": "Story block 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "block1_image",
+      "label": "Block 1 Image",
+      "info": "Recommended: 800x600px (4:3 ratio) for desktop & mobile"
+    },
+    {
+      "type": "text",
+      "id": "block1_subtitle",
+      "label": "Block 1 Subtitle",
+      "default": "THE FOUNDER'S JOURNEY"
+    },
+    {
+      "type": "text",
+      "id": "block1_title",
+      "label": "Block 1 Title",
+      "default": "Back to the Soil"
+    },
+    {
+      "type": "textarea",
+      "id": "block1_description",
+      "label": "Block 1 Description",
+      "default": "Ghar Aangan was born from a simple desire: to reconnect modern homes with pure, unadulterated nourishment. Having grown up in the crisp mountain air of Uttarakhand, our founder set out to preserve and share the traditional Bilona method of ghee making directly from small farming collectives."
+    },
+    {
+      "type": "header",
+      "content": "Story block 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "block2_image",
+      "label": "Block 2 Image",
+      "info": "Recommended: 800x600px (4:3 ratio) for desktop & mobile"
+    },
+    {
+      "type": "text",
+      "id": "block2_subtitle",
+      "label": "Block 2 Subtitle",
+      "default": "HIMALAYAN HERITAGE"
+    },
+    {
+      "type": "text",
+      "id": "block2_title",
+      "label": "Block 2 Title",
+      "default": "Purity from the High Altitudes"
+    },
+    {
+      "type": "textarea",
+      "id": "block2_description",
+      "label": "Block 2 Description",
+      "default": "Our ghee originates in the pristine valleys of Uttarakhand, where native Badri cows graze on wild medicinal herbs and fresh mountain flora. This diet renders a golden, granular ghee rich in vitamins, minerals, and deep organic aroma, untouched by modern industrialized processing."
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "GA Storytelling Split"
+    }
+  ]
+}
+{% endschema %}

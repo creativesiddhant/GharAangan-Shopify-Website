@@ -1,0 +1,313 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .ga-badges-section {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .ga-badges-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ga-badges-grid {
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+      gap: 3.5rem;
+    }
+  }
+
+  .ga-badge-card {
+    background: #ffffff;
+    border: 1px solid var(--ga-border-color);
+    padding: 4.5rem 2.5rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: var(--ga-card-shadow);
+    transition: var(--ga-transition-smooth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ga-badge-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--ga-gold-cream);
+    box-shadow: 0 20px 40px rgba(26, 51, 44, 0.06);
+  }
+
+  .ga-badge-icon-wrap {
+    width: 6.8rem;
+    height: 6.8rem;
+    border-radius: 50%;
+    background-color: rgba(45, 92, 78, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.2rem;
+    color: var(--ga-himalayan-emerald);
+    transition: var(--ga-transition-smooth);
+    border: 1px solid rgba(45, 92, 78, 0.1);
+  }
+
+  .ga-badge-card:hover .ga-badge-icon-wrap {
+    background-color: var(--ga-forest-green);
+    color: var(--ga-organic-cream);
+    border-color: var(--ga-forest-green);
+    transform: rotate(360deg);
+  }
+
+  .ga-badge-icon-wrap svg {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  .ga-badge-icon-img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+  }
+
+  .ga-badge-title {
+    font-size: clamp(1.7rem, 2vw, 1.9rem);
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    color: var(--ga-forest-green);
+    font-family: var(--ga-font-family-serif);
+    letter-spacing: -0.01em;
+  }
+
+  .ga-badge-desc {
+    font-family: var(--ga-font-family-sans);
+    font-size: 1.38rem;
+    line-height: 1.6;
+    color: var(--ga-dark-text);
+    margin: 0;
+    font-weight: 300;
+  }
+{%- endstyle -%}
+
+<div class="ga-badges-section section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="ga-section-header ga-reveal">
+        {%- if section.settings.subtitle != blank -%}
+          <span class="ga-subtitle">{{ section.settings.subtitle | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="ga-title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="ga-badges-grid">
+      {%- for block in section.blocks -%}
+        <div class="ga-badge-card ga-reveal" {{ block.shopify_attributes }}>
+          <div class="ga-badge-icon-wrap">
+            {%- if block.settings.custom_icon_image != blank -%}
+              <img
+                class="ga-badge-icon-img"
+                src="{{ block.settings.custom_icon_image | image_url: width: 80 }}"
+                alt="{{ block.settings.title | escape }}"
+                loading="lazy"
+                width="40"
+                height="40"
+              >
+            {%- else -%}
+              {%- case block.settings.built_in_icon -%}
+                {%- when 'mountain' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 20L9.5 7L15 15.5L19 10L23 20H1Z" />
+                    <path d="M7 10.8L9.5 7L11.5 10" />
+                    <path d="M17 12.8L19 10L20.5 12" />
+                  </svg>
+                {%- when 'purity' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22C17 22 20 18 20 13C20 8.5 12 2 12 2C12 2 4 8.5 4 13C4 18 7 22 12 22Z" />
+                    <path d="M12 18C14 18 15 17 15 15C15 13.5 13.5 12 12 12" />
+                  </svg>
+                {%- when 'bilona' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v12" />
+                    <path d="M8 8h8" />
+                    <path d="M6 14h12v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-6z" />
+                    <path d="M9 17h6" />
+                  </svg>
+                {%- when 'certified' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="M9 11l2 2 4-4" />
+                  </svg>
+              {%- endcase -%}
+            {%- endif -%}
+          </div>
+          <h3 class="ga-badge-title">{{ block.settings.title | escape }}</h3>
+          <p class="ga-badge-desc">{{ block.settings.description | escape }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "GA Trust Badges",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "THE GHAR AANGAN PROMISE"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Why Our Himalayan Ghee is Different"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Columns on Desktop",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "built_in_icon",
+          "label": "Built-in Icon",
+          "options": [
+            {
+              "value": "mountain",
+              "label": "Himalayan Mountain"
+            },
+            {
+              "value": "purity",
+              "label": "Water Drop / Purity"
+            },
+            {
+              "value": "bilona",
+              "label": "Bilona Churning Pot"
+            },
+            {
+              "value": "certified",
+              "label": "Certified Shield"
+            }
+          ],
+          "default": "purity"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon_image",
+          "label": "Custom Icon Image (Overrides Built-in Icon)",
+          "info": "Recommended: 128x128px (Square PNG or SVG)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Badge Title",
+          "default": "100% Pure & Lab Tested"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Badge Description",
+          "default": "Completely free of additives, preservatives, colorants, or vegetable fats. Checked for pesticide purity."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GA Trust Badges",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "built_in_icon": "mountain",
+            "title": "Himalayan High-Altitude",
+            "description": "Sourced at 5000+ ft where the crisp water, fresh air, and rich mountain foliage nurture happier, healthier herds."
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "built_in_icon": "bilona",
+            "title": "Traditional Bilona Churn",
+            "description": "Slowly simmered on firewood and hand-churned in earthen pots back-and-forth, capturing traditional medicinal benefits."
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "built_in_icon": "purity",
+            "title": "A2 Badri Breed",
+            "description": "Made solely from A2 milk of native Badri cows, ensuring easy digestion, light texture, and natural golden color."
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "built_in_icon": "certified",
+            "title": "Lab Certified Purity",
+            "description": "Rigorous quality inspections guarantee zero trace of heavy metals, starch, chemicals, or standard adulteration."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

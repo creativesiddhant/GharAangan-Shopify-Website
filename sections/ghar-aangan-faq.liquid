@@ -1,0 +1,264 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .ga-faq-section {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .ga-faq-wrapper {
+    max-width: 85rem;
+    margin: 0 auto;
+  }
+
+  .ga-faq-item {
+    border-bottom: 1px solid var(--ga-border-color);
+    margin-bottom: 0.5rem;
+    transition: var(--ga-transition-smooth);
+  }
+
+  .ga-faq-item[open] {
+    border-bottom-color: var(--ga-gold-cream);
+  }
+
+  .ga-faq-question {
+    list-style: none;
+    outline: none;
+    cursor: pointer;
+    padding: 2.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--ga-font-family-serif);
+    font-size: clamp(1.7rem, 2.2vw, 1.95rem);
+    font-weight: 500;
+    color: var(--ga-forest-green);
+    user-select: none;
+    transition: var(--ga-transition-smooth);
+    letter-spacing: -0.01em;
+  }
+
+  .ga-faq-question:hover {
+    color: var(--ga-gold-cream);
+    padding-left: 1.8rem;
+  }
+
+  .ga-faq-item[open] .ga-faq-question {
+    color: var(--ga-forest-green);
+    font-weight: 600;
+    padding-left: 1.8rem;
+  }
+
+  .ga-faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .ga-faq-icon {
+    position: relative;
+    width: 1.6rem;
+    height: 1.6rem;
+    color: var(--ga-gold-cream);
+    flex-shrink: 0;
+    margin-left: 2rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ga-faq-icon::before,
+  .ga-faq-icon::after {
+    content: '';
+    position: absolute;
+    background-color: currentColor;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Horizontal line */
+  .ga-faq-icon::before {
+    top: 0.7rem;
+    left: 0;
+    width: 1.6rem;
+    height: 0.2rem;
+  }
+
+  /* Vertical line */
+  .ga-faq-icon::after {
+    top: 0;
+    left: 0.7rem;
+    width: 0.2rem;
+    height: 1.6rem;
+  }
+
+  .ga-faq-item[open] .ga-faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .ga-faq-item[open] .ga-faq-icon::after {
+    transform: scale(0); /* Hide vertical line to form a minus (-) */
+  }
+
+  .ga-faq-answer {
+    padding: 0 1.8rem 2.5rem 1.8rem;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: var(--ga-dark-text);
+    font-family: var(--ga-font-family-sans);
+    font-weight: 300;
+    animation: gaFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes gaFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .ga-faq-answer p {
+    margin: 0 0 1.2rem 0;
+  }
+
+  .ga-faq-answer p:last-child {
+    margin: 0;
+  }
+{%- endstyle -%}
+
+<div class="ga-faq-section section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="ga-section-header ga-reveal">
+        {%- if section.settings.subtitle != blank -%}
+          <span class="ga-subtitle">{{ section.settings.subtitle | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="ga-title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="ga-faq-wrapper">
+      {%- for block in section.blocks -%}
+        <details class="ga-faq-item ga-reveal" {{ block.shopify_attributes }}>
+          <summary class="ga-faq-question">
+            {{ block.settings.question | escape }}
+            <span class="ga-faq-icon"></span>
+          </summary>
+          <div class="ga-faq-answer">
+            {{ block.settings.answer }}
+          </div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "GA Accordion FAQs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "HELP & SUPPORT"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Frequently Answered Questions"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Accordion Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What does Bilona Ghee mean?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Traditional Bilona ghee is prepared by boiling raw milk, culturing it to curds, churning the curd using a wooden whisk in earthen vessels to obtain butter (makhan), and slowly heating that butter on low firewood until clear golden ghee is separated.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GA Accordion FAQs",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What is the shelf life of Ghar Aangan Ghee?",
+            "answer": "<p>Pure, hand-churned ghee is highly stable and does not spoil easily. It can last up to 12-18 months at room temperature. Keep it in a dry, dark place and always use a clean, dry spoon to extend its shelf life.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Why is Badri cow ghee considered premium?",
+            "answer": "<p>Badri cows are native Himalayan humped cattle that graze on pristine Himalayan pastures, herbs, and local flora. They yield a very small quantity of milk daily, which is exceptionally rich in nutrients and A2 beta-casein proteins.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Does it need refrigeration?",
+            "answer": "<p>No, pure ghee does not require refrigeration. In fact, storing it in the fridge will alter its granular texture. It is best stored in its original glass jar in your kitchen pantry.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

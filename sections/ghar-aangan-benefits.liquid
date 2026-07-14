@@ -1,0 +1,257 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .ga-benefits-section {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .ga-benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ga-benefits-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3.5rem;
+    }
+  }
+
+  .ga-benefit-card {
+    background-color: #ffffff;
+    border: 1px solid var(--ga-border-color);
+    border-radius: 8px;
+    padding: 4.5rem 3rem;
+    text-align: center;
+    box-shadow: var(--ga-card-shadow);
+    transition: var(--ga-transition-smooth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ga-benefit-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--ga-gold-cream);
+    box-shadow: 0 20px 40px rgba(26, 51, 44, 0.07);
+  }
+
+  .ga-benefit-icon {
+    width: 5.6rem;
+    height: 5.6rem;
+    color: var(--ga-gold-cream);
+    margin-bottom: 2.2rem;
+    transition: transform 0.4s ease;
+  }
+
+  .ga-benefit-card:hover .ga-benefit-icon {
+    transform: scale(1.1);
+  }
+
+  .ga-benefit-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ga-benefit-title {
+    font-family: var(--ga-font-family-serif);
+    font-size: clamp(1.9rem, 2.5vw, 2.2rem);
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--ga-forest-green);
+    letter-spacing: -0.01em;
+  }
+
+  .ga-benefit-desc {
+    font-family: var(--ga-font-family-sans);
+    font-size: 1.45rem;
+    line-height: 1.65;
+    color: var(--ga-dark-text);
+    margin: 0;
+    font-weight: 300;
+  }
+{%- endstyle -%}
+
+<div class="ga-benefits-section section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="ga-section-header ga-reveal">
+        {%- if section.settings.subtitle != blank -%}
+          <span class="ga-subtitle">{{ section.settings.subtitle | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="ga-title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="ga-benefits-grid">
+      {%- for block in section.blocks -%}
+        <div class="ga-benefit-card ga-reveal" {{ block.shopify_attributes }}>
+          <div class="ga-benefit-icon">
+            {%- case block.settings.icon -%}
+              {%- when 'heart' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+              {%- when 'fire' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048C6.182 7.55 6.368 8.04 6.587 8.5a7.223 7.223 0 001.328 1.944 6.012 6.012 0 01.391-4.48c.84-.5 1.839-.77 2.895-.77 2.21 0 4 1.79 4 4 0 .307-.035.606-.1.894a7.202 7.202 0 00.323-3.15z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11c0 2.21-1.79 4-4 4s-4-1.79-4-4a4 4 0 012.39-3.66c.264-.1.543-.16.833-.16 2.21 0 4 1.79 4 4z" /></svg>
+              {%- when 'shield' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+              {%- when 'leaf' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.97 0-9-4.03-9-9 0-3.33 2.1-6.17 5.07-7.23M12 21c4.97 0 9-4.03 9-9 0-3.33-2.1-6.17-5.07-7.23M12 21V9m0 0a3 3 0 013-3h3.5a3 3 0 003-3V2.5M12 9a3 3 0 00-3-3H5.5a3 3 0 01-3-3V2.5" /></svg>
+            {%- endcase -%}
+          </div>
+          <h3 class="ga-benefit-title">{{ block.settings.title | escape }}</h3>
+          <p class="ga-benefit-desc">{{ block.settings.description | escape }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "GA Ghee Benefits",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#faf8f5"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "HEALTH & WELLNESS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Nutritional Benefits of Badri A2 Ghee"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "heart",
+              "label": "Heart / Digestion"
+            },
+            {
+              "value": "fire",
+              "label": "Fire / Cooking"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / Immunity"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf / Organic"
+            }
+          ],
+          "default": "heart"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Benefit Title",
+          "default": "Digestive Powerhouse"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Benefit Description",
+          "default": "Contains rich butyric acid which directly nourishes the intestinal walls, aiding smooth digestion and natural detoxification."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GA Ghee Benefits",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "heart",
+            "title": "A2 Gut Friendly",
+            "description": "Exclusively sourced from Badri cows yielding A2 beta-casein milk, preventing digestive discomfort common with A1 milk."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "shield",
+            "title": "Immunity Enhancer",
+            "description": "Rich in antioxidants, fat-soluble vitamins (A, D, E, K), and essential fatty acids that support cellular regeneration."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "fire",
+            "title": "High Smoke Point",
+            "description": "With a high smoke point of 250°C (482°F), it remains stable during high-heat cooking, preventing free radical creation."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "title": "Rich in CLA",
+            "description": "Natural Conjugated Linoleic Acid assists in metabolism regulation, promoting healthy cholesterol levels and heart health."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

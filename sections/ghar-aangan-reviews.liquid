@@ -1,0 +1,323 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .ga-reviews-section {
+    background-color: {{ section.settings.background_color }};
+    overflow: hidden;
+  }
+
+  .ga-reviews-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  /* CSS Scroll Snapping for fast native slider */
+  .ga-reviews-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 2rem;
+    padding: 2rem 1.5rem 4rem 1.5rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+
+  .ga-reviews-scroll::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+  }
+
+  @media screen and (min-width: 750px) {
+    .ga-reviews-scroll {
+      gap: 3rem;
+      padding: 2rem 0 4rem 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .ga-review-item {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+    background: #ffffff;
+    border: 1px solid var(--ga-border-color);
+    box-shadow: var(--ga-card-shadow);
+    padding: 4.5rem 3.5rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--ga-transition-smooth);
+    position: relative;
+  }
+
+  .ga-review-item::before {
+    content: '';
+    position: absolute;
+    top: 3.5rem;
+    right: 3.5rem;
+    width: 3.6rem;
+    height: 3.6rem;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23cda250" opacity="0.09"><path d="M14.017 21v-7.391c0-5.704 3.748-9.762 9-10.748v2.09c-4.108.979-6 3.42-6 7.42h6v8.628h-9zm-14 0v-7.391c0-5.704 3.748-9.762 9-10.748v2.09c-4.108.979-6 3.42-6 7.42h6v8.628h-9z"/></svg>');
+    background-repeat: no-repeat;
+    background-size: contain;
+    pointer-events: none;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ga-review-item {
+      flex: 0 0 calc(33.333% - 2rem);
+      scroll-snap-align: start;
+    }
+  }
+
+  .ga-review-item:hover {
+    border-color: var(--ga-gold-cream);
+    transform: translateY(-6px);
+    box-shadow: 0 22px 45px rgba(26, 51, 44, 0.08);
+  }
+
+  .ga-stars {
+    color: var(--ga-gold-ghee);
+    margin-bottom: 2.2rem;
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .ga-stars svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: currentColor;
+  }
+
+  .ga-review-quote {
+    font-family: var(--ga-font-family-sans);
+    font-size: 1.55rem;
+    line-height: 1.7;
+    color: var(--ga-dark-text);
+    margin-top: 0;
+    margin-bottom: 3.5rem;
+    font-weight: 300;
+    font-style: italic;
+    padding-right: 2rem; /* Leave space for quote image */
+  }
+
+  .ga-review-meta {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--ga-border-color);
+    padding-top: 2rem;
+  }
+
+  .ga-reviewer-name {
+    font-family: var(--ga-font-family-serif);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--ga-forest-green);
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.01em;
+  }
+
+  .ga-reviewer-info {
+    font-family: var(--ga-font-family-sans);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #666666;
+    font-weight: 500;
+  }
+
+  .ga-reviewed-product {
+    font-family: var(--ga-font-family-sans);
+    margin-top: 1.4rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ga-gold-cream);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+{%- endstyle -%}
+
+<div class="ga-reviews-section section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="ga-section-header ga-reveal">
+        {%- if section.settings.subtitle != blank -%}
+          <span class="ga-subtitle">{{ section.settings.subtitle | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="ga-title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="ga-reviews-wrapper">
+      <div class="ga-reviews-scroll">
+        {%- for block in section.blocks -%}
+          <div class="ga-review-item ga-reveal" {{ block.shopify_attributes }}>
+            <div>
+              <div class="ga-stars">
+                {%- assign rating = block.settings.star_rating | plus: 0 -%}
+                {%- for i in (1..5) -%}
+                  {%- if i <= rating -%}
+                    <!-- Star SVG Filled -->
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  {%- else -%}
+                    <!-- Star SVG Empty -->
+                    <svg viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.37L12 6.1l1.71 4.04 4.38.37-3.32 2.88 1 4.28L12 15.4z"/></svg>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              <p class="ga-review-quote">"{{ block.settings.review_text | escape }}"</p>
+            </div>
+            <div class="ga-review-meta">
+              <h4 class="ga-reviewer-name">{{ block.settings.reviewer_name | escape }}</h4>
+              <span class="ga-reviewer-info">{{ block.settings.reviewer_info | escape }}</span>
+              {%- if block.settings.reviewed_product != blank -%}
+                <span class="ga-reviewed-product">{{ block.settings.reviewed_product | escape }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "GA Customer Reviews",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#faf8f5"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "TESTIMONIALS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Loved by Pure Food Connoisseurs"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Customer Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "star_rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star Rating",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review Content",
+          "default": "This ghee is a revelation. The granular texture is exactly like what my grandmother used to make. The fragrance fills the whole house when heated."
+        },
+        {
+          "type": "text",
+          "id": "reviewer_name",
+          "label": "Customer Name",
+          "default": "Priya R."
+        },
+        {
+          "type": "text",
+          "id": "reviewer_info",
+          "label": "Customer Subtitle",
+          "default": "Verified Buyer • Mumbai"
+        },
+        {
+          "type": "text",
+          "id": "reviewed_product",
+          "label": "Reviewed Product (Optional)",
+          "default": "A2 Badri Cow Bilona Ghee"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GA Customer Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "reviewer_name": "Rajesh K.",
+            "reviewer_info": "Verified Buyer • Bangalore",
+            "review_text": "Incredibly rich flavor. I've been trying to find authentic A2 Bilona ghee for years, and this is by far the highest quality. Worth every penny."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "reviewer_name": "Meera S.",
+            "reviewer_info": "Verified Buyer • Dehradun",
+            "review_text": "Perfect granularity and beautiful golden color. It has done wonders for my digestion, and my family loves it on hot rotis."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "reviewer_name": "Amit V.",
+            "reviewer_info": "Verified Buyer • Gurugram",
+            "review_text": "The aroma of this ghee is unmatched. You can immediately tell it comes from organic mountain-grazing cows. Highly recommended."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

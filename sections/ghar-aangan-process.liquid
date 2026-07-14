@@ -1,0 +1,233 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .ga-process-section {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .ga-process-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    position: relative;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ga-process-grid {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2.2rem;
+    }
+  }
+
+  .ga-process-card {
+    background-color: #ffffff;
+    border: 1px solid var(--ga-border-color);
+    border-top: 3px solid var(--ga-forest-green);
+    border-radius: 8px;
+    padding: 5rem 2.5rem 4rem 2.5rem;
+    position: relative;
+    box-shadow: var(--ga-card-shadow);
+    transition: var(--ga-transition-smooth);
+    text-align: left;
+    overflow: hidden;
+  }
+
+  .ga-process-card:hover {
+    border-color: var(--ga-gold-cream);
+    border-top-color: var(--ga-gold-cream);
+    transform: translateY(-6px);
+    box-shadow: 0 22px 45px rgba(26, 51, 44, 0.08);
+  }
+
+  .ga-process-number {
+    font-family: var(--ga-font-family-serif);
+    font-size: 6.8rem;
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(205, 162, 80, 0.12);
+    position: absolute;
+    top: 0.5rem;
+    right: 1.8rem;
+    line-height: 1;
+    transition: var(--ga-transition-smooth);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .ga-process-card:hover .ga-process-number {
+    color: rgba(205, 162, 80, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .ga-process-title {
+    font-family: var(--ga-font-family-serif);
+    font-size: clamp(1.8rem, 2.2vw, 2rem);
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    color: var(--ga-forest-green);
+    letter-spacing: -0.01em;
+    padding-right: 3rem; /* Leave room for absolute number */
+  }
+
+  .ga-process-desc {
+    font-family: var(--ga-font-family-sans);
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--ga-dark-text);
+    margin: 0;
+    font-weight: 300;
+  }
+{%- endstyle -%}
+
+<div class="ga-process-section section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="ga-section-header ga-reveal">
+        {%- if section.settings.subtitle != blank -%}
+          <span class="ga-subtitle">{{ section.settings.subtitle | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="ga-title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="ga-process-grid">
+      {%- for block in section.blocks -%}
+        <div class="ga-process-card ga-reveal" {{ block.shopify_attributes }}>
+          <div class="ga-process-number">
+            {%- if forloop.index < 10 -%}0{%- endif -%}{{ forloop.index }}
+          </div>
+          <h3 class="ga-process-title">{{ block.settings.title | escape }}</h3>
+          <p class="ga-process-desc">{{ block.settings.description | escape }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "GA Bilona Process",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "HOW IT'S CRAFTED"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "The Traditional 5-Step Bilona Process"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Process Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Procuring A2 Milk"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Step Description",
+          "default": "Milking raw A2 milk daily from high-altitude free grazing Badri herds."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GA Bilona Process",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "A2 Milk Sourcing",
+            "description": "Milked fresh daily from native Badri cows free-grazing in high-altitude Himalayan valleys."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Firewood Boiling",
+            "description": "Milk is boiled slowly on earthen stoves using firewood, enhancing natural smoky aroma and sanitizing."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Earthen Curd Setting",
+            "description": "The boiled milk is cooled and naturally cultured with curd starter overnight inside earthen pots."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Bilona Wooden Churn",
+            "description": "The curd is churned back-and-forth slowly using traditional wooden whisks to extract pure unsalted butter."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Slow Melting",
+            "description": "The fresh butter is simmered on wood fires until the water evaporates, leaving golden granular ghee."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
