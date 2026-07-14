@@ -65,14 +65,11 @@
     <!-- Premium Ghar Aangan Preloader -->
     <div id="ga-preloader" class="ga-preloader">
       <div class="ga-preloader-inner">
-        <div class="ga-dripping-drop-container">
-          <svg class="ga-ghee-dripper" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 20 Q50 25 90 20 Q80 35 50 35 Q20 35 10 20 Z" fill="var(--ga-forest-green)"/>
-            <path d="M15 21 Q50 24 85 21 Q75 30 50 30 Q25 30 15 21 Z" fill="var(--ga-gold-cream)"/>
-            <path class="ga-hanging-drop" d="M50 32 Q50 32 50 32 Q50 32 50 32 Z" fill="var(--ga-gold-cream)"/>
+        <div class="ga-pulse-drop-container">
+          <svg class="ga-pulse-drop" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 15 C50 15 80 55 80 70 C80 86.5 66.5 100 50 100 C33.5 100 20 86.5 20 70 C20 55 50 15 50 15 Z" fill="var(--ga-gold-cream)"/>
           </svg>
-          <div class="ga-falling-drop"></div>
-          <div class="ga-ripple"></div>
+          <div class="ga-pulse-ring"></div>
         </div>
         <div class="ga-preloader-brand">
           <span class="ga-brand-word-1">Ghar</span> <span class="ga-brand-word-2">Aangan</span>
@@ -116,15 +113,27 @@
     -%}
     {%- endunless -%}
     <script>
-      window.addEventListener('load', function() {
+      (function() {
         var preloader = document.getElementById('ga-preloader');
         if (preloader) {
-          preloader.classList.add('ga-fade-out');
-          setTimeout(function() {
-            preloader.style.display = 'none';
-          }, 800);
+          var fadeOut = function() {
+            if (!preloader.classList.contains('ga-fade-out')) {
+              preloader.classList.add('ga-fade-out');
+              setTimeout(function() {
+                preloader.style.display = 'none';
+              }, 600);
+            }
+          };
+          // Maximum wait time of 1s to make sure it's quick and snappy
+          var timeoutId = setTimeout(fadeOut, 1000);
+          
+          // Trigger earlier if the whole page finishes loading before 1s
+          window.addEventListener('load', function() {
+            clearTimeout(timeoutId);
+            fadeOut();
+          });
         }
-      });
+      })();
     </script>
   {%- render "ecom_footer"-%}</body>
 </html>

@@ -301,7 +301,7 @@
   z-index: 9999999;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ga-preloader.ga-fade-out {
@@ -314,104 +314,52 @@
   text-align: center;
 }
 
-/* Ghee Dripper SVG Container */
-.ga-dripping-drop-container {
+/* Pulsing Ghee Drop Container */
+.ga-pulse-drop-container {
   position: relative;
-  width: 90px;
-  height: 130px;
-  margin: 0 auto 1.5rem;
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 1.8rem;
 }
 
-.ga-ghee-dripper {
+.ga-pulse-drop {
   width: 100%;
   height: 100%;
+  animation: gaDropPulse 1.4s infinite ease-in-out;
 }
 
-/* Ghee drop stretch animation in SVG */
-.ga-hanging-drop {
-  animation: gaDropStretch 2.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: 50% 32px;
-}
-
-@keyframes gaDropStretch {
-  0% {
-    d: path("M50 32 Q50 32 50 32 Q50 32 50 32 Z");
+@keyframes gaDropPulse {
+  0%, 100% {
+    transform: scale(0.88);
+    opacity: 0.95;
   }
-  35% {
-    /* Stretching into rounded shape */
-    d: path("M42 32 Q50 30 58 32 Q58 48 50 48 Q42 48 42 32 Z");
-  }
-  60% {
-    /* Dripping down string format */
-    d: path("M45 32 Q50 30 55 32 Q54 62 50 66 Q46 62 45 32 Z");
-  }
-  75%, 100% {
-    /* Snaps back empty */
-    d: path("M50 32 Q50 32 50 32 Q50 32 50 32 Z");
-  }
-}
-
-/* Falling Ghee Drop */
-.ga-falling-drop {
-  position: absolute;
-  top: 55px;
-  left: 50%;
-  width: 9px;
-  height: 13px;
-  background-color: var(--ga-gold-cream, #cda250);
-  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-  transform: translateX(-50%) scale(0);
-  animation: gaDropFall 2.8s infinite cubic-bezier(0.4, 0, 1, 1);
-}
-
-@keyframes gaDropFall {
-  0%, 55% {
-    transform: translateX(-50%) translateY(0) scale(0);
-    opacity: 0;
-  }
-  60% {
-    transform: translateX(-50%) translateY(0) scale(1);
+  50% {
+    transform: scale(1.06);
     opacity: 1;
   }
-  74% {
-    transform: translateX(-50%) translateY(55px) scale(0.9);
-    opacity: 1;
-  }
-  75%, 100% {
-    transform: translateX(-50%) translateY(55px) scale(0);
-    opacity: 0;
-  }
 }
 
-/* Bottom Ghee Ripple */
-.ga-ripple {
+/* Expanding ripple ring around the drop */
+.ga-pulse-ring {
   position: absolute;
-  bottom: 12px;
-  left: 50%;
-  width: 32px;
-  height: 8px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: 1px solid var(--ga-gold-cream, #cda250);
   border-radius: 50%;
-  transform: translateX(-50%) scale(0);
+  transform: scale(0.8);
   opacity: 0;
-  animation: gaRippleSpread 2.8s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+  animation: gaRingPulse 1.4s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
 }
 
-@keyframes gaRippleSpread {
-  0%, 72% {
-    transform: translateX(-50%) scale(0);
-    opacity: 0;
-  }
-  74% {
-    transform: translateX(-50%) scale(0.3);
+@keyframes gaRingPulse {
+  0% {
+    transform: scale(0.8);
     opacity: 0.8;
   }
-  88% {
-    transform: translateX(-50%) scale(1.4);
-    opacity: 0;
-  }
   100% {
-    transform: translateX(-50%) scale(2);
+    transform: scale(1.6);
     opacity: 0;
   }
 }
