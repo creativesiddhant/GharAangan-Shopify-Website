@@ -1,8 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ghar_aangan_hero": {
       "type": "ghar-aangan-hero",
       "settings": {
+        "image": "shopify://shop_images/file_000000006de871fba9a3760c420a2116.png",
+        "image_mobile": "shopify://shop_images/hero_for_mobile.png",
         "hero_height_desktop": 80,
         "hero_height_mobile": 65,
         "overlay_opacity": 50,
@@ -22,9 +33,11 @@
         "background_color": "#faf8f5",
         "header_subtitle": "OUR ROOTS & HERITAGE",
         "header_title": "Crafted with Intent, Churned with Tradition",
+        "block1_image": "shopify://shop_images/Untitled_design.png",
         "block1_subtitle": "THE FOUNDER'S JOURNEY",
         "block1_title": "Back to the Soil",
         "block1_description": "Ghar Aangan was born from a simple desire: to reconnect modern homes with pure, unadulterated nourishment. Having grown up in the crisp mountain air of Uttarakhand, our founder set out to preserve and share the traditional Bilona method of ghee making directly from small farming collectives.",
+        "block2_image": "shopify://shop_images/homepage_image_2.png",
         "block2_subtitle": "HIMALAYAN HERITAGE",
         "block2_title": "Purity from the High Altitudes",
         "block2_description": "Our ghee originates in the pristine valleys of Uttarakhand, where native Badri cows graze on wild medicinal herbs and fresh mountain flora. This diet renders a golden, granular ghee rich in vitamins, minerals, and deep organic aroma, untouched by modern industrialized processing.",
@@ -34,13 +47,6 @@
     },
     "ghar_aangan_benefits": {
       "type": "ghar-aangan-benefits",
-      "settings": {
-        "background_color": "#faf8f5",
-        "subtitle": "HEALTH & WELLNESS",
-        "title": "Nutritional Benefits of Badri A2 Ghee",
-        "padding_top": 60,
-        "padding_bottom": 60
-      },
       "blocks": {
         "benefit_1": {
           "type": "benefit",
@@ -80,17 +86,17 @@
         "benefit_2",
         "benefit_3",
         "benefit_4"
-      ]
+      ],
+      "settings": {
+        "background_color": "#faf8f5",
+        "subtitle": "HEALTH & WELLNESS",
+        "title": "Nutritional Benefits of Badri A2 Ghee",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     },
     "ghar_aangan_process": {
       "type": "ghar-aangan-process",
-      "settings": {
-        "background_color": "#ffffff",
-        "subtitle": "HOW IT'S CRAFTED",
-        "title": "The Traditional 5-Step Bilona Process",
-        "padding_top": 60,
-        "padding_bottom": 60
-      },
       "blocks": {
         "step_1": {
           "type": "step",
@@ -134,18 +140,17 @@
         "step_3",
         "step_4",
         "step_5"
-      ]
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "subtitle": "HOW IT'S CRAFTED",
+        "title": "The Traditional 5-Step Bilona Process",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     },
     "ghar_aangan_trust_badges": {
       "type": "ghar-aangan-trust-badges",
-      "settings": {
-        "background_color": "#ffffff",
-        "subtitle": "THE GHAR AANGAN PROMISE",
-        "title": "Why Our Himalayan Ghee is Different",
-        "columns_desktop": 4,
-        "padding_top": 60,
-        "padding_bottom": 60
-      },
       "blocks": {
         "badge_1": {
           "type": "badge",
@@ -185,7 +190,15 @@
         "badge_2",
         "badge_3",
         "badge_4"
-      ]
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "subtitle": "THE GHAR AANGAN PROMISE",
+        "title": "Why Our Himalayan Ghee is Different",
+        "columns_desktop": 4,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     },
     "featured_product": {
       "type": "featured-product",
@@ -196,11 +209,15 @@
           "blocks": {
             "product_title": {
               "type": "_product-title",
-              "settings": {}
+              "settings": {
+                "hdt_pr_title_size": "h5"
+              },
+              "blocks": {}
             },
             "product_price": {
               "type": "_product-price",
-              "settings": {}
+              "settings": {},
+              "blocks": {}
             },
             "variant_picker": {
               "type": "_product-variant-picker",
@@ -209,12 +226,15 @@
                 "color_size": "small",
                 "picker_type": "block",
                 "size_chart_source": "page",
-                "size_chart_page": ""
-              }
+                "size_chart_page": "",
+                "title": "Variant picker"
+              },
+              "blocks": {}
             },
             "quantity_selector": {
               "type": "_quantity-selector",
-              "settings": {}
+              "settings": {},
+              "blocks": {}
             },
             "buy_buttons": {
               "type": "_product-buy-button",
@@ -224,7 +244,8 @@
                 "show_wishlist": false,
                 "show_compare": false,
                 "show_price_variant": true
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -234,6 +255,32 @@
             "quantity_selector",
             "buy_buttons"
           ]
+        },
+        "featured-product": {
+          "type": "_product-medias",
+          "static": true,
+          "settings": {
+            "display_by_block": false,
+            "color_scheme": "",
+            "desktop_media_layout": "thumbnail_left",
+            "media_size": "medium",
+            "mobile_media_layout": "thumbnails",
+            "enable_thumb_efect": true,
+            "show_first_media": false,
+            "use_select_varaint_change_media": true,
+            "enable_media_autoplay": false,
+            "enable_video_looping": false,
+            "image_ratio": "adapt_image",
+            "image_size": true,
+            "image_zoom": "zoom",
+            "image_zoom_type": "external",
+            "zoom_level": 2,
+            "max_zoom_lightbox": 3,
+            "navUI": false,
+            "nav_des": "default",
+            "nav_shape": "default"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -241,46 +288,45 @@
       ],
       "settings": {
         "product": "ghar-aangan-premium-a2-badri-cow-bilona-ghee",
+        "product_list_fbt": [],
         "color_scheme": "scheme-1",
+        "full_width": false,
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 60,
+        "padding_rate": 75
       }
     },
     "ghar_aangan_reviews": {
       "type": "ghar-aangan-reviews",
-      "settings": {
-        "background_color": "#faf8f5",
-        "subtitle": "TESTIMONIALS",
-        "title": "Loved by Pure Food Connoisseurs",
-        "padding_top": 60,
-        "padding_bottom": 60
-      },
       "blocks": {
         "review_1": {
           "type": "review",
           "settings": {
             "star_rating": 5,
+            "review_text": "Incredibly rich flavor. I've been trying to find authentic A2 Bilona ghee for years, and this is by far the highest quality. Worth every penny.",
             "reviewer_name": "Rajesh K.",
             "reviewer_info": "Verified Buyer • Bangalore",
-            "review_text": "Incredibly rich flavor. I've been trying to find authentic A2 Bilona ghee for years, and this is by far the highest quality. Worth every penny."
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
             "star_rating": 5,
+            "review_text": "Perfect granularity and beautiful golden color. It has done wonders for my digestion, and my family loves it on hot rotis.",
             "reviewer_name": "Meera S.",
             "reviewer_info": "Verified Buyer • Dehradun",
-            "review_text": "Perfect granularity and beautiful golden color. It has done wonders for my digestion, and my family loves it on hot rotis."
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
             "star_rating": 5,
+            "review_text": "The aroma of this ghee is unmatched. You can immediately tell it comes from organic mountain-grazing cows. Highly recommended.",
             "reviewer_name": "Amit V.",
             "reviewer_info": "Verified Buyer • Gurugram",
-            "review_text": "The aroma of this ghee is unmatched. You can immediately tell it comes from organic mountain-grazing cows. Highly recommended."
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
           }
         }
       },
@@ -288,17 +334,17 @@
         "review_1",
         "review_2",
         "review_3"
-      ]
+      ],
+      "settings": {
+        "background_color": "#faf8f5",
+        "subtitle": "TESTIMONIALS",
+        "title": "Loved by Pure Food Connoisseurs",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     },
     "ghar_aangan_faq": {
       "type": "ghar-aangan-faq",
-      "settings": {
-        "background_color": "#ffffff",
-        "subtitle": "HELP & SUPPORT",
-        "title": "Frequently Answered Questions",
-        "padding_top": 60,
-        "padding_bottom": 60
-      },
       "blocks": {
         "faq_1": {
           "type": "faq",
@@ -326,7 +372,14 @@
         "faq_1",
         "faq_2",
         "faq_3"
-      ]
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "subtitle": "HELP & SUPPORT",
+        "title": "Frequently Answered Questions",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
