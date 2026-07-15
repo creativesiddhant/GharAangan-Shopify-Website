@@ -17,6 +17,8 @@
       {%- render 'page-the-bilona-method-custom' -%}
     {%- elsif page.handle == 'our-story' or page.handle == 'our-story-roots' -%}
       {%- render 'page-our-story-custom' -%}
+    {%- elsif page.handle == 'mountain-cooperatives' -%}
+      {%- render 'page-mountain-cooperatives-custom' -%}
     {%- elsif page.content != blank -%}
       <div class="hdt-main-area hdt-rte hdt-relative">
       {{ page.content }}

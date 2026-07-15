@@ -1,0 +1,161 @@
+<!-- snippets/page-mountain-cooperatives-custom.liquid -->
+<div class="ga-coop-page-wrapper" style="padding: 2rem 0;">
+  
+  <!-- Hero Section -->
+  <div class="ga-coop-hero" style="background: linear-gradient(rgba(26, 51, 44, 0.9), rgba(26, 51, 44, 0.9)), url('{{ 'ghar-aangan-lifestyle.jpg' | asset_url }}') no-repeat center center; background-size: cover; padding: 10rem 2rem; text-align: center; border-radius: 16px; margin-bottom: 6rem; border: 1px solid var(--ga-border-color); box-shadow: var(--ga-card-shadow);">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <span class="ga-subtitle" style="color: var(--ga-gold-cream); font-size: 1.4rem; letter-spacing: 0.25em;">COMMUNITY & EMPOWERMENT</span>
+      <h1 class="ga-title" style="color: #ffffff; font-size: clamp(3.2rem, 6vw, 5.2rem); margin-top: 1.5rem; margin-bottom: 2.5rem; line-height: 1.2; font-family: var(--ga-font-family-serif);">Mountain Cooperatives</h1>
+      <p class="ga-body" style="color: rgba(255, 255, 255, 0.85); font-size: 1.7rem; line-height: 1.7; font-weight: 300;">
+        At Ghar Aangan, our mission goes beyond making pure A2 ghee. We collaborate directly with women-led self-help groups and small farming families across high-altitude Himalayan cooperatives, ensuring sustainable wages and preserving native heritage.
+      </p>
+    </div>
+  </div>
+
+  <!-- Section 1: Women-Led Collectives (Split Grid) -->
+  <style>
+    .ga-coop-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 8rem;
+      padding: 0 1.5rem;
+    }
+    @media screen and (min-width: 750px) {
+      .ga-coop-split {
+        grid-template-columns: 1fr 1.2fr;
+        gap: 6rem;
+      }
+    }
+  </style>
+
+  <div class="ga-coop-split">
+    <!-- Left Arched Image -->
+    <div style="text-align: center;">
+      <div class="ga-arch-container ga-reveal" style="max-width: 100%;">
+        <img class="ga-arch-top" src="{{ 'ghar-aangan-lifestyle.jpg' | asset_url }}" alt="Himalayan women cooperative milking Badri cows" style="width: 100%; max-width: 400px; height: auto; display: block;" loading="lazy">
+      </div>
+    </div>
+    <!-- Right Text -->
+    <div class="ga-reveal">
+      <span class="ga-subtitle">WOMEN-LED SELF HELP GROUPS</span>
+      <h2 class="ga-title" style="font-size: clamp(2.4rem, 4vw, 3.4rem); margin-top: 1rem; margin-bottom: 2rem;">Women-Led Collective Growth</h2>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 2rem;">
+        Traditionally, women in the high hills of Uttarakhand carry the burden of dairy farming and household labor but lack direct economic independence. By partnering with village-level self-help groups (SHGs), Ghar Aangan ensures that women are the primary handlers and earners of our ghee-making cooperatives.
+      </p>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
+        From curd-setting to wood-fired simmering and back-and-forth wooden Bilona churning, these rural women run the entire production line. Earning direct bank-transferred wages, they gain financial self-reliance, helping fund their children’s higher education and investing back in their community's health.
+      </p>
+    </div>
+  </div>
+
+  <!-- Section 2: Fair Trade (Reverse Split Grid) -->
+  <div class="ga-coop-split">
+    <!-- Image (top on mobile, right on desktop) -->
+    <div class="ga-coop-col-img ga-reveal" style="text-align: center;">
+      <div class="ga-arch-container">
+        <img class="ga-arch-top" src="{{ 'ghar-aangan-product-ghee.jpg' | asset_url }}" alt="Ghar Aangan A2 Bilona Ghee packaging" style="width: 100%; max-width: 400px; height: auto; display: block;" loading="lazy">
+      </div>
+    </div>
+    <!-- Text (bottom on mobile, left on desktop) -->
+    <div class="ga-coop-col-txt ga-reveal" style="text-align: left;">
+      <span class="ga-subtitle">FAIR & SUSTAINABLE</span>
+      <h2 class="ga-title" style="font-size: clamp(2.4rem, 4vw, 3.4rem); margin-top: 1rem; margin-bottom: 2rem;">Fair Trade & Transparent Wages</h2>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 2rem;">
+        In typical industrial milk chains, middle brokers control pricing, leaving small-scale hill farmers underpaid. We bypass third-party middle brokers completely, purchasing milk directly from the families at pre-established premium rates that are 40% higher than local market standards.
+      </p>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
+        This transparent model ensures that the high costs of mountain cattle rearing are met, making Badri cow farming a viable, sustainable, and respected livelihood. We also dedicate 5% of our profits directly to local veterinary health camps and organic dairy feed subsidies.
+      </p>
+    </div>
+  </div>
+
+  <style>
+    @media screen and (min-width: 750px) {
+      .ga-coop-col-img {
+        order: 2;
+      }
+      .ga-coop-col-txt {
+        order: 1;
+      }
+    }
+  </style>
+
+  <!-- Principles Cards -->
+  <div style="margin-bottom: 8rem; margin-top: 4rem;">
+    <div class="ga-section-header" style="margin-bottom: 5rem;">
+      <span class="ga-subtitle">COOPERATIVE PRINCIPLES</span>
+      <h2 class="ga-title">How We Preserve Mountain Ecosystems</h2>
+    </div>
+
+    <style>
+      .ga-coop-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 0 1.5rem;
+      }
+      @media screen and (min-width: 750px) {
+        .ga-coop-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+
+    <div class="ga-coop-grid">
+      
+      <!-- Card 1 -->
+      <div class="ga-inset-border ga-corner-stars ga-reveal" style="background: #ffffff; padding: 4.5rem 3rem; text-align: center;">
+        <div class="ga-corner-stars-inner"></div>
+        <h3 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.5rem;">Badri Cow Protection</h3>
+        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.6; color: var(--ga-dark-text); margin: 0; font-weight: 300;">
+          Supporting free-grazing Badri cattle breeds native to Uttarakhand. We feed them organic, pesticide-free local grains and mountain flora, strictly avoiding hormones or artificial feeds.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="ga-inset-border ga-corner-stars ga-reveal" style="background: #ffffff; padding: 4.5rem 3rem; text-align: center;">
+        <div class="ga-corner-stars-inner"></div>
+        <h3 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.5rem;">Eco-Friendly Simmering</h3>
+        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.6; color: var(--ga-dark-text); margin: 0; font-weight: 300;">
+          Using fallen pine needles and sustainably sourced dry oak firewood for heating curd and butter. This protects Uttarakhand’s dense forests while capturing authentic clay oven smoke.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="ga-inset-border ga-corner-stars ga-reveal" style="background: #ffffff; padding: 4.5rem 3rem; text-align: center;">
+        <div class="ga-corner-stars-inner"></div>
+        <h3 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.5rem;">Preserving Folk Arts</h3>
+        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.6; color: var(--ga-dark-text); margin: 0; font-weight: 300;">
+          By sustaining wooden Bilona churning, we keep the artisanal skill of wood carving and back-and-forth rope whisks alive for future generations, preventing the loss of traditional dairy art.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div style="background-color: var(--ga-forest-green); border-radius: 16px; padding: 6rem 3rem; text-align: center; border: 1.5px solid var(--ga-gold-cream); box-shadow: var(--ga-card-shadow);">
+    <div style="max-width: 600px; margin: 0 auto;">
+      <span class="ga-subtitle" style="color: var(--ga-gold-cream); display: block; margin-bottom: 1.5rem;">SUPPORT SUSTAINABLE FARMING</span>
+      <h2 class="ga-title" style="color: #ffffff; font-size: clamp(2.4rem, 4vw, 3.4rem); margin-bottom: 2rem;">Every Jar Empowers a Family</h2>
+      <p class="ga-body" style="color: rgba(255, 255, 255, 0.8); font-size: 1.5rem; line-height: 1.6; margin-bottom: 3.5rem;">
+        When you choose Ghar Aangan, you are not just purchasing pure A2 Bilona ghee. You are supporting fair wages, gender equality, and ancestral farming heritage in the high Himalayas.
+      </p>
+      <a href="/collections/all" class="ga-btn-primary" style="background-color: #ffffff; color: var(--ga-forest-green) !important; border-color: #ffffff;">
+        Shop and Support
+      </a>
+      <style>
+        .ga-btn-primary[style*="background-color: #ffffff"]::before {
+          background-color: var(--ga-gold-cream);
+        }
+        .ga-btn-primary[style*="background-color: #ffffff"]:hover {
+          color: #ffffff !important;
+          border-color: var(--ga-gold-cream);
+        }
+      </style>
+    </div>
+  </div>
+
+</div>
