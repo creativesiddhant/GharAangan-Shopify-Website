@@ -51,40 +51,36 @@
   </div>
 
   <!-- The Terroir Section (Reverse Split) -->
-  <div class="ga-journey-split" style="direction: ltr;">
-    <style>
-      @media screen and (min-width: 750px) {
-        .ga-journey-split-reverse {
-          grid-template-columns: 1.2fr 1fr;
-        }
-        .ga-journey-split-reverse .ga-right-col {
-          order: 2;
-        }
-        .ga-journey-split-reverse .ga-left-col {
-          order: 1;
-        }
-      }
-    </style>
-    <div class="ga-journey-split-reverse" style="display: grid; gap: 4rem; align-items: center; width: 100%;">
-      <!-- Left Text -->
-      <div class="ga-left-col ga-reveal" style="text-align: left;">
-        <span class="ga-subtitle">HIMALAYAN HERITAGE</span>
-        <h2 class="ga-title" style="font-size: clamp(2.4rem, 4vw, 3.4rem); margin-top: 1rem; margin-bottom: 2rem;">Purity from the High Altitudes</h2>
-        <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 2rem;">
-          Our ghee originates in the pristine valleys of Uttarakhand, where native Badri cows graze on wild medicinal herbs and fresh mountain flora. This natural diet renders a golden, granular ghee rich in vitamins, minerals, and deep organic aroma, untouched by modern industrialized processing.
-        </p>
-        <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-          The altitude, clean mountain streams, and uncontaminated soil give the herbs dynamic medicinal potency. The milk gathered here is packed with fat-soluble vitamins (A, D, E, K), CLA, and rich butyric acid structures that promote immune and digestive wellness.
-        </p>
-      </div>
-      <!-- Right Arched Image -->
-      <div class="ga-right-col ga-reveal" style="text-align: center;">
-        <div class="ga-arch-container">
-          <img class="ga-arch-top" src="{{ 'ghar-aangan-product-ghee.jpg' | asset_url }}" alt="High Altitude Badri cows ghee" style="width: 100%; max-width: 400px; height: auto; display: block;" loading="lazy">
-        </div>
+  <div class="ga-journey-split">
+    <!-- Image (top on mobile, right on desktop) -->
+    <div class="ga-story-col-img ga-reveal" style="text-align: center;">
+      <div class="ga-arch-container">
+        <img class="ga-arch-top" src="{{ 'ghar-aangan-product-ghee.jpg' | asset_url }}" alt="High Altitude Badri cows ghee" style="width: 100%; max-width: 400px; height: auto; display: block;" loading="lazy">
       </div>
     </div>
+    <!-- Text (bottom on mobile, left on desktop) -->
+    <div class="ga-story-col-txt ga-reveal" style="text-align: left;">
+      <span class="ga-subtitle">HIMALAYAN HERITAGE</span>
+      <h2 class="ga-title" style="font-size: clamp(2.4rem, 4vw, 3.4rem); margin-top: 1rem; margin-bottom: 2rem;">Purity from the High Altitudes</h2>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 2rem;">
+        Our ghee originates in the pristine valleys of Uttarakhand, where native Badri cows graze on wild medicinal herbs and fresh mountain flora. This natural diet renders a golden, granular ghee rich in vitamins, minerals, and deep organic aroma, untouched by modern industrialized processing.
+      </p>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
+        The altitude, clean mountain streams, and uncontaminated soil give the herbs dynamic medicinal potency. The milk gathered here is packed with fat-soluble vitamins (A, D, E, K), CLA, and rich butyric acid structures that promote immune and digestive wellness.
+      </p>
+    </div>
   </div>
+
+  <style>
+    @media screen and (min-width: 750px) {
+      .ga-story-col-img {
+        order: 2;
+      }
+      .ga-story-col-txt {
+        order: 1;
+      }
+    }
+  </style>
 
   <!-- Commitments / Core Values -->
   <div style="margin-bottom: 8rem; margin-top: 4rem;">
