@@ -14,15 +14,20 @@
       "settings": {
         "image": "shopify://shop_images/file_000000006de871fba9a3760c420a2116.png",
         "image_mobile": "shopify://shop_images/hero_for_mobile.png",
-        "hero_height_desktop": 80,
-        "hero_height_mobile": 65,
         "overlay_opacity": 50,
-        "text_alignment": "center",
         "subtitle": "PURE HIMALAYAN BILONA GHEE",
         "title": "Ghar Aangan: The Essence of Uttarakhand",
         "description": "Handcrafted in the Himalayas, our A2 ghee is churned using traditional Bilona methods to deliver unmatched purity, taste, and nutrition to your home.",
         "button_label": "Shop Himalayan Purity",
         "button_link": "shopify://collections/all",
+        "right_top_title": "A2 Bilona Badri Ghee",
+        "right_top_subtitle": "ORGANIC HIGHLANDS",
+        "right_top_link": "",
+        "right_top_bg_color": "#fcf6e8",
+        "right_bottom_title": "Himalayan Organic Honey",
+        "right_bottom_subtitle": "100% PURE & RAW",
+        "right_bottom_link": "",
+        "right_bottom_bg_color": "#f4ece1",
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -61,7 +66,7 @@
           "settings": {
             "icon": "shield",
             "title": "Immunity Enhancer",
-            "description": "Rich in antioxidants, fat-soluble vitamins (A, D, E, K), and essential fatty acids that support cellular regeneration."
+            "description": "Rich in antioxidants, fat-soluble vitamins (A, D, E, K), and essential fatty acids that support cellular regenerations."
           }
         },
         "benefit_3": {
@@ -339,6 +344,9 @@
         "background_color": "#faf8f5",
         "subtitle": "TESTIMONIALS",
         "title": "Loved by Pure Food Connoisseurs",
+        "show_arrows": true,
+        "enable_autoplay": true,
+        "autoplay_speed": 5,
         "padding_top": 60,
         "padding_bottom": 60
       }
