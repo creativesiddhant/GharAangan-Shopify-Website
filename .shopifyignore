@@ -1,6 +1,5 @@
 # Ignore local configuration files to prevent overwriting live merchant settings and image selections in the Shopify customizer
 config/settings_data.json
-templates/*.json
 *.zip
 ghar_aangan_backup/
 ecomus_extracted/
