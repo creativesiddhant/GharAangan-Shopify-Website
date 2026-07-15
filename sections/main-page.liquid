@@ -15,6 +15,8 @@
     {%- endif -%}
     {%- if page.handle == 'the-bilona-method' -%}
       {%- render 'page-the-bilona-method-custom' -%}
+    {%- elsif page.handle == 'our-story' -%}
+      {%- render 'page-our-story-custom' -%}
     {%- elsif page.content != blank -%}
       <div class="hdt-main-area hdt-rte hdt-relative">
       {{ page.content }}
