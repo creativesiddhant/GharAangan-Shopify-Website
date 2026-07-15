@@ -874,3 +874,31 @@ body,
   }
 }
 
+/* Optimize desktop header menu items spacing to prevent wrapping into multiple rows */
+@media screen and (min-width: 991px) {
+  .hdt-navigation {
+    --spacing-menu-item: 12px !important;
+  }
+  .hdt-menu-link {
+    font-size: 1.25rem !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .hdt-navigation {
+    --spacing-menu-item: 16px !important;
+  }
+  .hdt-menu-link {
+    font-size: 1.35rem !important;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hdt-navigation {
+    --spacing-menu-item: 24px !important;
+  }
+  .hdt-menu-link {
+    font-size: 1.45rem !important;
+  }
+}
+

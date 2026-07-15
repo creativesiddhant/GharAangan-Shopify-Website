@@ -127,10 +127,10 @@
             </svg>
           </button>
         </div>
-        <div class="{% if section.settings.menu_position == "start" %}lg:hdt-custom-col-auto {% else %}lg:hdt-custom-col-3{% endif %} md:hdt-custom-col-4 hdt-custom-col-6 xs:hdt-text-center">
+        <div class="{% if section.settings.menu_position == "start" %}lg:hdt-custom-col-auto {% else %}lg:hdt-custom-col-2{% endif %} md:hdt-custom-col-4 hdt-custom-col-6 xs:hdt-text-center">
           {%- render 'hdt_logo' -%}
         </div>
-        <div class="hdt-header-col lg:hdt-custom-col-6 lg:hdt-block hdt-hidden">
+        <div class="hdt-header-col lg:hdt-custom-col-8 lg:hdt-block hdt-hidden">
           {% # theme-check-disable NestedSnippet %}
           {%- if section.settings.main_menu != blank -%}
             <nav class="hdt-navigation hdt-text-{{ section.settings.menu_position }} hdt-menu-uppercase-{{ section.settings.text_transform }} hdt-nav-arrow_{{ section.settings.dropdown_arrow }}">
@@ -146,7 +146,7 @@
           {% endif %}
           {% # theme-check-enable NestedSnippet %}
         </div>
-        <div class="{% if section.settings.menu_position == "end" %}lg:hdt-custom-col-auto {% else %}lg:hdt-custom-col-3 {% endif %} md:hdt-custom-col-4 hdt-custom-col-3">
+        <div class="{% if section.settings.menu_position == "end" %}lg:hdt-custom-col-auto {% else %}lg:hdt-custom-col-2 {% endif %} md:hdt-custom-col-4 hdt-custom-col-3">
           {%- render 'header_group_icons' -%}
         </div>
       {%- else -%}
