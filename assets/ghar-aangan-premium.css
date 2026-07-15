@@ -863,3 +863,14 @@ body,
   transform: scale(1.08) translateY(-4px);
 }
 
+/* Mobile button overrides to prevent text wrapping */
+@media screen and (max-width: 749px) {
+  .ga-btn-primary, 
+  .ga-btn-secondary {
+    padding: 1.2rem 2rem !important;
+    font-size: 1.15rem !important;
+    letter-spacing: 0.12em !important;
+    white-space: nowrap !important;
+  }
+}
+
