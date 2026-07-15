@@ -31,10 +31,11 @@
 
   .ga-process-card {
     background-color: #ffffff;
-    border: 1px solid var(--ga-border-color);
-    border-top: 3px solid var(--ga-forest-green);
-    border-radius: 8px;
-    padding: 5rem 2.5rem 4rem 2.5rem;
+    border: 2px solid var(--ga-forest-green) !important;
+    outline: 1.5px solid var(--ga-gold-cream) !important;
+    outline-offset: -6px !important;
+    border-radius: 12px !important;
+    padding: 5rem 3rem 4rem 3rem;
     position: relative;
     box-shadow: var(--ga-card-shadow);
     transition: var(--ga-transition-smooth);
@@ -43,10 +44,10 @@
   }
 
   .ga-process-card:hover {
-    border-color: var(--ga-gold-cream);
-    border-top-color: var(--ga-gold-cream);
-    transform: translateY(-6px);
-    box-shadow: 0 22px 45px rgba(26, 51, 44, 0.08);
+    border-color: var(--ga-gold-cream) !important;
+    outline-color: var(--ga-forest-green) !important;
+    transform: translateY(-6px) !important;
+    box-shadow: 0 15px 30px rgba(26, 51, 44, 0.1) !important;
   }
 
   .ga-process-number {

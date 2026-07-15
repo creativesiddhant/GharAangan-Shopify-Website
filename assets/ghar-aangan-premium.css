@@ -573,3 +573,293 @@ h1, h2, h3, h4, h5 {
     padding: 2rem;
   }
 }
+
+/* ==========================================================================
+   Nimadi-Farms Inspired Premium Design Updates
+   ========================================================================== */
+
+/* 1. Linen Texture */
+body, 
+.template-index, 
+.ga-organic-texture-bg {
+  background-color: var(--ga-organic-cream, #faf8f5);
+  background-image: 
+    linear-gradient(90deg, rgba(26, 51, 44, 0.012) 50%, transparent 50%),
+    linear-gradient(rgba(26, 51, 44, 0.012) 50%, transparent 50%);
+  background-size: 4px 4px;
+}
+
+/* 2. Traditional Indian Dome Arch shapes */
+.ga-arch-top {
+  border-radius: 180px 180px 16px 16px !important;
+  overflow: hidden;
+}
+
+.ga-arch-container {
+  position: relative;
+  padding: 8px;
+  border: 1.5px solid var(--ga-gold-cream, #cda250);
+  border-radius: 190px 190px 20px 20px;
+  display: inline-block;
+  background-color: #ffffff;
+  transition: var(--ga-transition-smooth);
+}
+
+.ga-arch-container:hover {
+  border-color: var(--ga-forest-green, #1a332c);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(26, 51, 44, 0.08);
+}
+
+/* 3. Luxury Inset Outline Border */
+.ga-inset-border {
+  border: 2px solid var(--ga-forest-green, #1a332c);
+  outline: 1.5px solid var(--ga-gold-cream, #cda250);
+  outline-offset: -6px;
+  border-radius: 12px;
+}
+
+/* 4. Classical Corner Stars Motif */
+.ga-corner-stars {
+  position: relative;
+}
+
+.ga-corner-stars::before,
+.ga-corner-stars::after,
+.ga-corner-stars-inner::before,
+.ga-corner-stars-inner::after {
+  content: '✦';
+  position: absolute;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--ga-gold-cream, #cda250);
+  pointer-events: none;
+  z-index: 5;
+  transition: var(--ga-transition-smooth);
+}
+
+/* Position stars precisely at 4 corners */
+.ga-corner-stars::before { top: 8px; left: 8px; }
+.ga-corner-stars::after { top: 8px; right: 8px; }
+.ga-corner-stars-inner::before { bottom: 8px; left: 8px; }
+.ga-corner-stars-inner::after { bottom: 8px; right: 8px; }
+
+.ga-corner-stars:hover::before,
+.ga-corner-stars:hover::after,
+.ga-corner-stars:hover .ga-corner-stars-inner::before,
+.ga-corner-stars:hover .ga-corner-stars-inner::after {
+  color: var(--ga-forest-green, #1a332c);
+  transform: scale(1.2);
+}
+
+/* 5. Rebuilt Hero Section CSS Grid */
+.ga-hero-grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+  background-color: transparent;
+}
+
+@media screen and (min-width: 990px) {
+  .ga-hero-grid-container {
+    grid-template-columns: 1.45fr 1fr;
+    gap: 2.4rem;
+    padding: 4rem 6rem;
+    min-height: 600px;
+    height: 75vh;
+    max-height: 750px;
+  }
+}
+
+/* Left Card */
+.ga-hero-left-banner {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 480px;
+  border: 1px solid var(--ga-border-color);
+  box-shadow: 0 10px 30px rgba(26, 51, 44, 0.05);
+}
+
+@media screen and (min-width: 990px) {
+  .ga-hero-left-banner {
+    height: 100%;
+  }
+}
+
+.ga-hero-left-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.ga-hero-left-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(26, 51, 44, 0.1), rgba(26, 51, 44, 0.45));
+  z-index: 2;
+}
+
+/* Overlay Box styled as a premium signpost */
+.ga-hero-left-card {
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 12px;
+  padding: 3rem 2.5rem;
+  border: 1px solid var(--ga-border-color);
+  box-shadow: 0 15px 35px rgba(26, 51, 44, 0.15);
+  z-index: 3;
+  text-align: left;
+}
+
+@media screen and (min-width: 750px) {
+  .ga-hero-left-card {
+    left: 4rem;
+    bottom: 4rem;
+    right: auto;
+    max-width: 440px;
+    padding: 4rem 3.5rem;
+  }
+}
+
+.ga-hero-left-card .ga-subtitle {
+  font-size: 1.2rem;
+  color: var(--ga-gold-cream, #cda250);
+  margin-bottom: 1rem;
+  letter-spacing: 0.15em;
+  display: block;
+}
+
+.ga-hero-left-card .ga-title {
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  color: var(--ga-forest-green, #1a332c);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.ga-hero-left-card .ga-body {
+  font-size: 1.45rem;
+  color: var(--ga-dark-text, #2d2d2d);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+/* Right stacked column */
+.ga-hero-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+}
+
+@media screen and (min-width: 990px) {
+  .ga-hero-right-column {
+    height: 100%;
+    justify-content: space-between;
+  }
+}
+
+.ga-hero-subcard {
+  position: relative;
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  min-height: 200px;
+  border: 1px solid var(--ga-border-color);
+  box-shadow: 0 10px 25px rgba(26, 51, 44, 0.03);
+  transition: var(--ga-transition-smooth);
+}
+
+.ga-hero-subcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(26, 51, 44, 0.08);
+}
+
+.ga-hero-subcard-content {
+  z-index: 2;
+  max-width: 60%;
+  text-align: left;
+}
+
+.ga-hero-subcard-subtitle {
+  font-family: var(--ga-font-family-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ga-gold-cream, #cda250);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.ga-hero-subcard-title {
+  font-family: var(--ga-font-family-serif);
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ga-forest-green, #1a332c);
+  margin: 0 0 1.5rem 0;
+}
+
+.ga-hero-subcard-btn {
+  font-family: var(--ga-font-family-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ga-forest-green, #1a332c);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ga-hero-subcard-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.ga-hero-subcard:hover .ga-hero-subcard-btn svg {
+  transform: translateX(4px);
+}
+
+.ga-hero-subcard-img-wrap {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 0rem;
+  height: 90%;
+  width: 35%;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.ga-hero-subcard-img {
+  height: 100%;
+  max-height: 160px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ga-hero-subcard:hover .ga-hero-subcard-img {
+  transform: scale(1.08) translateY(-4px);
+}
+

@@ -1,5 +1,3 @@
-{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
@@ -12,188 +10,127 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-
-  .ghar-aangan-hero-{{ section.id }} {
-    position: relative;
-    min-height: {{ section.settings.hero_height_mobile }}vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background-color: var(--ga-forest-green);
-  }
-
-  @media screen and (min-width: 750px) {
-    .ghar-aangan-hero-{{ section.id }} {
-      min-height: {{ section.settings.hero_height_desktop }}vh;
-    }
-  }
-
-  .ghar-aangan-hero-bg-{{ section.id }} {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    transform: scale(1.08);
-    animation: gaHeroZoom 8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  @keyframes gaHeroZoom {
-    to {
-      transform: scale(1);
-    }
-  }
-
-  .ghar-aangan-hero-overlay-{{ section.id }} {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(26, 51, 44, 0.25) 0%, rgba(26, 51, 44, 0.6) 50%, rgba(26, 51, 44, 0.75) 100%);
-    opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
-    z-index: 2;
-  }
-
-  .ghar-aangan-hero-content-{{ section.id }} {
-    position: relative;
-    z-index: 3;
-    max-width: 680px;
-    margin: 2rem auto;
-    padding: 5rem 4.5rem;
-    border-radius: 8px;
-    text-align: {{ section.settings.text_alignment }};
-    word-break: keep-all;
-    overflow-wrap: break-word;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    box-shadow: 0 25px 55px rgba(26, 51, 44, 0.15);
-  }
-
-  @media screen and (min-width: 750px) {
-    .ghar-aangan-hero-content-{{ section.id }} {
-      margin: {% if section.settings.text_alignment == 'left' %}2rem auto 2rem 0{% elsif section.settings.text_alignment == 'right' %}2rem 0 2rem auto{% else %}2rem auto{% endif %};
-      padding: 6.5rem 6rem;
-    }
-  }
-
-  @media screen and (max-width: 749px) {
-    .ghar-aangan-hero-content-{{ section.id }} {
-      margin: 1.5rem auto;
-      padding: 4rem 2.5rem;
-      width: calc(100% - 3rem);
-    }
-  }
-
-  .ghar-aangan-hero-subtitle-{{ section.id }} {
-    margin-bottom: 1.8rem;
-    font-size: 1.4rem;
-    letter-spacing: 0.22em;
-    color: var(--ga-gold-cream);
-    font-weight: 600;
-  }
-
-  .ghar-aangan-hero-title-{{ section.id }} {
-    font-family: var(--ga-font-family-serif);
-    font-size: clamp(3.4rem, 5.5vw, 6.2rem);
-    line-height: 1.15;
-    color: var(--ga-forest-green);
-    margin-bottom: 2.2rem;
-    word-break: keep-all;
-    overflow-wrap: break-word;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-  }
-
-  .ghar-aangan-hero-desc-{{ section.id }} {
-    font-family: var(--ga-font-family-sans);
-    font-size: 1.7rem;
-    color: var(--ga-dark-text);
-    margin-bottom: 3.5rem;
-    line-height: 1.6;
-    font-weight: 300;
-  }
 {%- endstyle -%}
 
-<div class="ghar-aangan-hero-{{ section.id }} section-{{ section.id }}-padding">
-  {%- if section.settings.image != blank or true -%}
-    <picture>
-      {%- if section.settings.image_mobile != blank -%}
-        <source media="(max-width: 749px)" srcset="{{ section.settings.image_mobile | image_url: width: 750 }}">
+<div class="section-{{ section.id }}-padding" style="background-color: transparent;">
+  <div class="ga-hero-grid-container">
+    
+    <!-- Left Main Banner (Large Card) -->
+    <div class="ga-hero-left-banner ga-reveal">
+      {%- if section.settings.image != blank -%}
+        <picture>
+          {%- if section.settings.image_mobile != blank -%}
+            <source media="(max-width: 749px)" srcset="{{ section.settings.image_mobile | image_url: width: 750 }}">
+          {%- endif -%}
+          <img
+            class="ga-hero-left-img"
+            src="{{ section.settings.image | image_url: width: 1200 }}"
+            alt="{{ section.settings.title | escape }}"
+            loading="eager"
+            width="1200"
+            height="650"
+          >
+        </picture>
+      {%- else -%}
+        <img
+          class="ga-hero-left-img"
+          src="{{ 'ghar-aangan-hero-banner.jpg' | asset_url }}"
+          alt="Ghar Aangan Premium A2 Ghee Hero Banner"
+          loading="eager"
+          width="1200"
+          height="650"
+        >
       {%- endif -%}
-      <img
-        class="ghar-aangan-hero-bg-{{ section.id }}"
-        src="{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 1500 }}{% else %}{{ 'ghar-aangan-hero-banner.jpg' | asset_url }}{% endif %}"
-        alt="{% if section.settings.image != blank %}{{ section.settings.image.alt | escape }}{% else %}Ghar Aangan Premium A2 Ghee Hero Banner{% endif %}"
-        loading="eager"
-        width="1500"
-        height="850"
-      >
-    </picture>
-    <div class="ghar-aangan-hero-overlay-{{ section.id }}"></div>
-  {%- endif -%}
-
-  <div class="page-width" style="width: 100%;">
-    <div class="ghar-aangan-hero-content-{{ section.id }} ga-glass-panel ga-reveal">
-      {%- if section.settings.subtitle != blank -%}
-        <div class="ga-subtitle ghar-aangan-hero-subtitle-{{ section.id }}">{{ section.settings.subtitle | escape }}</div>
-      {%- endif -%}
-
-      {%- if section.settings.title != blank -%}
-        <h1 class="ga-title ghar-aangan-hero-title-{{ section.id }}">{{ section.settings.title | escape }}</h1>
-      {%- endif -%}
-
-      {%- if section.settings.description != blank -%}
-        <p class="ga-body ghar-aangan-hero-desc-{{ section.id }}">{{ section.settings.description | escape }}</p>
-      {%- endif -%}
-
-      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
-        <a href="{{ section.settings.button_link }}" class="ga-btn-primary">
-          {{ section.settings.button_label | escape }}
-        </a>
-      {%- endif -%}
+      <div class="ga-hero-left-overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"></div>
+      
+      <!-- Announcement Card Overlay -->
+      <div class="ga-hero-left-card">
+        {%- if section.settings.subtitle != blank -%}
+          <span class="ga-subtitle">{{ section.settings.subtitle | escape }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="ga-title">{{ section.settings.title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <p class="ga-body">{{ section.settings.description | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+          <a href="{{ section.settings.button_link }}" class="ga-btn-primary">
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
     </div>
+
+    <!-- Right Stacked Banners -->
+    <div class="ga-hero-right-column">
+      
+      <!-- Right Top Card -->
+      <a href="{{ section.settings.right_top_link | default: '#' }}" class="ga-hero-subcard ga-reveal" style="background: {{ section.settings.right_top_bg_color | default: '#fcf6e8' }};">
+        <div class="ga-hero-subcard-content">
+          {%- if section.settings.right_top_subtitle != blank -%}
+            <span class="ga-hero-subcard-subtitle">{{ section.settings.right_top_subtitle | escape }}</span>
+          {%- endif -%}
+          <h3 class="ga-hero-subcard-title">{{ section.settings.right_top_title | default: 'A2 Bilona Badri Ghee' | escape }}</h3>
+          <span class="ga-hero-subcard-btn">
+            Shop Now
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </div>
+        <div class="ga-hero-subcard-img-wrap">
+          {%- if section.settings.right_top_image != blank -%}
+            <img class="ga-hero-subcard-img" src="{{ section.settings.right_top_image | image_url: width: 300 }}" alt="{{ section.settings.right_top_title | escape }}" loading="eager" width="150" height="150">
+          {%- else -%}
+            <img class="ga-hero-subcard-img" src="{{ 'ghar-aangan-product-ghee.jpg' | asset_url }}" alt="Ghar Aangan A2 Bilona Ghee" loading="eager" width="150" height="150">
+          {%- endif -%}
+        </div>
+      </a>
+
+      <!-- Right Bottom Card -->
+      <a href="{{ section.settings.right_bottom_link | default: '#' }}" class="ga-hero-subcard ga-reveal" style="background: {{ section.settings.right_bottom_bg_color | default: '#f4ece1' }};">
+        <div class="ga-hero-subcard-content">
+          {%- if section.settings.right_bottom_subtitle != blank -%}
+            <span class="ga-hero-subcard-subtitle">{{ section.settings.right_bottom_subtitle | escape }}</span>
+          {%- endif -%}
+          <h3 class="ga-hero-subcard-title">{{ section.settings.right_bottom_title | default: 'Himalayan Organic Ghee' | escape }}</h3>
+          <span class="ga-hero-subcard-btn">
+            Shop Now
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </div>
+        <div class="ga-hero-subcard-img-wrap">
+          {%- if section.settings.right_bottom_image != blank -%}
+            <img class="ga-hero-subcard-img" src="{{ section.settings.right_bottom_image | image_url: width: 300 }}" alt="{{ section.settings.right_bottom_title | escape }}" loading="eager" width="150" height="150">
+          {%- else -%}
+            <img class="ga-hero-subcard-img" src="{{ 'ghar-aangan-product-ghee.jpg' | asset_url }}" alt="Ghar Aangan A2 Bilona Ghee" loading="eager" width="150" height="150">
+          {%- endif -%}
+        </div>
+      </a>
+
+    </div>
+
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "GA Premium Hero Banner",
+  "name": "GA Premium Hero Grid",
   "tag": "section",
   "class": "section",
   "settings": [
     {
+      "type": "header",
+      "content": "Left Main Card Settings"
+    },
+    {
       "type": "image_picker",
       "id": "image",
-      "label": "Desktop Background Image (Leave blank for premium brand gradient)",
-      "info": "Recommended: 1920x1080px (16:9 Landscape)"
+      "label": "Desktop Background Image"
     },
     {
       "type": "image_picker",
       "id": "image_mobile",
-      "label": "Mobile Background Image (Optional)",
-      "info": "Recommended: 750x1100px (Portrait)"
-    },
-    {
-      "type": "range",
-      "id": "hero_height_desktop",
-      "min": 50,
-      "max": 100,
-      "step": 5,
-      "unit": "vh",
-      "label": "Desktop Height",
-      "default": 80
-    },
-    {
-      "type": "range",
-      "id": "hero_height_mobile",
-      "min": 40,
-      "max": 90,
-      "step": 5,
-      "unit": "vh",
-      "label": "Mobile Height",
-      "default": 65
+      "label": "Mobile Background Image (Optional)"
     },
     {
       "type": "range",
@@ -203,27 +140,7 @@
       "step": 10,
       "unit": "%",
       "label": "Background Overlay Opacity",
-      "default": 50
-    },
-    {
-      "type": "select",
-      "id": "text_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "center",
-      "label": "Text Alignment"
+      "default": 30
     },
     {
       "type": "text",
@@ -256,6 +173,70 @@
     },
     {
       "type": "header",
+      "content": "Right Top Card Settings"
+    },
+    {
+      "type": "text",
+      "id": "right_top_title",
+      "label": "Top Card Title",
+      "default": "A2 Bilona Badri Ghee"
+    },
+    {
+      "type": "text",
+      "id": "right_top_subtitle",
+      "label": "Top Card Subtitle",
+      "default": "ORGANIC HIGHLANDS"
+    },
+    {
+      "type": "url",
+      "id": "right_top_link",
+      "label": "Top Card Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_top_image",
+      "label": "Top Card Product Image"
+    },
+    {
+      "type": "color",
+      "id": "right_top_bg_color",
+      "label": "Top Card Background Color",
+      "default": "#fcf6e8"
+    },
+    {
+      "type": "header",
+      "content": "Right Bottom Card Settings"
+    },
+    {
+      "type": "text",
+      "id": "right_bottom_title",
+      "label": "Bottom Card Title",
+      "default": "Himalayan Organic Honey"
+    },
+    {
+      "type": "text",
+      "id": "right_bottom_subtitle",
+      "label": "Bottom Card Subtitle",
+      "default": "100% PURE & RAW"
+    },
+    {
+      "type": "url",
+      "id": "right_bottom_link",
+      "label": "Bottom Card Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_bottom_image",
+      "label": "Bottom Card Product Image"
+    },
+    {
+      "type": "color",
+      "id": "right_bottom_bg_color",
+      "label": "Bottom Card Background Color",
+      "default": "#f4ece1"
+    },
+    {
+      "type": "header",
       "content": "Section Padding"
     },
     {
@@ -266,7 +247,7 @@
       "step": 4,
       "unit": "px",
       "label": "Padding Top",
-      "default": 0
+      "default": 20
     },
     {
       "type": "range",
@@ -276,12 +257,12 @@
       "step": 4,
       "unit": "px",
       "label": "Padding Bottom",
-      "default": 0
+      "default": 20
     }
   ],
   "presets": [
     {
-      "name": "GA Premium Hero Banner"
+      "name": "GA Premium Hero Grid"
     }
   ]
 }
