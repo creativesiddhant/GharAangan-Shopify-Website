@@ -13,7 +13,9 @@
         {{ section.settings.image_bg | image_url: width: section.settings.image_bg.width | image_tag: loading: 'lazy', width: section.settings.image_bg.width, height: section.settings.image_bg.height, class: 'hdt-w-full hdt-h-full hdt-object-cover', sizes: "100vw", widths: "375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840" }}
       </div>
     {%- endif -%}
-    {%- if page.content != blank -%}
+    {%- if page.handle == 'the-bilona-method' -%}
+      {%- render 'page-the-bilona-method-custom' -%}
+    {%- elsif page.content != blank -%}
       <div class="hdt-main-area hdt-rte hdt-relative">
       {{ page.content }}
       </div>
