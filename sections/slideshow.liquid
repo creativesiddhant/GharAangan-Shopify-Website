@@ -12,7 +12,12 @@
     {% endif %}
     {% if section.settings.image_height == 'adapt_image_first' or section.settings.image_height == 'fixed' %}
       --aspect-ratioapt-md:{% if section.settings.image_height=='adapt_image_first' %}var(--slide-{{ section.blocks.first.id }}-ratio-md){% else %}{{section.settings.fixed_height}}px{% endif %};
-    {% endif %}}
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .hdt-slider__button {
+    pointer-events: auto !important;
+    z-index: 15 !important;
+  }
 {%- endstyle -%}
 <div class="hdt-s-inner hdt-section-spacing" {%- unless section.index == 1 -%}hdt-reveal="fade-in"{%- endunless -%}>
   <hdt-slideshow {% if section.settings.is_fade %}isfade {% endif %}id="Slider-{{ section.id }}" autoheight class="hdt-slider hdt-relative hdt-container{% if section.settings.full_width %}-full{% endif %} hdt-slideshow hdt-slides-1 hdt-relative" config='{"loop": {{ section.settings.loop }}, "navUI": {{ section.settings.navUI }}, "dotUI": {{ section.settings.dotUI }}, "autoPlay": {{ section.settings.auto_play | times: 1000 }}, "pauseOnHover": {{ section.settings.pause_hover }}, "align": "center", "classNames": true, "autoHeight": true, "slidesToScroll": 1 }'>
