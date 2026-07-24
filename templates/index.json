@@ -63,10 +63,124 @@
             "spacer_1",
             "spacer_2"
           ]
+        },
+        "slide_item_R7w9fw": {
+          "type": "_slide-item",
+          "name": "t:sections.slideshow.blocks.slide.name",
+          "settings": {
+            "url": "",
+            "banner_target": false,
+            "color_scheme": "",
+            "content_position": "center",
+            "alignment": "left",
+            "content_position_mb": "center",
+            "alignment_mb": "left",
+            "background_content": false,
+            "bg_opacity": 0,
+            "box_square": false,
+            "content_rounded": false,
+            "use_border_content": false,
+            "border_opacity": 0,
+            "border_style": "none",
+            "border_pd_dk": 0,
+            "padding_vertical": 30,
+            "padding_horizontal": 30,
+            "min_width_content": 350,
+            "border_pd": 0
+          },
+          "blocks": {
+            "heading_HeKQhV": {
+              "type": "heading",
+              "settings": {
+                "heading": "<h2>Glamorous <br>Glam</h2>",
+                "hidden_br_mobile": false,
+                "hidden_on_mobile": false,
+                "line_height": "",
+                "heading_size": "h2",
+                "font_weight": "",
+                "text_color": "hdt-s-text",
+                "font_size_heading_lg": 50,
+                "font_size_heading_md": 30,
+                "font_size_heading": 24,
+                "font_weight_heading": 600,
+                "letter_spacing_heading": 0
+              },
+              "blocks": {}
+            },
+            "spacer_CxLeCH": {
+              "type": "spacer",
+              "settings": {
+                "direction": false,
+                "space_lg": 20,
+                "space_md": 16,
+                "space": 10
+              },
+              "blocks": {}
+            },
+            "text_KtztLM": {
+              "type": "text",
+              "settings": {
+                "text": "<p>From casual to formal, we've got you covered</p>",
+                "icon_source": "",
+                "icon": "car",
+                "hidden_br_mobile": false,
+                "hidden_on_mobile": false,
+                "text_size": "2xl",
+                "font_weight": "",
+                "text_color": "hdt-s-text",
+                "font_size_text_lg": 16,
+                "font_size_text_md": 14,
+                "font_size_text": 14,
+                "font_weight_text": 400,
+                "letter_spacing_text": 0
+              },
+              "blocks": {}
+            },
+            "spacer_4yQJxG": {
+              "type": "spacer",
+              "settings": {
+                "direction": false,
+                "space_lg": 50,
+                "space_md": 30,
+                "space": 20
+              },
+              "blocks": {}
+            },
+            "button_G9QiBp": {
+              "type": "button",
+              "settings": {
+                "label": "Shop collection",
+                "link": "shopify://collections",
+                "open_in_new_tab": false,
+                "full_width": false,
+                "style_class": "solid",
+                "font_size": "m",
+                "font_weight": "normal",
+                "font_size_btn": 14,
+                "padding_btn": 30,
+                "min_width_btn": 100,
+                "min_width_dt_btn": 100,
+                "min_height_btn": 40,
+                "icon": "none",
+                "icon_position": "after",
+                "icon_height": 16,
+                "icon_spacing": 5
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_HeKQhV",
+            "spacer_CxLeCH",
+            "text_KtztLM",
+            "spacer_4yQJxG",
+            "button_G9QiBp"
+          ]
         }
       },
       "block_order": [
-        "slide_1"
+        "slide_1",
+        "slide_item_R7w9fw"
       ],
       "settings": {
         "image_height": "adapt_image_first",
