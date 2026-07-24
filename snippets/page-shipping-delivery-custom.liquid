@@ -1,196 +1,80 @@
 <!-- snippets/page-shipping-delivery-custom.liquid -->
 <div class="ga-shipping-page-wrapper" style="padding: 2rem 0; font-family: var(--ga-font-family-sans);">
   
-  <!-- Hero Section -->
-  <div class="ga-shipping-hero" style="background: linear-gradient(rgba(26, 51, 44, 0.88), rgba(26, 51, 44, 0.88)), url('{{ 'ghar-aangan-hero-banner.jpg' | asset_url }}') no-repeat center center; background-size: cover; padding: 9rem 2rem; text-align: center; border-radius: 16px; margin-bottom: 6rem; border: 1px solid var(--ga-border-color); box-shadow: var(--ga-card-shadow);">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <span class="ga-subtitle" style="color: var(--ga-gold-cream); font-size: 1.3rem; letter-spacing: 0.3em; font-weight: 700;">SAFE & ASSURED LOGISTICS</span>
-      <h1 class="ga-title" style="color: #ffffff; font-size: clamp(3.2rem, 5.5vw, 4.8rem); margin-top: 1.5rem; margin-bottom: 2rem; line-height: 1.2; font-family: var(--ga-font-family-serif);">Shipping & Delivery Policy</h1>
-      <p class="ga-body" style="color: rgba(255, 255, 255, 0.9); font-size: 1.6rem; line-height: 1.7; font-weight: 300;">
-        From the pristine, high-altitude cooperatives of the Himalayas to your home, we ensure that every jar of pure A2 Bilona Ghee travels safely under controlled conditions.
+  <!-- Editorial Page Header -->
+  <div class="ga-shipping-header-editorial" style="text-align: center; max-width: 800px; margin: 4rem auto 6rem auto; border-bottom: 1.5px solid var(--ga-border-color); padding-bottom: 4rem; padding-left: 1.5rem; padding-right: 1.5rem;">
+    <span class="ga-subtitle" style="color: var(--ga-gold-cream); font-size: 1.3rem; letter-spacing: 0.3em; font-weight: 700;">SAFE & ASSURED LOGISTICS</span>
+    <h1 class="ga-title" style="font-size: clamp(3rem, 5vw, 4.4rem); font-family: var(--ga-font-family-serif); margin-top: 1rem; margin-bottom: 2rem; color: var(--ga-forest-green);">Shipping & Delivery Policy</h1>
+    <p class="ga-body" style="font-size: 1.6rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; max-width: 680px; margin: 0 auto;">
+      From the pristine, high-altitude cooperatives of the Himalayas to your home, we ensure that every jar of pure A2 Bilona Ghee travels safely under controlled conditions.
+    </p>
+  </div>
+
+  <!-- Main Text-Based Policy Content -->
+  <div class="ga-shipping-content-block" style="max-width: 750px; margin: 0 auto 6rem auto; padding: 0 1.5rem;">
+    
+    <!-- Section 1 -->
+    <div style="margin-bottom: 4.5rem;" class="ga-reveal">
+      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.5rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">1. Delivery Timelines & Charges</h2>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.5rem;">
+        We offer standard shipping across India. Every order is carefully processed, hand-inspected, and dispatched from our facilities within <strong>24 to 48 hours</strong> of order placement.
       </p>
+      <ul style="list-style-type: none; padding-left: 0; margin-top: 1.5rem; font-family: var(--ga-font-family-sans); font-size: 1.5rem; line-height: 1.8; color: var(--ga-dark-text);">
+        <li style="margin-bottom: 1.2rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--ga-gold-cream);">✦</span>
+          <strong>Complimentary Shipping:</strong> Free delivery is automatically applied at checkout to all orders valued at <strong>₹1,499 and above</strong>. For orders below ₹1,499, a flat shipping fee of ₹99 is applicable.
+        </li>
+        <li style="margin-bottom: 1.2rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--ga-gold-cream);">✦</span>
+          <strong>Metro Cities:</strong> Deliveries to major metropolitan zones (including Delhi-NCR, Mumbai, Bangalore, Chennai, Kolkata, and Hyderabad) are typically completed within <strong>3 to 5 business days</strong> after dispatch.
+        </li>
+        <li style="margin-bottom: 1.2rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--ga-gold-cream);">✦</span>
+          <strong>Rest of India:</strong> For Tier-2/Tier-3 cities, regional hubs, and remote mountainous sectors, standard transit times range between <strong>5 to 7 business days</strong>.
+        </li>
+      </ul>
     </div>
-  </div>
 
-  <!-- Key Pillars Grid (Free Shipping, Packing, Timelines) -->
-  <div style="margin-bottom: 8rem;">
-    <style>
-      .ga-shipping-pillars-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 0 1.5rem;
-      }
-      @media screen and (min-width: 750px) {
-        .ga-shipping-pillars-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      .ga-pillar-card {
-        background: #ffffff;
-        padding: 4rem 3rem;
-        text-align: center;
-        transition: var(--ga-transition-smooth);
-      }
-      .ga-pillar-icon {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 2rem auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background-color: var(--ga-gold-light);
-        color: var(--ga-forest-green);
-      }
-      .ga-pillar-card:hover .ga-pillar-icon {
-        background-color: var(--ga-forest-green);
-        color: var(--ga-organic-cream);
-        transform: scale(1.05);
-        transition: var(--ga-transition-smooth);
-      }
-    </style>
-
-    <div class="ga-shipping-pillars-grid">
-      
-      <!-- Card 1 -->
-      <div class="ga-pillar-card ga-inset-border ga-corner-stars ga-reveal">
-        <div class="ga-corner-stars-inner"></div>
-        <div class="ga-pillar-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-          </svg>
-        </div>
-        <h3 class="ga-title" style="font-size: 2.1rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif);">Complimentary Transit</h3>
-        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.6; color: var(--ga-dark-text); margin: 0; font-weight: 300;">
-          Enjoy free shipping across India for all orders of **₹1,499 and above**. For orders below ₹1,499, a flat shipping fee of ₹99 applies.
-        </p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="ga-pillar-card ga-inset-border ga-corner-stars ga-reveal" style="animation-delay: 0.15s;">
-        <div class="ga-corner-stars-inner"></div>
-        <div class="ga-pillar-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-          </svg>
-        </div>
-        <h3 class="ga-title" style="font-size: 2.1rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif);">Freshly Hand-Packed</h3>
-        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.6; color: var(--ga-dark-text); margin: 0; font-weight: 300;">
-          Every container is hand-checked and vacuum sealed. Orders are carefully processed and dispatched from our facilities within **24 to 48 hours**.
-        </p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="ga-pillar-card ga-inset-border ga-corner-stars ga-reveal" style="animation-delay: 0.3s;">
-        <div class="ga-corner-stars-inner"></div>
-        <div class="ga-pillar-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="16" y1="2" x2="16" y2="6"></line>
-            <line x1="8" y1="2" x2="8" y2="6"></line>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
-          </svg>
-        </div>
-        <h3 class="ga-title" style="font-size: 2.1rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif);">Estimated Timelines</h3>
-        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.6; color: var(--ga-dark-text); margin: 0; font-weight: 300;">
-          **Metro Cities:** 3 to 5 business days.<br>
-          **Rest of India:** 5 to 7 business days.<br>
-          Deliveries are fully tracked from dispatch to delivery.
-        </p>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Detailed Policy Sections (Alternating Grid layout) -->
-  <style>
-    .ga-shipping-split {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 4rem;
-      align-items: center;
-      margin-bottom: 8rem;
-      padding: 0 1.5rem;
-    }
-    @media screen and (min-width: 750px) {
-      .ga-shipping-split {
-        grid-template-columns: 1fr 1.2fr;
-        gap: 6rem;
-      }
-      .ga-shipping-split.ga-reverse {
-        grid-template-columns: 1.2fr 1fr;
-      }
-    }
-  </style>
-
-  <!-- Section 1: Eco-Friendly Packaging -->
-  <div class="ga-shipping-split">
-    <!-- Left Arched Image -->
-    <div style="text-align: center;" class="ga-reveal">
-      <div class="ga-arch-container" style="max-width: 100%;">
-        <img class="ga-arch-top" src="{{ 'ghar-aangan-product-ghee.jpg' | asset_url }}" alt="Ghar Aangan Premium A2 Ghee Bottle" style="width: 100%; max-width: 380px; height: auto; display: block;" loading="lazy">
-      </div>
-    </div>
-    <!-- Right Text Content -->
-    <div class="ga-reveal" style="animation-delay: 0.1s;">
-      <span class="ga-subtitle">SECURE & ECO-CONSCIOUS</span>
-      <h2 class="ga-title" style="font-size: clamp(2.4rem, 4vw, 3.4rem); margin-top: 1rem; margin-bottom: 2rem; font-family: var(--ga-font-family-serif);">Fragile Glass Jar Protection</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 2rem;">
-        To preserve the rich aroma, texture, and nutritional profile of our wood-fired A2 Ghee, we store it exclusively in premium, food-grade glass jars. Glass prevents chemical leaching and maintains natural freshness.
+    <!-- Section 2 -->
+    <div style="margin-bottom: 4.5rem;" class="ga-reveal" style="animation-delay: 0.1s;">
+      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.5rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">2. Eco-Conscious Glass Packaging</h2>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.5rem;">
+        To preserve the organic purity, delicate mountain aroma, and granular texture of our wood-fired A2 Ghee, we store it exclusively in food-grade glass jars. Glass is chemically inert, preventing any taste alteration or chemical leaching associated with plastic containers.
       </p>
       <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        We take transit safety seriously. Each glass jar is encased in custom-molded, multi-layered 5-ply corrugated cardboard shells that absorb severe impacts. We are committed to minimizing environmental impact, which is why **our shipping kits are 100% plastic-free and fully recyclable**.
+        We secure these fragile jars using custom-molded, multi-layered 5-ply corrugated cardboard shells designed to absorb high impacts during transit. True to our sustainable Himalayan philosophy, **our entire shipping kit is 100% plastic-free and fully recyclable**.
       </p>
     </div>
-  </div>
 
-  <!-- Section 2: Transit Quality & Temperature Guard -->
-  <div class="ga-shipping-split ga-reverse">
-    <!-- Left Text Content -->
-    <div class="ga-shipping-text ga-reveal" style="animation-delay: 0.1s;">
-      <span class="ga-subtitle">CLIMATE INDEPENDENT</span>
-      <h2 class="ga-title" style="font-size: clamp(2.4rem, 4vw, 3.4rem); margin-top: 1rem; margin-bottom: 2rem; font-family: var(--ga-font-family-serif);">Premium Transit Quality Guard</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 2rem;">
-        Unlike industrial processed spreads, authentic Bilona Ghee has a complex molecular structure containing essential short and medium-chain fatty acids. This wood-fired churning makes it highly stable under different temperature changes.
+    <!-- Section 3 -->
+    <div style="margin-bottom: 4.5rem;" class="ga-reveal" style="animation-delay: 0.15s;">
+      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.5rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">3. Climate Stability during Transit</h2>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.5rem;">
+        Traditional wood-fired Bilona Ghee has a stable molecular arrangement rich in short and medium-chain fatty acids. Because of its authentic slow-simmered preparation, it naturally resists spoilage even under varied climate conditions.
       </p>
       <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        Whether traveling through cold northern hills or warm southern plains, your ghee will arrive perfectly fresh. Slight changes in consistency (melting or solidifying) are completely natural signs of pure, unadulterated ghee and do not affect its shelf-life or taste.
+        As your shipment travels across different regional temperature zones, the ghee may experience minor changes in state (partial melting or solidification). This transition is completely natural and does not alter the product's medicinal values, taste, or shelf life.
       </p>
     </div>
-    <!-- Right Arched Image -->
-    <div class="ga-shipping-image ga-reveal" style="text-align: center;">
-      <div class="ga-arch-container" style="max-width: 100%;">
-        <img class="ga-arch-top" src="{{ 'ghar-aangan-lifestyle.jpg' | asset_url }}" alt="Himalayan Hills Landscape Ghar Aangan Source" style="width: 100%; max-width: 380px; height: auto; display: block;" loading="lazy">
-      </div>
+
+    <!-- Section 4 -->
+    <div style="margin-bottom: 4.5rem;" class="ga-reveal" style="animation-delay: 0.2s;">
+      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.5rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">4. Cash on Delivery (COD)</h2>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
+        Cash on Delivery service is available for most postal codes in India. A standard convenience surcharge of ₹49 is applied to COD orders at checkout to support processing logistics. COD packages follow the identical processing times and shipping timelines as prepaid orders.
+      </p>
     </div>
+
   </div>
 
-  <style>
-    @media screen and (min-width: 750px) {
-      .ga-shipping-split.ga-reverse .ga-shipping-image {
-        order: 2;
-      }
-      .ga-shipping-split.ga-reverse .ga-shipping-text {
-        order: 1;
-      }
-    }
-  </style>
-
-  <!-- FAQ Section (Interactive Accordion) -->
-  <div style="margin-bottom: 8rem; max-width: 900px; margin-left: auto; margin-right: auto; padding: 0 1.5rem;">
-    <div class="ga-section-header" style="margin-bottom: 4.5rem; text-align: center;">
-      <span class="ga-subtitle">COMMON INQUIRIES</span>
-      <h2 class="ga-title" style="font-size: clamp(2.6rem, 4vw, 3.6rem); font-family: var(--ga-font-family-serif);">Shipping & Delivery FAQ</h2>
-    </div>
+  <!-- FAQ Section (Single Column Text Layout) -->
+  <div style="max-width: 750px; margin: 0 auto 6rem auto; padding: 0 1.5rem; border-top: 1.5px solid var(--ga-border-color); padding-top: 5rem;">
+    <h2 class="ga-title" style="font-size: 2.4rem; margin-bottom: 3rem; text-align: left; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">Frequently Asked Questions</h2>
 
     <style>
       .ga-faq-details {
         border-bottom: 1px solid var(--ga-border-color);
-        padding: 2rem 0;
+        padding: 2.2rem 0;
         cursor: pointer;
       }
       .ga-faq-summary {
@@ -230,8 +114,8 @@
           <span class="ga-faq-icon">✦</span>
         </summary>
         <div class="ga-faq-content">
-          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.6; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
-            We offer a **100% Transit Guarantee**. While our custom 5-ply protective packaging prevents damage in 99.8% of cases, courier handling can occasionally be unpredictable. If your glass jar arrives broken or leaking, please email us at **support@gharaangan.com** or message us on WhatsApp within **48 hours of delivery** with a photo or video of the packaging and jar. We will dispatch a brand-new replacement immediately at no extra cost.
+          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+            We provide a **100% Transit Guarantee**. While our custom cardboard shells prevent damage in 99.8% of cases, courier handling can occasionally be unpredictable. If your glass jar arrives broken or leaking, please email us at <strong>support@gharaangan.com</strong> or message us on WhatsApp within <strong>48 hours of delivery</strong> with a photo or video of the parcel. We will ship a brand-new replacement immediately at no extra cost.
           </p>
         </div>
       </details>
@@ -243,7 +127,7 @@
           <span class="ga-faq-icon">✦</span>
         </summary>
         <div class="ga-faq-content">
-          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.6; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
             As soon as our warehouse team packages your jar and hands it over to our courier partner (typically within 24-48 hours of your order), you will receive a tracking link via email and WhatsApp. You can click the link to see real-time location updates, estimated arrival dates, and contact information for the local delivery executive.
           </p>
         </div>
@@ -256,8 +140,8 @@
           <span class="ga-faq-icon">✦</span>
         </summary>
         <div class="ga-faq-content">
-          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.6; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
-            Yes, Cash on Delivery is available for most pin codes across India. Standard shipping is free on COD orders valued above ₹1,499. For COD orders below ₹1,499, a flat shipping fee of ₹99 is charged at checkout. A small COD handling fee of ₹49 may apply.
+          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+            Yes, Cash on Delivery is available for most pin codes across India. Standard shipping is free on COD orders valued above ₹1,499. For COD orders below ₹1,499, a flat shipping fee of ₹99 is charged at checkout. A small COD handling fee of ₹49 applies.
           </p>
         </div>
       </details>
@@ -269,7 +153,7 @@
           <span class="ga-faq-icon">✦</span>
         </summary>
         <div class="ga-faq-content">
-          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.6; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
             If you need to change your shipping address, please contact our support team on WhatsApp or call us immediately. We can update your shipping details as long as the package has not left our dispatch facility. Once standard transit has begun with the courier provider, redirecting a package is generally not possible.
           </p>
         </div>
@@ -282,8 +166,8 @@
           <span class="ga-faq-icon">✦</span>
         </summary>
         <div class="ga-faq-content">
-          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.6; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
-            By default, checkout on our online store is limited to deliveries within India. However, we can arrange international shipping to selected countries (e.g. USA, UK, Canada, UAE) for custom commercial weights. Please reach out to us at **support@gharaangan.com** with your requirements and address, and we will get back to you with a custom shipping quotation.
+          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+            By default, checkout on our online store is limited to deliveries within India. However, we can arrange international shipping to selected countries (e.g. USA, UK, Canada, UAE) for custom commercial weights. Please reach out to us at <strong>support@gharaangan.com</strong> with your requirements and address, and we will get back to you with a custom shipping quotation.
           </p>
         </div>
       </details>
@@ -292,8 +176,8 @@
   </div>
 
   <!-- Help & Support Call-to-Action (CTA) -->
-  <div class="ga-reveal" style="background-color: var(--ga-forest-green); border-radius: 16px; padding: 6.5rem 3rem; text-align: center; border: 1.5px solid var(--ga-gold-cream); box-shadow: var(--ga-card-shadow); max-width: 900px; margin: 0 auto;">
-    <div style="max-width: 650px; margin: 0 auto;">
+  <div class="ga-reveal" style="background-color: var(--ga-forest-green); border-radius: 16px; padding: 6.5rem 3rem; text-align: center; border: 1.5px solid var(--ga-gold-cream); box-shadow: var(--ga-card-shadow); max-width: 750px; margin: 0 auto;">
+    <div style="max-width: 600px; margin: 0 auto;">
       <span class="ga-subtitle" style="color: var(--ga-gold-cream); display: block; margin-bottom: 1.5rem;">NEED ASSISTANCE?</span>
       <h2 class="ga-title" style="color: #ffffff; font-size: clamp(2.4rem, 4vw, 3.4rem); margin-bottom: 2rem; font-family: var(--ga-font-family-serif);">We Are Here To Support You</h2>
       <p class="ga-body" style="color: rgba(255, 255, 255, 0.85); font-size: 1.55rem; line-height: 1.6; margin-bottom: 3.5rem;">
