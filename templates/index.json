@@ -122,8 +122,8 @@
         "auto_play": 5,
         "navUI": true,
         "dotUI": true,
-        "full_width": false,
-        "rounded": "hdt-radius-lg",
+        "full_width": true,
+        "rounded": "none",
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -497,3 +497,4 @@
     "ghar_aangan_faq"
   ]
 }
+
