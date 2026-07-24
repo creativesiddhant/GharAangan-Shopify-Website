@@ -38,22 +38,6 @@
             "border_pd": 0
           },
           "blocks": {
-            "heading": {
-              "type": "heading",
-              "settings": {
-                "heading": "<h1>Ghar Aangan: The Essence of Uttarakhand</h1>",
-                "hidden_br_mobile": false,
-                "hidden_on_mobile": false,
-                "heading_size": "h1",
-                "text_color": "hdt-s-text",
-                "font_size_heading_lg": 50,
-                "font_size_heading_md": 35,
-                "font_size_heading": 28,
-                "font_weight_heading": 600,
-                "letter_spacing_heading": 0
-              },
-              "blocks": {}
-            },
             "spacer_1": {
               "type": "spacer",
               "settings": {
@@ -61,22 +45,6 @@
                 "space_lg": 18,
                 "space_md": 18,
                 "space": 18
-              },
-              "blocks": {}
-            },
-            "text": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Handcrafted in the Himalayas, our A2 ghee is churned using traditional Bilona methods to deliver unmatched purity, taste, and nutrition to your home.</p>",
-                "hidden_br_mobile": false,
-                "hidden_on_mobile": false,
-                "text_size": "lg",
-                "text_color": "hdt-s-text",
-                "font_size_text_lg": 16,
-                "font_size_text_md": 14,
-                "font_size_text": 14,
-                "font_weight_text": 400,
-                "letter_spacing_text": 0
               },
               "blocks": {}
             },
@@ -89,25 +57,11 @@
                 "space": 20
               },
               "blocks": {}
-            },
-            "button": {
-              "type": "button",
-              "settings": {
-                "label": "Shop Himalayan Purity",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "full_width": false,
-                "style_class": "solid"
-              },
-              "blocks": {}
             }
           },
           "block_order": [
-            "heading",
             "spacer_1",
-            "text",
-            "spacer_2",
-            "button"
+            "spacer_2"
           ]
         }
       },
@@ -116,16 +70,27 @@
       ],
       "settings": {
         "image_height": "adapt_image_first",
+        "fixed_height": 860,
         "image_height_mb": "adapt_image_first",
+        "fixed_height_mb": 300,
         "is_fade": false,
         "loop": true,
         "auto_play": 5,
+        "pause_hover": false,
         "navUI": true,
+        "nav_des": "default",
+        "nav_rounded_full": false,
         "dotUI": true,
+        "dot_vertical": false,
+        "dot_style": "default",
+        "dot_align": "center",
+        "dot_space": 30,
+        "color_scheme": "",
         "full_width": true,
         "rounded": "none",
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "padding_rate": 75
       }
     },
     "ghar_aangan_storytelling": {
@@ -497,4 +462,3 @@
     "ghar_aangan_faq"
   ]
 }
-
