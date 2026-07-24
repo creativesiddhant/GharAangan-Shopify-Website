@@ -10,24 +10,120 @@
 {
   "sections": {
     "ghar_aangan_hero": {
-      "type": "ghar-aangan-hero",
+      "type": "slideshow",
+      "blocks": {
+        "slide_1": {
+          "type": "_slide-item",
+          "settings": {
+            "image": "shopify://shop_images/file_000000006de871fba9a3760c420a2116.png",
+            "image_mb": "shopify://shop_images/hero_for_mobile.png",
+            "url": "shopify://collections/all",
+            "banner_target": false,
+            "color_scheme": "scheme-1",
+            "content_position": "center-start",
+            "alignment": "left",
+            "content_position_mb": "center-start",
+            "alignment_mb": "left",
+            "background_content": false,
+            "bg_opacity": 0,
+            "box_square": false,
+            "content_rounded": false,
+            "use_border_content": false,
+            "border_opacity": 0,
+            "border_style": "none",
+            "border_pd_dk": 0,
+            "padding_vertical": 30,
+            "padding_horizontal": 40,
+            "min_width_content": 350,
+            "border_pd": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "heading": "Ghar Aangan: The Essence of Uttarakhand",
+                "hidden_br_mobile": false,
+                "hidden_on_mobile": false,
+                "heading_size": "h1",
+                "text_color": "hdt-s-text",
+                "font_size_heading_lg": 50,
+                "font_size_heading_md": 35,
+                "font_size_heading": 28,
+                "font_weight_heading": 600,
+                "letter_spacing_heading": 0
+              },
+              "blocks": {}
+            },
+            "spacer_1": {
+              "type": "spacer",
+              "settings": {
+                "direction": false,
+                "space_lg": 18,
+                "space_md": 18,
+                "space": 18
+              },
+              "blocks": {}
+            },
+            "text": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Handcrafted in the Himalayas, our A2 ghee is churned using traditional Bilona methods to deliver unmatched purity, taste, and nutrition to your home.</p>",
+                "hidden_br_mobile": false,
+                "hidden_on_mobile": false,
+                "text_size": "lg",
+                "text_color": "hdt-s-text",
+                "font_size_text_lg": 16,
+                "font_size_text_md": 14,
+                "font_size_text": 14,
+                "font_weight_text": 400,
+                "letter_spacing_text": 0
+              },
+              "blocks": {}
+            },
+            "spacer_2": {
+              "type": "spacer",
+              "settings": {
+                "direction": false,
+                "space_lg": 40,
+                "space_md": 30,
+                "space": 20
+              },
+              "blocks": {}
+            },
+            "button": {
+              "type": "button",
+              "settings": {
+                "label": "Shop Himalayan Purity",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "full_width": false,
+                "style_class": "solid"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading",
+            "spacer_1",
+            "text",
+            "spacer_2",
+            "button"
+          ]
+        }
+      },
+      "block_order": [
+        "slide_1"
+      ],
       "settings": {
-        "image": "shopify://shop_images/file_000000006de871fba9a3760c420a2116.png",
-        "image_mobile": "shopify://shop_images/hero_for_mobile.png",
-        "overlay_opacity": 50,
-        "subtitle": "PURE HIMALAYAN BILONA GHEE",
-        "title": "Ghar Aangan: The Essence of Uttarakhand",
-        "description": "Handcrafted in the Himalayas, our A2 ghee is churned using traditional Bilona methods to deliver unmatched purity, taste, and nutrition to your home.",
-        "button_label": "Shop Himalayan Purity",
-        "button_link": "shopify://collections/all",
-        "right_top_title": "A2 Bilona Badri Ghee",
-        "right_top_subtitle": "ORGANIC HIGHLANDS",
-        "right_top_link": "",
-        "right_top_bg_color": "#fcf6e8",
-        "right_bottom_title": "Himalayan Organic Honey",
-        "right_bottom_subtitle": "100% PURE & RAW",
-        "right_bottom_link": "",
-        "right_bottom_bg_color": "#f4ece1",
+        "image_height": "adapt_image_first",
+        "image_height_mb": "adapt_image_first",
+        "is_fade": false,
+        "loop": true,
+        "auto_play": 5,
+        "navUI": true,
+        "dotUI": true,
+        "full_width": false,
+        "rounded": "hdt-radius-lg",
         "padding_top": 0,
         "padding_bottom": 0
       }
