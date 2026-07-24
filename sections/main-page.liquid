@@ -23,6 +23,8 @@
       {%- render 'page-purity-lab-reports-custom' -%}
     {%- elsif page.handle == 'shipping-delivery' -%}
       {%- render 'page-shipping-delivery-custom' -%}
+    {%- elsif page.handle == 'refund-return-policies' -%}
+      {%- render 'page-refund-policy-custom' -%}
     {%- elsif page.content != blank -%}
       <div class="hdt-main-area hdt-rte hdt-relative">
       {{ page.content }}
