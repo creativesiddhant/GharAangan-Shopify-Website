@@ -902,3 +902,293 @@ body,
   }
 }
 
+/* ==========================================================================
+   Ultra-Premium Typography, Spacing, & Container Redesign
+   ========================================================================== */
+
+/* 1. Centered Narrow Container (Amrit Organic style) */
+:root {
+  --container-max-width: 120rem !important; /* 1200px instead of 1440px */
+  --container-max-width-padding-lg: 130rem !important; /* ~1300px */
+  --container-max-width-padding-md: 125rem !important; /* ~1250px */
+}
+
+/* 2. Breathable Section Spacing */
+:root {
+  --spacing-sections-desktop: 120px !important; /* Desktop sections breathing room */
+  --spacing-sections-mobile: 80px !important;   /* Mobile sections breathing room */
+}
+.hdt-section + .hdt-section {
+  margin-top: var(--spacing-sections-mobile) !important;
+}
+@media (min-width: 768px) {
+  .hdt-section + .hdt-section {
+    margin-top: var(--spacing-sections-desktop) !important;
+  }
+}
+
+/* 3. Hero Section Sizing Overrides */
+.ga-hero-left-card .ga-title {
+  font-size: 38px !important; /* Mobile Hero Title */
+  line-height: 1.25 !important;
+  margin-bottom: 2rem !important;
+  letter-spacing: -0.02em !important;
+  font-weight: 700 !important;
+}
+@media (min-width: 768px) {
+  .ga-hero-left-card .ga-title {
+    font-size: 56px !important; /* Tablet Hero Title */
+  }
+}
+@media (min-width: 990px) {
+  .ga-hero-left-card .ga-title {
+    font-size: 76px !important; /* Desktop Hero Title */
+    max-width: 92% !important; /* Limit width to keep to ~2 lines */
+  }
+}
+
+.ga-hero-left-card .ga-body {
+  font-size: 16px !important; /* Mobile Hero Paragraph */
+  line-height: 1.75 !important;
+  margin-bottom: 3.5rem !important;
+  color: var(--ga-dark-text) !important;
+  font-weight: 300 !important;
+  max-width: 580px !important; /* Narrow editorial readability width */
+}
+@media (min-width: 768px) {
+  .ga-hero-left-card .ga-body {
+    font-size: 18px !important; /* Tablet Hero Paragraph */
+  }
+}
+@media (min-width: 990px) {
+  .ga-hero-left-card .ga-body {
+    font-size: 21px !important; /* Desktop Hero Paragraph */
+  }
+}
+
+.ga-hero-left-card .ga-btn-primary {
+  padding: 1.8rem 4.2rem !important;
+  font-size: 1.45rem !important;
+  letter-spacing: 0.18em !important;
+  border-radius: 4px !important;
+}
+
+/* Standard Hero & Slideshow Heading scaling fallback */
+.hdt-slideshow_item .hdt-heading,
+.hdt-banner .hdt-heading,
+.hdt-image-banner .hdt-heading {
+  font-size: 38px !important; /* Mobile */
+  line-height: 1.25 !important;
+}
+@media (min-width: 768px) {
+  .hdt-slideshow_item .hdt-heading,
+  .hdt-banner .hdt-heading,
+  .hdt-image-banner .hdt-heading {
+    font-size: 56px !important; /* Tablet */
+  }
+}
+@media (min-width: 1150px) {
+  .hdt-slideshow_item .hdt-heading,
+  .hdt-banner .hdt-heading,
+  .hdt-image-banner .hdt-heading {
+    font-size: 76px !important; /* Desktop */
+  }
+}
+
+/* 4. Section Headings (Global Editorial Anchor Overrides) */
+.hdt-section-title,
+.ga-section-header .ga-title,
+.hdt-heading-title,
+.hdt-heading,
+.hdt-sec-heading {
+  line-height: 1.25 !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Specific Section Heading Scales */
+.hdt-section-title,
+.ga-section-header .ga-title,
+.hdt-heading-title {
+  font-size: 32px !important; /* Mobile (30px-36px range) */
+}
+@media (min-width: 768px) {
+  .hdt-section-title,
+  .ga-section-header .ga-title,
+  .hdt-heading-title {
+    font-size: 44px !important; /* Tablet (42px-48px range) */
+  }
+}
+@media (min-width: 1150px) {
+  .hdt-section-title,
+  .ga-section-header .ga-title,
+  .hdt-heading-title {
+    font-size: 58px !important; /* Desktop (52px-64px range) */
+  }
+}
+
+/* Spacing above and below section headings */
+.hdt-section-head,
+.ga-section-header {
+  margin-top: 4rem !important;
+  margin-bottom: 6.5rem !important;
+}
+@media (min-width: 768px) {
+  .hdt-section-head,
+  .ga-section-header {
+    margin-top: 6rem !important;
+    margin-bottom: 8rem !important;
+  }
+}
+
+/* Narrow Editorial Paragraph widths for high-end readability */
+.hdt-section-des,
+.hdt-sec-subheading,
+.ga-section-header + .ga-body,
+.ga-section-header .ga-subtitle + p {
+  max-width: 600px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-size: 1.6rem !important;
+  line-height: 1.75 !important;
+  font-weight: 300 !important;
+  color: var(--ga-dark-text) !important;
+}
+
+/* 5. Product Cards Typography & Spacing Overrides */
+.hdt-card-product {
+  padding: 2.2rem !important; /* Increased whitespace inside cards */
+  background: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 30px rgba(26, 51, 44, 0.015) !important;
+  transition: var(--ga-transition-smooth) !important;
+}
+.hdt-card-product:hover {
+  box-shadow: 0 22px 45px rgba(26, 51, 44, 0.05) !important;
+  transform: translateY(-4px) !important;
+}
+
+.hdt-card-product__title,
+.card__heading,
+.card__heading a {
+  font-size: 1.75rem !important; /* Scaled product card title size */
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+  margin-top: 1.2rem !important;
+  margin-bottom: 0.8rem !important;
+}
+
+.hdt-price .hdt-money,
+.hdt-card-product__info .hdt-price,
+.card-wrapper .price {
+  font-size: 1.75rem !important; /* Scaled product card price size */
+  font-weight: 600 !important;
+  color: var(--ga-gold-cream) !important;
+}
+
+.hdt-card-product__info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.2rem !important; /* Breathing space inside cards */
+  padding-top: 1.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.hdt-card-product__info .hdt-pr_btn,
+.hdt-card-product__btn-ultra,
+.hdt-card-product__info .hdt-btn {
+  padding: 1.4rem 3rem !important;
+  font-size: 1.3rem !important; /* Scaled card CTA button text */
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* 6. Navigation Bar & Logo Size Overrides */
+.hdt-main-header {
+  padding-top: 1.5rem !important; /* Taller navbar */
+  padding-bottom: 1.5rem !important;
+  min-height: 94px !important;
+  transition: var(--ga-transition-smooth) !important;
+}
+.scrolled-past-header.shopify-section-header-sticky .hdt-main-header {
+  padding-top: 0.6rem !important;
+  padding-bottom: 0.6rem !important;
+  min-height: 70px !important;
+}
+
+/* Spacing and Font Size for Desktop Navigation */
+.hdt-menu-link {
+  font-size: 1.45rem !important; /* Menu items font size increase */
+  font-weight: 500 !important;
+  letter-spacing: 0.12em !important;
+}
+@media (min-width: 1200px) {
+  .hdt-menu-link {
+    font-size: 1.55rem !important;
+  }
+  .hdt-navigation {
+    --spacing-menu-item: 28px !important; /* Increased spacing between items */
+  }
+}
+@media (min-width: 1440px) {
+  .hdt-menu-link {
+    font-size: 1.65rem !important;
+  }
+  .hdt-navigation {
+    --spacing-menu-item: 36px !important; /* Generous editorial spacing */
+  }
+}
+
+/* Logo Sizing +15% Overrides */
+.hdt-logo picture img,
+.hdt-logo-img {
+  width: 126px !important; /* Mobile logo width (+15% of 110px) */
+  height: auto !important;
+}
+@media (min-width: 768px) {
+  .hdt-logo picture img,
+  .hdt-logo-img {
+    width: 156px !important; /* Desktop logo width (+15% of 136px) */
+    height: auto !important;
+  }
+}
+
+/* 7. Button Styling Enhancements (Global Premium look) */
+.ga-btn-primary,
+.ga-btn-secondary,
+.hdt-btn,
+.hdt-btn-primary,
+.hdt-btn-secondary,
+button.hdt-btn {
+  padding: 1.6rem 3.8rem !important;
+  font-size: 1.35rem !important;
+  border-radius: 4px !important; /* Elegant modern corner radius */
+  font-weight: 600 !important;
+  letter-spacing: 0.15em !important;
+  transition: var(--ga-transition-smooth) !important;
+}
+@media (min-width: 768px) {
+  .ga-btn-primary,
+  .ga-btn-secondary,
+  .hdt-btn,
+  .hdt-btn-primary,
+  .hdt-btn-secondary {
+    padding: 1.8rem 4.2rem !important;
+    font-size: 1.45rem !important;
+  }
+}
+
+/* 8. Icon scaling (+12%) */
+.hdt-header-col svg, 
+.hdt-site-nav_cart svg, 
+.hdt-site-nav_wishlist svg, 
+.hdt-site-nav_search svg, 
+.hdt-push-menu-btn svg,
+.hdt-icon-box svg,
+.hdt-card-product__btn-quick-view svg,
+.hdt-card-product__btn-wishlist-er svg {
+  transform: scale(1.12) !important; /* Scale icons subtley without layout displacement */
+  transform-origin: center !important;
+}
+
+
