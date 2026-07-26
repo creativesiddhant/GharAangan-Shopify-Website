@@ -3826,3 +3826,65 @@ class ShopifyAccountWrapp extends HTMLElement {
 }
 
 customElements.define('shopify-account-wrapp', ShopifyAccountWrapp);
+
+// Patch hdt-marquee element to handle visibility races (like starting hidden in announcement-bar)
+(function() {
+  const HdtMarquee = customElements.get('hdt-marquee');
+  if (HdtMarquee) {
+    const originalConnected = HdtMarquee.prototype.connectedCallback;
+    HdtMarquee.prototype.connectedCallback = function() {
+      this.scrollerItemWidth = this.scrollerItem ? this.scrollerItem.offsetWidth : 0;
+      if (this.scrollerItemWidth <= 0) {
+        const observer = new ResizeObserver((entries) => {
+          const w = this.scrollerItem ? this.scrollerItem.offsetWidth : 0;
+          if (w > 0) {
+            this.scrollerItemWidth = w;
+            this.cloneScrollerItems();
+            this.startAnimation();
+            observer.disconnect();
+          }
+        });
+        observer.observe(this);
+
+        if (this.pausable) {
+          this.addEventListener("mouseenter", () => this.pause = true);
+          this.addEventListener("mouseleave", () => this.pause = false);
+          this.addEventListener("touchstart", () => this.pause = true);
+          this.addEventListener("touchend", () => this.pause = false);
+        }
+      } else {
+        originalConnected.call(this);
+      }
+    };
+
+    // Fix already connected elements that failed to start because they were hidden initially
+    const fixMarquees = () => {
+      document.querySelectorAll('hdt-marquee').forEach(el => {
+        if (!el.animationFrame || el.scrollerItemWidth <= 0) {
+          const w = el.scrollerItem ? el.scrollerItem.offsetWidth : 0;
+          if (w > 0) {
+            el.scrollerItemWidth = w;
+            el.cloneScrollerItems();
+            el.startAnimation();
+          } else {
+            const observer = new ResizeObserver((entries) => {
+              const currentW = el.scrollerItem ? el.scrollerItem.offsetWidth : 0;
+              if (currentW > 0) {
+                el.scrollerItemWidth = currentW;
+                el.cloneScrollerItems();
+                el.startAnimation();
+                observer.disconnect();
+              }
+            });
+            observer.observe(el);
+          }
+        }
+      });
+    };
+    
+    // Run immediately and on DOMContentLoaded and load
+    fixMarquees();
+    document.addEventListener("DOMContentLoaded", fixMarquees);
+    window.addEventListener("load", fixMarquees);
+  }
+})();
