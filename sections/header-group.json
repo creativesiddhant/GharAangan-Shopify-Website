@@ -11,6 +11,44 @@
   "type": "header",
   "name": "t:sections.name_group.header",
   "sections": {
+    "announcement_bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "block-1": {
+          "type": "announcement",
+          "settings": {
+            "text": "🔥 15% OFF above ₹4999 – Code: NEW15"
+          }
+        },
+        "block-2": {
+          "type": "announcement",
+          "settings": {
+            "text": "✨ Flat 10% OFF – Code: NEW10"
+          }
+        },
+        "block-3": {
+          "type": "announcement",
+          "settings": {
+            "text": "🎁 12% OFF above ₹2499 – Code: NEW12"
+          }
+        }
+      },
+      "block_order": [
+        "block-1",
+        "block-2",
+        "block-3"
+      ],
+      "settings": {
+        "design": "marquee",
+        "color_scheme": "scheme-1",
+        "show_close_btn": false,
+        "show_line_separator": false,
+        "adding_border": false,
+        "speed": 0.3,
+        "direction": "rtl",
+        "marquee_pause_when_hover": true
+      }
+    },
     "header": {
       "type": "header-inline",
       "blocks": {
@@ -118,6 +156,7 @@
     }
   },
   "order": [
+    "announcement_bar",
     "header"
   ]
 }

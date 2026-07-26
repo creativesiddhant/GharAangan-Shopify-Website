@@ -135,3 +135,35 @@
     color: rgb(var(--color-foreground) / 0.85);
   }
 }
+
+/* Custom Premium Overrides for Ghar Aangan Ticker */
+.hdt-announcement-bar {
+  background-color: var(--ga-forest-green, #1a332c) !important;
+  color: var(--ga-organic-cream, #faf8f5) !important;
+  border-bottom: none !important;
+}
+
+.hdt-announcement-bar p,
+.hdt-announcement-bar span,
+.hdt-announcement-bar a:not(.hdt-btn) {
+  color: var(--ga-organic-cream, #faf8f5) !important;
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-size: 1.3rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.2 !important;
+}
+
+.hdt-announcement-bar__marquee-item::after {
+  display: none !important; /* Hide solid line separators to match screenshot */
+}
+
+.hdt-announcement-bar__marquee-item {
+  padding-inline-end: 6rem !important;
+  margin-inline-end: 3rem !important;
+}
+
+.hdt-announcement-bar__close button {
+  color: var(--ga-organic-cream, #faf8f5) !important;
+}
+
