@@ -1191,4 +1191,88 @@ button.hdt-btn {
   transform-origin: center !important;
 }
 
+/* ==========================================================================
+   Premium Header Design Overrides
+   ========================================================================== */
 
+/* 1. Main Header Background, Border & Accent */
+.hdt-main-header,
+.hdt-sticky-header {
+  background-color: var(--ga-gold-light, #f4ece1) !important;
+  background-image: 
+    linear-gradient(90deg, rgba(26, 51, 44, 0.008) 50%, transparent 50%),
+    linear-gradient(rgba(26, 51, 44, 0.008) 50%, transparent 50%) !important;
+  background-size: 4px 4px !important;
+  border-top: 3px solid var(--ga-gold-cream, #cda250) !important;
+  border-bottom: 1px solid rgba(26, 51, 44, 0.08) !important;
+  box-shadow: 0 8px 30px rgba(26, 51, 44, 0.03) !important;
+  transition: var(--ga-transition-smooth) !important;
+}
+
+/* 2. Navigation Menu Typography & Colors */
+.hdt-menu-link,
+#hdt-nav-ul > li > a,
+#hdt-nav-ul > li > details > summary {
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-size: 1.35rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.16em !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s ease !important;
+}
+
+/* Hover State for Links */
+.hdt-menu-link:hover,
+#hdt-nav-ul > li > a:hover,
+#hdt-nav-ul > li > details:hover > summary,
+#hdt-nav-ul > li > details[open] > summary {
+  color: var(--ga-gold-cream, #cda250) !important;
+  transform: translateY(-1px);
+}
+
+/* Ensure active/current links have premium styling */
+.hdt-menu-link--active {
+  color: var(--ga-gold-cream, #cda250) !important;
+  font-weight: 600 !important;
+}
+
+/* Dropdown Carets Color */
+.hdt-menu-link svg {
+  color: var(--ga-forest-green, #1a332c) !important;
+  transition: color 0.3s ease !important;
+}
+.hdt-menu-link:hover svg {
+  color: var(--ga-gold-cream, #cda250) !important;
+}
+
+/* 3. Header Action Icons */
+.hdt-header-group-icons a,
+.hdt-header-group-icons button,
+.hdt-header-group-icons svg,
+.hdt-site-nav_cart svg,
+.hdt-site-nav_wishlist svg,
+.hdt-site-nav_search svg,
+.hdt-push-menu-btn svg {
+  color: var(--ga-forest-green, #1a332c) !important;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s ease !important;
+}
+
+.hdt-header-group-icons a:hover,
+.hdt-header-group-icons button:hover,
+.hdt-header-group-icons a:hover svg,
+.hdt-header-group-icons button:hover svg {
+  color: var(--ga-gold-cream, #cda250) !important;
+}
+
+/* 4. Action Badges (Wishlist/Cart Count) */
+.hdt-header-group-icons .hdt-relative .hdt-absolute,
+.hdt-header-group-icons span[class*="count"],
+.hdt-header-group-icons span[class*="bubble"] {
+  background-color: var(--ga-gold-cream, #cda250) !important;
+  color: #ffffff !important;
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-weight: 600 !important;
+  font-size: 1.05rem !important;
+  border: 1.5px solid var(--ga-gold-light, #f4ece1) !important;
+}
