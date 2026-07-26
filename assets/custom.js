@@ -3829,62 +3829,105 @@ customElements.define('shopify-account-wrapp', ShopifyAccountWrapp);
 
 // Patch hdt-marquee element to handle visibility races (like starting hidden in announcement-bar)
 (function() {
-  const HdtMarquee = customElements.get('hdt-marquee');
-  if (HdtMarquee) {
+  try {
+    const HdtMarquee = customElements.get('hdt-marquee');
+    if (!HdtMarquee) {
+      console.warn('[Ghar Aangan Marquee] hdt-marquee element not registered yet');
+      return;
+    }
+    
+    console.log('[Ghar Aangan Marquee] Patching connectedCallback...');
     const originalConnected = HdtMarquee.prototype.connectedCallback;
     HdtMarquee.prototype.connectedCallback = function() {
-      this.scrollerItemWidth = this.scrollerItem ? this.scrollerItem.offsetWidth : 0;
-      if (this.scrollerItemWidth <= 0) {
-        const observer = new ResizeObserver((entries) => {
-          const w = this.scrollerItem ? this.scrollerItem.offsetWidth : 0;
-          if (w > 0) {
-            this.scrollerItemWidth = w;
-            this.cloneScrollerItems();
-            this.startAnimation();
-            observer.disconnect();
-          }
-        });
-        observer.observe(this);
+      try {
+        this.scrollerItemWidth = this.scrollerItem ? this.scrollerItem.offsetWidth : 0;
+        console.log('[Ghar Aangan Marquee] connectedCallback ran. width:', this.scrollerItemWidth);
+        if (this.scrollerItemWidth <= 0) {
+          console.log('[Ghar Aangan Marquee] Width is 0, observing...');
+          const observer = new ResizeObserver((entries) => {
+            try {
+              const w = this.scrollerItem ? this.scrollerItem.offsetWidth : 0;
+              if (w > 0) {
+                console.log('[Ghar Aangan Marquee] Resize detected width:', w);
+                this.scrollerItemWidth = w;
+                this.cloneScrollerItems();
+                this.startAnimation();
+                observer.disconnect();
+              }
+            } catch (err) {
+              console.error('[Ghar Aangan Marquee] Error inside ResizeObserver:', err);
+            }
+          });
+          observer.observe(this);
 
-        if (this.pausable) {
-          this.addEventListener("mouseenter", () => this.pause = true);
-          this.addEventListener("mouseleave", () => this.pause = false);
-          this.addEventListener("touchstart", () => this.pause = true);
-          this.addEventListener("touchend", () => this.pause = false);
+          if (this.pausable) {
+            this.addEventListener("mouseenter", () => this.pause = true);
+            this.addEventListener("mouseleave", () => this.pause = false);
+            this.addEventListener("touchstart", () => this.pause = true);
+            this.addEventListener("touchend", () => this.pause = false);
+          }
+        } else {
+          console.log('[Ghar Aangan Marquee] Calling original connectedCallback...');
+          originalConnected.call(this);
         }
-      } else {
-        originalConnected.call(this);
+      } catch (err) {
+        console.error('[Ghar Aangan Marquee] Error in patched connectedCallback:', err);
       }
     };
 
     // Fix already connected elements that failed to start because they were hidden initially
     const fixMarquees = () => {
-      document.querySelectorAll('hdt-marquee').forEach(el => {
-        if (!el.animationFrame || el.scrollerItemWidth <= 0) {
-          const w = el.scrollerItem ? el.scrollerItem.offsetWidth : 0;
-          if (w > 0) {
-            el.scrollerItemWidth = w;
-            el.cloneScrollerItems();
-            el.startAnimation();
-          } else {
-            const observer = new ResizeObserver((entries) => {
-              const currentW = el.scrollerItem ? el.scrollerItem.offsetWidth : 0;
-              if (currentW > 0) {
-                el.scrollerItemWidth = currentW;
+      try {
+        const marquees = document.querySelectorAll('hdt-marquee');
+        console.log('[Ghar Aangan Marquee] fixMarquees query found elements count:', marquees.length);
+        marquees.forEach((el, index) => {
+          try {
+            console.log(`[Ghar Aangan Marquee] Element #${index} state:`, {
+              animFrame: el.animationFrame,
+              itemWidth: el.scrollerItemWidth,
+              scrollerItem: !!el.scrollerItem
+            });
+            if (!el.animationFrame || el.scrollerItemWidth <= 0) {
+              const w = el.scrollerItem ? el.scrollerItem.offsetWidth : 0;
+              console.log(`[Ghar Aangan Marquee] Element #${index} width evaluated:`, w);
+              if (w > 0) {
+                console.log(`[Ghar Aangan Marquee] Element #${index} starting animation...`);
+                el.scrollerItemWidth = w;
                 el.cloneScrollerItems();
                 el.startAnimation();
-                observer.disconnect();
+              } else {
+                console.log(`[Ghar Aangan Marquee] Element #${index} is hidden, registering observer.`);
+                const observer = new ResizeObserver((entries) => {
+                  try {
+                    const currentW = el.scrollerItem ? el.scrollerItem.offsetWidth : 0;
+                    if (currentW > 0) {
+                      console.log(`[Ghar Aangan Marquee] Element #${index} observer triggered. width:`, currentW);
+                      el.scrollerItemWidth = currentW;
+                      el.cloneScrollerItems();
+                      el.startAnimation();
+                      observer.disconnect();
+                    }
+                  } catch (err) {
+                    console.error('[Ghar Aangan Marquee] Observer error:', err);
+                  }
+                });
+                observer.observe(el);
               }
-            });
-            observer.observe(el);
+            }
+          } catch (err) {
+            console.error('[Ghar Aangan Marquee] Error processing element:', err);
           }
-        }
-      });
+        });
+      } catch (err) {
+        console.error('[Ghar Aangan Marquee] Error in fixMarquees loop:', err);
+      }
     };
     
     // Run immediately and on DOMContentLoaded and load
     fixMarquees();
     document.addEventListener("DOMContentLoaded", fixMarquees);
     window.addEventListener("load", fixMarquees);
+  } catch (err) {
+    console.error('[Ghar Aangan Marquee] Initialization error:', err);
   }
 })();
