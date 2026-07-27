@@ -47,7 +47,7 @@
         "adding_border": false,
         "au_time": 3.5,
         "slider_pause_when_hover": false,
-        "speed": 0.4,
+        "speed": 0.3,
         "direction": "rtl",
         "marquee_pause_when_hover": true
       }
