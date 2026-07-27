@@ -42,9 +42,12 @@
         "design": "marquee",
         "color_scheme": "scheme-1",
         "show_close_btn": false,
+        "hdt_show_pre_next": false,
         "show_line_separator": false,
         "adding_border": false,
-        "speed": 0.3,
+        "au_time": 3.5,
+        "slider_pause_when_hover": false,
+        "speed": 0.4,
         "direction": "rtl",
         "marquee_pause_when_hover": true
       }
