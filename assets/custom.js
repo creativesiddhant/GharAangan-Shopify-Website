@@ -3830,103 +3830,98 @@ customElements.define('shopify-account-wrapp', ShopifyAccountWrapp);
 // Patch hdt-marquee element to handle visibility races (like starting hidden in announcement-bar)
 (function() {
   try {
-    const HdtMarquee = customElements.get('hdt-marquee');
-    if (!HdtMarquee) {
-      console.warn('[Ghar Aangan Marquee] hdt-marquee element not registered yet');
-      return;
-    }
-    
-    console.log('[Ghar Aangan Marquee] Patching connectedCallback...');
-    const originalConnected = HdtMarquee.prototype.connectedCallback;
-    HdtMarquee.prototype.connectedCallback = function() {
+    customElements.whenDefined('hdt-marquee').then((ctor) => {
       try {
-        this.scrollerItemWidth = this.scrollerItem ? this.scrollerItem.offsetWidth : 0;
-        console.log('[Ghar Aangan Marquee] connectedCallback ran. width:', this.scrollerItemWidth);
-        if (this.scrollerItemWidth <= 0) {
-          console.log('[Ghar Aangan Marquee] Width is 0, observing...');
-          const observer = new ResizeObserver((entries) => {
-            try {
-              const w = this.scrollerItem ? this.scrollerItem.offsetWidth : 0;
-              if (w > 0) {
-                console.log('[Ghar Aangan Marquee] Resize detected width:', w);
-                this.scrollerItemWidth = w;
-                this.cloneScrollerItems();
-                this.startAnimation();
-                observer.disconnect();
-              }
-            } catch (err) {
-              console.error('[Ghar Aangan Marquee] Error inside ResizeObserver:', err);
-            }
-          });
-          observer.observe(this);
-
-          if (this.pausable) {
-            this.addEventListener("mouseenter", () => this.pause = true);
-            this.addEventListener("mouseleave", () => this.pause = false);
-            this.addEventListener("touchstart", () => this.pause = true);
-            this.addEventListener("touchend", () => this.pause = false);
-          }
-        } else {
-          console.log('[Ghar Aangan Marquee] Calling original connectedCallback...');
-          originalConnected.call(this);
+        const HdtMarquee = ctor || customElements.get('hdt-marquee');
+        if (!HdtMarquee) {
+          console.warn('[Ghar Aangan Marquee] hdt-marquee element not registered yet');
+          return;
         }
-      } catch (err) {
-        console.error('[Ghar Aangan Marquee] Error in patched connectedCallback:', err);
-      }
-    };
 
-    // Fix already connected elements that failed to start because they were hidden initially
-    const fixMarquees = () => {
-      try {
-        const marquees = document.querySelectorAll('hdt-marquee');
-        console.log('[Ghar Aangan Marquee] fixMarquees query found elements count:', marquees.length);
-        marquees.forEach((el, index) => {
+        console.log('[Ghar Aangan Marquee] Patching hdt-marquee prototype...');
+        
+        // Patch connectedCallback to observe child size changes (e.g. when initially hidden text loads/renders)
+        const originalConnected = HdtMarquee.prototype.connectedCallback;
+        HdtMarquee.prototype.connectedCallback = function() {
+          originalConnected.call(this);
+          
           try {
-            console.log(`[Ghar Aangan Marquee] Element #${index} state:`, {
-              animFrame: el.animationFrame,
-              itemWidth: el.scrollerItemWidth,
-              scrollerItem: !!el.scrollerItem
-            });
-            if (!el.animationFrame || el.scrollerItemWidth <= 0) {
-              const w = el.scrollerItem ? el.scrollerItem.offsetWidth : 0;
-              console.log(`[Ghar Aangan Marquee] Element #${index} width evaluated:`, w);
-              if (w > 0) {
-                console.log(`[Ghar Aangan Marquee] Element #${index} starting animation...`);
-                el.scrollerItemWidth = w;
-                el.cloneScrollerItems();
-                el.startAnimation();
-              } else {
-                console.log(`[Ghar Aangan Marquee] Element #${index} is hidden, registering observer.`);
-                const observer = new ResizeObserver((entries) => {
-                  try {
-                    const currentW = el.scrollerItem ? el.scrollerItem.offsetWidth : 0;
-                    if (currentW > 0) {
-                      console.log(`[Ghar Aangan Marquee] Element #${index} observer triggered. width:`, currentW);
-                      el.scrollerItemWidth = currentW;
-                      el.cloneScrollerItems();
-                      el.startAnimation();
-                      observer.disconnect();
-                    }
-                  } catch (err) {
-                    console.error('[Ghar Aangan Marquee] Observer error:', err);
+            const child = this._inner ? this._inner.firstElementChild : null;
+            if (child) {
+              if (this._childObserver) {
+                this._childObserver.disconnect();
+              }
+              this._childObserver = new ResizeObserver(() => {
+                if (child.offsetWidth > 0) {
+                  this._setup();
+                }
+              });
+              this._childObserver.observe(child);
+            }
+          } catch (err) {
+            console.error('[Ghar Aangan Marquee] Error setting up child observer in connectedCallback:', err);
+          }
+        };
+
+        // Patch disconnectedCallback to cleanup child observer
+        const originalDisconnected = HdtMarquee.prototype.disconnectedCallback;
+        HdtMarquee.prototype.disconnectedCallback = function() {
+          try {
+            if (this._childObserver) {
+              this._childObserver.disconnect();
+              this._childObserver = null;
+            }
+          } catch (err) {
+            console.error('[Ghar Aangan Marquee] Error cleaning up child observer in disconnectedCallback:', err);
+          }
+          originalDisconnected.call(this);
+        };
+
+        // Patch _setup to recalculate properly when either container or child size changes
+        const originalSetup = HdtMarquee.prototype._setup;
+        HdtMarquee.prototype._setup = function() {
+          try {
+            const currentItemWidth = this._inner && this._inner.firstElementChild ? this._inner.firstElementChild.offsetWidth : 0;
+            const currentContainerWidth = this.offsetWidth;
+            
+            if (currentItemWidth === 0) return;
+            
+            if (this._lastWidth !== currentItemWidth || this._lastContainerWidth !== currentContainerWidth) {
+              this._lastContainerWidth = currentContainerWidth;
+              this._lastWidth = 0; // Bypass the original setup's cached width check
+              originalSetup.call(this);
+            }
+          } catch (err) {
+            console.error('[Ghar Aangan Marquee] Error in patched _setup:', err);
+          }
+        };
+        
+        // Also fix any marquees that have already connected before this script ran
+        document.querySelectorAll('hdt-marquee').forEach(el => {
+          try {
+            const child = el._inner ? el._inner.firstElementChild : null;
+            if (child) {
+              if (!el._childObserver) {
+                el._childObserver = new ResizeObserver(() => {
+                  if (child.offsetWidth > 0) {
+                    el._setup();
                   }
                 });
-                observer.observe(el);
+                el._childObserver.observe(child);
+              }
+              if (child.offsetWidth > 0) {
+                el._setup();
               }
             }
           } catch (err) {
-            console.error('[Ghar Aangan Marquee] Error processing element:', err);
+            console.error('[Ghar Aangan Marquee] Error fixing existing marquee:', err);
           }
         });
+
       } catch (err) {
-        console.error('[Ghar Aangan Marquee] Error in fixMarquees loop:', err);
+        console.error('[Ghar Aangan Marquee] Error in whenDefined callback:', err);
       }
-    };
-    
-    // Run immediately and on DOMContentLoaded and load
-    fixMarquees();
-    document.addEventListener("DOMContentLoaded", fixMarquees);
-    window.addEventListener("load", fixMarquees);
+    });
   } catch (err) {
     console.error('[Ghar Aangan Marquee] Initialization error:', err);
   }
