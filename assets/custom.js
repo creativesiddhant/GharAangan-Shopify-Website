@@ -3840,10 +3840,35 @@ customElements.define('shopify-account-wrapp', ShopifyAccountWrapp);
 
         console.log('[Ghar Aangan Marquee] Patching hdt-marquee prototype...');
         
+        // Helper to temporarily mock matchMedia to force motion animations to run regardless of OS preferences
+        const withMotionMocked = (fn, context, args) => {
+          const originalMatchMedia = window.matchMedia;
+          window.matchMedia = function(query) {
+            if (query.includes('prefers-reduced-motion')) {
+              return {
+                matches: true,
+                media: query,
+                onchange: null,
+                addListener: () => {},
+                removeListener: () => {},
+                addEventListener: () => {},
+                removeEventListener: () => {},
+                dispatchEvent: () => true
+              };
+            }
+            return originalMatchMedia.call(window, query);
+          };
+          try {
+            return fn.apply(context, args || []);
+          } finally {
+            window.matchMedia = originalMatchMedia;
+          }
+        };
+
         // Patch connectedCallback to observe child size changes (e.g. when initially hidden text loads/renders)
         const originalConnected = HdtMarquee.prototype.connectedCallback;
         HdtMarquee.prototype.connectedCallback = function() {
-          originalConnected.call(this);
+          withMotionMocked(originalConnected, this);
           
           try {
             const child = this._inner ? this._inner.firstElementChild : null;
@@ -3889,7 +3914,7 @@ customElements.define('shopify-account-wrapp', ShopifyAccountWrapp);
             if (this._lastWidth !== currentItemWidth || this._lastContainerWidth !== currentContainerWidth) {
               this._lastContainerWidth = currentContainerWidth;
               this._lastWidth = 0; // Bypass the original setup's cached width check
-              originalSetup.call(this);
+              withMotionMocked(originalSetup, this);
             }
           } catch (err) {
             console.error('[Ghar Aangan Marquee] Error in patched _setup:', err);
