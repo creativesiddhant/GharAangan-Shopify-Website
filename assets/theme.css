@@ -1953,6 +1953,8 @@ margin-bottom: 2rem !important;
 .hdt-product-form__btn-wishlist svg,
 .hdt-product-form__btn-compare svg{
   fill: currentColor;
+  width: 1.8rem;
+  height: 1.8rem;
 }
 .hdt-product__buy-button .shopify-payment-button__button--unbranded,
 .hdt-product__buy-button .hdt-pr__notify-stock{
