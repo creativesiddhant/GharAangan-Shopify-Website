@@ -1988,6 +1988,7 @@ display: none;
  .hdt-product-form__buttons .hdt-product-form-buttons{
   gap: 0.8rem;
   flex: 1;
+  flex-wrap: wrap;
  }
  .hdt-product-form__buttons .hdt-product-form__submit{
    /* height: 4.6rem; */
