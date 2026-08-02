@@ -21,7 +21,7 @@
   <svg width="16" height="16" viewBox="0 0 32 32" aria-hidden="true" focusable="false" class="hdt-svg-cp"><path d="M13.224 10.428l-10.198-10.178-2.776 2.776 10.178 10.178 2.796-2.776zM20.922 0.25l4.016 4.016-24.688 24.708 2.776 2.776 24.708-24.688 4.016 4.016v-10.828h-10.828zM21.572 18.776l-2.776 2.776 6.162 6.162-4.036 4.036h10.828v-10.828l-4.016 4.016-6.162-6.162z" fill="currentColor"></path></svg>
   <span {% unless disable_sr_only %}class="sr-only"{% endunless %}>{{ 'general.compare.add_to_compare' | t }}</span>
 </hdt-compare>
-%- elsif settings.compare_mode == "2" and shop.customer_accounts_enabled -%
+{%- elsif settings.compare_mode == "2" and shop.customer_accounts_enabled -%}
   {%- if customer -%}
     <hdt-compare class="{{ class }}" role="button" data-id="{{ product_id }}" data-handle="{{ product_handle }}" action="add" placement="{{ placement | default: 'none' }}"{% if inner_tooltip %} inner{%endif %}>
       <svg width="16" height="16" viewBox="0 0 32 32" aria-hidden="true" focusable="false" class="hdt-svg-cp"><path d="M13.224 10.428l-10.198-10.178-2.776 2.776 10.178 10.178 2.796-2.776zM20.922 0.25l4.016 4.016-24.688 24.708 2.776 2.776 24.708-24.688 4.016 4.016v-10.828h-10.828zM21.572 18.776l-2.776 2.776 6.162 6.162-4.036 4.036h10.828v-10.828l-4.016 4.016-6.162-6.162z" fill="currentColor"></path></svg>
