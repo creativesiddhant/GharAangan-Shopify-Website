@@ -144,6 +144,40 @@
             "content": "Absolutely. Pure A2 ghee has a very high smoke point of 250°C (482°F). Unlike unstable oils, it does not break down or release harmful free radicals at high temperatures, making it the healthiest choice for cooking, sautéing, and baking."
           }
         },
+        "title-4": {
+          "type": "title",
+          "settings": {
+            "title": "Himalayan Staples & Seasonings"
+          }
+        },
+        "faq-gud": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "How is your Pahadi Gud (Jaggery) prepared?",
+            "content": "Our traditional Pahadi Gud is prepared by slow wood-fired boiling of fresh sugarcane juice. It is unrefined, completely chemical-free, and blended with native mountain herbs, seeds, and premium dry fruits like Kaju, Badam, Kismis, and Saunf to create nutrient-rich varieties."
+          }
+        },
+        "faq-salts": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "What is Pisyu Loon and how is it made?",
+            "content": "Pisyu Loon refers to traditional Himalayan flavored salts. We hand-crust rock salt on traditional stone slabs (Sil-Batta) along with native mountain herbs, seeds, and spices like hemp (Bhaang) and red chilis to add a smoky, tangy flavor to your foods."
+          }
+        },
+        "faq-flour": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Is Mandua Ka Aata (Ragi) gluten-free?",
+            "content": "Yes, our Pahadi Mandua Ka Aata (Ragi / Finger Millet Flour) is naturally gluten-free. It is slowly stone-ground to keep its vital nutrients intact, making it exceptionally high in calcium, iron, and dietary fiber."
+          }
+        },
+        "faq-dals": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Are your dals and pulses polished?",
+            "content": "No, all our pulses (including Premium Rajma, Bhatt Ki Dal/Black Soyabean, Gauhat/Kulthi, and Lobia) are mountain-grown, completely unpolished, and cultivated in chemical-free soil, preserving their plant-based proteins and natural dietary fibers."
+          }
+        },
         "f7bc3c6c-8508-4a46-9b3e-d0fb46b8ed01": {
           "type": "other_content",
           "settings": {
@@ -172,6 +206,11 @@
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-a",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-b",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-c",
+        "title-4",
+        "faq-gud",
+        "faq-salts",
+        "faq-flour",
+        "faq-dals",
         "f7bc3c6c-8508-4a46-9b3e-d0fb46b8ed01"
       ],
       "settings": {

@@ -92,7 +92,7 @@
             "heading_HeKQhV": {
               "type": "heading",
               "settings": {
-                "heading": "<h2>Glamorous <br>Glam</h2>",
+                "heading": "<h2>Ghar Jaisa Shuddh,<br>Parampara Jaisa Anmol</h2>",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "line_height": "",
@@ -120,7 +120,7 @@
             "text_KtztLM": {
               "type": "text",
               "settings": {
-                "text": "<p>From casual to formal, we've got you covered</p>",
+                "text": "<p>Pure, handcrafted Himalayan foods prepared using traditional methods.</p>",
                 "icon_source": "",
                 "icon": "car",
                 "hidden_br_mobile": false,
@@ -149,7 +149,7 @@
             "button_G9QiBp": {
               "type": "button",
               "settings": {
-                "label": "Shop collection",
+                "label": "Shop Ghee & Groceries",
                 "link": "shopify://collections",
                 "open_in_new_tab": false,
                 "full_width": false,
@@ -216,11 +216,11 @@
         "block1_image": "shopify://shop_images/Untitled_design.png",
         "block1_subtitle": "THE FOUNDER'S JOURNEY",
         "block1_title": "Back to the Soil",
-        "block1_description": "Ghar Aangan was born from a simple desire: to reconnect modern homes with pure, unadulterated nourishment. Having grown up in the crisp mountain air of Uttarakhand, our founder set out to preserve and share the traditional Bilona method of ghee making directly from small farming collectives.",
+        "block1_description": "At Ghar Aangan, we believe that food is more than nourishment—it is tradition, heritage, family, and trust. Inspired by the timeless kitchens of Uttarakhand, our mission is to reconnect modern families with authentic Himalayan foods prepared using traditional methods that have been preserved for generations.",
         "block2_image": "shopify://shop_images/homepage_image_2.png",
         "block2_subtitle": "HIMALAYAN HERITAGE",
         "block2_title": "Purity from the High Altitudes",
-        "block2_description": "Our ghee originates in the pristine valleys of Uttarakhand, where native Badri cows graze on wild medicinal herbs and fresh mountain flora. This diet renders a golden, granular ghee rich in vitamins, minerals, and deep organic aroma, untouched by modern industrialized processing.",
+        "block2_description": "From handcrafted Bilona A2 Ghee made from indigenous Badri cows to mountain-grown grains, heritage pulses, natural jaggery, medicinal fruit squashes, and traditional Himalayan seasonings, every product carries the warmth of home.",
         "padding_top": 60,
         "padding_bottom": 60
       }
