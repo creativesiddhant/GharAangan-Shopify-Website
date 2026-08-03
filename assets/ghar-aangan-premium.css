@@ -1281,3 +1281,25 @@ button.hdt-btn {
   font-size: 1.05rem !important;
   border: 1.5px solid var(--ga-gold-light, #f4ece1) !important;
 }
+
+/* ==========================================================================
+   Page Spacing Overrides (Collapse header-to-content whitespace gap)
+   ========================================================================== */
+.hdt-section-heading .hdt-heading-template {
+  padding-bottom: 0 !important;
+  --section-pb: 0px !important;
+}
+
+.hdt-section-heading + .shopify-section .hdt-section-spacing,
+.hdt-section-heading + .shopify-section .hdt-accordion,
+.hdt-section-heading + .shopify-section .hdt-container {
+  padding-top: 0 !important;
+  --section-pt: 0px !important;
+}
+
+.hdt-section-heading + .hdt-section .hdt-section-spacing,
+.hdt-section-heading + .hdt-section .hdt-accordion,
+.hdt-section-heading + .hdt-section .hdt-container {
+  padding-top: 0 !important;
+  --section-pt: 0px !important;
+}
