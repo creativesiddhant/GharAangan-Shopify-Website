@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "heading": {
       "type": "main-heading",
@@ -30,12 +30,12 @@
       "block_order": [
         "5ecb9555-19e4-433b-8817-1ccaa3a41384"
       ],
+      "disabled": true,
       "settings": {
-        "image": "shopify://shop_images/z4683181570507_46fb10fa21da971ae2af71e75431028c.webp",
         "color_scheme": "",
         "spacing_hd": 0,
         "padding_top": 80,
-        "padding_bottom": 0,
+        "padding_bottom": 86,
         "padding_rate": 75
       }
     },
@@ -52,28 +52,32 @@
           "type": "accordion_item",
           "settings": {
             "title": "What makes Badri Cow Ghee different from normal cow ghee?",
-            "content": "Badri cows are native Himalayan humped cattle that free-graze on mountain medicinal herbs, fresh air, and organic plants in Uttarakhand. They produce a very limited quantity of A2 milk which is exceptionally rich in nutritional values, creating a deep golden, granular, and aromatic ghee."
+            "content": "Badri cows are native Himalayan humped cattle that free-graze on mountain medicinal herbs, fresh air, and organic plants in Uttarakhand. They produce a very limited quantity of A2 milk which is exceptionally rich in nutritional values, creating a deep golden, granular, and aromatic ghee.",
+            "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-2": {
           "type": "accordion_item",
           "settings": {
             "title": "What is the traditional Bilona churning process?",
-            "content": "The Bilona method is our traditional 5-step process. First, A2 milk is boiled slowly on earthen stoves using firewood. Second, the milk is cultured overnight in earthen pots. Third, the curd is churned back-and-forth slowly using wooden whisks to extract butter. Fourth, the butter is slowly melted on wood fires until water evaporates, leaving golden granular ghee."
+            "content": "The Bilona method is our traditional 5-step process. First, A2 milk is boiled slowly on earthen stoves using firewood. Second, the milk is cultured overnight in earthen pots. Third, the curd is churned back-and-forth slowly using wooden whisks to extract butter. Fourth, the butter is slowly melted on wood fires until water evaporates, leaving golden granular ghee.",
+            "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-3": {
           "type": "accordion_item",
           "settings": {
             "title": "Does Ghar Aangan Ghee contain lactose or casein?",
-            "content": "During the slow simmering process of making ghee, the milk solids, lactose, and casein are completely separated and filtered out. As a result, Ghar Aangan ghee is virtually lactose-free and casein-free, making it easy to digest and suitable for most dairy-sensitive individuals."
+            "content": "During the slow simmering process of making ghee, the milk solids, lactose, and casein are completely separated and filtered out. As a result, Ghar Aangan ghee is virtually lactose-free and casein-free, making it easy to digest and suitable for most dairy-sensitive individuals.",
+            "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-4": {
           "type": "accordion_item",
           "settings": {
             "title": "Why is the texture of the ghee granular (danedaar)?",
-            "content": "A granular (danedaar) texture is a natural characteristic of high-quality, wood-fired Bilona ghee. When pure ghee is cooled slowly at room temperature, it crystallizes naturally. This granularity is proof of purity and authentic wooden churning."
+            "content": "A granular (danedaar) texture is a natural characteristic of high-quality, wood-fired Bilona ghee. When pure ghee is cooled slowly at room temperature, it crystallizes naturally. This granularity is proof of purity and authentic wooden churning.",
+            "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-title-2": {
@@ -86,28 +90,32 @@
           "type": "accordion_item",
           "settings": {
             "title": "How long does delivery take?",
-            "content": "We dispatch all orders within 24-48 hours. Delivery usually takes 3 to 5 business days across India, depending on your location. You will receive a tracking link via email and WhatsApp as soon as your package is shipped."
+            "content": "We dispatch all orders within 24-48 hours. Delivery usually takes 3 to 5 business days across India, depending on your location. You will receive a tracking link via email and WhatsApp as soon as your package is shipped.",
+            "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-6": {
           "type": "accordion_item",
           "settings": {
             "title": "What packaging do you use for shipping?",
-            "content": "We care about product integrity and the environment. Our ghee is packaged in premium glass jars and shipped in high-density, shock-absorbent eco-friendly boxes to ensure it arrives at your doorstep in perfect condition."
+            "content": "We care about product integrity and the environment. Our ghee is packaged in premium glass jars and shipped in high-density, shock-absorbent eco-friendly boxes to ensure it arrives at your doorstep in perfect condition.",
+            "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-7": {
           "type": "accordion_item",
           "settings": {
             "title": "Do you offer free shipping?",
-            "content": "Yes! We offer free shipping on all orders over ₹499 across India. For orders below this amount, a standard shipping fee of ₹49 is applied at checkout."
+            "content": "Yes! We offer free shipping on all orders over ₹499 across India. For orders below this amount, a standard shipping fee of ₹49 is applied at checkout.",
+            "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-8": {
           "type": "accordion_item",
           "settings": {
             "title": "Do you ship internationally?",
-            "content": "Currently, we ship only within India. However, we are working on expanding our logistics to bring the essence of Himalayan purity to customers globally soon. Stay tuned!"
+            "content": "Currently, we ship only within India. However, we are working on expanding our logistics to bring the essence of Himalayan purity to customers globally soon. Stay tuned!",
+            "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-title-3": {
@@ -120,28 +128,32 @@
           "type": "accordion_item",
           "settings": {
             "title": "What is the shelf life of Ghar Aangan Ghee?",
-            "content": "Pure wood-fired Bilona ghee is highly stable and has a long shelf life of 12-18 months at room temperature. Always store it in a cool, dry place and use a clean, dry spoon to prevent moisture from entering."
+            "content": "Pure wood-fired Bilona ghee is highly stable and has a long shelf life of 12-18 months at room temperature. Always store it in a cool, dry place and use a clean, dry spoon to prevent moisture from entering.",
+            "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-a": {
           "type": "accordion_item",
           "settings": {
             "title": "Should I refrigerate the ghee?",
-            "content": "No, pure ghee should never be refrigerated. Storing it in the refrigerator will introduce moisture and ruin its beautiful granular texture. Keep it in your kitchen pantry away from direct sunlight."
+            "content": "No, pure ghee should never be refrigerated. Storing it in the refrigerator will introduce moisture and ruin its beautiful granular texture. Keep it in your kitchen pantry away from direct sunlight.",
+            "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-b": {
           "type": "accordion_item",
           "settings": {
             "title": "Why does the color or aroma vary slightly between jars?",
-            "content": "Our ghee is natural and handmade in small batches. Variations in color (from light yellow to deep gold) and aroma occur naturally depending on the seasonal pasture diet of our free-grazing Badri cows. This variation is a sign of an authentic, non-industrialized food product."
+            "content": "Our ghee is natural and handmade in small batches. Variations in color (from light yellow to deep gold) and aroma occur naturally depending on the seasonal pasture diet of our free-grazing Badri cows. This variation is a sign of an authentic, non-industrialized food product.",
+            "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-c": {
           "type": "accordion_item",
           "settings": {
             "title": "Can this ghee be used for high-heat cooking?",
-            "content": "Absolutely. Pure A2 ghee has a very high smoke point of 250°C (482°F). Unlike unstable oils, it does not break down or release harmful free radicals at high temperatures, making it the healthiest choice for cooking, sautéing, and baking."
+            "content": "Absolutely. Pure A2 ghee has a very high smoke point of 250°C (482°F). Unlike unstable oils, it does not break down or release harmful free radicals at high temperatures, making it the healthiest choice for cooking, sautéing, and baking.",
+            "content_richtext": ""
           }
         },
         "title-4": {
@@ -154,28 +166,32 @@
           "type": "accordion_item",
           "settings": {
             "title": "How is your Pahadi Gud (Jaggery) prepared?",
-            "content": "Our traditional Pahadi Gud is prepared by slow wood-fired boiling of fresh sugarcane juice. It is unrefined, completely chemical-free, and blended with native mountain herbs, seeds, and premium dry fruits like Kaju, Badam, Kismis, and Saunf to create nutrient-rich varieties."
+            "content": "Our traditional Pahadi Gud is prepared by slow wood-fired boiling of fresh sugarcane juice. It is unrefined, completely chemical-free, and blended with native mountain herbs, seeds, and premium dry fruits like Kaju, Badam, Kismis, and Saunf to create nutrient-rich varieties.",
+            "content_richtext": ""
           }
         },
         "faq-salts": {
           "type": "accordion_item",
           "settings": {
             "title": "What is Pisyu Loon and how is it made?",
-            "content": "Pisyu Loon refers to traditional Himalayan flavored salts. We hand-crust rock salt on traditional stone slabs (Sil-Batta) along with native mountain herbs, seeds, and spices like hemp (Bhaang) and red chilis to add a smoky, tangy flavor to your foods."
+            "content": "Pisyu Loon refers to traditional Himalayan flavored salts. We hand-crust rock salt on traditional stone slabs (Sil-Batta) along with native mountain herbs, seeds, and spices like hemp (Bhaang) and red chilis to add a smoky, tangy flavor to your foods.",
+            "content_richtext": ""
           }
         },
         "faq-flour": {
           "type": "accordion_item",
           "settings": {
             "title": "Is Mandua Ka Aata (Ragi) gluten-free?",
-            "content": "Yes, our Pahadi Mandua Ka Aata (Ragi / Finger Millet Flour) is naturally gluten-free. It is slowly stone-ground to keep its vital nutrients intact, making it exceptionally high in calcium, iron, and dietary fiber."
+            "content": "Yes, our Pahadi Mandua Ka Aata (Ragi / Finger Millet Flour) is naturally gluten-free. It is slowly stone-ground to keep its vital nutrients intact, making it exceptionally high in calcium, iron, and dietary fiber.",
+            "content_richtext": ""
           }
         },
         "faq-dals": {
           "type": "accordion_item",
           "settings": {
             "title": "Are your dals and pulses polished?",
-            "content": "No, all our pulses (including Premium Rajma, Bhatt Ki Dal/Black Soyabean, Gauhat/Kulthi, and Lobia) are mountain-grown, completely unpolished, and cultivated in chemical-free soil, preserving their plant-based proteins and natural dietary fibers."
+            "content": "No, all our pulses (including Premium Rajma, Bhatt Ki Dal/Black Soyabean, Gauhat/Kulthi, and Lobia) are mountain-grown, completely unpolished, and cultivated in chemical-free soil, preserving their plant-based proteins and natural dietary fibers.",
+            "content_richtext": ""
           }
         },
         "f7bc3c6c-8508-4a46-9b3e-d0fb46b8ed01": {
@@ -220,7 +236,7 @@
         "enable_link_list": false,
         "section_fullwidth": false,
         "color_scheme": "scheme-1",
-        "padding_top": 0,
+        "padding_top": 85,
         "padding_bottom": 65,
         "padding_rate": 75
       }
