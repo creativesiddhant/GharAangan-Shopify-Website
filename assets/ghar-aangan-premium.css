@@ -409,6 +409,11 @@ h1, h2, h3, h4, h5 {
   color: var(--ga-forest-green) !important;
 }
 
+/* Force white text color overriding default headings */
+.ga-text-white {
+  color: #ffffff !important;
+}
+
 /* Elegant Subtitles */
 .ga-subtitle,
 .hdt-section-subtitle,
