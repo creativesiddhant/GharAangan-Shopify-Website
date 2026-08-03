@@ -549,12 +549,36 @@
             "question": "Does it need refrigeration?",
             "answer": "<p>No, pure ghee does not require refrigeration. In fact, storing it in the fridge will alter its granular texture. It is best stored in its original glass jar in your kitchen pantry.</p>"
           }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "How is Pahadi Gud (Traditional Jaggery) prepared?",
+            "answer": "<p>Our traditional jaggery is made by slow wood-fired boiling of fresh sugarcane juice, unrefined and chemical-free. We blend it with native mountain herbs, seeds, and premium dry fruits (like Kaju, Badam, Kismis, and Saunf) to create delicious, mineral-rich sweetener options.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "What is Pisyu Loon (Salts) and Mandua Flour?",
+            "answer": "<p>Pisyu Loon is Uttarakhand's heritage salt, hand-crushed on traditional stone (Sil-Batta) with native mountain herbs, seeds (like Bhaang/Hemp), and chilis. Mandua Ka Aata (Ragi) is high-altitude, stone-ground finger millet flour that is naturally gluten-free and rich in calcium, iron, and fiber.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Are the pulses and fruit juices organic and natural?",
+            "answer": "<p>Yes! Our Heritage Dals & Pulses (like Rajma, Bhatt Ki Dal, Gauhat, and Lobia) are mountain-grown, unpolished, and protein-dense. Our Fruit Juices & Squashes (like Buransh/Rhododendron, Amla, and Orange) are crafted from wild-harvested Himalayan fruits and flowers, rich in Vitamin C and antioxidants.</p>"
+          }
         }
       },
       "block_order": [
         "faq_1",
         "faq_2",
-        "faq_3"
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6"
       ],
       "settings": {
         "background_color": "#ffffff",
