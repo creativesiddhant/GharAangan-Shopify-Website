@@ -1313,11 +1313,11 @@ button.hdt-btn {
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  padding: 4.5rem 4rem !important;
+  padding: 5rem 4.5rem !important; /* Slightly more spacious on desktop */
   border-radius: 12px !important;
   border: 1px solid rgba(26, 51, 44, 0.08) !important;
   box-shadow: 0 20px 45px rgba(26, 51, 44, 0.12) !important;
-  max-width: 580px !important;
+  max-width: 660px !important; /* Made wider on desktop as requested */
   margin: 30px !important;
   transition: var(--ga-transition-smooth) !important;
 }
@@ -1327,7 +1327,7 @@ button.hdt-btn {
 .hdt-slideshow_item .hdt-content .hdt-h2 {
   color: var(--ga-forest-green) !important;
   font-family: var(--ga-font-family-serif) !important;
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem) !important;
+  font-size: clamp(2.6rem, 4.5vw, 4.2rem) !important; /* Slightly scaled up for desktop readability */
   font-weight: 700 !important;
   line-height: 1.25 !important;
   margin-top: 0 !important;
@@ -1338,7 +1338,7 @@ button.hdt-btn {
 .hdt-slideshow_item .hdt-content .hdt-text {
   color: var(--ga-dark-text) !important;
   font-family: var(--ga-font-family-sans) !important;
-  font-size: 1.45rem !important;
+  font-size: 1.55rem !important; /* Slightly larger for desktop */
   font-weight: 400 !important;
   line-height: 1.6 !important;
   margin-bottom: 2.2rem !important;
@@ -1347,9 +1347,36 @@ button.hdt-btn {
 /* Responsive spacing for smaller screens */
 @media screen and (max-width: 749px) {
   .hdt-slideshow_item .hdt-content:has(h1, h2, h3, p, .hdt-btn, a) {
-    padding: 2.5rem 2rem !important;
-    margin: 1.5rem !important;
-    max-width: calc(100% - 3rem) !important;
+    padding: 2rem 1.8rem !important; /* Compact padding for mobile visibility */
+    margin: 1rem !important;
+    max-width: calc(100% - 2rem) !important;
+    border-radius: 8px !important;
+  }
+  
+  .hdt-slideshow_item .hdt-content h2,
+  .hdt-slideshow_item .hdt-content .hdt-h2 {
+    font-size: 1.8rem !important; /* Extremely compact and readable */
+    margin-bottom: 0.6rem !important;
+    line-height: 1.25 !important;
+  }
+  
+  .hdt-slideshow_item .hdt-content p,
+  .hdt-slideshow_item .hdt-content .hdt-text {
+    font-size: 1.2rem !important;
+    margin-bottom: 1.2rem !important;
+    line-height: 1.45 !important;
+  }
+  
+  /* Collapse spacers inside the card on mobile to save precious vertical space */
+  .hdt-slideshow_item .hdt-content .hdt-spacer-block {
+    --space: 6px !important;
+    --space-md: 10px !important;
+  }
+  
+  /* Make button slightly more compact on mobile slider */
+  .hdt-slideshow_item .hdt-content .hdt-btn {
+    padding: 1.1rem 2.2rem !important;
+    font-size: 1.15rem !important;
   }
 }
 
