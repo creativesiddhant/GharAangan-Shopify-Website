@@ -41,7 +41,7 @@
             "heading_HeKQhV": {
               "type": "heading",
               "settings": {
-                "heading": "<h2>Ghar Jaisa Shuddh,<br/>Parampara Jaisa Anmol</h2>",
+                "heading": "<h2>Welcome to Ghar Aangan, Home of Pahadi Foods</h2>",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "line_height": "",
@@ -69,7 +69,7 @@
             "text_KtztLM": {
               "type": "text",
               "settings": {
-                "text": "<p>Pure, handcrafted Himalayan foods prepared using traditional methods.</p>",
+                "text": "<p>Welcome to Ghar Aangan. Explore our newly launched collection of authentic Pahadi foods, crafted with tradition and purity.<br/></p>",
                 "icon_source": "",
                 "icon": "car",
                 "hidden_br_mobile": false,
@@ -99,7 +99,7 @@
               "type": "button",
               "settings": {
                 "label": "Shop Ghee & Groceries",
-                "link": "shopify://collections",
+                "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "full_width": false,
                 "style_class": "solid",
@@ -213,7 +213,7 @@
               "type": "button",
               "settings": {
                 "label": "Shop Ghee & Groceries",
-                "link": "shopify://collections",
+                "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "full_width": false,
                 "style_class": "solid",
