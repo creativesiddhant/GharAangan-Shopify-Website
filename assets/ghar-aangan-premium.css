@@ -1310,13 +1310,13 @@ button.hdt-btn {
 
 /* Style the content container as a beautiful luxury card overlay, only if it has text/blocks inside */
 .hdt-slideshow_item .hdt-content:has(h1, h2, h3, p, .hdt-btn, a) {
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+  background: rgba(255, 255, 255, 0.65) !important; /* Premium semi-transparent frosted glass */
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
   padding: 5rem 4.5rem !important; /* Slightly more spacious on desktop */
   border-radius: 12px !important;
-  border: 1px solid rgba(26, 51, 44, 0.08) !important;
-  box-shadow: 0 20px 45px rgba(26, 51, 44, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important; /* Soft light border for glass effect */
+  box-shadow: 0 20px 45px rgba(26, 51, 44, 0.08) !important;
   max-width: 660px !important; /* Made wider on desktop as requested */
   margin: 30px !important;
   transition: var(--ga-transition-smooth) !important;
