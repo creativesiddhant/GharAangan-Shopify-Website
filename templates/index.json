@@ -15,8 +15,8 @@
         "slide_1": {
           "type": "_slide-item",
           "settings": {
-            "image": "shopify://shop_images/file_000000006de871fba9a3760c420a2116.png",
-            "image_mb": "shopify://shop_images/hero_for_mobile.png",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-08-04_at_9.56.07_PM.jpg",
+            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-08-04_at_9.56.07_PM.jpg",
             "url": "shopify://collections/all",
             "banner_target": false,
             "color_scheme": "scheme-1",
@@ -68,6 +68,7 @@
           "type": "_slide-item",
           "name": "t:sections.slideshow.blocks.slide.name",
           "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-08-04_at_8.16.34_PM.jpg",
             "url": "",
             "banner_target": false,
             "color_scheme": "",
@@ -92,7 +93,7 @@
             "heading_HeKQhV": {
               "type": "heading",
               "settings": {
-                "heading": "<h2>Ghar Jaisa Shuddh,<br>Parampara Jaisa Anmol</h2>",
+                "heading": "<h2>Ghar Jaisa Shuddh,<br/>Parampara Jaisa Anmol</h2>",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "line_height": "",
@@ -199,7 +200,7 @@
         "dot_style": "default",
         "dot_align": "center",
         "dot_space": 30,
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "full_width": true,
         "rounded": "none",
         "padding_top": 0,
