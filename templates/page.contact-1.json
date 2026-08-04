@@ -102,7 +102,7 @@
           "type": "text",
           "name": "Text",
           "settings": {
-            "text": "<p>66 Mott St, New York, New York, Zip Code: 10006, AS</p>",
+            "text": "<p>Rajeev Nagar-1, Bindukhatta, Lalkuan, Nainital, Uttarakhand – 262402</p>",
             "hidden_br_mobile": false,
             "hidden_on_mobile": false,
             "text_size": "base",
@@ -136,7 +136,7 @@
           "type": "text",
           "name": "Text",
           "settings": {
-            "text": "<p>(623) 934-2400</p>",
+            "text": "<p>+91 90272 48335</p>",
             "hidden_br_mobile": false,
             "hidden_on_mobile": false,
             "text_size": "base",
@@ -170,7 +170,7 @@
           "type": "text",
           "name": "Text",
           "settings": {
-            "text": "<p>EComposer@example.com</p>",
+            "text": "<p>care@gharaangan.com</p>",
             "hidden_br_mobile": false,
             "hidden_on_mobile": false,
             "text_size": "base",
@@ -187,7 +187,7 @@
           "type": "text",
           "name": "Text",
           "settings": {
-            "text": "<p><strong>Open Time</strong></p>",
+            "text": "<p><strong>Business Details & Socials</strong></p>",
             "hidden_br_mobile": false,
             "hidden_on_mobile": false,
             "text_size": "base",
@@ -204,7 +204,7 @@
           "type": "text",
           "name": "Text",
           "settings": {
-            "text": "<p>Our store has re-opened for shopping, </p><p>exchange Every day 11am to 7pm</p>",
+            "text": "<p><strong>FSSAI:</strong> 22626041000048</p><p><strong>UDYAM:</strong> UDYAM-UK-07-0048388</p><p><strong>GSTIN:</strong> 05BTTPL1718D1ZQ</p><p><strong>Instagram:</strong> <a href=\"https://instagram.com/officialgharaangan\" target=\"_blank\">@officialgharaangan</a></p>",
             "hidden_br_mobile": false,
             "hidden_on_mobile": false,
             "text_size": "base",
