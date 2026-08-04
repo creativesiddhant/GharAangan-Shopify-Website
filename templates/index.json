@@ -69,7 +69,7 @@
             "text_KtztLM": {
               "type": "text",
               "settings": {
-                "text": "<p>Welcome to Ghar Aangan. Explore our newly launched collection of authentic Pahadi foods, crafted with tradition and purity.<br/></p>",
+                "text": "<p>Explore our newly launched collection of authentic Pahadi foods, crafted with tradition and purity.</p>",
                 "icon_source": "",
                 "icon": "car",
                 "hidden_br_mobile": false,
