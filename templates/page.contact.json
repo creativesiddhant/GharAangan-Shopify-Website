@@ -258,7 +258,7 @@
       "settings": {
         "full_width": false,
         "color_scheme": "",
-        "map": "<div style=\"overflow:hidden;resize:none;max-width:100%;width:1920px;height:800px;\"><div id=\"embedded-map-display\" style=\"height:100%; width:100%;max-width:100%;\"><iframe style=\"height:100%;width:100%;border:0;\" frameborder=\"0\" src=\"https://www.google.com/maps/embed/v1/place?q=London,+Vương+Quốc+Anh&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8\"></iframe></div><a class=\"my-codefor-googlemap\" href=\"https://www.bootstrapskins.com/themes\" id=\"authmaps-data\">premium bootstrap themes</a><style>#embedded-map-display img{max-height:none;max-width:none!important;background:none!important;}</style></div>",
+        "map": "<div style=\"overflow:hidden;resize:none;max-width:100%;width:1920px;height:800px;\">\n    <div id=\"embedded-map-display\" style=\"height:100%; width:100%;max-width:100%;\">\n        <iframe\n            style=\"height:100%;width:100%;border:0;\"\n            frameborder=\"0\"\n            src=\"https://www.google.com/maps/embed/v1/place?q=Rajeev+Nagar-1,+Bindukhatta,+Lalkuan,+Nainital,+Uttarakhand+262402,+India&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8\">\n        </iframe>\n    </div>\n\n    <style>\n        #embedded-map-display img {\n            max-height: none;\n            max-width: none !important;\n            background: none !important;\n        }\n    </style>\n</div>",
         "padding_top": 62,
         "padding_bottom": 62,
         "padding_rate": 75
