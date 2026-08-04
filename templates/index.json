@@ -12,63 +12,11 @@
     "ghar_aangan_hero": {
       "type": "slideshow",
       "blocks": {
-        "slide_1": {
-          "type": "_slide-item",
-          "settings": {
-            "image": "shopify://shop_images/WhatsApp_Image_2026-08-04_at_9.56.07_PM.jpg",
-            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-08-04_at_9.56.07_PM.jpg",
-            "url": "shopify://collections/all",
-            "banner_target": false,
-            "color_scheme": "scheme-1",
-            "content_position": "center-start",
-            "alignment": "left",
-            "content_position_mb": "center-start",
-            "alignment_mb": "left",
-            "background_content": false,
-            "bg_opacity": 0,
-            "box_square": false,
-            "content_rounded": false,
-            "use_border_content": false,
-            "border_opacity": 0,
-            "border_style": "none",
-            "border_pd_dk": 0,
-            "padding_vertical": 30,
-            "padding_horizontal": 40,
-            "min_width_content": 350,
-            "border_pd": 0
-          },
-          "blocks": {
-            "spacer_1": {
-              "type": "spacer",
-              "settings": {
-                "direction": false,
-                "space_lg": 18,
-                "space_md": 18,
-                "space": 18
-              },
-              "blocks": {}
-            },
-            "spacer_2": {
-              "type": "spacer",
-              "settings": {
-                "direction": false,
-                "space_lg": 40,
-                "space_md": 30,
-                "space": 20
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "spacer_1",
-            "spacer_2"
-          ]
-        },
         "slide_item_R7w9fw": {
           "type": "_slide-item",
           "name": "t:sections.slideshow.blocks.slide.name",
           "settings": {
-            "image": "shopify://shop_images/WhatsApp_Image_2026-08-04_at_8.16.34_PM.jpg",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-08-04_at_9.56.07_PM.jpg",
             "url": "",
             "banner_target": false,
             "color_scheme": "",
@@ -177,11 +125,125 @@
             "spacer_4yQJxG",
             "button_G9QiBp"
           ]
+        },
+        "slide_item_Xb9aRY": {
+          "type": "_slide-item",
+          "name": "t:sections.slideshow.blocks.slide.name",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-08-04_at_8.16.34_PM.jpg",
+            "url": "",
+            "banner_target": false,
+            "color_scheme": "",
+            "content_position": "center",
+            "alignment": "left",
+            "content_position_mb": "center",
+            "alignment_mb": "left",
+            "background_content": false,
+            "bg_opacity": 0,
+            "box_square": false,
+            "content_rounded": false,
+            "use_border_content": false,
+            "border_opacity": 0,
+            "border_style": "none",
+            "border_pd_dk": 0,
+            "padding_vertical": 30,
+            "padding_horizontal": 30,
+            "min_width_content": 350,
+            "border_pd": 0
+          },
+          "blocks": {
+            "heading_wmLGMq": {
+              "type": "heading",
+              "settings": {
+                "heading": "<h2>Ghar Jaisa Shuddh,<br/>Parampara Jaisa Anmol</h2>",
+                "hidden_br_mobile": false,
+                "hidden_on_mobile": false,
+                "line_height": "",
+                "heading_size": "h2",
+                "font_weight": "",
+                "text_color": "hdt-s-text",
+                "font_size_heading_lg": 50,
+                "font_size_heading_md": 30,
+                "font_size_heading": 24,
+                "font_weight_heading": 600,
+                "letter_spacing_heading": 0
+              },
+              "blocks": {}
+            },
+            "spacer_DkYxBV": {
+              "type": "spacer",
+              "settings": {
+                "direction": false,
+                "space_lg": 20,
+                "space_md": 16,
+                "space": 10
+              },
+              "blocks": {}
+            },
+            "text_AYEJAA": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Pure, handcrafted Himalayan foods prepared using traditional methods.</p>",
+                "icon_source": "",
+                "icon": "car",
+                "hidden_br_mobile": false,
+                "hidden_on_mobile": false,
+                "text_size": "2xl",
+                "font_weight": "",
+                "text_color": "hdt-s-text",
+                "font_size_text_lg": 16,
+                "font_size_text_md": 14,
+                "font_size_text": 14,
+                "font_weight_text": 400,
+                "letter_spacing_text": 0
+              },
+              "blocks": {}
+            },
+            "spacer_tJaRDL": {
+              "type": "spacer",
+              "settings": {
+                "direction": false,
+                "space_lg": 50,
+                "space_md": 30,
+                "space": 20
+              },
+              "blocks": {}
+            },
+            "button_PKgtF9": {
+              "type": "button",
+              "settings": {
+                "label": "Shop Ghee & Groceries",
+                "link": "shopify://collections",
+                "open_in_new_tab": false,
+                "full_width": false,
+                "style_class": "solid",
+                "font_size": "m",
+                "font_weight": "normal",
+                "font_size_btn": 14,
+                "padding_btn": 30,
+                "min_width_btn": 100,
+                "min_width_dt_btn": 100,
+                "min_height_btn": 40,
+                "icon": "none",
+                "icon_position": "after",
+                "icon_height": 16,
+                "icon_spacing": 5
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_wmLGMq",
+            "spacer_DkYxBV",
+            "text_AYEJAA",
+            "spacer_tJaRDL",
+            "button_PKgtF9"
+          ]
         }
       },
       "block_order": [
-        "slide_1",
-        "slide_item_R7w9fw"
+        "slide_item_R7w9fw",
+        "slide_item_Xb9aRY"
       ],
       "settings": {
         "image_height": "adapt_image_first",
