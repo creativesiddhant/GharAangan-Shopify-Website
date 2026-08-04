@@ -1303,3 +1303,53 @@ button.hdt-btn {
   padding-top: 0 !important;
   --section-pt: 0px !important;
 }
+
+/* ==========================================================================
+   Premium Slideshow Text Visibility & Contrast Overrides
+   ========================================================================== */
+
+/* Style the content container as a beautiful luxury card overlay, only if it has text/blocks inside */
+.hdt-slideshow_item .hdt-content:has(h1, h2, h3, p, .hdt-btn, a) {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  padding: 4.5rem 4rem !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(26, 51, 44, 0.08) !important;
+  box-shadow: 0 20px 45px rgba(26, 51, 44, 0.12) !important;
+  max-width: 580px !important;
+  margin: 30px !important;
+  transition: var(--ga-transition-smooth) !important;
+}
+
+/* Ensure typography within the slideshow card matches our premium branding */
+.hdt-slideshow_item .hdt-content h2,
+.hdt-slideshow_item .hdt-content .hdt-h2 {
+  color: var(--ga-forest-green) !important;
+  font-family: var(--ga-font-family-serif) !important;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.hdt-slideshow_item .hdt-content p,
+.hdt-slideshow_item .hdt-content .hdt-text {
+  color: var(--ga-dark-text) !important;
+  font-family: var(--ga-font-family-sans) !important;
+  font-size: 1.45rem !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  margin-bottom: 2.2rem !important;
+}
+
+/* Responsive spacing for smaller screens */
+@media screen and (max-width: 749px) {
+  .hdt-slideshow_item .hdt-content:has(h1, h2, h3, p, .hdt-btn, a) {
+    padding: 2.5rem 2rem !important;
+    margin: 1.5rem !important;
+    max-width: calc(100% - 3rem) !important;
+  }
+}
+
