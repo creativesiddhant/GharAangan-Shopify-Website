@@ -17,26 +17,33 @@
         "block-1": {
           "type": "announcement",
           "settings": {
-            "text": "🔥 15% OFF above ₹4999 – Code: NEW15"
+            "text": "🔥Proudly Made in Uttarakhand"
           }
         },
         "block-2": {
           "type": "announcement",
           "settings": {
-            "text": "✨ Flat 10% OFF – Code: NEW10"
+            "text": "🚚 Pan India Delivery"
           }
         },
         "block-3": {
           "type": "announcement",
           "settings": {
-            "text": "🎁 12% OFF above ₹2499 – Code: NEW12"
+            "text": "🌿 No Chemicals"
+          }
+        },
+        "announcement_FfhBUT": {
+          "type": "announcement",
+          "settings": {
+            "text": "🚫 No Preservatives"
           }
         }
       },
       "block_order": [
         "block-1",
         "block-2",
-        "block-3"
+        "block-3",
+        "announcement_FfhBUT"
       ],
       "settings": {
         "design": "marquee",
