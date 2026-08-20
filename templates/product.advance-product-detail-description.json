@@ -1437,9 +1437,9 @@
             "heading": "Have a question",
             "content": "<p>If you have an issue or question that requires immediate assistance, you can click the button below to chat live with a Customer Service representative.<br/></p><p>Please allow 06 - 12 business days from the time your package arrives back to us for a refund to be issued.</p>",
             "solid_btn_label": "Contact Us",
-            "solid_btn_link": "https://ecomus-2.myshopify.com/pages/contact",
+            "solid_btn_link": "/pages/contact",
             "underline_btn_label": "Live chat",
-            "underline_btn_link": "https://ecomus-2.myshopify.com/pages/contact-us"
+            "underline_btn_link": "/pages/contact"
           }
         },
         "title_wkdWfD": {
