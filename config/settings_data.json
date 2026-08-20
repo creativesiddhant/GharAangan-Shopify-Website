@@ -42,6 +42,7 @@
     "wis_atc_added": "1",
     "enable_compare_popup": true,
     "effect_secondary_image": "zoom",
+    "show_quick_add": false,
     "show_qty": true,
     "color_event": "hover",
     "remove_collection_url": true,
