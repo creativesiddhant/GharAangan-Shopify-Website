@@ -40,9 +40,11 @@
     {%- else -%}
     <hdt-tooltip placement="{{ placement | default: 'none' }}" class="hdt-ultra_btn_parent" {%- if inner_tooltip %} inner{% endif %}>
       <a data-pr-url href="{{ product_url }}" class="hdt-card-product__btn-ultra {{ class }}" placement="{{ placement | default: 'none' }}">
+        {%- unless disable_sr_only -%}
         <svg id="hdt-icon-cart" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
           <path d="M28.444 32h-24.889c-0.413 0-0.808-0.169-1.1-0.469s-0.456-0.707-0.456-1.131v-28.8c0-0.424 0.164-0.831 0.456-1.131s0.687-0.469 1.1-0.469h24.889c0.413 0 0.808 0.169 1.1 0.469s0.456 0.707 0.456 1.131v28.8c0 0.424-0.164 0.831-0.456 1.131s-0.687 0.469-1.1 0.469zM26.889 28.8v-25.6h-21.778v25.6h21.778zM11.333 6.4v3.2c0 1.273 0.492 2.494 1.367 3.394s2.062 1.406 3.3 1.406c1.238 0 2.425-0.506 3.3-1.406s1.367-2.121 1.367-3.394v-3.2h3.111v3.2c0 2.122-0.819 4.157-2.278 5.657s-3.437 2.343-5.5 2.343-4.041-0.843-5.5-2.343c-1.459-1.5-2.278-3.535-2.278-5.657v-3.2h3.111z"></path>
         </svg>
+        {%- endunless -%}
         <span {% unless disable_sr_only %}class="sr-only"{% endunless %}>{{ 'products.product.choose_options' | t }}</span>
       </a>
     </hdt-tooltip>
@@ -80,9 +82,11 @@
 {%- else -%}
 <hdt-tooltip placement="{{ placement | default: 'none' }}" class="hdt-product-form hdt-ultra_btn_parent" {%- if inner_tooltip %} inner{% endif %}>
   <a data-pr-url href="{{ product_url }}" class="hdt-card-product__btn-ultra {{ class }}">
+    {%- unless disable_sr_only -%}
     <svg id="hdt-icon-cart" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
       <path d="M28.444 32h-24.889c-0.413 0-0.808-0.169-1.1-0.469s-0.456-0.707-0.456-1.131v-28.8c0-0.424 0.164-0.831 0.456-1.131s0.687-0.469 1.1-0.469h24.889c0.413 0 0.808 0.169 1.1 0.469s0.456 0.707 0.456 1.131v28.8c0 0.424-0.164 0.831-0.456 1.131s-0.687 0.469-1.1 0.469zM26.889 28.8v-25.6h-21.778v25.6h21.778zM11.333 6.4v3.2c0 1.273 0.492 2.494 1.367 3.394s2.062 1.406 3.3 1.406c1.238 0 2.425-0.506 3.3-1.406s1.367-2.121 1.367-3.394v-3.2h3.111v3.2c0 2.122-0.819 4.157-2.278 5.657s-3.437 2.343-5.5 2.343-4.041-0.843-5.5-2.343c-1.459-1.5-2.278-3.535-2.278-5.657v-3.2h3.111z"></path>
     </svg>
+    {%- endunless -%}
     <span class="hdt-truncate{% unless disable_sr_only %} sr-only{% endunless %}">{{ 'products.product.view_product' | t }}</span>
   </a>
 </hdt-tooltip>
