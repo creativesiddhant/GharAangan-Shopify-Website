@@ -221,7 +221,123 @@
     "product": {
       "back_in_stock": {
         "submit": "प्रस्तुत करें",
-        "success": "जब आइटम उपलब्ध होगा तो हम आपको सूचित करेंगे।"
+        "success": "जब आइटम उपलब्ध होगा तो हम आपको सूचित करेंगे।",
+        "title": "उपलब्ध होने पर मुझे सूचित करें",
+        "sub_title": "जब उत्पाद दोबारा उपलब्ध होगा तो सूचित होने के लिए अपना ईमेल पता दर्ज करें।",
+        "please_notify": "जब यह उत्पाद उपलब्ध हो जाए तो कृपया मुझे सूचित करें",
+        "email": "ईमेल*"
+      },
+      "quick_add": "तुरंत जोड़ें",
+      "quick_view": "त्वरित अवलोकन",
+      "pre_order": "प्री-ऑर्डर करें",
+      "add_to_cart": "कार्ट में जोड़ें",
+      "add_selected_to_cart": "चुने गए को कार्ट में जोड़ें",
+      "choose_options": "विकल्प चुनें",
+      "choose_product_options": "{{ product_name }} के लिए विकल्प चुनें",
+      "choose_an_option": "एक विकल्प चुनें",
+      "view_product": "उत्पाद देखें",
+      "description": "विवरण",
+      "view_products_details": "पूरा विवरण देखें",
+      "inventory_in_stock": "स्टॉक में",
+      "inventory_in_stock_show_count_html": "<span data-quantity>{{ quantity }}</span> स्टॉक में",
+      "inventory_low_stock": "कम स्टॉक",
+      "inventory_low_stock_show_count_html": "कम स्टॉक: <span data-quantity>{{ quantity }}</span> शेष",
+      "inventory_out_of_stock": "स्टॉक में नहीं है",
+      "inventory_out_of_stock_continue_selling": "प्री-ऑर्डर करें",
+      "will_not_ship_until_html": "तक शिप नहीं किया जाएगा <span data-incoming-date>{{ date }}</span>",
+      "will_be_in_stock_after_html": "<span data-incoming-date>आफ्टर {{ date }}</span> के बाद स्टॉक में होगा",
+      "sku": "SKU:",
+      "barcode": "बारकोड:",
+      "on_sale": "बिक्री",
+      "save_percent": "-{{ percent }}%",
+      "on_sale_single": "बिक्री",
+      "save_percent_single": "{{ percent }}% की छूट",
+      "badge_new": "नया",
+      "badge_pre_order": "प्री-ऑर्डर करें",
+      "product_variants": "उत्पाद के प्रकार",
+      "show_more_colors": "और रंग दिखाएँ",
+      "show_more_sizes": "अधिक आकार दिखाएँ",
+      "sold_out": "बिक गया",
+      "unavailable": "उपलब्ध नहीं है",
+      "available": "उपलब्धता:",
+      "vendor": "विक्रेता:",
+      "type": "प्रकार:",
+      "category": "श्रेणियाँ:",
+      "tag": "टैग:",
+      "variant_sold_out": "वेरिएंट बिक चुका है",
+      "video_exit_message": "{{ title }} इसी विंडो में पूर्ण-स्क्रीन वीडियो खोलता है।",
+      "view_full_details": "पूरा विवरण देखें",
+      "include_taxes": "कर सहित।",
+      "shipping_policy_html": "<a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;/span&gt;\">शिपिंग</a> का हिसाब चेकआउट पर लगाया जाएगा।",
+      "size_chart_button": "साइज़ गाइड",
+      "ask_question": "एक प्रश्न पूछो",
+      "compare_color": "रंग की तुलना करें",
+      "delivery_return": "डिलीवरी और वापसी",
+      "sold_out_message": "बिक गया",
+      "quantity_not_available": "आपके द्वारा चुनी गई मात्रा उपलब्ध नहीं है।",
+      "review": {
+        "no_review": "अभी तक कोई समीक्षा नहीं"
+      },
+      "colors_count": {
+        "one": "{{ count }} रंग उपलब्ध हैं",
+        "other": "{{ count }} रंग उपलब्ध हैं"
+      },
+      "product_single": {
+        "view_in_space": "अपने स्थान में देखें",
+        "view_in_space_label": "अपने स्पेस में देखें, संवर्धित वास्तविकता विंडो में आइटम लोड करता है",
+        "view_360": "360 उत्पाद दृश्य",
+        "click_zoom": "बड़ा करने के लिए क्लिक करें",
+        "order_dayNames": "रविवार,सोमवार,मंगलवार,बुधवार,गुरुवार,शुक्रवार,शनिवार",
+        "order_monthNames": "जनवरी,फरवरी,मार्च,अप्रैल,मई,जून,जुलाई,अगस्त,सितंबर,अक्टूबर,नवंबर,दिसंबर"
+      },
+      "sizes_count": {
+        "one": "{{ count }} आकार उपलब्ध है",
+        "other": "{{ count }} आकार उपलब्ध हैं"
+      },
+      "media": {
+        "gallery_viewer": "गैलरी दर्शक",
+        "load_image": "गैलरी दृश्य में चित्र {{ index }} लोड करें",
+        "load_model": "गैलरी दृश्य में 3D मॉडल {{ index }} लोड करें",
+        "load_video": "वीडियो चलाएं {{ index }} गैलरी व्यू में",
+        "image_available": "छवि {{ index }} अब गैलरी दृश्य में उपलब्ध है",
+        "open_media": "मोडल में मीडिया {{ index }} खोलें",
+        "play_model": "3D व्यूअर चलाएँ",
+        "play_video": "वीडियो चलाओ"
+      },
+      "quantity": {
+        "label": "मात्रा",
+        "input_label": "{{ product }} के लिए मात्रा",
+        "increase": "{{ product }} की मात्रा बढ़ाएँ",
+        "decrease": "<p>\n    {{ product }} के लिए मात्रा घटाएँ\n</p>",
+        "minimum_of": "न्यूनतम {{ quantity }}",
+        "maximum_of": "अधिकतम {{ quantity }}",
+        "multiples_of": "{{ quantity }} की वेतन वृद्धि",
+        "in_cart_html": "<span class=\"hdt-quantity-cart\">{{ quantity }}</span> कार्ट में"
+      },
+      "volume_pricing": {
+        "title": "थोक मूल्य निर्धारण",
+        "note": "थोक मूल्य निर्धारण उपलब्ध है",
+        "minimum": "{{ quantity }}+",
+        "price_at_each": "{{ price }}/प्रत्येक पर",
+        "price_range_html": "<span class=\"hdt-money\">{{ minimum }}</span> - <span class=\"hdt-money\">{{ maximum }}</span>"
+      },
+      "pickup_availability": {
+        "pick_up_title": "पिकअप उपलब्ध है",
+        "view_store_info": "स्टोर की जानकारी देखें",
+        "check_other_stores": "अन्य स्टोर में उपलब्धता देखें",
+        "pick_up_available": "पिकअप उपलब्ध है",
+        "pick_up_unavailable": "पिकअप फ़िलहाल अनुपलब्ध है",
+        "pick_up_available_at_html": "<span class=\"hdt-s-text hdt-font-semibold\">{{ location_name }}</span> पर पिकअप उपलब्ध है",
+        "pick_up_unavailable_at_html": "पिकअप फ़िलहाल <span class=\"hdt-s-text\">{{ location_name }}</span> पर अनुपलब्ध है",
+        "check_map": "इसे गूगल मैप पर देखें"
+      },
+      "price": {
+        "from_price_html": "से <span class=\"hdt-money\">{{ price }}</span>",
+        "regular_price": "नियमित मूल्य",
+        "sale_price": "बिक्री मूल्य",
+        "regular_total_price": "नियमित कुल मूल्य",
+        "sale_total_price": "बिक्री का कुल मूल्य",
+        "unit_price": "इकाई मूल्य"
       }
     },
     "modal": {
@@ -275,6 +391,10 @@
       "tt_price": "कुल कीमत:",
       "add_tc": "चुने गए को कार्ट में जोड़ें",
       "this_item": "यह आइटम:"
+    },
+    "sidebar": {
+      "label": "साइडबार",
+      "label_product": "साइडबार उत्पाद"
     }
   },
   "sections": {
