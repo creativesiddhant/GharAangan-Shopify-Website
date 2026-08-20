@@ -507,7 +507,7 @@ h1, h2, h3, h4, h5 {
 /* Promo Banner in Mega Menu */
 .ga-mega-promo {
   background-color: var(--ga-forest-green);
-  background-image: linear-gradient(rgba(26, 51, 44, 0.85), rgba(26, 51, 44, 0.85)), url('shopify://shop_images/homepage_image_2.png');
+  background-image: linear-gradient(rgba(26, 51, 44, 0.85), rgba(26, 51, 44, 0.85)), url('./ghar-aangan-lifestyle.jpg');
   background-size: cover;
   background-position: center;
   padding: 3rem;
@@ -1379,4 +1379,24 @@ button.hdt-btn {
     font-size: 1.15rem !important;
   }
 }
+
+/* Fix quick add button SVG icon visibility and formatting */
+.hdt-card-product__btn-ultra svg#hdt-icon-cart {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 16px !important;
+  height: 16px !important;
+  fill: currentColor !important;
+  color: inherit !important;
+  vertical-align: middle !important;
+}
+
+/* Ensure the wrapper doesn't crop or hide the icon */
+.hdt-card-product__btn-ultra {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
 
