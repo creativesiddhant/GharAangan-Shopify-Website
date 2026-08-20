@@ -1380,7 +1380,10 @@ button.hdt-btn {
   }
 }
 
-/* Fix quick add button SVG icon visibility and formatting */
+/* Fix quick add button SVG icon visibility and formatting globally (including grid, search, collections, and catalog) */
+.hdt-card-product__btn-ultra svg,
+svg#hdt-icon-cart,
+.hdt-product-form .hdt-ultra_btn_parent .hdt-pr_btn svg,
 .hdt-card-product__btn-ultra svg#hdt-icon-cart {
   display: inline-block !important;
   visibility: visible !important;
@@ -1392,11 +1395,49 @@ button.hdt-btn {
   vertical-align: middle !important;
 }
 
-/* Ensure the wrapper doesn't crop or hide the icon */
+/* Ensure the quick add button wrapper displays correctly */
 .hdt-card-product__btn-ultra {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+}
+
+/* Fix wishlist and compare buttons on the single product page */
+.hdt-product-form__btn-wishlist,
+.hdt-product-form__btn-compare {
+  background-color: #ffffff !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+  border: 1px solid rgba(26, 51, 44, 0.12) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(26, 51, 44, 0.04) !important;
+}
+
+.hdt-product-form__btn-wishlist:hover,
+.hdt-product-form__btn-compare:hover {
+  background-color: var(--ga-forest-green, #1a332c) !important;
+  color: #ffffff !important;
+  border-color: var(--ga-forest-green, #1a332c) !important;
+}
+
+/* Force SVGs inside single product page wishlist/compare buttons to be visible, sized, and colored */
+.hdt-product-form__btn-wishlist svg,
+.hdt-product-form__btn-compare svg,
+.hdt-product-form__btn-wishlist svg path,
+.hdt-product-form__btn-compare svg path {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 18px !important;
+  height: 18px !important;
+  fill: currentColor !important;
+  color: inherit !important;
 }
 
 /* Premium overrides for hover icon buttons (Wishlist, Compare, Quick View) */
