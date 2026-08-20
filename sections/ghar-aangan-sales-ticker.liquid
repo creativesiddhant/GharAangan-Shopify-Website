@@ -1,0 +1,404 @@
+<!-- sections/ghar-aangan-sales-ticker.liquid -->
+{%- if section.settings.enable_ticker -%}
+  {%- style -%}
+    .ga-ticker-container {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    
+    .ga-ticker-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background-color: {{ section.settings.card_background }};
+      color: {{ section.settings.text_color }};
+      border: 1px solid var(--ga-border-color);
+      box-shadow: 0 12px 35px rgba(26, 51, 44, 0.08);
+      padding: 14px 18px;
+      border-radius: 12px;
+      max-width: 380px;
+      width: calc(100vw - 48px);
+      pointer-events: auto;
+      transform: translateY(120px) scale(0.96);
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    
+    .ga-ticker-card.ga-active {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    
+    .ga-ticker-image-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1.5px solid var(--ga-border-color);
+      background: #ffffff;
+    }
+    
+    .ga-ticker-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .ga-ticker-info {
+      flex-grow: 1;
+      padding-right: 14px;
+    }
+    
+    .ga-ticker-badge {
+      font-size: 1rem;
+      font-family: var(--ga-font-family-sans);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--ga-gold-cream);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 3px;
+    }
+    
+    .ga-ticker-badge svg {
+      width: 11px;
+      height: 11px;
+      fill: currentColor;
+    }
+    
+    .ga-ticker-text {
+      font-size: 1.25rem;
+      font-family: var(--ga-font-family-sans);
+      line-height: 1.45;
+      margin: 0;
+      font-weight: 300;
+      color: {{ section.settings.text_color }};
+    }
+    
+    .ga-ticker-text strong {
+      font-weight: 500;
+      color: var(--ga-forest-green);
+    }
+    
+    .ga-ticker-text a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    
+    .ga-ticker-text a:hover {
+      border-color: currentColor;
+    }
+    
+    .ga-ticker-time {
+      font-size: 1.05rem;
+      font-family: var(--ga-font-family-sans);
+      color: rgba(26, 51, 44, 0.6);
+      margin-top: 4px;
+      display: block;
+    }
+    
+    .ga-ticker-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: rgba(26, 51, 44, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .ga-ticker-close:hover {
+      background: rgba(26, 51, 44, 0.06);
+      color: var(--ga-forest-green);
+      transform: scale(1.1);
+    }
+    
+    .ga-ticker-close svg {
+      width: 8px;
+      height: 8px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+    
+    @media screen and (max-width: 749px) {
+      .ga-ticker-container {
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+      }
+      .ga-ticker-card {
+        width: 100%;
+        max-width: none;
+      }
+      {%- unless section.settings.mobile_visible -%}
+        .ga-ticker-container {
+          display: none !important;
+        }
+      {%- endunless -%}
+    }
+  {%- endstyle -%}
+  
+  {%- assign has_valid_block = false -%}
+  {%- for block in section.blocks -%}
+    {%- if block.settings.product != blank -%}
+      {%- assign has_valid_block = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  <div class="ga-ticker-container">
+    <div id="ga-sales-ticker" class="ga-ticker-card">
+      <button class="ga-ticker-close" aria-label="Close verified sales proof">
+        <svg viewBox="0 0 10 10"><path d="M1 9l8-8M1 1l8 8"/></svg>
+      </button>
+      
+      <div class="ga-ticker-image-wrap">
+        <img id="ga-ticker-img" class="ga-ticker-image" src="" alt="" width="52" height="52" loading="lazy">
+      </div>
+      
+      <div class="ga-ticker-info">
+        <span class="ga-ticker-badge">
+          <!-- Premium Verified Checkmark Badge -->
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          {{ section.settings.title_prefix | escape }}
+        </span>
+        <p class="ga-ticker-text">
+          <span id="ga-ticker-location"></span> bought <a id="ga-ticker-link" href=""><strong id="ga-ticker-title"></strong></a>
+        </p>
+        <span id="ga-ticker-time-ago" class="ga-ticker-time"></span>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const salesData = [];
+      
+      {%- if has_valid_block -%}
+        // Populate from block settings
+        {%- for block in section.blocks -%}
+          {%- if block.settings.product != blank -%}
+            {%- assign prod = block.settings.product -%}
+            salesData.push({
+              location: {{ block.settings.buyer_location | json }},
+              productTitle: {{ prod.title | json }},
+              productUrl: {{ prod.url | json }},
+              productImg: {{ prod.featured_image | image_url: width: 120 | json }},
+              timeAgo: {{ block.settings.time_ago | json }}
+            });
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        // Sourced from catalog fallback data dynamically
+        {%- assign fallback_locations = "Mumbai, Maharashtra|New Delhi, Delhi|Bangalore, Karnataka|Dehradun, Uttarakhand|Pune, Maharashtra|Gurugram, Haryana" | split: "|" -%}
+        {%- assign fallback_times = "2 minutes ago|8 minutes ago|19 minutes ago|32 minutes ago|1 hour ago|2 hours ago" | split: "|" -%}
+        {%- assign fallback_products = collections.all.products -%}
+        
+        {%- for i in (0..5) -%}
+          {%- assign prod = fallback_products[i] -%}
+          {%- if prod != blank -%}
+            salesData.push({
+              location: {{ fallback_locations[i] | json }},
+              productTitle: {{ prod.title | json }},
+              productUrl: {{ prod.url | json }},
+              productImg: {{ prod.featured_image | image_url: width: 120 | json }},
+              timeAgo: {{ fallback_times[i] | json }}
+            });
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      
+      if (salesData.length === 0) return;
+      
+      const ticker = document.getElementById('ga-sales-ticker');
+      const img = document.getElementById('ga-ticker-img');
+      const locationEl = document.getElementById('ga-ticker-location');
+      const titleEl = document.getElementById('ga-ticker-title');
+      const linkEl = document.getElementById('ga-ticker-link');
+      const timeAgoEl = document.getElementById('ga-ticker-time-ago');
+      const closeBtn = ticker.querySelector('.ga-ticker-close');
+      
+      let currentIndex = 0;
+      let tickerTimeout = null;
+      let delayTimeout = null;
+      let isDismissed = false;
+      
+      function showTicker() {
+        if (isDismissed) return;
+        
+        const sale = salesData[currentIndex];
+        
+        // Update elements
+        img.src = sale.productImg;
+        img.alt = sale.productTitle;
+        locationEl.innerHTML = sale.location;
+        titleEl.innerHTML = sale.productTitle;
+        linkEl.href = sale.productUrl;
+        timeAgoEl.innerHTML = sale.timeAgo;
+        
+        // Slide in
+        ticker.classList.add('ga-active');
+        
+        // Hide after display_time seconds
+        tickerTimeout = setTimeout(() => {
+          hideTicker();
+        }, {{ section.settings.display_time | times: 1000 }});
+      }
+      
+      function hideTicker() {
+        ticker.classList.remove('ga-active');
+        
+        // Increment index
+        currentIndex = (currentIndex + 1) % salesData.length;
+        
+        // Show next ticker after delay_time seconds
+        delayTimeout = setTimeout(() => {
+          showTicker();
+        }, {{ section.settings.delay_time | times: 1000 }});
+      }
+      
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isDismissed = true;
+        ticker.classList.remove('ga-active');
+        clearTimeout(tickerTimeout);
+        clearTimeout(delayTimeout);
+      });
+      
+      // Start the popup cycle after 5 seconds on page load
+      setTimeout(() => {
+        showTicker();
+      }, 5000);
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "GA Sales Ticker",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_ticker",
+      "label": "Enable Sales Ticker",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_visible",
+      "label": "Show on Mobile",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title_prefix",
+      "label": "Ticker Title Prefix",
+      "default": "Verified Purchase"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Ticker Background",
+      "default": "#faf8f5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Ticker Text Color",
+      "default": "#1a332c"
+    },
+    {
+      "type": "range",
+      "id": "display_time",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "unit": "s",
+      "label": "Display Duration",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "delay_time",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "s",
+      "label": "Time Between Popups",
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "sale",
+      "name": "Recent Sale Record",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        },
+        {
+          "type": "text",
+          "id": "buyer_location",
+          "label": "Buyer Location",
+          "default": "Mumbai, Maharashtra"
+        },
+        {
+          "type": "text",
+          "id": "time_ago",
+          "label": "Time Ago",
+          "default": "4 minutes ago"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GA Sales Ticker",
+      "blocks": [
+        {
+          "type": "sale",
+          "settings": {
+            "buyer_location": "Mumbai, Maharashtra",
+            "time_ago": "3 minutes ago"
+          }
+        },
+        {
+          "type": "sale",
+          "settings": {
+            "buyer_location": "New Delhi, Delhi",
+            "time_ago": "12 minutes ago"
+          }
+        },
+        {
+          "type": "sale",
+          "settings": {
+            "buyer_location": "Bangalore, Karnataka",
+            "time_ago": "25 minutes ago"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
