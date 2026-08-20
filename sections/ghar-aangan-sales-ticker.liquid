@@ -170,7 +170,7 @@
       </button>
       
       <div class="ga-ticker-image-wrap">
-        <img id="ga-ticker-img" class="ga-ticker-image" src="" alt="" width="52" height="52" loading="lazy">
+        <img id="ga-ticker-img" class="ga-ticker-image" src="{{ 'ghar-aangan-logo.jpg' | asset_url }}" alt="" width="52" height="52" loading="lazy">
       </div>
       
       <div class="ga-ticker-info">
@@ -196,11 +196,13 @@
         {%- for block in section.blocks -%}
           {%- if block.settings.product != blank -%}
             {%- assign prod = block.settings.product -%}
+            {%- assign image_url = 'ghar-aangan-logo.jpg' | asset_url -%}
+            {%- if prod.featured_image != blank -%}{%- assign image_url = prod.featured_image | image_url: width: 120 -%}{%- endif -%}
             salesData.push({
               location: {{ block.settings.buyer_location | json }},
               productTitle: {{ prod.title | json }},
               productUrl: {{ prod.url | json }},
-              productImg: {{ prod.featured_image | image_url: width: 120 | json }},
+              productImg: {{ image_url | json }},
               timeAgo: {{ block.settings.time_ago | json }}
             });
           {%- endif -%}
@@ -214,18 +216,53 @@
         {%- for i in (0..5) -%}
           {%- assign prod = fallback_products[i] -%}
           {%- if prod != blank -%}
+            {%- assign image_url = 'ghar-aangan-logo.jpg' | asset_url -%}
+            {%- if prod.featured_image != blank -%}{%- assign image_url = prod.featured_image | image_url: width: 120 -%}{%- endif -%}
             salesData.push({
               location: {{ fallback_locations[i] | json }},
               productTitle: {{ prod.title | json }},
               productUrl: {{ prod.url | json }},
-              productImg: {{ prod.featured_image | image_url: width: 120 | json }},
+              productImg: {{ image_url | json }},
               timeAgo: {{ fallback_times[i] | json }}
             });
           {%- endif -%}
         {%- endfor -%}
       {%- endif -%}
       
-      if (salesData.length === 0) return;
+      // Complete Fallback in case catalog is totally empty / drafts only
+      if (salesData.length === 0) {
+        const fallbackImg = "{{ 'ghar-aangan-logo.jpg' | asset_url }}";
+        salesData = [
+          {
+            location: "Mumbai, Maharashtra",
+            productTitle: "A2 Badri Cow Bilona Ghee",
+            productUrl: "/collections/all",
+            productImg: fallbackImg,
+            timeAgo: "2 minutes ago"
+          },
+          {
+            location: "New Delhi, Delhi",
+            productTitle: "Organic Pahadi Gud (Jaggery)",
+            productUrl: "/collections/all",
+            productImg: fallbackImg,
+            timeAgo: "9 minutes ago"
+          },
+          {
+            location: "Dehradun, Uttarakhand",
+            productTitle: "Traditional Himalayan Herb Salt",
+            productUrl: "/collections/all",
+            productImg: fallbackImg,
+            timeAgo: "24 minutes ago"
+          },
+          {
+            location: "Bangalore, Karnataka",
+            productTitle: "Heritage Pahadi Bhatt Ki Dal",
+            productUrl: "/collections/all",
+            productImg: fallbackImg,
+            timeAgo: "45 minutes ago"
+          }
+        ];
+      }
       
       const ticker = document.getElementById('ga-sales-ticker');
       const img = document.getElementById('ga-ticker-img');
