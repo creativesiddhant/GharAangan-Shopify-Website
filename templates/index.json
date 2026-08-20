@@ -270,6 +270,20 @@
         "padding_rate": 75
       }
     },
+    "ghar_aangan_video": {
+      "type": "ghar-aangan-video",
+      "settings": {
+        "background_color": "#faf8f5",
+        "header_subtitle": "OUR HERITAGE IN MOTION",
+        "header_title": "Pure Pahadi Craftsmanship",
+        "header_description": "Watch how we churn pure A2 Badri cow ghee using traditional Bilona methods in Uttarakhand.",
+        "video_url": "https://www.youtube.com/watch?v=jLSVeNXRaRs",
+        "video_aspect_ratio": "9_16",
+        "video_width_desktop": "medium",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "ghar_aangan_storytelling": {
       "type": "ghar-aangan-storytelling",
       "settings": {
@@ -654,6 +668,7 @@
   },
   "order": [
     "ghar_aangan_hero",
+    "ghar_aangan_video",
     "ghar_aangan_storytelling",
     "ghar_aangan_benefits",
     "ghar_aangan_process",
