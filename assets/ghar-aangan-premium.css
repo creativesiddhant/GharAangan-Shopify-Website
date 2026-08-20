@@ -1399,4 +1399,44 @@ button.hdt-btn {
   justify-content: center !important;
 }
 
+/* Premium overrides for hover icon buttons (Wishlist, Compare, Quick View) */
+.hdt-card-product .hdt-product-btns .hdt-pr_btn,
+.hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn {
+  background-color: #ffffff !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+  border: 1px solid rgba(26, 51, 44, 0.08) !important;
+  box-shadow: 0 4px 15px rgba(26, 51, 44, 0.05) !important;
+  border-radius: 50% !important;
+  width: 38px !important;
+  height: 38px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hdt-card-product .hdt-product-btns .hdt-pr_btn:hover,
+.hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn:hover {
+  background-color: var(--ga-forest-green, #1a332c) !important;
+  color: #ffffff !important;
+  border-color: var(--ga-forest-green, #1a332c) !important;
+  transform: scale(1.08) !important;
+}
+
+/* Force SVGs inside hover action buttons to be visible, sized, and colored */
+.hdt-card-product .hdt-product-btns .hdt-pr_btn svg,
+.hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn svg,
+.hdt-card-product .hdt-product-btns .hdt-pr_btn svg path,
+.hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn svg path {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 15px !important;
+  height: 15px !important;
+  fill: currentColor !important;
+  color: inherit !important;
+  vertical-align: middle !important;
+}
+
+
 
