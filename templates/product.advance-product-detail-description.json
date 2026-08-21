@@ -140,9 +140,9 @@
               "type": "_delivery_return",
               "settings": {
                 "icon_delivery": "ship",
-                "content_devivery": "<p>Estimate delivery times:<strong> 12-26 days</strong> (International),<strong> 3-6 days</strong> (United States).</p>",
+                "content_devivery": "<p>Estimate delivery times: <strong>3-5 business days</strong> across India. Dispatch within <strong>24-48 hours</strong>.</p>",
                 "icon_return": "return_order",
-                "content_return": "<p>Return within <strong>30 days</strong> of purchase. Duties & taxes are non-refundable.</p>"
+                "content_return": "<p>Perishable food items: returns accepted within 7 days only for <strong>transit damage</strong> or defect.</p>"
               },
               "blocks": {}
             },
