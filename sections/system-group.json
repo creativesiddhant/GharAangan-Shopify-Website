@@ -25,7 +25,7 @@
         "agree_Rhrhcq": {
           "type": "agree",
           "settings": {
-            "content": "I agree with the<a href=\"/pages/terms-conditions\" title=\"Terms & Conditions\"><strong> terms and conditions</strong></a>"
+            "content": "I agree with the<a href=\"/pages/terms-and-conditions\" title=\"Terms & Conditions\"><strong> terms and conditions</strong></a>"
           }
         },
         "btn_cart_checkout_fVQqmY": {
