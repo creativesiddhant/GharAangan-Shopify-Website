@@ -140,7 +140,7 @@
               "type": "_delivery_return",
               "settings": {
                 "icon_delivery": "ship",
-                "content_devivery": "<p>Estimate delivery times:<strong> 12-26 days</strong> (International),<strong> 3-6 days</strong> (United States).</p>",
+                "content_devivery": "<p>Estimate delivery times:<strong> 12-26 days</strong> (International),<strong> 3-6 days</strong> (India).</p>",
                 "icon_return": "return_order",
                 "content_return": "<p>Return within <strong>30 days</strong> of purchase. Duties & taxes are non-refundable.</p>"
               },
