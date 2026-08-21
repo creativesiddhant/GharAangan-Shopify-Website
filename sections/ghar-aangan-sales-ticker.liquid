@@ -180,7 +180,7 @@
           {{ section.settings.title_prefix | escape }}
         </span>
         <p class="ga-ticker-text">
-          <span id="ga-ticker-location"></span> bought <a id="ga-ticker-link" href=""><strong id="ga-ticker-title"></strong></a>
+          <strong id="ga-ticker-buyer"></strong> from <span id="ga-ticker-location"></span> bought <a id="ga-ticker-link" href=""><strong id="ga-ticker-title"></strong></a>
         </p>
         <span id="ga-ticker-time-ago" class="ga-ticker-time"></span>
       </div>
@@ -189,7 +189,11 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const salesData = [];
+      let salesData = [];
+      
+      const customerNames = ["Ramesh K.", "Sunita D.", "Priya S.", "Amit S.", "Vikram Y.", "Neha P.", "Rajesh M.", "Anjali G.", "Siddharth S.", "Kiran B."];
+      const locations = ["Mumbai, Maharashtra", "New Delhi, Delhi", "Bangalore, Karnataka", "Dehradun, Uttarakhand", "Pune, Maharashtra", "Gurugram, Haryana", "Kolkata, West Bengal", "Noida, Uttar Pradesh"];
+      const times = ["2 minutes ago", "5 minutes ago", "12 minutes ago", "28 minutes ago", "45 minutes ago", "1 hour ago", "2 hours ago", "3 hours ago"];
       
       {%- if has_valid_block -%}
         // Populate from block settings
@@ -199,6 +203,7 @@
             {%- assign image_url = 'ghar-aangan-logo.jpg' | asset_url -%}
             {%- if prod.featured_image != blank -%}{%- assign image_url = prod.featured_image | image_url: width: 120 -%}{%- endif -%}
             salesData.push({
+              buyerName: customerNames[Math.floor(Math.random() * customerNames.length)],
               location: {{ block.settings.buyer_location | json }},
               productTitle: {{ prod.title | json }},
               productUrl: {{ prod.url | json }},
@@ -209,24 +214,29 @@
         {%- endfor -%}
       {%- else -%}
         // Sourced from catalog fallback data dynamically
-        {%- assign fallback_locations = "Mumbai, Maharashtra|New Delhi, Delhi|Bangalore, Karnataka|Dehradun, Uttarakhand|Pune, Maharashtra|Gurugram, Haryana" | split: "|" -%}
-        {%- assign fallback_times = "2 minutes ago|8 minutes ago|19 minutes ago|32 minutes ago|1 hour ago|2 hours ago" | split: "|" -%}
         {%- assign fallback_products = collections.all.products -%}
         
-        {%- for i in (0..5) -%}
-          {%- assign prod = fallback_products[i] -%}
-          {%- if prod != blank -%}
+        {%- if fallback_products.size > 0 -%}
+          // If we have products, loop through them to generate notifications
+          let nameIdx = 0;
+          let locIdx = 0;
+          let timeIdx = 0;
+          {%- for prod in fallback_products limit: 10 -%}
             {%- assign image_url = 'ghar-aangan-logo.jpg' | asset_url -%}
             {%- if prod.featured_image != blank -%}{%- assign image_url = prod.featured_image | image_url: width: 120 -%}{%- endif -%}
             salesData.push({
-              location: {{ fallback_locations[i] | json }},
+              buyerName: customerNames[nameIdx % customerNames.length],
+              location: locations[locIdx % locations.length],
               productTitle: {{ prod.title | json }},
               productUrl: {{ prod.url | json }},
               productImg: {{ image_url | json }},
-              timeAgo: {{ fallback_times[i] | json }}
+              timeAgo: times[timeIdx % times.length]
             });
-          {%- endif -%}
-        {%- endfor -%}
+            nameIdx++;
+            locIdx++;
+            timeIdx++;
+          {%- endfor -%}
+        {%- endif -%}
       {%- endif -%}
       
       // Complete Fallback in case catalog is totally empty / drafts only
@@ -234,6 +244,7 @@
         const fallbackImg = "{{ 'ghar-aangan-logo.jpg' | asset_url }}";
         salesData = [
           {
+            buyerName: "Ramesh K.",
             location: "Mumbai, Maharashtra",
             productTitle: "A2 Badri Cow Bilona Ghee",
             productUrl: "/collections/all",
@@ -241,21 +252,24 @@
             timeAgo: "2 minutes ago"
           },
           {
-            location: "New Delhi, Delhi",
+            buyerName: "Sunita D.",
+            location: "Dehradun, Uttarakhand",
             productTitle: "Organic Pahadi Gud (Jaggery)",
             productUrl: "/collections/all",
             productImg: fallbackImg,
             timeAgo: "9 minutes ago"
           },
           {
-            location: "Dehradun, Uttarakhand",
+            buyerName: "Priya S.",
+            location: "Bangalore, Karnataka",
             productTitle: "Traditional Himalayan Herb Salt",
             productUrl: "/collections/all",
             productImg: fallbackImg,
             timeAgo: "24 minutes ago"
           },
           {
-            location: "Bangalore, Karnataka",
+            buyerName: "Amit S.",
+            location: "New Delhi, Delhi",
             productTitle: "Heritage Pahadi Bhatt Ki Dal",
             productUrl: "/collections/all",
             productImg: fallbackImg,
@@ -266,6 +280,7 @@
       
       const ticker = document.getElementById('ga-sales-ticker');
       const img = document.getElementById('ga-ticker-img');
+      const buyerEl = document.getElementById('ga-ticker-buyer');
       const locationEl = document.getElementById('ga-ticker-location');
       const titleEl = document.getElementById('ga-ticker-title');
       const linkEl = document.getElementById('ga-ticker-link');
@@ -285,6 +300,7 @@
         // Update elements
         img.src = sale.productImg;
         img.alt = sale.productTitle;
+        buyerEl.innerHTML = sale.buyerName;
         locationEl.innerHTML = sale.location;
         titleEl.innerHTML = sale.productTitle;
         linkEl.href = sale.productUrl;
@@ -319,10 +335,10 @@
         clearTimeout(delayTimeout);
       });
       
-      // Start the popup cycle after 5 seconds on page load
+      // Start the popup cycle after 4 seconds on page load
       setTimeout(() => {
         showTicker();
-      }, 5000);
+      }, 4000);
     });
   </script>
 {%- endif -%}
