@@ -79,8 +79,7 @@
           "settings": {
             "title": "Shop",
             "collection_list": [
-              "women",
-              "men"
+              "all"
             ],
             "image_ratio": "asos",
             "image_size": false,
@@ -96,11 +95,12 @@
             "title": "Products",
             "product_list_title": "BEST SELLER",
             "product_list": [
-              "jersey-thong-body",
-              "mini-crossbody-bag",
-              "oversized-printed-t-shirt",
-              "regular-fit-cotton-shorts",
-              "relaxed-fit-jersey-shirt"
+              "a2-desi-pahadi-ghee",
+              "pahadi-heritage-dals-pulses",
+              "pahadi-gud-jaggery",
+              "pahadi-fruit-juices-squashes",
+              "pahadi-mandua-ka-aata-ragi",
+              "pahadi-pisyu-loon-traditional-salts"
             ],
             "image_ratio": "asos",
             "image_size": true,
