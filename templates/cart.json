@@ -124,115 +124,54 @@
         "padding_rate": 50
       }
     },
-    "testimonials_8JzFUn": {
-      "type": "testimonials",
+    "ghar_aangan_reviews": {
+      "type": "ghar-aangan-reviews",
       "blocks": {
-        "quote_Lmqebx": {
-          "type": "_quote",
+        "review_1": {
+          "type": "review",
           "settings": {
-            "heading": "Best Online Fashion Site",
-            "content": "<p>“I always find something stylish and affordable on this web fashion site”</p>",
-            "author": "Robert Smith",
-            "pos": "Customer from USA",
-            "enable_verify": false,
-            "product": "jersey-thong-body",
-            "rating": 5
-          },
-          "blocks": {}
+            "star_rating": 5,
+            "review_text": "Incredibly rich flavor. I've been trying to find authentic A2 Bilona ghee for years, and this is by far the highest quality. Worth every penny.",
+            "reviewer_name": "Rajesh K.",
+            "reviewer_info": "Verified Buyer • Bangalore",
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+          }
         },
-        "quote_bwFf6Q": {
-          "type": "_quote",
+        "review_2": {
+          "type": "review",
           "settings": {
-            "heading": "Great Selection and Quality",
-            "content": "<p>\"I love the variety of styles and the high-quality clothing on this web fashion site.\"</p>",
-            "author": "Allen Lyn",
-            "pos": "Customer from France",
-            "enable_verify": false,
-            "product": "cotton-jersey-top",
-            "rating": 5
-          },
-          "blocks": {}
+            "star_rating": 5,
+            "review_text": "Perfect granularity and beautiful golden color. It has done wonders for my digestion, and my family loves it on hot rotis.",
+            "reviewer_name": "Meera S.",
+            "reviewer_info": "Verified Buyer • Dehradun",
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+          }
         },
-        "quote_TynxPh": {
-          "type": "_quote",
+        "review_3": {
+          "type": "review",
           "settings": {
-            "heading": "Best Customer Service",
-            "content": "<p>\"I finally found a web fashion site with stylish and flattering options in my size.\"</p>",
-            "author": "Peter Rope",
-            "pos": "Customer from USA",
-            "enable_verify": false,
-            "product": "ribbed-modal-t-shirt",
-            "rating": 5
-          },
-          "blocks": {}
-        },
-        "quote_HiHtAA": {
-          "type": "_quote",
-          "settings": {
-            "heading": "Great Selection and Quality",
-            "content": "<p>\"I love the variety of styles and the high-quality clothing on this web fashion site.\"</p>",
-            "author": "Hellen Ase",
-            "pos": "Customer from Japan",
-            "enable_verify": false,
-            "product": "ribbed-tank-top",
-            "rating": 5
-          },
-          "blocks": {}
-        },
-        "testimonials": {
-          "type": "section-heading",
-          "static": true,
-          "settings": {
-            "alignment": "center",
-            "row_gap": 15,
-            "margin_bottom": 45
-          },
-          "blocks": {
-            "heading_bCPcDE": {
-              "type": "heading",
-              "settings": {
-                "heading": "<h3>Happy Clients</h3>",
-                "hidden_br_mobile": false,
-                "hidden_on_mobile": false,
-                "heading_size": "h3",
-                "text_color": "hdt-s-text",
-                "font_size_heading_lg": 42,
-                "font_size_heading_md": 30,
-                "font_size_heading": 32,
-                "font_weight_heading": 400,
-                "letter_spacing_heading": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "heading_bCPcDE"
-          ]
+            "star_rating": 5,
+            "review_text": "The aroma of this ghee is unmatched. You can immediately tell it comes from organic mountain-grazing cows. Highly recommended.",
+            "reviewer_name": "Amit V.",
+            "reviewer_info": "Verified Buyer • Gurugram",
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+          }
         }
       },
       "block_order": [
-        "quote_Lmqebx",
-        "quote_bwFf6Q",
-        "quote_TynxPh",
-        "quote_HiHtAA"
+        "review_1",
+        "review_2",
+        "review_3"
       ],
       "settings": {
-        "content_align": "start",
-        "testimonial_des": "1",
-        "col_dk": "3",
-        "col_tb": "2",
-        "col_mb": "1",
-        "navUI": true,
-        "nav_pos": "middle_out",
-        "nav_des": "outline",
-        "dotUI": false,
-        "dis_dot": 61,
-        "color_scheme": "scheme-2",
-        "pr_rating": "#ff7b54",
-        "section_fullwidth": false,
-        "padding_top": 0,
-        "padding_bottom": 80,
-        "padding_rate": 75
+        "background_color": "#faf8f5",
+        "subtitle": "TESTIMONIALS",
+        "title": "Loved by Pure Food Connoisseurs",
+        "show_arrows": true,
+        "enable_autoplay": true,
+        "autoplay_speed": 5,
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "related": {
@@ -312,7 +251,7 @@
   "order": [
     "heading",
     "main",
-    "testimonials_8JzFUn",
+    "ghar_aangan_reviews",
     "related",
     "recently"
   ]
