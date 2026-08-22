@@ -1564,43 +1564,303 @@ hdt-tooltip.hdt-product-form__btn-compare,
   color: #ffffff !important;
 }
 
-/* Premium overrides for hover icon buttons (Wishlist, Compare, Quick View) */
+/* ==========================================================================
+   UNIVERSAL THEME ICON BUTTONS & SVG DISPLAY FIXES
+   Prevents any button across the store from rendering as empty white boxes
+   ========================================================================== */
+
+/* 1. Product Card Hover & Action Buttons (Wishlist, Compare, Quick View, Quick Add) */
 .hdt-card-product .hdt-product-btns .hdt-pr_btn,
-.hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn {
+.hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn,
+.hdt-card-product .hdt-pr-btns-group1 .hdt-pr_btn,
+.hdt-card-product .hdt-pr_btn,
+.hdt-card-product__btn-wishlist,
+.hdt-card-product__btn-compare,
+.hdt-card-product__btn-quick-view,
+.hdt-card-product__btn-quick-add,
+.hdt-card-product__btn-ultra,
+.hdt-card-product__btn-wishlist-er,
+.hdt-card-product__btn-compare-er,
+wrapp-hdt-open-modal-btn {
   background-color: #ffffff !important;
   color: var(--ga-forest-green, #1a332c) !important;
-  border: 1px solid rgba(26, 51, 44, 0.08) !important;
-  box-shadow: 0 4px 15px rgba(26, 51, 44, 0.05) !important;
+  border: 1px solid rgba(26, 51, 44, 0.12) !important;
+  box-shadow: 0 4px 15px rgba(26, 51, 44, 0.08) !important;
   border-radius: 50% !important;
   width: 38px !important;
   height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+
+.hdt-card-product .hdt-product-btns .hdt-pr_btn a,
+.hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn a,
+.hdt-card-product .hdt-pr_btn a,
+.hdt-card-product__btn-wishlist-er a,
+.hdt-card-product__btn-compare-er a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  color: inherit !important;
+  text-decoration: none !important;
 }
 
 .hdt-card-product .hdt-product-btns .hdt-pr_btn:hover,
-.hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn:hover {
+.hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn:hover,
+.hdt-card-product .hdt-pr-btns-group1 .hdt-pr_btn:hover,
+.hdt-card-product .hdt-pr_btn:hover,
+.hdt-card-product__btn-wishlist:hover,
+.hdt-card-product__btn-compare:hover,
+.hdt-card-product__btn-quick-view:hover,
+.hdt-card-product__btn-quick-add:hover,
+.hdt-card-product__btn-ultra:hover {
   background-color: var(--ga-forest-green, #1a332c) !important;
   color: #ffffff !important;
   border-color: var(--ga-forest-green, #1a332c) !important;
   transform: scale(1.08) !important;
 }
 
-/* Force SVGs inside hover action buttons to be visible, sized, and colored */
 .hdt-card-product .hdt-product-btns .hdt-pr_btn svg,
 .hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn svg,
-.hdt-card-product .hdt-product-btns .hdt-pr_btn svg path,
-.hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn svg path {
-  display: inline-block !important;
+.hdt-card-product .hdt-pr_btn svg,
+.hdt-card-product__btn-wishlist svg,
+.hdt-card-product__btn-compare svg,
+.hdt-card-product__btn-quick-view svg,
+.hdt-card-product__btn-quick-add svg,
+.hdt-card-product__btn-ultra svg,
+.hdt-card-product__btn-wishlist-er svg,
+.hdt-card-product__btn-compare-er svg {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  fill: currentColor !important;
+  color: inherit !important;
+}
+
+.hdt-card-product .hdt-pr_btn:hover svg,
+.hdt-card-product .hdt-pr-btns-group2 .hdt-pr_btn:hover svg,
+.hdt-card-product__btn-wishlist:hover svg,
+.hdt-card-product__btn-compare:hover svg,
+.hdt-card-product__btn-quick-view:hover svg,
+.hdt-card-product__btn-quick-add:hover svg {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* 2. Product Quantity Selector Buttons (+ and -) */
+.hdt-quantity__button,
+.hdt-quantity-selector button,
+.hdt-quantity-item button,
+.hdt-product__form-qty button,
+button[name="minus"],
+button[name="plus"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.hdt-quantity__button svg,
+.hdt-quantity-selector button svg,
+.hdt-quantity-item button svg,
+.hdt-product__form-qty button svg,
+button[name="minus"] svg,
+button[name="plus"] svg {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 12px !important;
+  height: 12px !important;
+  fill: currentColor !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+}
+
+.hdt-quantity__button:hover,
+.hdt-quantity-selector button:hover,
+.hdt-quantity-item button:hover,
+button[name="minus"]:hover,
+button[name="plus"]:hover {
+  background-color: rgba(26, 51, 44, 0.08) !important;
+}
+
+/* 3. Slider & Carousel Navigation Arrows */
+.hdt-slider__nav-btn,
+.hdt-slider__btn,
+.hdt-btn-arrow,
+.hdt-carousel__btn,
+.hdt-custom-slider-btn,
+.hdt-slideshow__btn,
+.hdt-navigation-btn,
+button.hdt-slider__btn,
+button.hdt-slider__nav-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #ffffff !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+  border: 1px solid rgba(26, 51, 44, 0.1) !important;
+  box-shadow: 0 4px 15px rgba(26, 51, 44, 0.08) !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.hdt-slider__nav-btn svg,
+.hdt-slider__btn svg,
+.hdt-btn-arrow svg,
+.hdt-carousel__btn svg,
+.hdt-custom-slider-btn svg,
+.hdt-slideshow__btn svg {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 16px !important;
+  height: 16px !important;
+  fill: currentColor !important;
+  color: inherit !important;
+}
+
+.hdt-slider__nav-btn:hover,
+.hdt-slider__btn:hover,
+.hdt-btn-arrow:hover,
+.hdt-carousel__btn:hover,
+.hdt-custom-slider-btn:hover {
+  background-color: var(--ga-forest-green, #1a332c) !important;
+  color: #ffffff !important;
+  border-color: var(--ga-forest-green, #1a332c) !important;
+  transform: scale(1.06) !important;
+}
+
+.hdt-slider__nav-btn:hover svg,
+.hdt-slider__btn:hover svg,
+.hdt-btn-arrow:hover svg,
+.hdt-carousel__btn:hover svg {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* 4. Modal & Drawer Close (X) Buttons */
+.hdt-dialog-btn__close,
+.hdt-dialog-modal__header button,
+.hdt-modal-close,
+.hdt-drawer__close,
+button[aria-label="Close"],
+button.hdt-dialog-btn__close {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #ffffff !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+  border: 1px solid rgba(26, 51, 44, 0.12) !important;
+  border-radius: 50% !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  box-shadow: 0 2px 8px rgba(26, 51, 44, 0.06) !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+}
+
+.hdt-dialog-btn__close svg,
+.hdt-dialog-modal__header button svg,
+.hdt-modal-close svg,
+.hdt-drawer__close svg,
+button[aria-label="Close"] svg {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 14px !important;
+  height: 14px !important;
+  fill: currentColor !important;
+  color: inherit !important;
+}
+
+.hdt-dialog-btn__close:hover,
+.hdt-dialog-modal__header button:hover,
+.hdt-modal-close:hover,
+.hdt-drawer__close:hover {
+  background-color: var(--ga-forest-green, #1a332c) !important;
+  color: #ffffff !important;
+  border-color: var(--ga-forest-green, #1a332c) !important;
+  transform: rotate(90deg) scale(1.05) !important;
+}
+
+.hdt-dialog-btn__close:hover svg,
+.hdt-dialog-modal__header button:hover svg {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* 5. Cart Item Remove and Drawer Recommendation Buttons */
+.hdt-cart-item__remove,
+.hdt-mini-cart__item-remove,
+.hdt-minicart-recommendations__item--quickview,
+.hdt-cart-complementary .hdt-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.hdt-cart-item__remove svg,
+.hdt-mini-cart__item-remove svg,
+.hdt-minicart-recommendations__item--quickview svg {
+  display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
   width: 15px !important;
   height: 15px !important;
   fill: currentColor !important;
-  color: inherit !important;
-  vertical-align: middle !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+}
+
+/* 6. Back-to-Top Floating Button */
+.hdt-back-to-top,
+.hdt-back-to-top__btn,
+hdt-back-to-top button {
+  background-color: var(--ga-forest-green, #1a332c) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--ga-gold-cream, #cda250) !important;
+  box-shadow: 0 6px 20px rgba(26, 51, 44, 0.25) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+}
+
+.hdt-back-to-top svg,
+.hdt-back-to-top__btn svg,
+hdt-back-to-top button svg {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 16px !important;
+  height: 16px !important;
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.hdt-back-to-top:hover,
+.hdt-back-to-top__btn:hover {
+  background-color: var(--ga-gold-cream, #cda250) !important;
+  color: #ffffff !important;
+  transform: translateY(-3px) !important;
 }
 
 
