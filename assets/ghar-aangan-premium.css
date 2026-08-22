@@ -374,12 +374,14 @@
 
 /* 2. Bold/Luxury Typography & Product Title Overrides */
 .hdt-product__title, 
-h1.hdt-product__title {
+h1.hdt-product__title,
+.product__title,
+.product__title > * {
   font-family: var(--ga-font-family-serif) !important;
-  font-weight: 700 !important; /* Bold luxurious weight */
+  font-weight: 800 !important; /* Ultra-bold luxurious weight for maximum legibility */
   color: var(--ga-forest-green) !important;
   letter-spacing: -0.01em !important;
-  font-size: clamp(2.6rem, 4vw, 3.4rem) !important;
+  font-size: clamp(2.8rem, 4.5vw, 3.8rem) !important; /* Scaled up for clarity */
   line-height: 1.2 !important;
   margin-bottom: 1.5rem !important;
 }
@@ -387,14 +389,34 @@ h1.hdt-product__title {
 /* Bold prices to feel premium and highlight value */
 .hdt-price .hdt-money, 
 .hdt-compare-at-price .hdt-money, 
-.hdt-price-item {
-  font-weight: 600 !important;
+.hdt-price-item,
+.price .price-item,
+.price-item {
+  font-weight: 800 !important; /* Maximum bold weight for high legibility */
   font-family: var(--ga-font-family-sans) !important;
 }
 
-/* Bold on-sale price in gold-cream */
-.hdt-price .hdt-money {
-  color: var(--ga-gold-cream) !important;
+/* Bold on-sale price in high-contrast forest-green (instead of low-contrast gold-cream) for maximum clarity */
+.hdt-price .hdt-money,
+.price .price-item--sale,
+.price-item--sale,
+.hdt-price-wrapp .hdt-price .hdt-money,
+.hdt-product-info__item .hdt-price .hdt-money,
+.product-info .hdt-price .hdt-money,
+.hdt-product-info__list .hdt-price .hdt-money {
+  color: var(--ga-forest-green) !important;
+  font-size: clamp(2.2rem, 3.5vw, 2.8rem) !important; /* Substantially larger on details/featured page */
+}
+
+/* Compare at / original price when on sale - muted strike-through */
+.hdt-compare-at-price .hdt-money,
+.price__sale .price-item--regular,
+.price-item--regular,
+.hdt-price-wrapp .hdt-compare-at-price .hdt-money {
+  color: #8c9c96 !important; /* Muted forest-green gray with clear strike-through */
+  font-weight: 500 !important;
+  text-decoration: line-through !important;
+  font-size: clamp(1.6rem, 2.5vw, 2.0rem) !important;
 }
 
 /* Headers across website */
@@ -1075,19 +1097,34 @@ body,
 .hdt-card-product__title,
 .card__heading,
 .card__heading a {
-  font-size: 1.75rem !important; /* Scaled product card title size */
+  font-family: var(--ga-font-family-serif) !important;
+  font-size: clamp(1.8rem, 2.2vw, 2.1rem) !important; /* Scaled up for extreme clarity */
   line-height: 1.35 !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important; /* Extremely bold, clear serif font */
+  color: var(--ga-forest-green) !important;
   margin-top: 1.2rem !important;
   margin-bottom: 0.8rem !important;
+  text-decoration: none !important;
 }
 
 .hdt-price .hdt-money,
 .hdt-card-product__info .hdt-price,
-.card-wrapper .price {
-  font-size: 1.75rem !important; /* Scaled product card price size */
-  font-weight: 600 !important;
-  color: var(--ga-gold-cream) !important;
+.card-wrapper .price,
+.card-wrapper .price .price-item,
+.hdt-card-product .hdt-price-wrapp .hdt-price .hdt-money {
+  font-size: clamp(1.8rem, 2vw, 2.1rem) !important; /* Substantially larger price text */
+  font-weight: 800 !important; /* Ultra-bold for readability */
+  color: var(--ga-forest-green) !important; /* High-contrast Forest Green */
+}
+
+/* Compare-at prices in card grids */
+.hdt-card-product__info .hdt-compare-at-price .hdt-money,
+.card-wrapper .price--on-sale .price-item--regular,
+.hdt-card-product .hdt-price-wrapp .hdt-compare-at-price .hdt-money {
+  font-size: clamp(1.4rem, 1.6vw, 1.6rem) !important;
+  font-weight: 500 !important;
+  color: #8c9c96 !important;
+  text-decoration: line-through !important;
 }
 
 .hdt-card-product__info {
@@ -1100,12 +1137,31 @@ body,
 
 .hdt-card-product__info .hdt-pr_btn,
 .hdt-card-product__btn-ultra,
-.hdt-card-product__info .hdt-btn {
-  padding: 1.4rem 3rem !important;
-  font-size: 1.3rem !important; /* Scaled card CTA button text */
+.hdt-card-product__info .hdt-btn,
+.card-wrapper .card__btn,
+.card-wrapper .button {
+  padding: 1.5rem 3rem !important;
+  font-size: 1.4rem !important; /* Slightly larger text */
   border-radius: 4px !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important; /* Ultra bold button text */
   letter-spacing: 0.12em !important;
+  background-color: var(--ga-forest-green) !important; /* Solid dark green */
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  transition: var(--ga-transition-smooth) !important;
+  border: 1px solid var(--ga-forest-green) !important;
+}
+
+.hdt-card-product__info .hdt-pr_btn:hover,
+.hdt-card-product__btn-ultra:hover,
+.hdt-card-product__info .hdt-btn:hover,
+.card-wrapper .card__btn:hover,
+.card-wrapper .button:hover {
+  background-color: var(--ga-gold-cream) !important; /* Gold on hover */
+  border-color: var(--ga-gold-cream) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(26, 51, 44, 0.12) !important;
 }
 
 /* 6. Navigation Bar & Logo Size Overrides */
