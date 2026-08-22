@@ -302,6 +302,102 @@
         "padding_bottom": 60
       }
     },
+    "featured_product": {
+      "type": "featured-product",
+      "blocks": {
+        "group_product_1": {
+          "type": "_group-product",
+          "settings": {},
+          "blocks": {
+            "product_title": {
+              "type": "_product-title",
+              "settings": {
+                "hdt_pr_title_size": "h5"
+              },
+              "blocks": {}
+            },
+            "product_price": {
+              "type": "_product-price",
+              "settings": {},
+              "blocks": {}
+            },
+            "variant_picker": {
+              "type": "_product-variant-picker",
+              "settings": {
+                "color_picker_type": "color_rounded",
+                "color_size": "small",
+                "picker_type": "block",
+                "size_chart_source": "page",
+                "size_chart_page": "",
+                "title": "Variant picker"
+              },
+              "blocks": {}
+            },
+            "quantity_selector": {
+              "type": "_quantity-selector",
+              "settings": {},
+              "blocks": {}
+            },
+            "buy_buttons": {
+              "type": "_product-buy-button",
+              "settings": {
+                "show_dynamic_checkout": true,
+                "show_gift_card_recipient": false,
+                "show_wishlist": false,
+                "show_compare": false,
+                "show_price_variant": true
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_title",
+            "product_price",
+            "variant_picker",
+            "quantity_selector",
+            "buy_buttons"
+          ]
+        },
+        "featured-product": {
+          "type": "_product-medias",
+          "static": true,
+          "settings": {
+            "display_by_block": false,
+            "color_scheme": "",
+            "desktop_media_layout": "thumbnail_left",
+            "media_size": "medium",
+            "mobile_media_layout": "thumbnails",
+            "enable_thumb_efect": true,
+            "show_first_media": false,
+            "use_select_varaint_change_media": true,
+            "enable_media_autoplay": false,
+            "enable_video_looping": false,
+            "image_ratio": "adapt_image",
+            "image_size": true,
+            "image_zoom": "zoom",
+            "image_zoom_type": "external",
+            "zoom_level": 2,
+            "max_zoom_lightbox": 3,
+            "navUI": false,
+            "nav_des": "default",
+            "nav_shape": "default"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "group_product_1"
+      ],
+      "settings": {
+        "product": "a2-desi-pahadi-ghee",
+        "product_list_fbt": [],
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_rate": 75
+      }
+    },
     "ghar_aangan_benefits": {
       "type": "ghar-aangan-benefits",
       "blocks": {
@@ -457,102 +553,6 @@
         "padding_bottom": 60
       }
     },
-    "featured_product": {
-      "type": "featured-product",
-      "blocks": {
-        "group_product_1": {
-          "type": "_group-product",
-          "settings": {},
-          "blocks": {
-            "product_title": {
-              "type": "_product-title",
-              "settings": {
-                "hdt_pr_title_size": "h5"
-              },
-              "blocks": {}
-            },
-            "product_price": {
-              "type": "_product-price",
-              "settings": {},
-              "blocks": {}
-            },
-            "variant_picker": {
-              "type": "_product-variant-picker",
-              "settings": {
-                "color_picker_type": "color_rounded",
-                "color_size": "small",
-                "picker_type": "block",
-                "size_chart_source": "page",
-                "size_chart_page": "",
-                "title": "Variant picker"
-              },
-              "blocks": {}
-            },
-            "quantity_selector": {
-              "type": "_quantity-selector",
-              "settings": {},
-              "blocks": {}
-            },
-            "buy_buttons": {
-              "type": "_product-buy-button",
-              "settings": {
-                "show_dynamic_checkout": true,
-                "show_gift_card_recipient": false,
-                "show_wishlist": false,
-                "show_compare": false,
-                "show_price_variant": true
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_title",
-            "product_price",
-            "variant_picker",
-            "quantity_selector",
-            "buy_buttons"
-          ]
-        },
-        "featured-product": {
-          "type": "_product-medias",
-          "static": true,
-          "settings": {
-            "display_by_block": false,
-            "color_scheme": "",
-            "desktop_media_layout": "thumbnail_left",
-            "media_size": "medium",
-            "mobile_media_layout": "thumbnails",
-            "enable_thumb_efect": true,
-            "show_first_media": false,
-            "use_select_varaint_change_media": true,
-            "enable_media_autoplay": false,
-            "enable_video_looping": false,
-            "image_ratio": "adapt_image",
-            "image_size": true,
-            "image_zoom": "zoom",
-            "image_zoom_type": "external",
-            "zoom_level": 2,
-            "max_zoom_lightbox": 3,
-            "navUI": false,
-            "nav_des": "default",
-            "nav_shape": "default"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "group_product_1"
-      ],
-      "settings": {
-        "product": "a2-desi-pahadi-ghee",
-        "product_list_fbt": [],
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "padding_rate": 75
-      }
-    },
     "ghar_aangan_reviews": {
       "type": "ghar-aangan-reviews",
       "blocks": {
@@ -682,10 +682,10 @@
     "ghar_aangan_hero",
     "ghar_aangan_video",
     "ghar_aangan_storytelling",
+    "featured_product",
     "ghar_aangan_benefits",
     "ghar_aangan_process",
     "ghar_aangan_trust_badges",
-    "featured_product",
     "ghar_aangan_reviews",
     "ghar_aangan_faq",
     "ghar_aangan_sales_ticker"
