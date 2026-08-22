@@ -34,21 +34,10 @@
     </hdt-wishlist>
   {%- else -%}
     <hdt-tooltip class="{{ class }} hdt-card-product__btn-wishlist-er" placement="{{ placement | default: 'none' }}"{% if inner_tooltip %} inner{% endif %}>
-      {% comment %} {%- if settings.customer_popup != 'new' -%}
-        <a href="{{ routes.account_login_url }}" {% unless customer or request.page_type contains 'customers' or settings.login_popup == false %} aria-controls="login-form-popup" {% endunless %} aria-expanded="false" placement="{{ placement | default: 'none' }}">
-          <svg width="16" height="16" aria-hidden="true" focusable="false" class="hdt-svg-wis" viewBox="0 0 32 32"><path d="M16.158 26.075l-0.158 0.158-0.174-0.158c-7.507-6.811-12.469-11.316-12.469-15.883 0-3.161 2.371-5.531 5.531-5.531 2.434 0 4.804 1.58 5.642 3.73h2.939c0.838-2.149 3.208-3.73 5.642-3.73 3.161 0 5.531 2.371 5.531 5.531 0 4.567-4.962 9.071-12.485 15.883zM23.112 1.5c-2.75 0-5.389 1.28-7.112 3.287-1.723-2.007-4.362-3.287-7.112-3.287-4.867 0-8.692 3.809-8.692 8.692 0 5.958 5.373 10.841 13.512 18.222l2.292 2.086 2.292-2.086c8.139-7.38 13.512-12.264 13.512-18.222 0-4.883-3.825-8.692-8.692-8.692z" fill="currentColor"></path></svg>
-          <span {% unless disable_sr_only %}class="sr-only"{% endunless %}>{{ 'general.wishlist.login_to_use_wishlist' | t }}</span>
-        </a>
-      {%- else -%} {% endcomment %}
-        <div>
-          <shopify-account class="hdt-svg-wis" {% if settings.customer_account_menu != blank %} menu="{{ settings.customer_account_menu }}" {% endif %}>
-            <div slot="signed-out-avatar">
-              <svg height="16" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16.158 26.075l-0.158 0.158-0.174-0.158c-7.507-6.811-12.469-11.316-12.469-15.883 0-3.161 2.371-5.531 5.531-5.531 2.434 0 4.804 1.58 5.642 3.73h2.939c0.838-2.149 3.208-3.73 5.642-3.73 3.161 0 5.531 2.371 5.531 5.531 0 4.567-4.962 9.071-12.485 15.883zM23.112 1.5c-2.75 0-5.389 1.28-7.112 3.287-1.723-2.007-4.362-3.287-7.112-3.287-4.867 0-8.692 3.809-8.692 8.692 0 5.958 5.373 10.841 13.512 18.222l2.292 2.086 2.292-2.086c8.139-7.38 13.512-12.264 13.512-18.222 0-4.883-3.825-8.692-8.692-8.692z" fill="currentColor"></path></svg>
-            </div>
-          </shopify-account>
-          <span {% unless disable_sr_only %}class="sr-only"{% endunless %}>{{ 'general.wishlist.login_to_use_wishlist' | t }}</span>
-        </div>
-      {% comment %} {%- endif -%} {% endcomment %}
+      <a href="{{ routes.account_login_url }}" {% unless customer or request.page_type contains 'customers' or settings.login_popup == false %} aria-controls="login-form-popup" {% endunless %} aria-expanded="false" placement="{{ placement | default: 'none' }}">
+        <svg width="16" height="16" aria-hidden="true" focusable="false" class="hdt-svg-wis" viewBox="0 0 32 32"><path d="M16.158 26.075l-0.158 0.158-0.174-0.158c-7.507-6.811-12.469-11.316-12.469-15.883 0-3.161 2.371-5.531 5.531-5.531 2.434 0 4.804 1.58 5.642 3.73h2.939c0.838-2.149 3.208-3.73 5.642-3.73 3.161 0 5.531 2.371 5.531 5.531 0 4.567-4.962 9.071-12.485 15.883zM23.112 1.5c-2.75 0-5.389 1.28-7.112 3.287-1.723-2.007-4.362-3.287-7.112-3.287-4.867 0-8.692 3.809-8.692 8.692 0 5.958 5.373 10.841 13.512 18.222l2.292 2.086 2.292-2.086c8.139-7.38 13.512-12.264 13.512-18.222 0-4.883-3.825-8.692-8.692-8.692z" fill="currentColor"></path></svg>
+        <span {% unless disable_sr_only %}class="sr-only"{% endunless %}>{{ 'general.wishlist.login_to_use_wishlist' | t }}</span>
+      </a>
     </hdt-tooltip>
   {%- endif -%}
 {%- endif -%}
