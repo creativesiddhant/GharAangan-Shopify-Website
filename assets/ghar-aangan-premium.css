@@ -1458,42 +1458,110 @@ svg#hdt-icon-cart,
   justify-content: center !important;
 }
 
-/* Fix wishlist and compare buttons on the single product page */
+/* Fix wishlist and compare buttons on product page & quick view modal */
 .hdt-product-form__btn-wishlist,
-.hdt-product-form__btn-compare {
+.hdt-product-form__btn-compare,
+hdt-wishlist.hdt-product-form__btn-wishlist,
+hdt-compare.hdt-product-form__btn-compare,
+hdt-tooltip.hdt-product-form__btn-wishlist,
+hdt-tooltip.hdt-product-form__btn-compare,
+.hdt-quick-view-modal .hdt-product-form__btn-wishlist,
+.hdt-quick-view-modal .hdt-product-form__btn-compare,
+.hdt-main-product-quick-view .hdt-product-form__btn-wishlist,
+.hdt-main-product-quick-view .hdt-product-form__btn-compare {
   background-color: #ffffff !important;
   color: var(--ga-forest-green, #1a332c) !important;
-  border: 1px solid rgba(26, 51, 44, 0.12) !important;
+  border: 1.5px solid rgba(26, 51, 44, 0.2) !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 46px !important;
-  height: 46px !important;
-  min-width: 46px !important;
-  border-radius: 4px !important;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  border-radius: 6px !important;
   transition: all 0.3s ease !important;
-  box-shadow: 0 4px 12px rgba(26, 51, 44, 0.04) !important;
+  box-shadow: 0 2px 8px rgba(26, 51, 44, 0.06) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  text-decoration: none !important;
+}
+
+.hdt-product-form__btn-wishlist a,
+.hdt-product-form__btn-compare a,
+.hdt-quick-view-modal .hdt-product-form__btn-wishlist a,
+.hdt-quick-view-modal .hdt-product-form__btn-compare a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+  text-decoration: none !important;
+}
+
+/* Force SVGs inside wishlist/compare buttons to be visible, correctly sized, and forest green */
+.hdt-product-form__btn-wishlist svg,
+.hdt-product-form__btn-compare svg,
+.hdt-product-form__btn-wishlist a svg,
+.hdt-product-form__btn-compare a svg,
+.hdt-quick-view-modal .hdt-product-form__btn-wishlist svg,
+.hdt-quick-view-modal .hdt-product-form__btn-compare svg,
+.hdt-main-product-quick-view .hdt-product-form__btn-wishlist svg,
+.hdt-main-product-quick-view .hdt-product-form__btn-compare svg,
+.hdt-svg-wis,
+.hdt-svg-cp {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  fill: var(--ga-forest-green, #1a332c) !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+  stroke: none !important;
+}
+
+.hdt-product-form__btn-wishlist svg path,
+.hdt-product-form__btn-compare svg path,
+.hdt-product-form__btn-wishlist a svg path,
+.hdt-product-form__btn-compare a svg path,
+.hdt-quick-view-modal .hdt-product-form__btn-wishlist svg path,
+.hdt-quick-view-modal .hdt-product-form__btn-compare svg path,
+.hdt-svg-wis path,
+.hdt-svg-cp path {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  fill: var(--ga-forest-green, #1a332c) !important;
 }
 
 .hdt-product-form__btn-wishlist:hover,
-.hdt-product-form__btn-compare:hover {
+.hdt-product-form__btn-compare:hover,
+.hdt-quick-view-modal .hdt-product-form__btn-wishlist:hover,
+.hdt-quick-view-modal .hdt-product-form__btn-compare:hover {
   background-color: var(--ga-forest-green, #1a332c) !important;
   color: #ffffff !important;
   border-color: var(--ga-forest-green, #1a332c) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(26, 51, 44, 0.15) !important;
 }
 
-/* Force SVGs inside single product page wishlist/compare buttons to be visible, sized, and colored */
-.hdt-product-form__btn-wishlist svg,
-.hdt-product-form__btn-compare svg,
-.hdt-product-form__btn-wishlist svg path,
-.hdt-product-form__btn-compare svg path {
-  display: inline-block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  width: 18px !important;
-  height: 18px !important;
-  fill: currentColor !important;
-  color: inherit !important;
+.hdt-product-form__btn-wishlist:hover svg,
+.hdt-product-form__btn-compare:hover svg,
+.hdt-product-form__btn-wishlist:hover a svg,
+.hdt-product-form__btn-compare:hover a svg,
+.hdt-product-form__btn-wishlist:hover svg path,
+.hdt-product-form__btn-compare:hover svg path,
+.hdt-product-form__btn-wishlist:hover a svg path,
+.hdt-product-form__btn-compare:hover a svg path,
+.hdt-quick-view-modal .hdt-product-form__btn-wishlist:hover svg,
+.hdt-quick-view-modal .hdt-product-form__btn-compare:hover svg,
+.hdt-quick-view-modal .hdt-product-form__btn-wishlist:hover svg path,
+.hdt-quick-view-modal .hdt-product-form__btn-compare:hover svg path {
+  fill: #ffffff !important;
+  color: #ffffff !important;
 }
 
 /* Premium overrides for hover icon buttons (Wishlist, Compare, Quick View) */
