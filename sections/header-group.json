@@ -37,13 +37,34 @@
           "settings": {
             "text": "🚫 No Preservatives"
           }
+        },
+        "announcement_iRNKLc": {
+          "type": "announcement",
+          "settings": {
+            "text": "🎁 5% OFF on 2L Ghee | Coupon Code: RAKHIWITHGA"
+          }
+        },
+        "announcement_pThrWh": {
+          "type": "announcement",
+          "settings": {
+            "text": "🔥 ₹50 OFF on 1L Ghee | Automatically Applied at Cart"
+          }
+        },
+        "announcement_6Ryfej": {
+          "type": "announcement",
+          "settings": {
+            "text": "🎉 FREE Delivery on 5L Ghee | Rakhi Offer Ends 29 August"
+          }
         }
       },
       "block_order": [
         "block-1",
         "block-2",
         "block-3",
-        "announcement_FfhBUT"
+        "announcement_FfhBUT",
+        "announcement_iRNKLc",
+        "announcement_pThrWh",
+        "announcement_6Ryfej"
       ],
       "settings": {
         "design": "marquee",
