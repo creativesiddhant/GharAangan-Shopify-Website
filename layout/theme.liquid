@@ -74,6 +74,7 @@
     </div>
 
     {%- unless template == 'product.only_config' and request.design_mode == false -%}
+      {%- render 'festive-rakhi-decor' -%}
       {%- if request.page_type == "index" or request.page_type == "policy" -%}
       <h1 class="hdt-hidden">{{ page_title | default: shop.name }}</h1>
       {%- endif -%}
