@@ -143,28 +143,28 @@
         <!-- 550ml -->
         <a href="/products/a2-desi-pahadi-ghee-550ml" class="hdt-linked-pack-pill{% if product.handle contains '550ml' %} is-selected{% endif %}">
           <span class="hdt-pill-title">550ml</span>
-          <span class="hdt-pill-sub">₹563</span>
+          <span class="hdt-pill-sub">{% if p1.price %}{{ p1.price | money }}{% else %}₹799{% endif %}</span>
         </a>
 
         <!-- 1 Litre -->
         <a href="/products/a2-desi-pahadi-ghee-1l" class="hdt-linked-pack-pill{% if product.handle contains '1l' or product.handle == 'a2-desi-pahadi-ghee' %} is-selected{% endif %}">
           <span class="hdt-pill-badge">POPULAR</span>
           <span class="hdt-pill-title">1 Litre</span>
-          <span class="hdt-pill-sub">₹1,126</span>
+          <span class="hdt-pill-sub">{% if p2.price %}{{ p2.price | money }}{% else %}₹1,599{% endif %}</span>
         </a>
 
         <!-- 2 Litres -->
         <a href="/products/a2-desi-pahadi-ghee-2l" class="hdt-linked-pack-pill{% if product.handle contains '2l' %} is-selected{% endif %}">
           <span class="hdt-pill-badge">VALUE</span>
           <span class="hdt-pill-title">2 Litres</span>
-          <span class="hdt-pill-sub">₹2,252</span>
+          <span class="hdt-pill-sub">{% if p3.price %}{{ p3.price | money }}{% else %}₹3,198{% endif %}</span>
         </a>
 
         <!-- 5 Litres -->
         <a href="/products/a2-desi-pahadi-ghee-5l" class="hdt-linked-pack-pill{% if product.handle contains '5l' %} is-selected{% endif %}">
-          <span class="hdt-pill-badge" style="background:#b33b28;">SAVE 19%</span>
+          <span class="hdt-pill-badge" style="background:#b33b28;">SAVE 20%</span>
           <span class="hdt-pill-title">5 Litres</span>
-          <span class="hdt-pill-sub">₹5,628</span>
+          <span class="hdt-pill-sub">{% if p4.price %}{{ p4.price | money }}{% else %}₹7,995{% endif %}</span>
         </a>
       {%- endif -%}
     </div>

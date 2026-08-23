@@ -248,8 +248,8 @@
         <h3 class="ga-pack-name">550ml Glass Jar</h3>
         <p class="ga-pack-highlight">Perfect for individuals, trial use, and fresh daily kitchen tadka.</p>
         <div class="ga-pack-price-box">
-          <span class="ga-pack-price">₹563</span>
-          <span class="ga-pack-compare">₹699</span>
+          <span class="ga-pack-price">{% if pr_550.price %}{{ pr_550.price | money }}{% else %}₹799{% endif %}</span>
+          <span class="ga-pack-compare">₹999</span>
         </div>
         <ul class="ga-pack-features">
           <li>
@@ -282,8 +282,8 @@
         <h3 class="ga-pack-name">1 Litre Glass Jar</h3>
         <p class="ga-pack-highlight">Our flagship best-seller for monthly family health and pure cooking.</p>
         <div class="ga-pack-price-box">
-          <span class="ga-pack-price">₹1,126</span>
-          <span class="ga-pack-compare">₹1,399</span>
+          <span class="ga-pack-price">{% if pr_1l.price %}{{ pr_1l.price | money }}{% else %}₹1,599{% endif %}</span>
+          <span class="ga-pack-compare">₹1,999</span>
         </div>
         <ul class="ga-pack-features">
           <li>
@@ -316,8 +316,8 @@
         <h3 class="ga-pack-name">2 Litres (2 x 1L)</h3>
         <p class="ga-pack-highlight">Two factory-fresh 1L jars. Open one, keep the other factory sealed.</p>
         <div class="ga-pack-price-box">
-          <span class="ga-pack-price">₹2,252</span>
-          <span class="ga-pack-compare">₹2,799</span>
+          <span class="ga-pack-price">{% if pr_2l.price %}{{ pr_2l.price | money }}{% else %}₹3,198{% endif %}</span>
+          <span class="ga-pack-compare">₹3,999</span>
         </div>
         <ul class="ga-pack-features">
           <li>
@@ -338,7 +338,7 @@
 
       <!-- 5 Litres Card -->
       <div class="ga-pack-card">
-        <span class="ga-pack-badge badge-red">SAVE ₹1,371</span>
+        <span class="ga-pack-badge badge-red">SAVE ₹2,004</span>
         <a href="/products/a2-desi-pahadi-ghee-5l" class="ga-pack-image-wrap">
           {%- if img_5l != blank -%}
             {{ img_5l | image_url: width: 400 | image_tag: loading: 'lazy', alt: '5 Litres Family Pack - A2 Desi Pahadi Ghee' }}
@@ -350,8 +350,8 @@
         <h3 class="ga-pack-name">5 Litres Family Pack</h3>
         <p class="ga-pack-highlight">Maximum value pack for joint families and serious Ayurvedic ghee lovers.</p>
         <div class="ga-pack-price-box">
-          <span class="ga-pack-price">₹5,628</span>
-          <span class="ga-pack-compare">₹6,999</span>
+          <span class="ga-pack-price">{% if pr_5l.price %}{{ pr_5l.price | money }}{% else %}₹7,995{% endif %}</span>
+          <span class="ga-pack-compare">₹9,999</span>
         </div>
         <ul class="ga-pack-features">
           <li>
