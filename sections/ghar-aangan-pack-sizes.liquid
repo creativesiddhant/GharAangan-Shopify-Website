@@ -1,3 +1,17 @@
+{%- liquid
+  assign pr_550 = all_products['a2-desi-pahadi-ghee-550ml']
+  assign pr_1l = all_products['a2-desi-pahadi-ghee-1l']
+  assign pr_2l = all_products['a2-desi-pahadi-ghee-2l']
+  assign pr_5l = all_products['a2-desi-pahadi-ghee-5l']
+  assign fallback_pr = all_products['a2-desi-pahadi-ghee']
+
+  # Images
+  assign img_550 = section.settings.image_550 | default: pr_550.featured_image | default: fallback_pr.featured_image
+  assign img_1l = section.settings.image_1l | default: pr_1l.featured_image | default: fallback_pr.featured_image
+  assign img_2l = section.settings.image_2l | default: pr_2l.featured_image | default: fallback_pr.featured_image
+  assign img_5l = section.settings.image_5l | default: pr_5l.featured_image | default: fallback_pr.featured_image
+-%}
+
 {%- style -%}
   #shopify-section-{{ section.id }} {
     --section-pt: {{ section.settings.padding_top }}px;
@@ -56,7 +70,7 @@
     background: #ffffff;
     border: 1.5px solid #e8e2d5;
     border-radius: 16px;
-    padding: 28px 20px 24px;
+    padding: 24px 18px 22px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -66,7 +80,7 @@
   .ga-pack-card:hover {
     border-color: #1a332c;
     transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(26, 51, 44, 0.1);
+    box-shadow: 0 14px 30px rgba(26, 51, 44, 0.12);
   }
   .ga-pack-card.is-featured {
     border: 2px solid #1a332c;
@@ -87,6 +101,7 @@
     padding: 4px 12px;
     border-radius: 20px;
     white-space: nowrap;
+    z-index: 2;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
   .ga-pack-badge.badge-red {
@@ -95,8 +110,37 @@
   .ga-pack-badge.badge-green {
     background: #1a332c;
   }
+  .ga-pack-image-wrap {
+    width: 100%;
+    height: 170px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    background: #f9f7f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    padding: 10px;
+  }
+  .ga-pack-image-wrap img {
+    max-height: 150px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+  }
+  .ga-pack-card:hover .ga-pack-image-wrap img {
+    transform: scale(1.08);
+  }
+  .ga-pack-placeholder-icon {
+    width: 64px;
+    height: 64px;
+    color: #c4b69d;
+  }
   .ga-pack-size-tag {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: #8c734b;
     text-transform: uppercase;
@@ -104,50 +148,50 @@
     margin-bottom: 4px;
   }
   .ga-pack-name {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     color: #1a332c;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     line-height: 1.3;
   }
   .ga-pack-highlight {
-    font-size: 13px;
+    font-size: 12.5px;
     color: #666;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     line-height: 1.4;
-    min-height: 38px;
+    min-height: 35px;
   }
   .ga-pack-price-box {
-    margin-bottom: 20px;
-    padding-bottom: 16px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
     border-bottom: 1px dashed #e8e2d5;
     display: flex;
     align-items: baseline;
     gap: 8px;
   }
   .ga-pack-price {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
     color: #1a332c;
   }
   .ga-pack-compare {
-    font-size: 14px;
+    font-size: 13px;
     color: #888;
     text-decoration: line-through;
   }
   .ga-pack-features {
     list-style: none;
     padding: 0;
-    margin: 0 0 24px;
+    margin: 0 0 20px;
     flex-grow: 1;
   }
   .ga-pack-features li {
-    font-size: 13px;
+    font-size: 12.5px;
     color: #444;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
     line-height: 1.3;
   }
   .ga-pack-features svg {
@@ -160,15 +204,16 @@
     background: #1a332c;
     color: #ffffff !important;
     text-decoration: none !important;
-    padding: 12px 16px;
+    padding: 11px 16px;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 600;
     transition: all 0.2s ease;
   }
   .ga-pack-btn:hover {
     background: #284c42;
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(26, 51, 44, 0.2);
   }
   .ga-pack-btn-outline {
     background: #ffffff;
@@ -192,6 +237,13 @@
     <div class="ga-packs-grid">
       <!-- 550ml Card -->
       <div class="ga-pack-card">
+        <a href="/products/a2-desi-pahadi-ghee-550ml" class="ga-pack-image-wrap">
+          {%- if img_550 != blank -%}
+            {{ img_550 | image_url: width: 400 | image_tag: loading: 'lazy', alt: '550ml Glass Jar - A2 Desi Pahadi Ghee' }}
+          {%- else -%}
+            <svg class="ga-pack-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3h8m-6 0v3m4-3v3m-7 4h10a2 2 0 0 1 2 2v9a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-9a2 2 0 0 1 2-2z"></path><path d="M7 14h10"></path></svg>
+          {%- endif -%}
+        </a>
         <span class="ga-pack-size-tag">Trial / Starter</span>
         <h3 class="ga-pack-name">550ml Glass Jar</h3>
         <p class="ga-pack-highlight">Perfect for individuals, trial use, and fresh daily kitchen tadka.</p>
@@ -201,15 +253,15 @@
         </div>
         <ul class="ga-pack-features">
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
             Lead-Free Glass Jar
           </li>
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
             Authentic Wood-Fired Bilona
           </li>
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
             Danedar Granular Aroma
           </li>
         </ul>
@@ -219,6 +271,13 @@
       <!-- 1 Litre Card -->
       <div class="ga-pack-card is-featured">
         <span class="ga-pack-badge">MOST POPULAR</span>
+        <a href="/products/a2-desi-pahadi-ghee-1l" class="ga-pack-image-wrap">
+          {%- if img_1l != blank -%}
+            {{ img_1l | image_url: width: 400 | image_tag: loading: 'lazy', alt: '1 Litre Glass Jar - A2 Desi Pahadi Ghee' }}
+          {%- else -%}
+            <svg class="ga-pack-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3h8m-6 0v3m4-3v3m-7 4h10a2 2 0 0 1 2 2v9a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-9a2 2 0 0 1 2-2z"></path><path d="M7 14h10"></path></svg>
+          {%- endif -%}
+        </a>
         <span class="ga-pack-size-tag">Household Staple</span>
         <h3 class="ga-pack-name">1 Litre Glass Jar</h3>
         <p class="ga-pack-highlight">Our flagship best-seller for monthly family health and pure cooking.</p>
@@ -228,15 +287,15 @@
         </div>
         <ul class="ga-pack-features">
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
             100% Himalayan Badri Cow Milk
           </li>
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            Optimal Monthly Ratio
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Optimal Monthly Family Ratio
           </li>
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
             A2 Gut-Friendly Nutrition
           </li>
         </ul>
@@ -246,6 +305,13 @@
       <!-- 2 Litres Card -->
       <div class="ga-pack-card">
         <span class="ga-pack-badge badge-green">VALUE COMBO</span>
+        <a href="/products/a2-desi-pahadi-ghee-2l" class="ga-pack-image-wrap">
+          {%- if img_2l != blank -%}
+            {{ img_2l | image_url: width: 400 | image_tag: loading: 'lazy', alt: '2 Litres Combo - A2 Desi Pahadi Ghee' }}
+          {%- else -%}
+            <svg class="ga-pack-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3h8m-6 0v3m4-3v3m-7 4h10a2 2 0 0 1 2 2v9a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-9a2 2 0 0 1 2-2z"></path><path d="M7 14h10"></path></svg>
+          {%- endif -%}
+        </a>
         <span class="ga-pack-size-tag">Twin Jar Pack</span>
         <h3 class="ga-pack-name">2 Litres (2 x 1L)</h3>
         <p class="ga-pack-highlight">Two factory-fresh 1L jars. Open one, keep the other factory sealed.</p>
@@ -255,15 +321,15 @@
         </div>
         <ul class="ga-pack-features">
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
             2 x 1L Fresh Glass Jars
           </li>
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
             Extra Bundle Savings
           </li>
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
             Protected Multi-Layer Transit
           </li>
         </ul>
@@ -273,6 +339,13 @@
       <!-- 5 Litres Card -->
       <div class="ga-pack-card">
         <span class="ga-pack-badge badge-red">SAVE ₹1,371</span>
+        <a href="/products/a2-desi-pahadi-ghee-5l" class="ga-pack-image-wrap">
+          {%- if img_5l != blank -%}
+            {{ img_5l | image_url: width: 400 | image_tag: loading: 'lazy', alt: '5 Litres Family Pack - A2 Desi Pahadi Ghee' }}
+          {%- else -%}
+            <svg class="ga-pack-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3h8m-6 0v3m4-3v3m-7 4h10a2 2 0 0 1 2 2v9a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-9a2 2 0 0 1 2-2z"></path><path d="M7 14h10"></path></svg>
+          {%- endif -%}
+        </a>
         <span class="ga-pack-size-tag">Family Saver</span>
         <h3 class="ga-pack-name">5 Litres Family Pack</h3>
         <p class="ga-pack-highlight">Maximum value pack for joint families and serious Ayurvedic ghee lovers.</p>
@@ -282,15 +355,15 @@
         </div>
         <ul class="ga-pack-features">
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
             Lowest Cost-Per-Litre
           </li>
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
             Food-Grade Bulk Seal Pack
           </li>
           <li>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
             12-18 Months Extended Shelf-Life
           </li>
         </ul>
@@ -321,6 +394,26 @@
       "id": "description",
       "label": "Description",
       "default": "Handcrafted over wood-fires from Himalayan Badri cows. Available in 4 convenient sizes for every kitchen need."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_550",
+      "label": "550ml Pack Image (Optional Override)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1l",
+      "label": "1 Litre Pack Image (Optional Override)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2l",
+      "label": "2 Litres Pack Image (Optional Override)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5l",
+      "label": "5 Litres Pack Image (Optional Override)"
     },
     {
       "type": "color",
