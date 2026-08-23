@@ -409,14 +409,6 @@
         "padding_rate": 75
       }
     },
-    "ghar_aangan_rakhi_gifting": {
-      "type": "ghar-aangan-rakhi-gifting",
-      "settings": {
-        "bg_color": "#fdfbf7",
-        "padding_top": 50,
-        "padding_bottom": 50
-      }
-    },
     "ghar_aangan_pack_sizes": {
       "type": "ghar-aangan-pack-sizes",
       "settings": {
@@ -713,7 +705,6 @@
     "ghar_aangan_video",
     "ghar_aangan_storytelling",
     "featured_product",
-    "ghar_aangan_rakhi_gifting",
     "ghar_aangan_pack_sizes",
     "ghar_aangan_benefits",
     "ghar_aangan_process",
