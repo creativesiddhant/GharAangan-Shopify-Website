@@ -1830,37 +1830,37 @@ button[aria-label="Close"] svg {
 }
 
 /* 6. Back-to-Top Floating Button */
+.ga-back-to-top,
 .hdt-back-to-top,
-.hdt-back-to-top__btn,
-hdt-back-to-top button {
+.hdt-back-to-top__btn {
   background-color: var(--ga-forest-green, #1a332c) !important;
   color: #ffffff !important;
-  border: 1px solid var(--ga-gold-cream, #cda250) !important;
-  box-shadow: 0 6px 20px rgba(26, 51, 44, 0.25) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  border: 1.5px solid var(--ga-gold-cream, #cda250) !important;
+  box-shadow: 0 4px 18px rgba(26, 51, 44, 0.28) !important;
   border-radius: 50% !important;
-  transition: all 0.3s ease !important;
 }
 
+.ga-back-to-top svg,
 .hdt-back-to-top svg,
-.hdt-back-to-top__btn svg,
-hdt-back-to-top button svg {
+.hdt-back-to-top__btn svg {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
-  width: 16px !important;
-  height: 16px !important;
-  fill: #ffffff !important;
-  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
 }
 
+.ga-back-to-top:hover,
 .hdt-back-to-top:hover,
 .hdt-back-to-top__btn:hover {
   background-color: var(--ga-gold-cream, #cda250) !important;
-  color: #ffffff !important;
-  transform: translateY(-3px) !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+}
+
+.ga-back-to-top:hover svg,
+.hdt-back-to-top:hover svg,
+.hdt-back-to-top__btn:hover svg {
+  stroke: var(--ga-forest-green, #1a332c) !important;
 }
 
 
