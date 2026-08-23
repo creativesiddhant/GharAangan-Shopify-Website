@@ -321,6 +321,16 @@
               "settings": {},
               "blocks": {}
             },
+            "product_linked_sizes": {
+              "type": "_product-linked",
+              "settings": {
+                "option_name": "Select Pack Size",
+                "option_values": "550ml Glass Jar, 1 Litre Glass Jar, 2 Litres (2x1L), 5 Litres Family Pack",
+                "linked_type": "block",
+                "linked_size": "medium"
+              },
+              "blocks": {}
+            },
             "variant_picker": {
               "type": "_product-variant-picker",
               "settings": {
@@ -353,6 +363,7 @@
           "block_order": [
             "product_title",
             "product_price",
+            "product_linked_sizes",
             "variant_picker",
             "quantity_selector",
             "buy_buttons"
@@ -389,13 +400,24 @@
         "group_product_1"
       ],
       "settings": {
-        "product": "a2-desi-pahadi-ghee",
+        "product": "a2-desi-pahadi-ghee-1l",
         "product_list_fbt": [],
         "color_scheme": "scheme-1",
         "full_width": false,
         "padding_top": 60,
         "padding_bottom": 60,
         "padding_rate": 75
+      }
+    },
+    "ghar_aangan_pack_sizes": {
+      "type": "ghar-aangan-pack-sizes",
+      "settings": {
+        "subtitle": "100% PURE BILONA A2 GHEE",
+        "title": "Select Your Ideal Pack Size",
+        "description": "Handcrafted over wood-fires from Himalayan Badri cows. Available in 4 convenient sizes for every kitchen need.",
+        "background_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "ghar_aangan_benefits": {
@@ -683,6 +705,7 @@
     "ghar_aangan_video",
     "ghar_aangan_storytelling",
     "featured_product",
+    "ghar_aangan_pack_sizes",
     "ghar_aangan_benefits",
     "ghar_aangan_process",
     "ghar_aangan_trust_badges",

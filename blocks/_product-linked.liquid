@@ -2,210 +2,196 @@
   unless product
     assign product = section.settings.product
   endunless
+  if product == blank
+    continue
+  endif
+
   assign color_white = 'products.theme_settings.color_white' | t | downcase | strip
   assign and_locale = 'products.theme_settings.and' | t | append: ' ' | prepend: ', '
   assign and_locale_1 = 'products.theme_settings.and' | t | append: ' ' | prepend: ' '
   assign option_values = block.settings.option_values | replace_last: and_locale, ', ' | replace_last: and_locale_1, ', ' | split: ', '
   assign product_list = block.settings.product_list
-  assign linked_type = block.settings.linked_type
-  assign colors = shop.metafields.ecomrise.colors.value
-  assign color_values = shop.metaobjects.theme_swatch.values | first
-  assign colors_2 = color_values.colors.value
-  unless product_list != blank
-    continue
-  endunless
-  -%}
+  assign linked_type = block.settings.linked_type | default: 'block'
+  assign option_label = block.settings.option_name | default: 'Select Pack Size'
 
-  {%- capture code_html -%}
-    {%- if linked_type == 'color' or linked_type == 'color_rounded' -%}
-      {%- for item in product_list -%}
-        {%- liquid
-        assign value = option_values[forloop.index0] | default: item.title
-        assign color_downcase = value | downcase
-        if product.id == item.id
-          assign value_selected = value
-          assign class_selected = ' is-selected'
-        else
-          assign class_selected = ''
-        endif
-        assign color_handle = value | handle
-        assign color_obj = colors[color_handle] | default: colors_2[color_handle]
-        assign color_style_inline = ''
-        assign image = images[color_obj.imageName]
-        if image != blank
-          assign color_image = image | image_url: width: 200
-          assign color_image_style = '--hdt-bg-image: url(' | append: color_image | append: ');'
-        else
-          assign color_image_style = nil
-          assign color_style_inline = color_obj.colorsCSS
-        endif
-        -%}
-        {%- capture color_style -%}{%- if color_image_style or color_style_inline.size > 0 %} style="{{ color_image_style }}{{ color_style_inline }}"{% endif -%}{%- endcapture -%}
-        
-        <a href="{{ item.url }}" class="hdt-product-form_value is-type-color{% if color_white == color_downcase %} hdt-bg-color-white{% endif %}{{ class_selected }}">
-          <hdt-tooltip>
-            <span class="hdt-form-color-pattern {% if color_white == color_downcase %} hdt-bg-color-white{% endif %}" {{ color_style }}></span>
-            <span class="hdt-form-color-name sr-only">{{- value -}}</span>
-           </hdt-tooltip>
-        </a>
-     
-      {%- endfor -%}
+  # Automatic support for A2 Ghee standalone products
+  assign is_ghee = false
+  if product.handle contains 'a2-desi-pahadi-ghee' or product.handle contains 'a2-ghee'
+    assign is_ghee = true
+  endif
 
-    {%- elsif linked_type == 'block_with_color' -%}
+  if product_list == blank or product_list.size == 0
+    if is_ghee
+      assign p1 = all_products['a2-desi-pahadi-ghee-550ml']
+      assign p2 = all_products['a2-desi-pahadi-ghee-1l']
+      assign p3 = all_products['a2-desi-pahadi-ghee-2l']
+      assign p4 = all_products['a2-desi-pahadi-ghee-5l']
+    else
+      continue
+    endif
+  endif
+-%}
 
-      {%- for item in product_list -%}
-        {%- liquid
-        assign value = option_values[forloop.index0] | default: item.title
-        assign color_downcase = value | downcase
-        if product.id == item.id
-          assign value_selected = value
-          assign class_selected = ' is-selected'
-        else
-          assign class_selected = ''
-        endif
-        assign color_handle = value | handle
-        assign color_obj = colors[color_handle] | default: colors_2[color_handle]
-        assign color_style_inline = ''
-        assign image = images[color_obj.imageName]
-        if image != blank
-          assign color_image = image | image_url: width: 200
-          assign color_image_style = '--hdt-bg-image: url(' | append: color_image | append: ');'
-        else
-          assign color_image_style = nil
-          assign color_style_inline = color_obj.colorsCSS
-        endif
-        -%}
-        <a href="{{ item.url }}" class="hdt-product-form_value is-type-block_with_color{{ class_selected }}">
-          <span class="hdt-block-swatch__color{% if color_white == color_downcase %} hdt-bg-color-white{% endif %}"{%- if color_image_style or color_style_inline.size > 0 %} style="{{ color_image_style }}{{ color_style_inline }}"{% endif -%}></span>
-          <span class="hdt-form-color-name">{{- value -}}</span>
-        </a>
-      {%- endfor -%}
+<style>
+  .hdt-linked-pack-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+  .hdt-linked-pack-pill {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: 1.5px solid #dfd9cb;
+    background: #ffffff;
+    color: #1a332c;
+    text-decoration: none !important;
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    min-width: 96px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .hdt-linked-pack-pill:hover {
+    border-color: #1a332c;
+    background: #fdfbf7;
+    color: #1a332c;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  }
+  .hdt-linked-pack-pill.is-selected {
+    border-color: #1a332c;
+    background: #1a332c;
+    color: #ffffff !important;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(26, 51, 44, 0.18);
+  }
+  .hdt-linked-pack-pill.is-selected .hdt-pill-sub {
+    color: #dfcaa2;
+  }
+  .hdt-linked-pack-pill .hdt-pill-title {
+    font-size: 13.5px;
+    line-height: 1.2;
+    display: block;
+  }
+  .hdt-linked-pack-pill .hdt-pill-sub {
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 3px;
+    color: #8c734b;
+    display: block;
+    line-height: 1.1;
+  }
+  .hdt-linked-pack-pill .hdt-pill-badge {
+    position: absolute;
+    top: -8px;
+    right: -6px;
+    background: #c8933b;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 12px;
+    letter-spacing: 0.4px;
+    line-height: 1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  }
+  .hdt-linked-pack-pill.is-selected .hdt-pill-badge {
+    background: #c8933b;
+  }
+</style>
 
-    {%- elsif linked_type == 'image' or linked_type == 'image_with_title'-%}
-
-      {%- for item in product_list -%}
-        {%- liquid
-        assign value = option_values[forloop.index0] | default: item.title
-        assign color_downcase = value | downcase
-        if product.id == item.id
-          assign value_selected = value
-          assign class_selected = ' is-selected'
-        else
-          assign class_selected = ''
-        endif
-        assign color_handle = value | handle
-        assign color_obj = colors[color_handle] | default: colors_2[color_handle]
-        assign color_style_inline = ''
-        assign image = images[color_obj.imageName]
-        if image != blank and item.featured_image == blank
-          assign color_image = image | image_url: width: 200
-          assign color_image_style = '--hdt-bg-image: url(' | append: color_image | append: ');'
-        else
-          assign color_image_style = nil
-          assign color_style_inline = color_obj.colorsCSS
-        endif
-        -%}
-        {%- if item.featured_image != blank -%}
-          {%- if linked_type == 'image' -%}
-            <a href="{{ item.url }}" class="hdt-product-form_value hdt-product-form_value_has-image is-type-color{% if color_white == color_downcase %} hdt-bg-color-white{% endif %}{{ class_selected }}">
-                <hdt-tooltip>
-                  {{ item.featured_image | image_url: width: 400 | image_tag: widths: '100, 200, 400', loading: 'lazy' }}
-                  <span class="hdt-form-color-name sr-only">{{- value -}}</span>
-                </hdt-tooltip>
-            </a>
-          {%- else -%}
-          <a href="{{ item.url }}" class="hdt-product-form_wrap-link hdt-text-center hdt-block {{ class_selected }}">
-             <hdt-tooltip>
-                <div  class="hdt-product-form_value hdt-is-border is-type-color{% if color_white == color_downcase %} hdt-bg-color-white{% endif %}">
-                  {{ item.featured_image | image_url: width: 400 | image_tag: widths: '100, 200, 400', loading: 'lazy' }}
-                </div>
-                <div class="">
-                  <div class="hdt-linked-product-title hdt-truncate hdt-truncate hdt-text-sm hdt-font-semibold hdt-s-text">{{- value -}}</div>
-                </div>
-               </hdt-tooltip>
-            </a>
-          
+<div class="hdt-variant-picker hdt-linked-product" {{ block.shopify_attributes }}>
+  <div class="hdt-product-form__input">
+    <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">
+      <span>{{ option_label }}: 
+        <span class="hdt-font-semibold" style="color: #1a332c;">
+          {%- if product.handle contains '550ml' -%}550ml Glass Jar
+          {%- elsif product.handle contains '1l' -%}1 Litre Glass Jar
+          {%- elsif product.handle contains '2l' -%}2 Litres (2 x 1L Jars)
+          {%- elsif product.handle contains '5l' -%}5 Litres Family Pack
+          {%- else -%}{{ product.title }}
           {%- endif -%}
-        {%- else -%}
-          {%- if linked_type == 'image' -%}
-            <a href="{{ item.url }}" class="hdt-product-form_value is-type-color{{ class_selected }}">
-              <hdt-tooltip>
-                {%- if settings.placeholder_img != blank -%}
-                  <span class="hdt-form-color-pattern hdt-has-placeholder-img {% if color_white == color_downcase %} hdt-bg-color-white{% endif %}">
-                    {{ settings.placeholder_img | image_url: width: 400 | image_tag: widths: '100, 200, 400', loading: 'lazy' }}
-                  </span>
-                {%- else -%}
-                  <span class="hdt-form-color-pattern {% if color_white == color_downcase %} hdt-bg-color-white{% endif %}" {%- if color_image_style or color_style_inline.size > 0 %} style="{{ color_image_style }}{{ color_style_inline }}"{% endif -%}></span> 
-                {%- endif -%}
-                <span class="hdt-form-color-name sr-only">{{- value -}}</span>
-                </hdt-tooltip>
-            </a>
-            {%- else -%}
-            <a href="{{ item.url }}" class="hdt-product-form_wrap-link hdt-text-center hdt-block {{ class_selected }}">
-              <hdt-tooltip>
-                {%- if settings.placeholder_img != blank -%}
-                  <span class="hdt-form-color-pattern hdt-has-placeholder-img {% if color_white == color_downcase %} hdt-bg-color-white{% endif %}">
-                    {{ settings.placeholder_img | image_url: width: 400 | image_tag: widths: '100, 200, 400', loading: 'lazy' }}
-                  </span>
-                {%- else -%}
-                  <span class="hdt-form-color-pattern {% if color_white == color_downcase %} hdt-bg-color-white{% endif %}" {%- if color_image_style or color_style_inline.size > 0 %} style="{{ color_image_style }}{{ color_style_inline }}"{% endif -%}></span> 
-                {%- endif -%}
-                <div class="">
-                  <div class="hdt-linked-product-title hdt-truncate hdt-truncate hdt-text-sm hdt-font-semibold hdt-s-text">{{- value -}}</div>
-                </div>
-              </hdt-tooltip>
-            </a>
-          {%- endif -%}
-        {%- endif -%}
-      {%- endfor -%}
+        </span>
+      </span>
+    </div>
 
-    {%- else -%}
-
-      {%- for item in product_list -%}
-        {%- liquid
-        assign value = option_values[forloop.index0] | default: item.title
-        assign color_downcase = value | downcase
-        if product.id == item.id
-          assign value_selected = value
-          assign class_selected = ' is-selected'
-        else
-          assign class_selected = ''
-        endif
-        -%}
-        <a href="{{ item.url }}" class="hdt-product-form_value is-type-block{{ class_selected }}">
-          <span class="hdt-form-color-name">{{- value -}}</span>
+    <div class="hdt-linked-pack-swatches">
+      {%- if product_list != blank and product_list.size > 0 -%}
+        {%- for item in product_list -%}
+          {%- liquid
+            assign is_cur = false
+            if product.id == item.id or product.handle == item.handle
+              assign is_cur = true
+            endif
+            assign val_name = option_values[forloop.index0] | default: item.title
+          -%}
+          <a href="{{ item.url }}" class="hdt-linked-pack-pill{% if is_cur %} is-selected{% endif %}">
+            <span class="hdt-pill-title">{{ val_name }}</span>
+            <span class="hdt-pill-sub">{{ item.price | money }}</span>
+          </a>
+        {%- endfor -%}
+      {%- elsif is_ghee -%}
+        <!-- 550ml -->
+        <a href="/products/a2-desi-pahadi-ghee-550ml" class="hdt-linked-pack-pill{% if product.handle contains '550ml' %} is-selected{% endif %}">
+          <span class="hdt-pill-title">550ml</span>
+          <span class="hdt-pill-sub">₹563</span>
         </a>
-      {%- endfor -%}
 
-    {%- endif -%}
-  {%- endcapture -%}
+        <!-- 1 Litre -->
+        <a href="/products/a2-desi-pahadi-ghee-1l" class="hdt-linked-pack-pill{% if product.handle contains '1l' or product.handle == 'a2-desi-pahadi-ghee' %} is-selected{% endif %}">
+          <span class="hdt-pill-badge">POPULAR</span>
+          <span class="hdt-pill-title">1 Litre</span>
+          <span class="hdt-pill-sub">₹1,126</span>
+        </a>
 
-  <div class="hdt-variant-picker hdt-linked-product hdt-color-mode__{{ linked_type }} hdt-color-size__{{ block.settings.linked_size }}" {{ block.shopify_attributes }}>
-    <div class="hdt-product-form__input is-style-color" type="{{ linked_type }}">
-      <div class="hdt-product-form__label hdt-s-text"><span>{{ block.settings.option_name }}: <span class="hdt-font-semibold">{{ value_selected }}</span></span></div>
-      <div class="hdt-product-form__values">{{ code_html }}</div>
+        <!-- 2 Litres -->
+        <a href="/products/a2-desi-pahadi-ghee-2l" class="hdt-linked-pack-pill{% if product.handle contains '2l' %} is-selected{% endif %}">
+          <span class="hdt-pill-badge">VALUE</span>
+          <span class="hdt-pill-title">2 Litres</span>
+          <span class="hdt-pill-sub">₹2,252</span>
+        </a>
+
+        <!-- 5 Litres -->
+        <a href="/products/a2-desi-pahadi-ghee-5l" class="hdt-linked-pack-pill{% if product.handle contains '5l' %} is-selected{% endif %}">
+          <span class="hdt-pill-badge" style="background:#b33b28;">SAVE 19%</span>
+          <span class="hdt-pill-title">5 Litres</span>
+          <span class="hdt-pill-sub">₹5,628</span>
+        </a>
+      {%- endif -%}
     </div>
   </div>
+</div>
+
 {% schema %}
 {
-  "name": "t:sections.main-product.blocks.linked_products.name",
+  "name": "Linked Products / Sizes",
   "class": "hdt-product__linked_products",
   "settings": [
     {
       "type": "text",
       "id": "option_name",
-      "label": "t:sections.main-product.blocks.linked_products.settings.option_name.label"
+      "label": "Option label",
+      "default": "Select Pack Size"
     },
     {
       "type": "text",
       "id": "option_values",
-      "label": "t:sections.main-product.blocks.linked_products.settings.option_values.label",
-      "info": "Option values should be separated by commas. For example: Red, Blue, Green"
+      "label": "Option values",
+      "info": "Option values separated by commas (e.g. 550ml, 1 Litre, 2 Litres, 5 Litres)"
     },
     {
       "type": "product_list",
       "id": "product_list",
-      "label": "t:sections.main-product.blocks.linked_products.settings.product_list.label"
+      "label": "Product list"
     },
     {
       "type": "select",
@@ -213,31 +199,15 @@
       "options": [
         {
           "value": "block",
-          "label": "t:sections.main-product.blocks.linked_products.settings.linked_type.options__1.label"
-        },
-        {
-          "value": "block_with_color",
-          "label": "t:sections.main-product.blocks.linked_products.settings.linked_type.options__2.label"
-        },
-        {
-          "value": "color",
-          "label": "t:sections.main-product.blocks.linked_products.settings.linked_type.options__3.label"
-        },
-        {
-          "value": "color_rounded",
-          "label": "t:sections.main-product.blocks.linked_products.settings.linked_type.options__4.label"
-        },
-        {
-          "value": "image",
-          "label": "t:sections.main-product.blocks.linked_products.settings.linked_type.options__5.label"
+          "label": "Block / Button Pills"
         },
         {
           "value": "image_with_title",
-          "label": "t:sections.main-product.blocks.linked_products.settings.linked_type.options__6.label"
+          "label": "Image with Title"
         }
       ],
-      "default": "image_with_title",
-      "label": "t:sections.main-product.blocks.linked_products.settings.linked_type.label"
+      "default": "block",
+      "label": "Display style"
     },
     {
       "type": "select",
@@ -245,25 +215,24 @@
       "options": [
         {
           "value": "small",
-          "label": "t:sections.main-product.blocks.variant_picker.settings.color_size.options__1.label"
+          "label": "Small"
         },
         {
           "value": "medium",
-          "label": "t:sections.main-product.blocks.variant_picker.settings.color_size.options__2.label"
+          "label": "Medium"
         },
         {
           "value": "large",
-          "label": "t:sections.main-product.blocks.variant_picker.settings.color_size.options__3.label"
+          "label": "Large"
         }
       ],
-      "label": "t:sections.main-product.blocks.variant_picker.settings.color_size.label",
-      "info": "t:sections.main-product.blocks.variant_picker.settings.color_size.info",
-      "default": "large"
+      "label": "Size",
+      "default": "medium"
     }
   ],
   "presets": [
     { 
-      "name": "t:sections.main-product.blocks.linked_products.name",
+      "name": "Linked Products / Sizes"
     }
   ]
 }

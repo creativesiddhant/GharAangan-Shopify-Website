@@ -63,6 +63,16 @@
               },
               "blocks": {}
             },
+            "product_linked_sizes": {
+              "type": "_product-linked",
+              "settings": {
+                "option_name": "Select Pack Size",
+                "option_values": "550ml Glass Jar, 1 Litre Glass Jar, 2 Litres (2x1L), 5 Litres Family Pack",
+                "linked_type": "block",
+                "linked_size": "medium"
+              },
+              "blocks": {}
+            },
             "product_variant_picker_RJxUVf": {
               "type": "_product-variant-picker",
               "settings": {
@@ -156,6 +166,7 @@
             "product_badges_3qxfaW",
             "product_price_VhBaXe",
             "product_countdown_kTqkaR",
+            "product_linked_sizes",
             "product_variant_picker_RJxUVf",
             "quantity_selector_6zJAfX",
             "product_buy_button_9gRLMx",

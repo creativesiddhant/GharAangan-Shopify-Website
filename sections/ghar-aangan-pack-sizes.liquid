@@ -1,0 +1,358 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-pt: {{ section.settings.padding_top }}px;
+    --section-pb: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+  .ga-packs-wrapper {
+    padding-top: var(--section-pt);
+    padding-bottom: var(--section-pb);
+  }
+  .ga-packs-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 40px;
+  }
+  .ga-packs-subtitle {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8c734b;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .ga-packs-title {
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 700;
+    color: #1a332c;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .ga-packs-desc {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .ga-packs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 1024px) {
+    .ga-packs-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+  @media (max-width: 640px) {
+    .ga-packs-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+  .ga-pack-card {
+    background: #ffffff;
+    border: 1.5px solid #e8e2d5;
+    border-radius: 16px;
+    padding: 28px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  }
+  .ga-pack-card:hover {
+    border-color: #1a332c;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(26, 51, 44, 0.1);
+  }
+  .ga-pack-card.is-featured {
+    border: 2px solid #1a332c;
+    background: #fdfbf7;
+    box-shadow: 0 8px 24px rgba(26, 51, 44, 0.08);
+  }
+  .ga-pack-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #c8933b;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .ga-pack-badge.badge-red {
+    background: #b33b28;
+  }
+  .ga-pack-badge.badge-green {
+    background: #1a332c;
+  }
+  .ga-pack-size-tag {
+    font-size: 13px;
+    font-weight: 600;
+    color: #8c734b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .ga-pack-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a332c;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .ga-pack-highlight {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 18px;
+    line-height: 1.4;
+    min-height: 38px;
+  }
+  .ga-pack-price-box {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed #e8e2d5;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .ga-pack-price {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a332c;
+  }
+  .ga-pack-compare {
+    font-size: 14px;
+    color: #888;
+    text-decoration: line-through;
+  }
+  .ga-pack-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    flex-grow: 1;
+  }
+  .ga-pack-features li {
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.3;
+  }
+  .ga-pack-features svg {
+    flex-shrink: 0;
+    color: #1a332c;
+  }
+  .ga-pack-btn {
+    display: block;
+    text-align: center;
+    background: #1a332c;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .ga-pack-btn:hover {
+    background: #284c42;
+    transform: translateY(-1px);
+  }
+  .ga-pack-btn-outline {
+    background: #ffffff;
+    color: #1a332c !important;
+    border: 1.5px solid #1a332c;
+  }
+  .ga-pack-btn-outline:hover {
+    background: #1a332c;
+    color: #ffffff !important;
+  }
+{%- endstyle -%}
+
+<div class="ga-packs-wrapper">
+  <div class="hdt-container">
+    <div class="ga-packs-header">
+      <span class="ga-packs-subtitle">{{ section.settings.subtitle }}</span>
+      <h2 class="ga-packs-title">{{ section.settings.title }}</h2>
+      <p class="ga-packs-desc">{{ section.settings.description }}</p>
+    </div>
+
+    <div class="ga-packs-grid">
+      <!-- 550ml Card -->
+      <div class="ga-pack-card">
+        <span class="ga-pack-size-tag">Trial / Starter</span>
+        <h3 class="ga-pack-name">550ml Glass Jar</h3>
+        <p class="ga-pack-highlight">Perfect for individuals, trial use, and fresh daily kitchen tadka.</p>
+        <div class="ga-pack-price-box">
+          <span class="ga-pack-price">₹563</span>
+          <span class="ga-pack-compare">₹699</span>
+        </div>
+        <ul class="ga-pack-features">
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Lead-Free Glass Jar
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Authentic Wood-Fired Bilona
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Danedar Granular Aroma
+          </li>
+        </ul>
+        <a href="/products/a2-desi-pahadi-ghee-550ml" class="ga-pack-btn ga-pack-btn-outline">View 550ml Pack</a>
+      </div>
+
+      <!-- 1 Litre Card -->
+      <div class="ga-pack-card is-featured">
+        <span class="ga-pack-badge">MOST POPULAR</span>
+        <span class="ga-pack-size-tag">Household Staple</span>
+        <h3 class="ga-pack-name">1 Litre Glass Jar</h3>
+        <p class="ga-pack-highlight">Our flagship best-seller for monthly family health and pure cooking.</p>
+        <div class="ga-pack-price-box">
+          <span class="ga-pack-price">₹1,126</span>
+          <span class="ga-pack-compare">₹1,399</span>
+        </div>
+        <ul class="ga-pack-features">
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            100% Himalayan Badri Cow Milk
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Optimal Monthly Ratio
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            A2 Gut-Friendly Nutrition
+          </li>
+        </ul>
+        <a href="/products/a2-desi-pahadi-ghee-1l" class="ga-pack-btn">Order 1 Litre Pack</a>
+      </div>
+
+      <!-- 2 Litres Card -->
+      <div class="ga-pack-card">
+        <span class="ga-pack-badge badge-green">VALUE COMBO</span>
+        <span class="ga-pack-size-tag">Twin Jar Pack</span>
+        <h3 class="ga-pack-name">2 Litres (2 x 1L)</h3>
+        <p class="ga-pack-highlight">Two factory-fresh 1L jars. Open one, keep the other factory sealed.</p>
+        <div class="ga-pack-price-box">
+          <span class="ga-pack-price">₹2,252</span>
+          <span class="ga-pack-compare">₹2,799</span>
+        </div>
+        <ul class="ga-pack-features">
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            2 x 1L Fresh Glass Jars
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Extra Bundle Savings
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Protected Multi-Layer Transit
+          </li>
+        </ul>
+        <a href="/products/a2-desi-pahadi-ghee-2l" class="ga-pack-btn ga-pack-btn-outline">View 2 Litres Combo</a>
+      </div>
+
+      <!-- 5 Litres Card -->
+      <div class="ga-pack-card">
+        <span class="ga-pack-badge badge-red">SAVE ₹1,371</span>
+        <span class="ga-pack-size-tag">Family Saver</span>
+        <h3 class="ga-pack-name">5 Litres Family Pack</h3>
+        <p class="ga-pack-highlight">Maximum value pack for joint families and serious Ayurvedic ghee lovers.</p>
+        <div class="ga-pack-price-box">
+          <span class="ga-pack-price">₹5,628</span>
+          <span class="ga-pack-compare">₹6,999</span>
+        </div>
+        <ul class="ga-pack-features">
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Lowest Cost-Per-Litre
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            Food-Grade Bulk Seal Pack
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+            12-18 Months Extended Shelf-Life
+          </li>
+        </ul>
+        <a href="/products/a2-desi-pahadi-ghee-5l" class="ga-pack-btn ga-pack-btn-outline">View 5 Litres Pack</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Ghar Aangan Pack Sizes",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "100% PURE BILONA A2 GHEE"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Select Your Ideal Pack Size"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Handcrafted over wood-fires from Himalayan Badri cows. Available in 4 convenient sizes for every kitchen need."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ghar Aangan Pack Sizes"
+    }
+  ]
+}
+{% endschema %}
