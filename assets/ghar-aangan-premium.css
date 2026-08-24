@@ -1855,9 +1855,7 @@ button[aria-label="Close"] svg {
 .hdt-back-to-top__btn:hover {
   background-color: var(--ga-gold-cream, #cda250) !important;
   color: var(--ga-forest-green, #1a332c) !important;
-}
-
-.ga-back-to-top:hover svg,
+}.ga-back-to-top:hover svg,
 .hdt-back-to-top:hover svg,
 .hdt-back-to-top__btn:hover svg {
   stroke: var(--ga-forest-green, #1a332c) !important;
@@ -1891,4 +1889,26 @@ button[aria-label="Close"] svg {
 .hdt-main-product-quick-view .hdt-product__description li,
 .hdt-quick-view-modal .hdt-product__description li {
   margin-bottom: 0.25rem !important;
+}
+
+/* ==========================================================================
+   FOOTER ADDRESS & COLUMN SPACING FIX
+   ========================================================================== */
+.hdt-footer .hdt-social-media {
+  padding-right: 28px !important;
+}
+
+.hdt-footer .hdt-social-media .hdt-raw-html {
+  line-height: 1.65 !important;
+}
+
+.hdt-footer .hdt-social-media .hdt-raw-html p {
+  margin-bottom: 0.75rem !important;
+  word-break: normal !important;
+}
+
+@media (min-width: 1025px) {
+  .hdt-footer .hdt-social-media {
+    padding-right: 36px !important;
+  }
 }
