@@ -178,7 +178,7 @@
         "lazy_mn_mb": true,
         "only_click_icon": false,
         "header_mobile_colors": "scheme-2",
-        "note_mobile": "<span class=\"hdt-inline-flex hdt-text-base hdt-font-medium\" style=\"color: rgb(var(--color-foreground));border-bottom: solid 1px rgb(var(--color-foreground));margin-bottom: 11px;\"><a href=\"/pages/contact\">Need help ?</a></span><span class=\"hdt-flex hdt-flex-col hdt-text-base hdt-font-normal\" style=\"line-height: 24px;\"><span>Address: Rajeev Nagar-1, Bindukhatta, Lalkuan,<br> Nainital, Uttarakhand – 262402</span><span>Email: <b>care@gharaangan.com</b></span><span>Phone: <b>+91 90272 48335</b></span></span>",
+        "note_mobile": "<span class=\"hdt-inline-flex hdt-text-base hdt-font-medium\" style=\"color: rgb(var(--color-foreground));border-bottom: solid 1px rgb(var(--color-foreground));margin-bottom: 11px;\"><a href=\"/pages/contact\">Need help ?</a></span><span class=\"hdt-flex hdt-flex-col hdt-text-base hdt-font-normal\" style=\"line-height: 24px;\"><span>Address: Rajeev Nagar-1, Bindukhatta, Lalkuan,<br> Nainital, Uttarakhand – 262402</span><span>Email: <b>gharaanganmani@gmail.com</b></span><span>Phone: <b>+91 90272 48335</b></span></span>",
         "header_transparent": true,
         "header_transparent_colors": "scheme-1",
         "sticky_type": "on_scroll_up",
