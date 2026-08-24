@@ -27,11 +27,35 @@
                       <span class="hdt-collapse-icon hdt-relative"></span>
                     </div>
                   {%- endif -%}
-                  {%- if block.settings.menu != blank -%}
+                  {%- if block.settings.menu != blank and linklists[block.settings.menu].links.size > 0 -%}
                     <ul class="hdt-collapse-content hdt-footer-menu-list">
-                      {%- for  link in block.settings.menu.links -%}
+                      {%- for  link in linklists[block.settings.menu].links -%}
                         <li> <a href="{{ link.url }}" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}"> {{ link.title }}</a></li>
                       {%- endfor -%}
+                    </ul>
+                  {%- else -%}
+                    {%- liquid
+                      assign heading_lower = block.settings.heading_menu | downcase
+                      assign menu_handle = block.settings.menu | downcase
+                    -%}
+                    <ul class="hdt-collapse-content hdt-footer-menu-list">
+                      {%- if heading_lower contains 'help' or heading_lower contains 'support' or menu_handle contains 'help' or menu_handle contains 'support' -%}
+                        <li><a href="/pages/contact" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">Contact Us</a></li>
+                        <li><a href="/pages/frequently-asked-questions" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">FAQs</a></li>
+                        <li><a href="/pages/shipping-delivery" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">Shipping & Delivery</a></li>
+                        <li><a href="/pages/refund-return-policies" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">Refund & Return Policy</a></li>
+                      {%- elsif heading_lower contains 'useful' or heading_lower contains 'links' or heading_lower contains 'about' or menu_handle contains 'useful' -%}
+                        <li><a href="/pages/our-story" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">Our Story & Heritage</a></li>
+                        <li><a href="/pages/the-bilona-method" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">The 5-Step Bilona Method</a></li>
+                        <li><a href="/pages/store-locations" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">Store Locations</a></li>
+                        <li><a href="/collections/all" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">Shop All Products</a></li>
+                        <li><a href="/pages/terms-and-conditions" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">Terms & Conditions</a></li>
+                      {%- else -%}
+                        <li><a href="/pages/contact" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">Contact Us</a></li>
+                        <li><a href="/pages/frequently-asked-questions" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">FAQs</a></li>
+                        <li><a href="/pages/shipping-delivery" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">Shipping & Delivery</a></li>
+                        <li><a href="/pages/refund-return-policies" class="hdt-footer-menu_item hdt-s-text2 {{ section.settings.text_size }}">Refund & Return Policy</a></li>
+                      {%- endif -%}
                     </ul>
                   {%- endif -%}
                 </div>

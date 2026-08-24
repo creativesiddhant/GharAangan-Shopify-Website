@@ -38,7 +38,7 @@
           "type": "menu",
           "settings": {
             "border-column": false,
-            "heading_menu": "Help",
+            "heading_menu": "Help & Support",
             "menu": "footer-menu-help",
             "padding_inner": "",
             "custom_w_dk": "25"
