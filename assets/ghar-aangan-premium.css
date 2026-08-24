@@ -1399,40 +1399,114 @@ button.hdt-btn {
   line-height: 1.6 !important;
   margin-bottom: 2.2rem !important;
 }
+/* Responsive spacing and layout for mobile hero slideshow - showcase full imagery with bottom card */
+@media screen and (max-width: 767px) {
+  /* Enforce spacious, immersive viewport height on mobile so imagery shines */
+  .hdt-slideshow .hdt-slider__viewport,
+  .hdt-slideshow .hdt-slider__slide,
+  .hdt-slideshow .hdt-slide_inner,
+  .hdt-slideshow .hdt-media-overlap-content {
+    min-height: 520px !important;
+    height: 75svh !important;
+    max-height: 600px !important;
+  }
 
-/* Responsive spacing for smaller screens */
-@media screen and (max-width: 749px) {
+  .hdt-slideshow .hdt-media-overlap-content > :is(img, video, iframe, svg, hdt-video-player),
+  .hdt-slideshow .hdt-media-overlap-content > :is(picture, .hdt-media-wrapper) :is(img, video, iframe, svg) {
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center 20% !important; /* Keep the Himalayan mountains, cows, and artisans visible */
+  }
+
+  /* Grid alignment on mobile - position content card gracefully at the bottom */
+  .hdt-slideshow_item .hdt-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    height: 100% !important;
+    padding-bottom: 2.8rem !important; /* Space for pagination dots below */
+    pointer-events: none !important;
+  }
+
+  /* Sleek, luxury frosted-glass bottom card on mobile - leaving 70%+ of image fully visible */
   .hdt-slideshow_item .hdt-content:has(h1, h2, h3, p, .hdt-btn, a) {
-    padding: 2rem 1.8rem !important; /* Compact padding for mobile visibility */
-    margin: 1rem !important;
-    max-width: calc(100% - 2rem) !important;
-    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.90) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 0 12px 32px rgba(26, 51, 44, 0.16) !important;
+    border-radius: 14px !important;
+    padding: 1.6rem 1.8rem !important;
+    margin: 0 1.2rem !important;
+    width: calc(100% - 2.4rem) !important;
+    max-width: 440px !important;
+    text-align: center !important;
+    pointer-events: auto !important;
+  }
+
+  .hdt-slideshow_item .hdt-content-inner {
+    text-align: center !important;
   }
   
   .hdt-slideshow_item .hdt-content h2,
   .hdt-slideshow_item .hdt-content .hdt-h2 {
-    font-size: 1.8rem !important; /* Extremely compact and readable */
-    margin-bottom: 0.6rem !important;
-    line-height: 1.25 !important;
+    font-size: 1.75rem !important;
+    font-weight: 700 !important;
+    line-height: 1.22 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+    color: var(--ga-forest-green) !important;
+    text-align: center !important;
   }
   
   .hdt-slideshow_item .hdt-content p,
   .hdt-slideshow_item .hdt-content .hdt-text {
     font-size: 1.2rem !important;
-    margin-bottom: 1.2rem !important;
-    line-height: 1.45 !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1.1rem !important;
+    color: #38483e !important;
+    text-align: center !important;
   }
   
-  /* Collapse spacers inside the card on mobile to save precious vertical space */
+  /* Hide big empty spacers on mobile inside the card to keep it tight & compact */
   .hdt-slideshow_item .hdt-content .hdt-spacer-block {
-    --space: 6px !important;
-    --space-md: 10px !important;
+    display: none !important;
   }
   
-  /* Make button slightly more compact on mobile slider */
+  /* Make button clean, tactile, and centered */
   .hdt-slideshow_item .hdt-content .hdt-btn {
-    padding: 1.1rem 2.2rem !important;
-    font-size: 1.15rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.95rem 2.4rem !important;
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    margin: 0 auto !important;
+    box-shadow: 0 4px 14px rgba(26, 51, 44, 0.2) !important;
+  }
+
+  /* Navigation dots positioning on mobile */
+  .hdt-slideshow .hdt-slider__dots {
+    bottom: 8px !important;
+    z-index: 10 !important;
+  }
+
+  /* Slide arrows on mobile - placed in the upper image area without blocking text */
+  .hdt-slideshow .hdt-slider__button {
+    width: 34px !important;
+    height: 34px !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    color: #1a332c !important;
+    border-radius: 50% !important;
+    backdrop-filter: blur(8px) !important;
+    margin: 0 8px !important;
+    top: 35% !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
   }
 }
 
