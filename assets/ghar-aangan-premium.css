@@ -1863,5 +1863,32 @@ button[aria-label="Close"] svg {
   stroke: var(--ga-forest-green, #1a332c) !important;
 }
 
+/* ==========================================================================
+   QUICK VIEW PRODUCT DESCRIPTION STYLING
+   ========================================================================== */
+.hdt-main-product-quick-view .hdt-product__description,
+.hdt-quick-view-modal .hdt-product__description {
+  margin: 10px 0 16px 0 !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.65 !important;
+  color: #4a5568 !important;
+}
 
+.hdt-main-product-quick-view .hdt-product__description p,
+.hdt-quick-view-modal .hdt-product__description p {
+  margin-bottom: 0.75rem !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
 
+.hdt-main-product-quick-view .hdt-product__description ul,
+.hdt-quick-view-modal .hdt-product__description ul {
+  padding-left: 1.25rem !important;
+  margin: 0.5rem 0 0.75rem 0 !important;
+}
+
+.hdt-main-product-quick-view .hdt-product__description li,
+.hdt-quick-view-modal .hdt-product__description li {
+  margin-bottom: 0.25rem !important;
+}

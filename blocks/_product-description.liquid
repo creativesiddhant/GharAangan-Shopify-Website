@@ -2,8 +2,8 @@
   unless product 
     assign product = section.settings.product
   endunless
-  assign description_excerpt = product.metafields.theme.description_excerpt | default: block.settings.short_des | default: product.description
-  if description_excerpt == blank
+  assign description_excerpt = product.metafields.theme.description_excerpt | default: product.metafields.custom.short_description | default: product.description | default: block.settings.short_des
+  if description_excerpt == blank and product.description == blank
     continue 
   endif 
 -%}
