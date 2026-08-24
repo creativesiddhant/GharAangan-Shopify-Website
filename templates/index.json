@@ -17,6 +17,7 @@
           "name": "t:sections.slideshow.blocks.slide.name",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-08-04_at_9.56.07_PM.jpg",
+            "image_mb": "shopify://shop_images/hero_for_mobile.png",
             "url": "",
             "banner_target": false,
             "color_scheme": "",
@@ -245,6 +246,7 @@
           "name": "t:sections.slideshow.blocks.slide.name",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-08-25_at_12.41.59_AM.jpg",
+            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-08-25_at_1.32.49_AM.jpg",
             "url": "",
             "banner_target": false,
             "color_scheme": "",
