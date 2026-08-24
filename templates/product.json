@@ -142,9 +142,9 @@
               "type": "_delivery_return",
               "settings": {
                 "icon_delivery": "ship",
-                "content_devivery": "<p>Estimate delivery times: <strong>3-5 business days</strong> across India. Dispatch within <strong>24-48 hours</strong>.</p>",
+                "content_devivery": "<p>Estimated delivery: <strong>3-7 days</strong> across India. Dispatch initiated within <strong>24 hours</strong>.</p>",
                 "icon_return": "return_order",
-                "content_return": "<p>Perishable food items: returns accepted within 7 days only for <strong>transit damage</strong> or defect.</p>"
+                "content_return": "<p>Pure food items: <strong>100% replacement</strong> for transit damage with unboxing photo/video.</p>"
               },
               "blocks": {}
             },

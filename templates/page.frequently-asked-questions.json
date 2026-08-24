@@ -90,7 +90,7 @@
           "type": "accordion_item",
           "settings": {
             "title": "How long does delivery take?",
-            "content": "We dispatch all orders within 24-48 hours. Delivery usually takes 3 to 5 business days across India, depending on your location. You will receive a tracking link via email and WhatsApp as soon as your package is shipped.",
+            "content": "We initiate the shipment/pickup process within 24 hours of an order. For normal domestic shipments, delivery is generally expected within 3–7 days after courier pickup. Faster delivery via Shiprocket Quick may be offered for selected metro and Delhi/NCR prepaid orders.",
             "content_richtext": ""
           }
         },
@@ -98,15 +98,15 @@
           "type": "accordion_item",
           "settings": {
             "title": "What packaging do you use for shipping?",
-            "content": "We care about product integrity and the environment. Our ghee is packaged in premium glass jars and shipped in high-density, shock-absorbent eco-friendly boxes to ensure it arrives at your doorstep in perfect condition.",
+            "content": "Our 550 ml, 1 litre, and 2 litre ghee products are packed in premium glass jars. Our 5 litre ghee product is packed in a traditional steel Dolchi. We use custom shock-absorbent protective packaging to safeguard delicate glass during transit.",
             "content_richtext": ""
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-7": {
           "type": "accordion_item",
           "settings": {
-            "title": "Do you offer free shipping?",
-            "content": "Yes! We offer free shipping on all orders over ₹499 across India. For orders below this amount, a standard shipping fee of ₹49 is applied at checkout.",
+            "title": "What are your shipping charges?",
+            "content": "Under normal circumstances, domestic shipping is approximately ₹100 per delivery. Actual charges vary by PIN code, package size, and active promotions. We may offer free shipping on selected products or minimum order values.",
             "content_richtext": ""
           }
         },
@@ -114,7 +114,23 @@
           "type": "accordion_item",
           "settings": {
             "title": "Do you ship internationally?",
-            "content": "Currently, we ship only within India. However, we are working on expanding our logistics to bring the essence of Himalayan purity to customers globally soon. Stay tuned!",
+            "content": "When international shipping is enabled, indicative delivery time is around 15–18 days, with indicative shipping charges around ₹800–₹1,000 per delivery, subject to destination, courier, and applicable customs duties.",
+            "content_richtext": ""
+          }
+        },
+        "faq-transit-damage": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "What if my glass jar arrives damaged in transit?",
+            "content": "If a glass jar arrives cracked or damaged, do not consume it. Contact us immediately with clear photographs/video of the outer package, shipping label, and damaged product. We will investigate with the courier and arrange a prompt replacement or refund.",
+            "content_richtext": ""
+          }
+        },
+        "faq-cod-status": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Is Cash on Delivery (COD) available?",
+            "content": "COD is currently disabled on Ghar Aangan's website. All orders are processed via secure online payment gateways (UPI, Cards, Netbanking).",
             "content_richtext": ""
           }
         },
@@ -217,6 +233,8 @@
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-6",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-7",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-8",
+        "faq-transit-damage",
+        "faq-cod-status",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-title-3",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-9",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-a",
