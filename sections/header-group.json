@@ -55,6 +55,12 @@
           "settings": {
             "text": "🎉 FREE Delivery on 5L Ghee | Rakhi Offer Ends 29 August"
           }
+        },
+        "announcement_loon_discount": {
+          "type": "announcement",
+          "settings": {
+            "text": "🧂 ₹50 OFF on Pahadi Pisyu Loon (Orders Up to ₹300) | Use Code: LOON50"
+          }
         }
       },
       "block_order": [
@@ -64,7 +70,8 @@
         "announcement_FfhBUT",
         "announcement_iRNKLc",
         "announcement_pThrWh",
-        "announcement_6Ryfej"
+        "announcement_6Ryfej",
+        "announcement_loon_discount"
       ],
       "settings": {
         "design": "marquee",

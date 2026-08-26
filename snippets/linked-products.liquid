@@ -15,8 +15,14 @@
     assign is_ghee = true
   endif
 
+  # Automatic support for Pahadi Pisyu Loon products
+  assign is_loon = false
+  if product.handle contains 'pahadi-pisyu-loon' or product.handle contains 'salts' or product.handle contains 'loon' or product.handle contains 'pisyu'
+    assign is_loon = true
+  endif
+
   if product_list == blank or product_list.size == 0
-    unless is_ghee
+    unless is_ghee or is_loon
       break
     endunless
   endif
@@ -155,38 +161,153 @@
     cursor: pointer;
     user-select: all;
   }
+
+  /* Pahadi Pisyu Loon Special Discount Box */
+  .ga-loon-offer-container {
+    margin-top: 10px;
+    margin-bottom: 18px;
+  }
+  .ga-loon-offer-card {
+    background: linear-gradient(135deg, #fffcf7 0%, #fdf5ea 100%);
+    border: 1.5px dashed #c8933b;
+    border-radius: 12px;
+    padding: 14px 16px;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(200, 147, 59, 0.08);
+    transition: all 0.25s ease;
+  }
+  .ga-loon-offer-card:hover {
+    border-color: #8c2415;
+    box-shadow: 0 6px 18px rgba(140, 36, 21, 0.12);
+  }
+  .ga-loon-top-badge {
+    position: absolute;
+    top: -11px;
+    left: 14px;
+    background: #b33b28;
+    color: #ffffff;
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(179, 59, 40, 0.35);
+  }
+  .ga-loon-headline-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 2px;
+    margin-bottom: 6px;
+  }
+  .ga-loon-headline-left {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .ga-loon-headline-left .ga-icon {
+    font-size: 16px;
+  }
+  .ga-loon-main-title {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #1a332c;
+    line-height: 1.25;
+  }
+  .ga-loon-highlight-tag {
+    background: #2d5c4e;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+  }
+  .ga-loon-desc {
+    font-size: 12.5px;
+    color: #554838;
+    margin: 0 0 10px 0;
+    line-height: 1.45;
+  }
+  .ga-loon-coupon-action {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #ffffff;
+    border: 1px solid #ebd8c8;
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+  .ga-loon-coupon-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333333;
+  }
+  .ga-loon-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fdf2e9;
+    border: 1.5px solid #b33b28;
+    color: #b33b28;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+  .ga-loon-copy-btn:hover {
+    background: #b33b28;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(179, 59, 40, 0.25);
+  }
+  .ga-loon-copy-btn.ga-copied {
+    background: #2d5c4e !important;
+    border-color: #2d5c4e !important;
+    color: #ffffff !important;
+  }
+  .ga-loon-sub-points {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ga-loon-sub-points li {
+    font-size: 12px;
+    color: #4a3e30;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
 </style>
 
 <div class="hdt-variant-picker hdt-linked-product" {{ block.shopify_attributes }}>
   <div class="hdt-product-form__input">
-    <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">
-      <span>{{ option_label }}: 
-        <span class="hdt-font-semibold" style="color: #1a332c;">
-          {%- if product.handle contains '550ml' -%}550ml Glass Jar
-          {%- elsif product.handle contains '1l' -%}1 Litre Glass Jar (₹50 OFF in Cart)
-          {%- elsif product.handle contains '2l' -%}2 Litres (2 x 1L Jars - 5% OFF Code)
-          {%- elsif product.handle contains '5l' -%}5 Litres Family Pack (Free Shipping)
-          {%- else -%}{{ product.title }}
-          {%- endif -%}
+    {%- if is_ghee -%}
+      <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">
+        <span>{{ option_label }}: 
+          <span class="hdt-font-semibold" style="color: #1a332c;">
+            {%- if product.handle contains '550ml' -%}550ml Glass Jar
+            {%- elsif product.handle contains '1l' -%}1 Litre Glass Jar (₹50 OFF in Cart)
+            {%- elsif product.handle contains '2l' -%}2 Litres (2 x 1L Jars - 5% OFF Code)
+            {%- elsif product.handle contains '5l' -%}5 Litres Family Pack (Free Shipping)
+            {%- else -%}{{ product.title }}
+            {%- endif -%}
+          </span>
         </span>
-      </span>
-    </div>
+      </div>
 
-    <div class="hdt-linked-pack-swatches">
-      {%- if product_list != blank and product_list.size > 0 -%}
-        {%- for item in product_list -%}
-          {%- liquid
-            assign is_cur = false
-            if product.id == item.id or product.handle == item.handle
-              assign is_cur = true
-            endif
-          -%}
-          <a href="{{ item.url }}" class="hdt-linked-pack-pill{% if is_cur %} is-selected{% endif %}">
-            <span class="hdt-pill-title">{{ item.title }}</span>
-            <span class="hdt-pill-sub">{{ item.price | money }}</span>
-          </a>
-        {%- endfor -%}
-      {%- elsif is_ghee -%}
+      <div class="hdt-linked-pack-swatches">
         <!-- 550ml -->
         <a href="/products/a2-desi-pahadi-ghee-550ml" class="hdt-linked-pack-pill{% if product.handle contains '550ml' %} is-selected{% endif %}">
           <span class="hdt-pill-title">550ml</span>
@@ -213,29 +334,125 @@
           <span class="hdt-pill-title">5 Litres</span>
           <span class="hdt-pill-sub">₹7,995</span>
         </a>
-      {%- endif -%}
-    </div>
-
-    <!-- Festive Rakhi Offer Highlights Card -->
-    <div class="ga-rakhi-box">
-      <div class="ga-rakhi-header">
-        <span>🪢</span> Special Rakhi Celebration Offers
       </div>
-      <ul class="ga-rakhi-offers-list">
-        <li class="ga-rakhi-offer-row">
-          <span>🎁</span>
-          <span><strong>1 Litre:</strong> Flat <strong>₹50 Instant OFF</strong> applied in cart</span>
-        </li>
-        <li class="ga-rakhi-offer-row">
-          <span>🎁</span>
-          <span><strong>2 Litres:</strong> Extra <strong>5% OFF</strong> with coupon <code class="ga-rakhi-code" onclick="navigator.clipboard.writeText('RAKHIWITHGA'); alert('Coupon RAKHIWITHGA copied!');" title="Click to copy">RAKHIWITHGA</code></span>
-        </li>
-        <li class="ga-rakhi-offer-row">
-          <span>🚚</span>
-          <span><strong>5 Litres:</strong> <strong>Free Express Shipping</strong> across India included</span>
-        </li>
-      </ul>
-    </div>
 
+      <!-- Festive Rakhi Offer Highlights Card -->
+      <div class="ga-rakhi-box">
+        <div class="ga-rakhi-header">
+          <span>🪢</span> Special Rakhi Celebration Offers
+        </div>
+        <ul class="ga-rakhi-offers-list">
+          <li class="ga-rakhi-offer-row">
+            <span>🎁</span>
+            <span><strong>1 Litre:</strong> Flat <strong>₹50 Instant OFF</strong> applied in cart</span>
+          </li>
+          <li class="ga-rakhi-offer-row">
+            <span>🎁</span>
+            <span><strong>2 Litres:</strong> Extra <strong>5% OFF</strong> with coupon <code class="ga-rakhi-code" onclick="navigator.clipboard.writeText('RAKHIWITHGA'); alert('Coupon RAKHIWITHGA copied!');" title="Click to copy">RAKHIWITHGA</code></span>
+          </li>
+          <li class="ga-rakhi-offer-row">
+            <span>🚚</span>
+            <span><strong>5 Litres:</strong> <strong>Free Express Shipping</strong> across India included</span>
+          </li>
+        </ul>
+      </div>
+
+    {%- elsif is_loon -%}
+      <!-- Pahadi Pisyu Loon Special Discount Code Offer Box -->
+      <div class="ga-loon-offer-container">
+        <div class="ga-loon-offer-card">
+          <span class="ga-loon-top-badge">SPECIAL DISCOUNT OFFER</span>
+          
+          <div class="ga-loon-headline-row">
+            <div class="ga-loon-headline-left">
+              <span class="ga-icon">🧂</span>
+              <span class="ga-loon-main-title">₹50 OFF on Pahadi Pisyu Loon</span>
+            </div>
+            <span class="ga-loon-highlight-tag">Orders Up to ₹300</span>
+          </div>
+
+          <p class="ga-loon-desc">
+            Enjoy authentic Himalayan stone-crushed heritage salts with native herbs & Bhaang seeds. Get <strong>₹50 Instant Discount</strong> on your order!
+          </p>
+
+          <div class="ga-loon-coupon-action">
+            <span class="ga-loon-coupon-label">Discount Coupon Code:</span>
+            <button type="button" class="ga-loon-copy-btn" id="ga-loon-btn-{{ block.id }}" onclick="gaCopyLoonCoupon('LOON50', this)" title="Click to copy discount code LOON50">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span class="ga-code-text">LOON50</span>
+              <span class="ga-copy-hint" style="font-size: 10px; opacity: 0.85; font-weight: 600; margin-left: 2px;">(TAP TO COPY)</span>
+            </button>
+          </div>
+
+          <ul class="ga-loon-sub-points">
+            <li><span>✓</span> <strong>How to Redeem:</strong> Copy code <strong>LOON50</strong> & enter at checkout.</li>
+            <li><span>✓</span> <strong>Handcrafted:</strong> Traditional stone (Sil-Batta) ground with pure Himalayan rock salt.</li>
+            <li><span>✓</span> <strong>Fast Dispatch:</strong> Dispatched within 24 hours across India.</li>
+          </ul>
+        </div>
+      </div>
+
+      <script>
+        function gaCopyLoonCoupon(code, btn) {
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(code).then(function() {
+              gaSetCopiedState(btn, code);
+            }).catch(function() {
+              gaFallbackCopy(code, btn);
+            });
+          } else {
+            gaFallbackCopy(code, btn);
+          }
+        }
+        function gaFallbackCopy(code, btn) {
+          var ta = document.createElement("textarea");
+          ta.value = code;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          try {
+            document.execCommand('copy');
+            gaSetCopiedState(btn, code);
+          } catch(e) {
+            alert("Discount Code: " + code + " (Copied to clipboard!)");
+          }
+          document.body.removeChild(ta);
+        }
+        function gaSetCopiedState(btn, code) {
+          var originalHTML = btn.innerHTML;
+          btn.classList.add('ga-copied');
+          btn.innerHTML = '<span>✓ COPIED CODE: ' + code + '</span>';
+          setTimeout(function() {
+            btn.classList.remove('ga-copied');
+            btn.innerHTML = originalHTML;
+          }, 2400);
+        }
+      </script>
+
+    {%- elsif product_list != blank and product_list.size > 0 -%}
+      <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">
+        <span>{{ option_label }}: 
+          <span class="hdt-font-semibold" style="color: #1a332c;">{{ product.title }}</span>
+        </span>
+      </div>
+
+      <div class="hdt-linked-pack-swatches">
+        {%- for item in product_list -%}
+          {%- liquid
+            assign is_cur = false
+            if product.id == item.id or product.handle == item.handle
+              assign is_cur = true
+            endif
+            assign val_name = option_values[forloop.index0] | default: item.title
+          -%}
+          <a href="{{ item.url }}" class="hdt-linked-pack-pill{% if is_cur %} is-selected{% endif %}">
+            <span class="hdt-pill-title">{{ val_name }}</span>
+            <span class="hdt-pill-sub">{{ item.price | money }}</span>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
   </div>
 </div>
