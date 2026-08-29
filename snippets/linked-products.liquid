@@ -110,57 +110,7 @@
     color: #ffffff;
   }
 
-  /* Festive Rakhi Callout Box */
-  .ga-rakhi-box {
-    background: #fcf9f5;
-    border: 1px solid #ebd8c8;
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-top: 6px;
-    margin-bottom: 16px;
-  }
-  .ga-rakhi-header {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12.5px;
-    font-weight: 700;
-    color: #8c2415;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 8px;
-  }
-  .ga-rakhi-offers-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .ga-rakhi-offer-row {
-    font-size: 12.5px;
-    color: #333;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    line-height: 1.35;
-  }
-  .ga-rakhi-offer-row strong {
-    color: #1a332c;
-  }
-  .ga-rakhi-code {
-    background: #ffffff;
-    border: 1px solid #b33b28;
-    color: #b33b28;
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    user-select: all;
-  }
+
 
   /* Pahadi Pisyu Loon Direct Discount Box */
   .ga-loon-offer-container {
@@ -320,26 +270,7 @@
         </a>
       </div>
 
-      <!-- Festive Rakhi Offer Highlights Card -->
-      <div class="ga-rakhi-box">
-        <div class="ga-rakhi-header">
-          <span>🪢</span> Special Rakhi Celebration Offers
-        </div>
-        <ul class="ga-rakhi-offers-list">
-          <li class="ga-rakhi-offer-row">
-            <span>🎁</span>
-            <span><strong>1 Litre:</strong> Flat <strong>₹50 Instant OFF</strong> applied in cart</span>
-          </li>
-          <li class="ga-rakhi-offer-row">
-            <span>🎁</span>
-            <span><strong>2 Litres:</strong> Extra <strong>5% OFF</strong> with coupon <code class="ga-rakhi-code" onclick="navigator.clipboard.writeText('RAKHIWITHGA'); alert('Coupon RAKHIWITHGA copied!');" title="Click to copy">RAKHIWITHGA</code></span>
-          </li>
-          <li class="ga-rakhi-offer-row">
-            <span>🚚</span>
-            <span><strong>5 Litres:</strong> <strong>Free Express Shipping</strong> across India included</span>
-          </li>
-        </ul>
-      </div>
+
 
     {%- elsif is_loon -%}
       <!-- Pahadi Pisyu Loon Direct Automatic Discount Offer Box -->
