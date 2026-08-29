@@ -22,12 +22,6 @@
           "type": "tax",
           "settings": {}
         },
-        "agree_Rhrhcq": {
-          "type": "agree",
-          "settings": {
-            "content": "I agree with the<a href=\"/pages/terms-and-conditions\" title=\"Terms & Conditions\"><strong> terms and conditions</strong></a>"
-          }
-        },
         "btn_cart_checkout_fVQqmY": {
           "type": "btn_cart_checkout",
           "settings": {
@@ -45,7 +39,6 @@
       "block_order": [
         "subtotal_8UtWWn",
         "tax_mEDMCP",
-        "agree_Rhrhcq",
         "btn_cart_checkout_fVQqmY"
       ],
       "settings": {

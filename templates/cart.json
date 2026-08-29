@@ -72,12 +72,6 @@
           "type": "tax",
           "settings": {}
         },
-        "agree_rbJhgw": {
-          "type": "agree",
-          "settings": {
-            "content": "I agree with the <a href=\"/policies/terms-of-service\" title=\"Terms of Service\"><strong>terms and conditions</strong></a>"
-          }
-        },
         "btn_checkout_r6dKHQ": {
           "type": "btn_checkout",
           "settings": {
@@ -108,7 +102,6 @@
         "gift_EcKUVX",
         "subtotal_x7wRXy",
         "tax_k3XQn8",
-        "agree_rbJhgw",
         "btn_checkout_r6dKHQ",
         "img_trust_rieJGw"
       ],
