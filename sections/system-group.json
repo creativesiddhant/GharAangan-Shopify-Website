@@ -109,13 +109,7 @@
     },
     "back_top_nzhYNt": {
       "type": "back_top",
-      "settings": {
-        "enable_hidden_mobile": false,
-        "backtop_des": "1",
-        "enable_progress_bar": true,
-        "border_cl": "#f5f5f5",
-        "border_cl_active": "#000000"
-      }
+      "settings": {}
     }
   },
   "order": [

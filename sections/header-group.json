@@ -38,22 +38,10 @@
             "text": "🚫 No Preservatives"
           }
         },
-        "announcement_pThrWh": {
+        "announcement_aKArJr": {
           "type": "announcement",
           "settings": {
-            "text": "🔥 ₹50 OFF on 1L Ghee | Automatically Applied at Cart"
-          }
-        },
-        "announcement_6Ryfej": {
-          "type": "announcement",
-          "settings": {
-            "text": "🎉 FREE Express Delivery on 5L Ghee Across India"
-          }
-        },
-        "announcement_loon_discount": {
-          "type": "announcement",
-          "settings": {
-            "text": "🧂 ₹50 OFF on Salt Orders Up to ₹300 | Direct Discount Applied at Cart"
+            "text": "🧂 ₹50 OFF on Salt Orders Up to ₹300"
           }
         }
       },
@@ -62,9 +50,7 @@
         "block-2",
         "block-3",
         "announcement_FfhBUT",
-        "announcement_pThrWh",
-        "announcement_6Ryfej",
-        "announcement_loon_discount"
+        "announcement_aKArJr"
       ],
       "settings": {
         "design": "marquee",
