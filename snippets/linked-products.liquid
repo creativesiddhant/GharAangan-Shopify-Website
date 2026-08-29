@@ -232,9 +232,9 @@
         <span>{{ option_label }}: 
           <span class="hdt-font-semibold" style="color: #1a332c;">
             {%- if product.handle contains '550ml' -%}550ml Glass Jar
-            {%- elsif product.handle contains '1l' -%}1 Litre Glass Jar (₹50 OFF in Cart)
-            {%- elsif product.handle contains '2l' -%}2 Litres (2 x 1L Jars - 5% OFF Code)
-            {%- elsif product.handle contains '5l' -%}5 Litres Family Pack (Free Shipping)
+            {%- elsif product.handle contains '1l' -%}1 Litre Glass Jar
+            {%- elsif product.handle contains '2l' -%}2 Litres (2 x 1L Jars)
+            {%- elsif product.handle contains '5l' -%}5 Litres Family Pack
             {%- else -%}{{ product.title }}
             {%- endif -%}
           </span>
@@ -250,21 +250,18 @@
 
         <!-- 1 Litre -->
         <a href="/products/a2-desi-pahadi-ghee-1l" class="hdt-linked-pack-pill{% if product.handle contains '1l' or product.handle == 'a2-desi-pahadi-ghee' %} is-selected{% endif %}">
-          <span class="hdt-pill-badge">₹50 OFF</span>
           <span class="hdt-pill-title">1 Litre</span>
           <span class="hdt-pill-sub">₹1,599</span>
         </a>
 
         <!-- 2 Litres -->
         <a href="/products/a2-desi-pahadi-ghee-2l" class="hdt-linked-pack-pill{% if product.handle contains '2l' %} is-selected{% endif %}">
-          <span class="hdt-pill-badge badge-gold">5% OFF</span>
           <span class="hdt-pill-title">2 Litres</span>
           <span class="hdt-pill-sub">₹3,198</span>
         </a>
 
         <!-- 5 Litres -->
         <a href="/products/a2-desi-pahadi-ghee-5l" class="hdt-linked-pack-pill{% if product.handle contains '5l' %} is-selected{% endif %}">
-          <span class="hdt-pill-badge badge-green">FREE SHIP</span>
           <span class="hdt-pill-title">5 Litres</span>
           <span class="hdt-pill-sub">₹7,995</span>
         </a>
