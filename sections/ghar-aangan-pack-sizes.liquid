@@ -250,7 +250,7 @@
         <div class="ga-pack-price-box">
           <div class="ga-pack-price-row">
             <span class="ga-pack-price">{% if pr_550.price %}{{ pr_550.price | money }}{% else %}₹799{% endif %}</span>
-            <span class="ga-pack-compare">₹999</span>
+            <span class="ga-pack-compare">{% if pr_550.compare_at_price %}{{ pr_550.compare_at_price | money }}{% else %}₹1,150{% endif %}</span>
           </div>
           <span class="ga-pack-free-ship-badge">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
@@ -293,7 +293,7 @@
         <div class="ga-pack-price-box">
           <div class="ga-pack-price-row">
             <span class="ga-pack-price">{% if pr_1l.price %}{{ pr_1l.price | money }}{% else %}₹1,599{% endif %}</span>
-            <span class="ga-pack-compare">₹1,999</span>
+            <span class="ga-pack-compare">{% if pr_1l.compare_at_price %}{{ pr_1l.compare_at_price | money }}{% else %}₹2,300{% endif %}</span>
           </div>
           <span class="ga-pack-free-ship-badge">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
@@ -335,7 +335,7 @@
         <div class="ga-pack-price-box">
           <div class="ga-pack-price-row">
             <span class="ga-pack-price">{% if pr_2l.price %}{{ pr_2l.price | money }}{% else %}₹3,198{% endif %}</span>
-            <span class="ga-pack-compare">₹3,999</span>
+            <span class="ga-pack-compare">{% if pr_2l.compare_at_price %}{{ pr_2l.compare_at_price | money }}{% else %}₹4,600{% endif %}</span>
           </div>
           <span class="ga-pack-free-ship-badge">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
@@ -377,7 +377,7 @@
         <div class="ga-pack-price-box">
           <div class="ga-pack-price-row">
             <span class="ga-pack-price">{% if pr_5l.price %}{{ pr_5l.price | money }}{% else %}₹7,995{% endif %}</span>
-            <span class="ga-pack-compare">₹9,999</span>
+            <span class="ga-pack-compare">{% if pr_5l.compare_at_price %}{{ pr_5l.compare_at_price | money }}{% else %}₹11,500{% endif %}</span>
           </div>
           <span class="ga-pack-free-ship-badge">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
