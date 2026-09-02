@@ -105,6 +105,25 @@
     {%- endif -%}
   </div>
   {%- if show_badges %}{% render 'badges', product: product, use_variant: use_variant %}{% endif -%}
+  {%- liquid
+    assign is_free_shipping_product = false
+    if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.tags contains 'free-shipping' or product.tags contains 'Janmashtami'
+      assign is_free_shipping_product = true
+    endif
+  -%}
+  {%- if is_free_shipping_product -%}
+    <div class="ga-card-free-shipping-wrap">
+      <span class="ga-card-free-shipping-pill">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="3" width="15" height="13"></rect>
+          <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+          <circle cx="5.5" cy="18.5" r="2.5"></circle>
+          <circle cx="18.5" cy="18.5" r="2.5"></circle>
+        </svg>
+        FREE Delivery
+      </span>
+    </div>
+  {%- endif -%}
 </div>
 {%- if show_volume_note and product.quantity_price_breaks_configured? -%}
   <div class="hdt-volume-pricing-note">{{ 'products.product.volume_pricing.note' | t }}</div>

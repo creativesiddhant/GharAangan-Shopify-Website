@@ -21,6 +21,40 @@
 -%}
 <div {{ effect }} class="hdt-product-info__item hdt-product__price" data-type="{{ block.type }}" {{ block.shopify_attributes }}>
   {%- render 'price', product: product, use_variant: true, form_id: product_form_id, show_badges: true, only_show_sale: true, show_volume_note: false, un_no_pick: un_no_pick -%}
+  
+  {%- liquid
+    assign is_ghee_product = false
+    if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.tags contains 'free-shipping' or product.tags contains 'Janmashtami'
+      assign is_ghee_product = true
+    endif
+  -%}
+  {%- if is_ghee_product -%}
+    <div class="ga-janmashtami-banner">
+      <div class="ga-janmashtami-banner__inner">
+        <div class="ga-janmashtami-banner__badge">
+          <span class="ga-janmashtami-banner__diya">🪔</span>
+          <span class="ga-janmashtami-banner__tag">JANMASHTAMI MAHOTSAV OFFER</span>
+        </div>
+        <div class="ga-janmashtami-banner__headline">
+          <strong>FREE Express Shipping</strong> Pan-India on Pure Himalayan A2 Ghee
+        </div>
+        <div class="ga-janmashtami-banner__perks">
+          <span class="ga-janmashtami-perk-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Zero Delivery Fee
+          </span>
+          <span class="ga-janmashtami-perk-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Auto Applied at Checkout
+          </span>
+          <span class="ga-janmashtami-perk-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Pure Badri Cow Bilona
+          </span>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
 </div>
 {% schema %}
 {

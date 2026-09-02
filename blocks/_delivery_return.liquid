@@ -1,13 +1,25 @@
 <div class="hdt-product__delivery-return" {{ block.shopify_attributes }}>
   <div class="hdt-row-grid hdt-grid-cols-1 lg:hdt-grid-cols-2 hdt-inline-block hdt-s-text hdt-text-center">
     {%- if block.settings.content_devivery != blank -%}
+      {%- liquid
+        assign is_free_shipping_product = false
+        if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.tags contains 'free-shipping' or product.tags contains 'Janmashtami'
+          assign is_free_shipping_product = true
+        endif
+      -%}
       <div class="hdt-product__delivery">
         {%- if block.settings.icon_delivery != 'none' -%}
           <div class="hdt-product__delivery-icon">
             {%- render 'icon_theme_svg', icon_svg: block.settings.icon_delivery -%}
           </div>
         {%- endif -%}
-        <div class="hdt-product__delivery-content">{{ block.settings.content_devivery }}</div>
+        <div class="hdt-product__delivery-content">
+          {%- if is_free_shipping_product -%}
+            <p>🚚 <strong>Janmashtami Special:</strong> <strong>FREE Express Delivery</strong> across India. Dispatch initiated within <strong>24 hours</strong>.</p>
+          {%- else -%}
+            {{ block.settings.content_devivery }}
+          {%- endif -%}
+        </div>
       </div>
     {%- endif -%}
     {%- if block.settings.content_return != blank -%}
