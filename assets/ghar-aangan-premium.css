@@ -2045,31 +2045,93 @@ button[aria-label="Close"] svg {
   100% { transform: scale(1.03); box-shadow: 0 6px 18px rgba(220, 38, 38, 0.55); }
 }
 
+/* ==========================================================================
+   CARD PRICE & FREE DELIVERY BADGES (RESPONSIVE & CLEAN LAYOUT)
+   ========================================================================== */
+
+/* Ensure the card price container flexes properly and allows the badge to sit on its own row */
+.hdt-card-product .hdt-price-wrapp {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  gap: 4px !important;
+}
+
+.hdt-card-product .hdt-card-product__info.hdt-card-align-center .hdt-price-wrapp,
+.hdt-card-align-center .hdt-price-wrapp {
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.hdt-card-product .hdt-price__list {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  flex-wrap: wrap !important;
+  gap: 6px 8px !important;
+  line-height: 1.2 !important;
+}
+
+.hdt-card-product .hdt-card-product__info.hdt-card-align-center .hdt-price__list,
+.hdt-card-align-center .hdt-price__list {
+  justify-content: center !important;
+}
+
 /* Card Price Free Shipping Pill (Collection Grids & Product Cards) */
 .ga-card-free-shipping-wrap {
-  margin-top: 8px !important;
+  margin-top: 4px !important;
+  margin-bottom: 2px !important;
   display: flex !important;
   align-items: center !important;
+  width: 100% !important;
+  flex: 0 0 100% !important;
+}
+
+.hdt-card-product .hdt-card-product__info.hdt-card-align-center .ga-card-free-shipping-wrap,
+.hdt-card-align-center .ga-card-free-shipping-wrap {
+  justify-content: center !important;
 }
 
 .ga-card-free-shipping-pill {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
-  background: #fee2e2 !important;
+  gap: 4.5px !important;
+  background: #fef2f2 !important;
   color: #b91c1c !important;
-  border: 1.5px solid #fca5a5 !important;
-  padding: 4px 10px !important;
-  border-radius: 14px !important;
-  font-size: 11px !important;
-  font-weight: 800 !important;
+  border: 1px solid #fca5a5 !important;
+  padding: 2.5px 8px !important;
+  border-radius: 9999px !important;
+  font-size: 10px !important;
+  font-weight: 750 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
+  letter-spacing: 0.35px !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 1px 3px rgba(220, 38, 38, 0.08) !important;
+  max-width: 100% !important;
 }
 
 .ga-card-free-shipping-pill svg {
   color: #dc2626 !important;
   flex-shrink: 0 !important;
+  width: 11px !important;
+  height: 11px !important;
+}
+
+@media (max-width: 767px) {
+  .ga-card-free-shipping-wrap {
+    margin-top: 3px !important;
+  }
+  .ga-card-free-shipping-pill {
+    font-size: 9.5px !important;
+    padding: 2px 7px !important;
+    letter-spacing: 0.3px !important;
+    gap: 4px !important;
+  }
+  .ga-card-free-shipping-pill svg {
+    width: 10px !important;
+    height: 10px !important;
+  }
 }
 
 /* Janmashtami Festive Offer Banner on Product Page - Bold & Prominent */
