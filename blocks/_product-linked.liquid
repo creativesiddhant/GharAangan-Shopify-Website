@@ -280,22 +280,16 @@
 <div class="hdt-variant-picker hdt-linked-product" {{ block.shopify_attributes }}>
   <div class="hdt-product-form__input">
     {%- if is_ghee -%}
-      <div class="hdt-product-form__label hdt-s-text ga-pack-size-header-wrap">
-        <div class="ga-pack-size-label-left">
-          <span>{{ option_label }}: 
-            <span class="hdt-font-semibold" style="color: #1a332c;">
-              {%- if product.handle contains '550ml' -%}550ml Glass Jar
-              {%- elsif product.handle contains '1l' -%}1 Litre Glass Jar
-              {%- elsif product.handle contains '2l' -%}2 Litres (2 x 1L Jars)
-              {%- elsif product.handle contains '5l' -%}5 Litres Family Pack
-              {%- else -%}{{ product.title }}
-              {%- endif -%}
-            </span>
+      <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">
+        <span>{{ option_label }}: 
+          <span class="hdt-font-semibold" style="color: #1a332c;">
+            {%- if product.handle contains '550ml' -%}550ml Glass Jar
+            {%- elsif product.handle contains '1l' -%}1 Litre Glass Jar
+            {%- elsif product.handle contains '2l' -%}2 Litres (2 x 1L Jars)
+            {%- elsif product.handle contains '5l' -%}5 Litres Family Pack
+            {%- else -%}{{ product.title }}
+            {%- endif -%}
           </span>
-        </div>
-        <span class="ga-pack-size-free-badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-          FREE DELIVERY
         </span>
       </div>
 
