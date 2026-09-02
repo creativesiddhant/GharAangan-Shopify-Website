@@ -124,6 +124,46 @@
 
 
 
+  .ga-pack-size-header-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .ga-pack-size-free-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #1a332c;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 6px rgba(26, 51, 44, 0.15);
+  }
+  .ga-pack-size-free-badge svg {
+    color: #cda250;
+    flex-shrink: 0;
+  }
+  .hdt-linked-pack-pill .hdt-pill-delivery-tag {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #2d5c4e;
+    margin-top: 3px;
+    display: block;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .hdt-linked-pack-pill.is-selected .hdt-pill-delivery-tag {
+    color: #8ed6c0;
+  }
+
   /* Pahadi Pisyu Loon Direct Discount Box */
   .ga-loon-offer-container {
     margin-top: 8px;
@@ -240,16 +280,22 @@
 <div class="hdt-variant-picker hdt-linked-product" {{ block.shopify_attributes }}>
   <div class="hdt-product-form__input">
     {%- if is_ghee -%}
-      <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">
-        <span>{{ option_label }}: 
-          <span class="hdt-font-semibold" style="color: #1a332c;">
-            {%- if product.handle contains '550ml' -%}550ml Glass Jar
-            {%- elsif product.handle contains '1l' -%}1 Litre Glass Jar
-            {%- elsif product.handle contains '2l' -%}2 Litres (2 x 1L Jars)
-            {%- elsif product.handle contains '5l' -%}5 Litres Family Pack
-            {%- else -%}{{ product.title }}
-            {%- endif -%}
+      <div class="hdt-product-form__label hdt-s-text ga-pack-size-header-wrap">
+        <div class="ga-pack-size-label-left">
+          <span>{{ option_label }}: 
+            <span class="hdt-font-semibold" style="color: #1a332c;">
+              {%- if product.handle contains '550ml' -%}550ml Glass Jar
+              {%- elsif product.handle contains '1l' -%}1 Litre Glass Jar
+              {%- elsif product.handle contains '2l' -%}2 Litres (2 x 1L Jars)
+              {%- elsif product.handle contains '5l' -%}5 Litres Family Pack
+              {%- else -%}{{ product.title }}
+              {%- endif -%}
+            </span>
           </span>
+        </div>
+        <span class="ga-pack-size-free-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          FREE DELIVERY
         </span>
       </div>
 
@@ -258,24 +304,30 @@
         <a href="/products/a2-desi-pahadi-ghee-550ml" class="hdt-linked-pack-pill{% if product.handle contains '550ml' %} is-selected{% endif %}">
           <span class="hdt-pill-title">550ml</span>
           <span class="hdt-pill-sub">{% if p1.price %}{{ p1.price | money }}{% else %}₹799{% endif %}</span>
+          <span class="hdt-pill-delivery-tag">Free Delivery</span>
         </a>
 
         <!-- 1 Litre -->
         <a href="/products/a2-desi-pahadi-ghee-1l" class="hdt-linked-pack-pill{% if product.handle contains '1l' or product.handle == 'a2-desi-pahadi-ghee' %} is-selected{% endif %}">
+          <span class="hdt-pill-badge badge-gold">POPULAR</span>
           <span class="hdt-pill-title">1 Litre</span>
           <span class="hdt-pill-sub">{% if p2.price %}{{ p2.price | money }}{% else %}₹1,599{% endif %}</span>
+          <span class="hdt-pill-delivery-tag">Free Delivery</span>
         </a>
 
         <!-- 2 Litres -->
         <a href="/products/a2-desi-pahadi-ghee-2l" class="hdt-linked-pack-pill{% if product.handle contains '2l' %} is-selected{% endif %}">
           <span class="hdt-pill-title">2 Litres</span>
           <span class="hdt-pill-sub">{% if p3.price %}{{ p3.price | money }}{% else %}₹3,198{% endif %}</span>
+          <span class="hdt-pill-delivery-tag">Free Delivery</span>
         </a>
 
         <!-- 5 Litres -->
         <a href="/products/a2-desi-pahadi-ghee-5l" class="hdt-linked-pack-pill{% if product.handle contains '5l' %} is-selected{% endif %}">
+          <span class="hdt-pill-badge badge-green">FAMILY PACK</span>
           <span class="hdt-pill-title">5 Litres</span>
           <span class="hdt-pill-sub">{% if p4.price %}{{ p4.price | money }}{% else %}₹7,995{% endif %}</span>
+          <span class="hdt-pill-delivery-tag">Free Delivery</span>
         </a>
       </div>
 
