@@ -43,6 +43,12 @@
           "settings": {
             "text": "🧂 ₹50 OFF on Salt Orders Up to ₹300"
           }
+        },
+        "announcement_jCPkcY": {
+          "type": "announcement",
+          "settings": {
+            "text": "🦚 Janmashtami Mahotsav Special: FREE DELIVERY on Selected Products!"
+          }
         }
       },
       "block_order": [
@@ -50,7 +56,8 @@
         "block-2",
         "block-3",
         "announcement_FfhBUT",
-        "announcement_aKArJr"
+        "announcement_aKArJr",
+        "announcement_jCPkcY"
       ],
       "settings": {
         "design": "marquee",
