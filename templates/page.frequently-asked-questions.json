@@ -90,7 +90,7 @@
           "type": "accordion_item",
           "settings": {
             "title": "How long does delivery take?",
-            "content": "We initiate the shipment/pickup process within 24 hours of an order. For normal domestic shipments, delivery is generally expected within 3–7 days after courier pickup. Faster express delivery options may be offered for selected metro and Delhi/NCR prepaid orders.",
+            "content": "We dispatch orders within 24 hours. Domestic delivery timelines across India: Fast Delivery (Prepaid) takes 5 to 6 business days, while Standard Shipping (COD) takes 7 to 10 business days.",
             "content_richtext": ""
           }
         },
@@ -130,7 +130,7 @@
           "type": "accordion_item",
           "settings": {
             "title": "Is Cash on Delivery (COD) available?",
-            "content": "Yes! We offer Cash on Delivery (COD) across India. A nominal delivery fee of ₹100 is applied on COD orders, whereas all prepaid orders (UPI, Cards, Netbanking) enjoy FREE Express Shipping under our promotional offers.",
+            "content": "Yes! We offer Cash on Delivery (COD) across India with Standard Shipping in 7 to 10 business days (₹100 fee applies). Prepaid orders enjoy Fast Delivery in 5 to 6 business days with FREE Express Shipping under our promotional offers.",
             "content_richtext": ""
           }
         },

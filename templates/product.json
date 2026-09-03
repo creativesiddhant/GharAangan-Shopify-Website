@@ -142,7 +142,7 @@
               "type": "_delivery_return",
               "settings": {
                 "icon_delivery": "ship",
-                "content_devivery": "<p>Estimated delivery: <strong>3-7 days</strong> across India. Dispatch initiated within <strong>24 hours</strong>.</p>",
+                "content_devivery": "<p><strong>Fast Delivery (Prepaid):</strong> 5 to 6 business days. <strong>Standard Shipping (COD):</strong> 7 to 10 business days. Dispatch within <strong>24 hours</strong>.</p>",
                 "icon_return": "return_order",
                 "content_return": "<p>Pure food items: <strong>100% replacement</strong> for transit damage with unboxing photo/video.</p>"
               },
