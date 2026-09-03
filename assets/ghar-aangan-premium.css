@@ -1954,28 +1954,38 @@ button[aria-label="Close"] svg {
 .hdt-main-product-quick-view .hdt-product__description,
 .hdt-quick-view-modal .hdt-product__description {
   margin: 10px 0 16px 0 !important;
-  font-size: 0.9375rem !important;
-  line-height: 1.65 !important;
-  color: #4a5568 !important;
+  font-size: 1.5rem !important;
+  line-height: 1.7 !important;
+  font-weight: 500 !important;
+  color: #1a1a1a !important;
 }
 
 .hdt-main-product-quick-view .hdt-product__description p,
 .hdt-quick-view-modal .hdt-product__description p {
   margin-bottom: 0.75rem !important;
-  color: inherit !important;
+  color: #1f2421 !important;
   font-size: inherit !important;
+  font-weight: 500 !important;
   line-height: inherit !important;
+}
+
+.hdt-main-product-quick-view .hdt-product__description strong,
+.hdt-quick-view-modal .hdt-product__description strong {
+  color: #111827 !important;
+  font-weight: 750 !important;
 }
 
 .hdt-main-product-quick-view .hdt-product__description ul,
 .hdt-quick-view-modal .hdt-product__description ul {
-  padding-left: 1.25rem !important;
+  padding-left: 1.5rem !important;
   margin: 0.5rem 0 0.75rem 0 !important;
 }
 
 .hdt-main-product-quick-view .hdt-product__description li,
 .hdt-quick-view-modal .hdt-product__description li {
-  margin-bottom: 0.25rem !important;
+  margin-bottom: 0.35rem !important;
+  color: #1f2421 !important;
+  font-weight: 500 !important;
 }
 
 /* ==========================================================================
@@ -2337,6 +2347,249 @@ button[aria-label="Close"] svg {
   .ga-card-free-shipping-pill svg {
     width: 9px !important;
     height: 9px !important;
+  }
+}
+
+/* ==========================================================================
+   PRODUCT DESCRIPTION & TABS - BOLD, CRISP & HIGH-CONTRAST READABILITY
+   ========================================================================== */
+
+/* Main Tab Navigation Buttons */
+.hdt-product-tab__main button {
+  font-family: var(--ga-font-family-serif, 'Playfair Display', serif) !important;
+  font-size: clamp(1.6rem, 1.8vw, 1.9rem) !important;
+  font-weight: 700 !important;
+  color: #4b5563 !important;
+  padding: 1.4rem 0.5rem !important;
+  letter-spacing: 0.02em !important;
+  transition: all 0.3s ease !important;
+}
+
+.hdt-product-tab__main button[aria-current="true"] {
+  color: var(--ga-forest-green, #1a332c) !important;
+  font-weight: 800 !important;
+}
+
+.hdt-product-tab__main button:after {
+  background-color: var(--ga-forest-green, #1a332c) !important;
+  height: 2.5px !important;
+}
+
+/* Product Tabs Container & Border */
+.hdt-type-tab .hdt-product-tab__wrap {
+  border: 1px solid rgba(26, 51, 44, 0.12) !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(26, 51, 44, 0.03) !important;
+  overflow: hidden !important;
+}
+
+.hdt-product-tab__content {
+  padding: 3rem 2.8rem !important;
+  background: #ffffff !important;
+}
+
+/* Product Description Base Body Text - Bolder, Dark & Crisp */
+.hdt-product-tab__content,
+.hdt-product-tab__content .hdt-rte,
+.hdt-tab-item[data-type="tab_des"],
+.hdt-tab-item.hdt-rte,
+.hdt-product-accordion__content.hdt-rte,
+.hdt-product-tab__item-content.hdt-rte,
+.hdt-product__description,
+.hdt-product__description .hdt-rte,
+.hdt-product-description,
+.hdt-product-description .hdt-rte,
+.hdt-product-info__item .hdt-rte {
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-size: 1.6rem !important;
+  line-height: 1.8 !important;
+  font-weight: 500 !important;
+  color: #1a1a1a !important;
+  letter-spacing: 0.15px !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* Paragraphs */
+.hdt-product-tab__content p,
+.hdt-tab-item[data-type="tab_des"] p,
+.hdt-tab-item.hdt-rte p,
+.hdt-product__description p,
+.hdt-product-description p,
+.hdt-product-accordion__content p {
+  font-size: 1.6rem !important;
+  line-height: 1.8 !important;
+  font-weight: 500 !important;
+  color: #1f2421 !important;
+  margin-bottom: 1.6rem !important;
+}
+
+/* Headings inside Product Description */
+.hdt-product-tab__content h1,
+.hdt-product-tab__content h2,
+.hdt-product-tab__content h3,
+.hdt-product-tab__content h4,
+.hdt-product-tab__content h5,
+.hdt-product-tab__content h6,
+.hdt-product__description h1,
+.hdt-product__description h2,
+.hdt-product__description h3,
+.hdt-product__description h4,
+.hdt-tab-item[data-type="tab_des"] h2,
+.hdt-tab-item[data-type="tab_des"] h3,
+.hdt-tab-item[data-type="tab_des"] h4 {
+  font-family: var(--ga-font-family-serif, 'Playfair Display', serif) !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+  font-weight: 750 !important;
+  line-height: 1.35 !important;
+  margin-top: 2.4rem !important;
+  margin-bottom: 1.2rem !important;
+  letter-spacing: -0.01em !important;
+}
+
+.hdt-product-tab__content h2,
+.hdt-product__description h2,
+.hdt-tab-item[data-type="tab_des"] h2 {
+  font-size: clamp(2rem, 2.4vw, 2.4rem) !important;
+}
+
+.hdt-product-tab__content h3,
+.hdt-product__description h3,
+.hdt-tab-item[data-type="tab_des"] h3 {
+  font-size: clamp(1.8rem, 2vw, 2.1rem) !important;
+}
+
+.hdt-product-tab__content h4,
+.hdt-product__description h4,
+.hdt-tab-item[data-type="tab_des"] h4 {
+  font-size: clamp(1.65rem, 1.8vw, 1.85rem) !important;
+}
+
+/* Strong / Bold Text inside Description */
+.hdt-product-tab__content strong,
+.hdt-product-tab__content b,
+.hdt-tab-item[data-type="tab_des"] strong,
+.hdt-tab-item[data-type="tab_des"] b,
+.hdt-product__description strong,
+.hdt-product-description strong,
+.hdt-product-accordion__content strong {
+  font-weight: 750 !important;
+  color: #111827 !important;
+}
+
+/* Lists and Bullet Points */
+.hdt-product-tab__content ul,
+.hdt-product-tab__content ol,
+.hdt-tab-item[data-type="tab_des"] ul,
+.hdt-tab-item[data-type="tab_des"] ol,
+.hdt-product__description ul,
+.hdt-product-description ul {
+  padding-left: 2.2rem !important;
+  margin-top: 1rem !important;
+  margin-bottom: 1.8rem !important;
+}
+
+.hdt-product-tab__content li,
+.hdt-tab-item[data-type="tab_des"] li,
+.hdt-product__description li,
+.hdt-product-description li {
+  font-size: 1.6rem !important;
+  line-height: 1.75 !important;
+  font-weight: 500 !important;
+  color: #1f2421 !important;
+  margin-bottom: 0.9rem !important;
+}
+
+/* Nutritional & Attributes Table Tab */
+table.hdt-pr_attrs {
+  border: 1px solid rgba(26, 51, 44, 0.12) !important;
+  border-radius: 8px !important;
+}
+
+table.hdt-pr_attrs th {
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+  background: #f8faf9 !important;
+  padding: 1.2rem 1.6rem !important;
+  border-color: rgba(26, 51, 44, 0.1) !important;
+}
+
+table.hdt-pr_attrs td {
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-weight: 550 !important;
+  font-size: 1.5rem !important;
+  color: #1a1a1a !important;
+  padding: 1.2rem 1.6rem !important;
+  border-color: rgba(26, 51, 44, 0.1) !important;
+}
+
+/* Accordion Summary on Mobile/Desktop */
+.hdt-product-accordion__item summary {
+  background-color: #f8faf9 !important;
+  border: 1px solid rgba(26, 51, 44, 0.1) !important;
+  border-radius: 8px !important;
+  font-family: var(--ga-font-family-serif, 'Playfair Display', serif) !important;
+  font-weight: 700 !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+}
+
+.hdt-product-accordion__text {
+  font-size: 1.65rem !important;
+  font-weight: 700 !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+}
+
+.hdt-product-accordion__content {
+  padding: 1.8rem 1.2rem !important;
+}
+
+/* Responsive Mobile Rules for Product Description */
+@media (max-width: 767px) {
+  .hdt-product-tab__content {
+    padding: 2rem 1.5rem !important;
+  }
+  .hdt-product-tab__content,
+  .hdt-product-tab__content .hdt-rte,
+  .hdt-tab-item[data-type="tab_des"],
+  .hdt-tab-item.hdt-rte,
+  .hdt-product-accordion__content.hdt-rte,
+  .hdt-product-tab__item-content.hdt-rte,
+  .hdt-product__description,
+  .hdt-product__description .hdt-rte,
+  .hdt-product-description,
+  .hdt-product-description .hdt-rte,
+  .hdt-product-info__item .hdt-rte {
+    font-size: 1.5rem !important;
+    line-height: 1.72 !important;
+    font-weight: 500 !important;
+    color: #1a1a1a !important;
+  }
+  .hdt-product-tab__content p,
+  .hdt-tab-item[data-type="tab_des"] p,
+  .hdt-tab-item.hdt-rte p,
+  .hdt-product__description p,
+  .hdt-product-description p {
+    font-size: 1.5rem !important;
+    line-height: 1.72 !important;
+    font-weight: 500 !important;
+    color: #1f2421 !important;
+    margin-bottom: 1.4rem !important;
+  }
+  .hdt-product-tab__content li,
+  .hdt-tab-item[data-type="tab_des"] li,
+  .hdt-product__description li,
+  .hdt-product-description li {
+    font-size: 1.5rem !important;
+    line-height: 1.68 !important;
+    font-weight: 500 !important;
+    color: #1f2421 !important;
+    margin-bottom: 0.8rem !important;
+  }
+  .hdt-product-tab__main button {
+    font-size: 1.5rem !important;
+    padding: 1.2rem 0.4rem !important;
   }
 }
 
