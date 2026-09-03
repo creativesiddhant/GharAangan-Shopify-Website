@@ -1083,15 +1083,28 @@ body,
 
 /* 5. Product Cards Typography & Spacing Overrides */
 .hdt-card-product {
-  padding: 2.2rem !important; /* Increased whitespace inside cards */
-  background: #ffffff !important;
-  border-radius: 8px !important;
-  box-shadow: 0 10px 30px rgba(26, 51, 44, 0.015) !important;
   transition: var(--ga-transition-smooth) !important;
 }
-.hdt-card-product:hover {
-  box-shadow: 0 22px 45px rgba(26, 51, 44, 0.05) !important;
-  transform: translateY(-4px) !important;
+
+/* Ensure slider cards preserve slider gutter spacing & do not get clipped on left edge */
+.hdt-slider .hdt-card-product,
+.hdt-slider__slide.hdt-card-product,
+.hdt-card-product.hdt-slider__slide {
+  padding: 0 !important;
+  padding-inline-start: var(--slide-spacing) !important;
+  padding-inline-end: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+.hdt-slider .hdt-card-product:hover,
+.hdt-slider__slide.hdt-card-product:hover,
+.hdt-card-product.hdt-slider__slide:hover {
+  box-shadow: none !important;
+  transform: none !important;
 }
 
 .hdt-card-product__title,
