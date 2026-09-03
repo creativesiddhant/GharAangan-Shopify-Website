@@ -14,6 +14,12 @@
     "announcement_bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_janmashtami": {
+          "type": "announcement",
+          "settings": {
+            "text": "🪔 Janmashtami Mahotsav: FREE Express Shipping on Prepaid Orders (₹100 for COD Orders)"
+          }
+        },
         "block-1": {
           "type": "announcement",
           "settings": {
@@ -52,6 +58,7 @@
         }
       },
       "block_order": [
+        "announcement_janmashtami",
         "block-1",
         "block-2",
         "block-3",
