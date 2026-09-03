@@ -14,16 +14,16 @@
     "announcement_bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_janmashtami": {
-          "type": "announcement",
-          "settings": {
-            "text": "🎉 COD Is Now Live! Shop with our new Cash on Delivery option."
-          }
-        },
         "block-1": {
           "type": "announcement",
           "settings": {
             "text": "🔥Proudly Made in Uttarakhand"
+          }
+        },
+        "announcement_janmashtami": {
+          "type": "announcement",
+          "settings": {
+            "text": "🎉 COD Is Now Live! Shop with our new Cash on Delivery option."
           }
         },
         "block-2": {
@@ -58,8 +58,8 @@
         }
       },
       "block_order": [
-        "announcement_janmashtami",
         "block-1",
+        "announcement_janmashtami",
         "block-2",
         "block-3",
         "announcement_FfhBUT",
