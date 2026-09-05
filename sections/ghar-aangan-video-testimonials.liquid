@@ -47,7 +47,7 @@
   .ga-vr-header .ga-title {
     font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
     font-size: clamp(2.6rem, 3.8vw, 4rem);
-    color: var(--ga-forest-green, #1a332c);
+    color: {{ section.settings.title_color | default: '#1a332c' }};
     letter-spacing: -0.01em;
     font-weight: 600;
     line-height: 1.25;
@@ -331,18 +331,23 @@
     border: 1px solid rgba(205, 162, 80, 0.35);
   }
 
-  .ga-vr-video-title {
-    font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
-    font-size: 1.65rem;
-    font-weight: 600;
-    color: #ffffff;
-    line-height: 1.38;
-    margin: 0;
-    letter-spacing: -0.01em;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .ga-vr-video-title,
+  .ga-vr-card h3,
+  .ga-vr-bottom-info h3,
+  h3.ga-vr-video-title {
+    font-family: var(--ga-font-family-serif, 'Playfair Display', serif) !important;
+    font-size: 1.65rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    line-height: 1.38 !important;
+    margin: 0 !important;
+    letter-spacing: -0.01em !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.8) !important;
   }
 
   /* Active YouTube Player Container (Loaded strictly on-demand) */
@@ -605,7 +610,7 @@
               {%- endif -%}
             </div>
             {%- if block.settings.video_title != blank -%}
-              <h3 class="ga-vr-video-title">{{ block.settings.video_title | escape }}</h3>
+              <h3 class="ga-vr-video-title ga-text-white" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.8) !important;">{{ block.settings.video_title | escape }}</h3>
             {%- endif -%}
           </div>
 
@@ -773,6 +778,12 @@
       "id": "background_color",
       "label": "Background Color",
       "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Section Title Color",
+      "default": "#1a332c"
     },
     {
       "type": "text",
