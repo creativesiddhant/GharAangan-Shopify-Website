@@ -160,9 +160,9 @@
     background: linear-gradient(
       180deg,
       rgba(13, 23, 20, 0.75) 0%,
-      rgba(13, 23, 20, 0.08) 32%,
-      rgba(13, 23, 20, 0.35) 60%,
-      rgba(13, 23, 20, 0.94) 100%
+      rgba(13, 23, 20, 0.08) 30%,
+      rgba(13, 23, 20, 0.4) 58%,
+      rgba(13, 23, 20, 0.96) 100%
     );
     pointer-events: none;
   }
@@ -289,7 +289,7 @@
     border-color: rgba(205, 162, 80, 0.4);
   }
 
-  /* Bottom Content & Reviewer Info */
+  /* Bottom Video Title & Details */
   .ga-vr-bottom-info {
     position: absolute;
     bottom: 0;
@@ -300,45 +300,23 @@
     pointer-events: none;
   }
 
-  .ga-vr-stars {
-    display: flex;
-    gap: 3px;
-    margin-bottom: 8px;
-  }
-
-  .ga-vr-stars svg {
-    width: 16px;
-    height: 16px;
-    fill: var(--ga-gold-cream, #cda250);
-  }
-
-  .ga-vr-quote {
-    font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: #ffffff;
-    line-height: 1.35;
-    margin: 0 0 8px 0;
-    letter-spacing: -0.01em;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .ga-vr-author-row {
+  .ga-vr-stars-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
-    margin-top: 8px;
+    margin-bottom: 10px;
   }
 
-  .ga-vr-author {
-    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
-    font-size: 1.35rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.95);
+  .ga-vr-stars {
+    display: flex;
+    gap: 3px;
+  }
+
+  .ga-vr-stars svg {
+    width: 15px;
+    height: 15px;
+    fill: var(--ga-gold-cream, #cda250);
   }
 
   .ga-vr-product-pill {
@@ -351,6 +329,20 @@
     padding: 3px 9px;
     border-radius: 6px;
     border: 1px solid rgba(205, 162, 80, 0.35);
+  }
+
+  .ga-vr-video-title {
+    font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.38;
+    margin: 0;
+    letter-spacing: -0.01em;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   /* Active YouTube Player Container (Loaded strictly on-demand) */
@@ -571,7 +563,7 @@
           <img
             class="ga-vr-poster"
             src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg"
-            alt="{{ block.settings.customer_name | default: 'Ghar Aangan Customer' | escape }} Video Review"
+            alt="{{ block.settings.video_title | default: 'Ghar Aangan Customer Video' | escape }}"
             loading="lazy"
             decoding="async"
             width="480"
@@ -593,29 +585,28 @@
           </div>
 
           <!-- Play Trigger Button -->
-          <button class="ga-vr-play-trigger" aria-label="Play video review by {{ block.settings.customer_name | escape }}">
+          <button class="ga-vr-play-trigger" aria-label="Play: {{ block.settings.video_title | escape }}">
             <div class="ga-vr-play-btn">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <span class="ga-vr-play-label">Tap to Play</span>
           </button>
 
-          <!-- Bottom Customer & Review Details -->
+          <!-- Bottom Video Title & Details -->
           <div class="ga-vr-bottom-info">
-            <div class="ga-vr-stars">
-              {%- for i in (1..5) -%}
-                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              {%- endfor -%}
-            </div>
-            {%- if block.settings.review_title != blank -%}
-              <h3 class="ga-vr-quote">"{{ block.settings.review_title | escape }}"</h3>
-            {%- endif -%}
-            <div class="ga-vr-author-row">
-              <span class="ga-vr-author">{{ block.settings.customer_name | escape }}</span>
+            <div class="ga-vr-stars-row">
+              <div class="ga-vr-stars">
+                {%- for i in (1..5) -%}
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                {%- endfor -%}
+              </div>
               {%- if block.settings.product_tag != blank -%}
                 <span class="ga-vr-product-pill">{{ block.settings.product_tag | escape }}</span>
               {%- endif -%}
             </div>
+            {%- if block.settings.video_title != blank -%}
+              <h3 class="ga-vr-video-title">{{ block.settings.video_title | escape }}</h3>
+            {%- endif -%}
           </div>
 
           <!-- On-Demand YouTube Iframe Container (Zero initial load cost) -->
@@ -799,7 +790,7 @@
       "type": "text",
       "id": "description",
       "label": "Section Description",
-      "default": "Watch honest unboxing and taste reviews from our verified Ghar Aangan family across India."
+      "default": "Watch genuine unboxing and taste reviews from our Ghar Aangan family across India."
     },
     {
       "type": "checkbox",
@@ -847,20 +838,14 @@
         },
         {
           "type": "text",
-          "id": "customer_name",
-          "label": "Customer / Reviewer Name",
-          "default": "Muskan"
-        },
-        {
-          "type": "text",
-          "id": "review_title",
-          "label": "Short Quote / Highlight",
-          "default": "Her Words Say It All"
+          "id": "video_title",
+          "label": "YouTube Video Title",
+          "default": "Her Words Say It All ❤️ | A Genuine Ghar Aangan Testimonial"
         },
         {
           "type": "text",
           "id": "product_tag",
-          "label": "Product Tag / Location",
+          "label": "Optional Tag / Product",
           "default": "A2 Badri Cow Ghee"
         }
       ]
@@ -875,8 +860,7 @@
           "settings": {
             "video_id": "IKnymFl-grw",
             "video_url": "https://youtube.com/shorts/IKnymFl-grw?feature=share",
-            "customer_name": "Muskan",
-            "review_title": "Her Words Say It All",
+            "video_title": "Her Words Say It All ❤️ | A Genuine Ghar Aangan Testimonial by Muskan",
             "product_tag": "A2 Badri Cow Ghee"
           }
         },
@@ -885,8 +869,7 @@
           "settings": {
             "video_id": "b3qP2A4LTlM",
             "video_url": "https://youtube.com/shorts/b3qP2A4LTlM?feature=share",
-            "customer_name": "Pooja R.",
-            "review_title": "Pure Mountain Flavor & Aroma",
+            "video_title": "From Uttarakhand to Punjab ❤️ | A Customer’s Honest Review of Ghar Aangan Ghee",
             "product_tag": "Badri Cow Bilona Ghee"
           }
         },
@@ -895,8 +878,7 @@
           "settings": {
             "video_id": "YdaODr29LMY",
             "video_url": "https://youtube.com/shorts/YdaODr29LMY?feature=share",
-            "customer_name": "Shalini M.",
-            "review_title": "Golden Granularity & Goodness",
+            "video_title": "When Women Support Women, It Hits Different ❤️ | Ghar Aangan",
             "product_tag": "A2 Himalayan Ghee"
           }
         },
@@ -905,8 +887,7 @@
           "settings": {
             "video_id": "XwKeNwU-MCo",
             "video_url": "https://youtube.com/shorts/XwKeNwU-MCo?feature=share",
-            "customer_name": "Gaurav D.",
-            "review_title": "Traditional Bilona Craftsmanship",
+            "video_title": "Bacche Kabhi Galat Nahi Bolte ❤️ | Cute & Genuine Testimonial by Mohd Daniyal",
             "product_tag": "A2 Badri Cow Ghee"
           }
         },
@@ -915,8 +896,7 @@
           "settings": {
             "video_id": "2UanbLWqFSk",
             "video_url": "https://youtube.com/shorts/2UanbLWqFSk?feature=share",
-            "customer_name": "Dr. Neha K.",
-            "review_title": "Loved By The Whole Family",
+            "video_title": "A Little Girl’s Honest Review of Ghar Aangan Ghee ❤️ | Parents Trust It, Why Not You?",
             "product_tag": "A2 Badri Cow Ghee"
           }
         },
@@ -925,8 +905,7 @@
           "settings": {
             "video_id": "MIQTBn6N3pA",
             "video_url": "https://youtube.com/shorts/MIQTBn6N3pA?feature=share",
-            "customer_name": "Vikram T.",
-            "review_title": "Genuine Mountain Purity",
+            "video_title": "It’s Not Just Ghee, It’s a Little One’s Favourite! ❤️ | Ghar Aangan Ghee Unboxing",
             "product_tag": "Pahadi Heritage"
           }
         },
@@ -935,8 +914,7 @@
           "settings": {
             "video_id": "R-_jiqCnIOA",
             "video_url": "https://youtube.com/shorts/R-_jiqCnIOA?feature=share",
-            "customer_name": "Ananya S.",
-            "review_title": "Farm-to-Table Freshness",
+            "video_title": "Every Customer, Every Smile, Means the World to Us ❤️ | Ghar Aangan",
             "product_tag": "A2 Badri Cow Ghee"
           }
         },
@@ -945,8 +923,7 @@
           "settings": {
             "video_id": "sagu0lGNL68",
             "video_url": "https://youtube.com/shorts/sagu0lGNL68?feature=share",
-            "customer_name": "Rohan M.",
-            "review_title": "Unmatched Quality & Rich Texture",
+            "video_title": "It’s Not Just the Packaging ❤️ | Our Dedication to Every Customer | Ghar Aangan",
             "product_tag": "Badri Cow Bilona Ghee"
           }
         }
