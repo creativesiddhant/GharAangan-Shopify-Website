@@ -1,0 +1,957 @@
+<!-- sections/ghar-aangan-video-testimonials.liquid -->
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .ga-video-reviews-section {
+    background-color: {{ section.settings.background_color }};
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ga-vr-header {
+    text-align: center;
+    max-width: 80rem;
+    margin: 0 auto clamp(2.5rem, 4vw, 4.2rem) auto;
+    padding: 0 2rem;
+  }
+
+  .ga-vr-header .ga-subtitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ga-gold-cream, #cda250);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+
+  .ga-vr-header .ga-subtitle svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: currentColor;
+  }
+
+  .ga-vr-header .ga-title {
+    font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
+    font-size: clamp(2.6rem, 3.8vw, 4rem);
+    color: var(--ga-forest-green, #1a332c);
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0 0 1.2rem 0;
+  }
+
+  .ga-vr-header .ga-description {
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #4a5550;
+    font-weight: 300;
+    margin: 0 auto;
+    max-width: 62rem;
+  }
+
+  /* Carousel Outer Layout */
+  .ga-vr-outer {
+    position: relative;
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ga-vr-outer {
+      padding: 0 5.2rem;
+    }
+  }
+
+  .ga-vr-scroll-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 2.4rem;
+    padding: 1.8rem 0.6rem 3rem 0.6rem;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ga-vr-scroll-track::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  /* Video Card - Larger 9:16 Shorts Format */
+  .ga-vr-card {
+    flex: 0 0 78%;
+    max-width: 320px;
+    scroll-snap-align: center;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #0d1714;
+    aspect-ratio: 9 / 16;
+    min-height: 480px;
+    box-shadow: 0 16px 36px rgba(26, 51, 44, 0.12);
+    border: 1.5px solid rgba(205, 162, 80, 0.28);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease;
+    user-select: none;
+  }
+
+  @media screen and (min-width: 641px) and (max-width: 989px) {
+    .ga-vr-card {
+      flex: 0 0 calc(50% - 1.2rem);
+      max-width: calc(50% - 1.2rem);
+      scroll-snap-align: start;
+      min-height: 520px;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .ga-vr-card {
+      flex: 0 0 calc(33.333% - 1.6rem);
+      max-width: calc(33.333% - 1.6rem);
+      scroll-snap-align: start;
+      min-height: 560px;
+      max-height: 640px;
+    }
+  }
+
+  .ga-vr-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 26px 52px rgba(26, 51, 44, 0.22);
+    border-color: var(--ga-gold-cream, #cda250);
+  }
+
+  /* Poster Image & Gradient Overlays (Zero-cost facade) */
+  .ga-vr-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+    background-color: #0c1412;
+  }
+
+  .ga-vr-card:hover .ga-vr-poster {
+    transform: scale(1.05);
+  }
+
+  .ga-vr-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+      180deg,
+      rgba(13, 23, 20, 0.75) 0%,
+      rgba(13, 23, 20, 0.08) 32%,
+      rgba(13, 23, 20, 0.35) 60%,
+      rgba(13, 23, 20, 0.94) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Top Meta (Verified Badge & Shorts Pill) */
+  .ga-vr-top-bar {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .ga-vr-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(26, 51, 44, 0.88);
+    border: 1px solid rgba(205, 162, 80, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+  }
+
+  .ga-vr-badge svg {
+    width: 13px;
+    height: 13px;
+    fill: var(--ga-gold-cream, #cda250);
+  }
+
+  .ga-vr-shorts-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 0, 0, 0.9);
+    color: #ffffff;
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 16px;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.35);
+  }
+
+  .ga-vr-shorts-tag svg {
+    width: 12px;
+    height: 12px;
+    fill: #ffffff;
+  }
+
+  /* Center Play Button Facade */
+  .ga-vr-play-trigger {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+  }
+
+  .ga-vr-play-btn {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #cda250 0%, #b8862d 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 0 8px rgba(205, 162, 80, 0.28), 0 14px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease;
+  }
+
+  .ga-vr-card:hover .ga-vr-play-btn {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 12px rgba(205, 162, 80, 0.38), 0 18px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .ga-vr-play-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: #ffffff;
+    margin-left: 4px; /* Optical balance for play triangle */
+  }
+
+  .ga-vr-play-label {
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    background: rgba(13, 23, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 5px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+    letter-spacing: 0.04em;
+  }
+
+  .ga-vr-card:hover .ga-vr-play-label {
+    background: rgba(26, 51, 44, 0.85);
+    color: var(--ga-gold-cream, #cda250);
+    border-color: rgba(205, 162, 80, 0.4);
+  }
+
+  /* Bottom Content & Reviewer Info */
+  .ga-vr-bottom-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 20px 22px 20px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .ga-vr-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 8px;
+  }
+
+  .ga-vr-stars svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--ga-gold-cream, #cda250);
+  }
+
+  .ga-vr-quote {
+    font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.35;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.01em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ga-vr-author-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .ga-vr-author {
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .ga-vr-product-pill {
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ga-gold-cream, #cda250);
+    background: rgba(205, 162, 80, 0.18);
+    padding: 3px 9px;
+    border-radius: 6px;
+    border: 1px solid rgba(205, 162, 80, 0.35);
+  }
+
+  /* Active YouTube Player Container (Loaded strictly on-demand) */
+  .ga-vr-player-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background: #000000;
+    display: none;
+  }
+
+  .ga-vr-player-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Close video button when playing */
+  .ga-vr-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 6;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease;
+  }
+
+  .ga-vr-close-btn:hover {
+    background: rgba(26, 51, 44, 0.9);
+  }
+
+  .ga-vr-close-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+  }
+
+  .ga-vr-card.is-playing .ga-vr-player-container {
+    display: block;
+  }
+
+  .ga-vr-card.is-playing .ga-vr-play-trigger,
+  .ga-vr-card.is-playing .ga-vr-top-bar,
+  .ga-vr-card.is-playing .ga-vr-bottom-info,
+  .ga-vr-card.is-playing .ga-vr-gradient,
+  .ga-vr-card.is-playing .ga-vr-poster {
+    display: none;
+  }
+
+  /* Luxury Navigation Arrows */
+  .ga-vr-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5rem;
+    height: 5rem;
+    background: #ffffff;
+    border: 1.5px solid rgba(26, 51, 44, 0.12);
+    box-shadow: 0 10px 25px rgba(26, 51, 44, 0.12);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--ga-forest-green, #1a332c);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 0;
+  }
+
+  .ga-vr-nav-btn:hover {
+    background: var(--ga-forest-green, #1a332c);
+    color: var(--ga-organic-cream, #faf8f5);
+    border-color: var(--ga-forest-green, #1a332c);
+    box-shadow: 0 14px 32px rgba(26, 51, 44, 0.22);
+    transform: translateY(-50%) scale(1.06);
+  }
+
+  .ga-vr-nav-btn:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .ga-vr-nav-prev {
+    left: 0.8rem;
+  }
+
+  .ga-vr-nav-next {
+    right: 0.8rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ga-vr-nav-btn {
+      width: 4rem;
+      height: 4rem;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .ga-vr-nav-prev {
+      left: 0.3rem;
+    }
+    .ga-vr-nav-next {
+      right: 0.3rem;
+    }
+  }
+
+  /* Bottom Controls & Dots Indicator for All Devices */
+  .ga-vr-footer-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 1.5rem;
+  }
+
+  .ga-vr-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .ga-vr-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(26, 51, 44, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+  }
+
+  .ga-vr-dot.is-active {
+    width: 26px;
+    border-radius: 12px;
+    background: var(--ga-forest-green, #1a332c);
+  }
+
+  /* Mobile Swipe Hint */
+  .ga-vr-swipe-hint {
+    display: none;
+    text-align: center;
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.25rem;
+    color: #6a7a74;
+    margin-top: 1rem;
+    font-weight: 400;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ga-vr-swipe-hint {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+    .ga-vr-swipe-hint svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+  }
+{%- endstyle -%}
+
+<div class="ga-video-reviews-section section-{{ section.id }}-padding" id="ga-video-reviews-{{ section.id }}">
+  <div class="ga-vr-header">
+    {%- if section.settings.subtitle != blank -%}
+      <div class="ga-subtitle">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        <span>{{ section.settings.subtitle | escape }}</span>
+      </div>
+    {%- endif -%}
+    {%- if section.settings.title != blank -%}
+      <h2 class="ga-title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+    {%- if section.settings.description != blank -%}
+      <p class="ga-description">{{ section.settings.description | escape }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="ga-vr-outer">
+    {%- if section.settings.show_arrows -%}
+      <button class="ga-vr-nav-btn ga-vr-nav-prev" id="ga-vr-prev-{{ section.id }}" aria-label="Previous customer video">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    {%- endif -%}
+
+    <div class="ga-vr-scroll-track" id="ga-vr-track-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        {%- assign video_id = block.settings.video_id | strip -%}
+        {%- if video_id == blank and block.settings.video_url != blank -%}
+          {%- comment -%}Extract ID if full URL is entered{%- endcomment -%}
+          {%- if block.settings.video_url contains 'shorts/' -%}
+            {%- assign video_id = block.settings.video_url | split: 'shorts/' | last | split: '?' | first -%}
+          {%- elsif block.settings.video_url contains 'v=' -%}
+            {%- assign video_id = block.settings.video_url | split: 'v=' | last | split: '&' | first -%}
+          {%- elsif block.settings.video_url contains 'youtu.be/' -%}
+            {%- assign video_id = block.settings.video_url | split: 'youtu.be/' | last | split: '?' | first -%}
+          {%- endif -%}
+        {%- endif -%}
+
+        <div class="ga-vr-card" data-video-id="{{ video_id | escape }}" {{ block.shopify_attributes }}>
+          <!-- Poster Image (Lazy, 0 network impact on initial page load) -->
+          <img
+            class="ga-vr-poster"
+            src="https://i.ytimg.com/vi/{{ video_id }}/hqdefault.jpg"
+            alt="{{ block.settings.customer_name | default: 'Ghar Aangan Customer' | escape }} Video Review"
+            loading="lazy"
+            decoding="async"
+            width="480"
+            height="854"
+          >
+
+          <div class="ga-vr-gradient"></div>
+
+          <!-- Top Meta: Verified Badge & Shorts Icon -->
+          <div class="ga-vr-top-bar">
+            <span class="ga-vr-badge">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <span>Verified Customer</span>
+            </span>
+            <span class="ga-vr-shorts-tag">
+              <svg viewBox="0 0 24 24"><path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33c-.77-.32-1.2-.5-1.2-.5L18 8.9c1.68-.89 2.29-2.98 1.38-4.66-.89-1.68-2.98-2.29-4.66-1.38L6.44 7.2C5.07 7.93 4.29 9.38 4.41 10.9c.12 1.52 1.11 2.8 2.56 3.32.06.02 1.2.5 1.2.5l-1.43.87c-1.68.89-2.29 2.98-1.38 4.66.89 1.68 2.98 2.29 4.66 1.38l8.28-4.34c1.37-.73 2.15-2.18 2.03-3.7-.12-1.52-1.11-2.8-2.56-3.31z"/></svg>
+              Shorts
+            </span>
+          </div>
+
+          <!-- Play Trigger Button -->
+          <button class="ga-vr-play-trigger" aria-label="Play video review by {{ block.settings.customer_name | escape }}">
+            <div class="ga-vr-play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span class="ga-vr-play-label">Tap to Play</span>
+          </button>
+
+          <!-- Bottom Customer & Review Details -->
+          <div class="ga-vr-bottom-info">
+            <div class="ga-vr-stars">
+              {%- for i in (1..5) -%}
+                <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              {%- endfor -%}
+            </div>
+            {%- if block.settings.review_title != blank -%}
+              <h3 class="ga-vr-quote">"{{ block.settings.review_title | escape }}"</h3>
+            {%- endif -%}
+            <div class="ga-vr-author-row">
+              <span class="ga-vr-author">{{ block.settings.customer_name | escape }}</span>
+              {%- if block.settings.product_tag != blank -%}
+                <span class="ga-vr-product-pill">{{ block.settings.product_tag | escape }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+
+          <!-- On-Demand YouTube Iframe Container (Zero initial load cost) -->
+          <div class="ga-vr-player-container"></div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.show_arrows -%}
+      <button class="ga-vr-nav-btn ga-vr-nav-next" id="ga-vr-next-{{ section.id }}" aria-label="Next customer video">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    {%- endif -%}
+  </div>
+
+  <!-- Bottom Dots Indicator -->
+  <div class="ga-vr-footer-bar">
+    <div class="ga-vr-dots" id="ga-vr-dots-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        <button class="ga-vr-dot{% if forloop.first %} is-active{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Go to video {{ forloop.index }}"></button>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="ga-vr-swipe-hint">
+    <svg viewBox="0 0 24 24"><path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"/></svg>
+    Swipe to explore all stories
+  </div>
+</div>
+
+<script>
+  (function() {
+    function initVideoReviews() {
+      var sectionId = "{{ section.id }}";
+      var sectionEl = document.getElementById('ga-video-reviews-' + sectionId);
+      if (!sectionEl) return;
+
+      var track = document.getElementById('ga-vr-track-' + sectionId);
+      var btnPrev = document.getElementById('ga-vr-prev-' + sectionId);
+      var btnNext = document.getElementById('ga-vr-next-' + sectionId);
+      var dotsContainer = document.getElementById('ga-vr-dots-' + sectionId);
+      var dots = dotsContainer ? dotsContainer.querySelectorAll('.ga-vr-dot') : [];
+      var cards = track ? track.querySelectorAll('.ga-vr-card') : [];
+
+      if (!track || cards.length === 0) return;
+
+      // Calculate smooth scroll step based on current card width and CSS gap
+      function getScrollStep() {
+        var card = cards[0];
+        if (!card) return track.offsetWidth;
+        var style = window.getComputedStyle(track);
+        var gap = parseFloat(style.gap) || 20;
+        return card.offsetWidth + gap;
+      }
+
+      // Next & Prev Arrow handlers
+      if (btnPrev) {
+        btnPrev.addEventListener('click', function() {
+          var step = getScrollStep();
+          track.scrollBy({ left: -step, behavior: 'smooth' });
+        });
+      }
+
+      if (btnNext) {
+        btnNext.addEventListener('click', function() {
+          var step = getScrollStep();
+          if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 15) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: step, behavior: 'smooth' });
+          }
+        });
+      }
+
+      // Dots Click Navigation
+      dots.forEach(function(dot, idx) {
+        dot.addEventListener('click', function() {
+          var step = getScrollStep();
+          track.scrollTo({ left: idx * step, behavior: 'smooth' });
+        });
+      });
+
+      // Update Active Dot on Scroll
+      var scrollTimeout;
+      track.addEventListener('scroll', function() {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function() {
+          var step = getScrollStep();
+          var activeIndex = Math.round(track.scrollLeft / step);
+          dots.forEach(function(dot, idx) {
+            if (idx === activeIndex) {
+              dot.classList.add('is-active');
+            } else {
+              dot.classList.remove('is-active');
+            }
+          });
+        }, 50);
+      }, { passive: true });
+
+      // Click to Play Facade Pattern (Zero initial load impact)
+      // Only injects YouTube iframe when clicked. No autoplay beforehand!
+      cards.forEach(function(card) {
+        var trigger = card.querySelector('.ga-vr-play-trigger');
+        var playerBox = card.querySelector('.ga-vr-player-container');
+        var videoId = card.getAttribute('data-video-id');
+
+        if (!trigger || !playerBox || !videoId) return;
+
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          // Stop and reset any other currently playing video cards in this section
+          cards.forEach(function(otherCard) {
+            if (otherCard !== card && otherCard.classList.contains('is-playing')) {
+              otherCard.classList.remove('is-playing');
+              var otherBox = otherCard.querySelector('.ga-vr-player-container');
+              if (otherBox) otherBox.innerHTML = '';
+            }
+          });
+
+          // Inject iframe with close button
+          playerBox.innerHTML = 
+            '<button class="ga-vr-close-btn" aria-label="Close Video">' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>' +
+            '</button>' +
+            '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&playsinline=1&rel=0&modestbranding=1" ' +
+              'title="Customer Testimonial" ' +
+              'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
+              'allowfullscreen></iframe>';
+
+          card.classList.add('is-playing');
+
+          // Hook close button
+          var closeBtn = playerBox.querySelector('.ga-vr-close-btn');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', function(evt) {
+              evt.stopPropagation();
+              card.classList.remove('is-playing');
+              playerBox.innerHTML = '';
+            });
+          }
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initVideoReviews);
+    } else {
+      initVideoReviews();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "GA Video Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "REAL EXPERIENCES"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Loved Across India • Video Reviews"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Watch honest unboxing and taste reviews from our verified Ghar Aangan family across India."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Navigation Arrows",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_review",
+      "name": "Customer Video Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_id",
+          "label": "YouTube Video or Shorts ID",
+          "info": "e.g. IKnymFl-grw"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Or Full YouTube Shorts URL",
+          "info": "e.g. https://youtube.com/shorts/IKnymFl-grw?feature=share"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer / Reviewer Name",
+          "default": "Muskan"
+        },
+        {
+          "type": "text",
+          "id": "review_title",
+          "label": "Short Quote / Highlight",
+          "default": "Her Words Say It All"
+        },
+        {
+          "type": "text",
+          "id": "product_tag",
+          "label": "Product Tag / Location",
+          "default": "A2 Badri Cow Ghee"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GA Video Testimonials",
+      "blocks": [
+        {
+          "type": "video_review",
+          "settings": {
+            "video_id": "IKnymFl-grw",
+            "video_url": "https://youtube.com/shorts/IKnymFl-grw?feature=share",
+            "customer_name": "Muskan",
+            "review_title": "Her Words Say It All",
+            "product_tag": "A2 Badri Cow Ghee"
+          }
+        },
+        {
+          "type": "video_review",
+          "settings": {
+            "video_id": "b3qP2A4LTlM",
+            "video_url": "https://youtube.com/shorts/b3qP2A4LTlM?feature=share",
+            "customer_name": "Pooja R.",
+            "review_title": "Pure Mountain Flavor & Aroma",
+            "product_tag": "Badri Cow Bilona Ghee"
+          }
+        },
+        {
+          "type": "video_review",
+          "settings": {
+            "video_id": "YdaODr29LMY",
+            "video_url": "https://youtube.com/shorts/YdaODr29LMY?feature=share",
+            "customer_name": "Shalini M.",
+            "review_title": "Golden Granularity & Goodness",
+            "product_tag": "A2 Himalayan Ghee"
+          }
+        },
+        {
+          "type": "video_review",
+          "settings": {
+            "video_id": "XwKeNwU-MCo",
+            "video_url": "https://youtube.com/shorts/XwKeNwU-MCo?feature=share",
+            "customer_name": "Gaurav D.",
+            "review_title": "Traditional Bilona Craftsmanship",
+            "product_tag": "A2 Badri Cow Ghee"
+          }
+        },
+        {
+          "type": "video_review",
+          "settings": {
+            "video_id": "2UanbLWqFSk",
+            "video_url": "https://youtube.com/shorts/2UanbLWqFSk?feature=share",
+            "customer_name": "Dr. Neha K.",
+            "review_title": "Loved By The Whole Family",
+            "product_tag": "A2 Badri Cow Ghee"
+          }
+        },
+        {
+          "type": "video_review",
+          "settings": {
+            "video_id": "MIQTBn6N3pA",
+            "video_url": "https://youtube.com/shorts/MIQTBn6N3pA?feature=share",
+            "customer_name": "Vikram T.",
+            "review_title": "Genuine Mountain Purity",
+            "product_tag": "Pahadi Heritage"
+          }
+        },
+        {
+          "type": "video_review",
+          "settings": {
+            "video_id": "R-_jiqCnIOA",
+            "video_url": "https://youtube.com/shorts/R-_jiqCnIOA?feature=share",
+            "customer_name": "Ananya S.",
+            "review_title": "Farm-to-Table Freshness",
+            "product_tag": "A2 Badri Cow Ghee"
+          }
+        },
+        {
+          "type": "video_review",
+          "settings": {
+            "video_id": "sagu0lGNL68",
+            "video_url": "https://youtube.com/shorts/sagu0lGNL68?feature=share",
+            "customer_name": "Rohan M.",
+            "review_title": "Unmatched Quality & Rich Texture",
+            "product_tag": "Badri Cow Bilona Ghee"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
