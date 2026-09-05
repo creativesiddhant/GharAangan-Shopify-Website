@@ -346,12 +346,110 @@
         "padding_bottom": 100,
         "padding_rate": 75
       }
+    },
+    "ghar_aangan_video_testimonials": {
+      "type": "ghar-aangan-video-testimonials",
+      "blocks": {
+        "video_1": {
+          "type": "video_review",
+          "settings": {
+            "video_id": "IKnymFl-grw",
+            "video_url": "https://youtube.com/shorts/IKnymFl-grw?feature=share",
+            "video_title": "Her Words Say It All ❤️ | A Genuine Ghar Aangan Testimonial by Muskan",
+            "product_tag": "A2 Badri Cow Ghee"
+          }
+        },
+        "video_2": {
+          "type": "video_review",
+          "settings": {
+            "video_id": "b3qP2A4LTlM",
+            "video_url": "https://youtube.com/shorts/b3qP2A4LTlM?feature=share",
+            "video_title": "From Uttarakhand to Punjab ❤️ | A Customer’s Honest Review of Ghar Aangan Ghee",
+            "product_tag": "Badri Cow Bilona Ghee"
+          }
+        },
+        "video_3": {
+          "type": "video_review",
+          "settings": {
+            "video_id": "YdaODr29LMY",
+            "video_url": "https://youtube.com/shorts/YdaODr29LMY?feature=share",
+            "video_title": "When Women Support Women, It Hits Different ❤️ | Ghar Aangan",
+            "product_tag": "A2 Himalayan Ghee"
+          }
+        },
+        "video_4": {
+          "type": "video_review",
+          "settings": {
+            "video_id": "XwKeNwU-MCo",
+            "video_url": "https://youtube.com/shorts/XwKeNwU-MCo?feature=share",
+            "video_title": "Bacche Kabhi Galat Nahi Bolte ❤️ | Cute & Genuine Testimonial by Mohd Daniyal",
+            "product_tag": "A2 Badri Cow Ghee"
+          }
+        },
+        "video_5": {
+          "type": "video_review",
+          "settings": {
+            "video_id": "2UanbLWqFSk",
+            "video_url": "https://youtube.com/shorts/2UanbLWqFSk?feature=share",
+            "video_title": "A Little Girl’s Honest Review of Ghar Aangan Ghee ❤️ | Parents Trust It, Why Not You?",
+            "product_tag": "A2 Badri Cow Ghee"
+          }
+        },
+        "video_6": {
+          "type": "video_review",
+          "settings": {
+            "video_id": "MIQTBn6N3pA",
+            "video_url": "https://youtube.com/shorts/MIQTBn6N3pA?feature=share",
+            "video_title": "It’s Not Just Ghee, It’s a Little One’s Favourite! ❤️ | Ghar Aangan Ghee Unboxing",
+            "product_tag": "Pahadi Heritage"
+          }
+        },
+        "video_7": {
+          "type": "video_review",
+          "settings": {
+            "video_id": "R-_jiqCnIOA",
+            "video_url": "https://youtube.com/shorts/R-_jiqCnIOA?feature=share",
+            "video_title": "Every Customer, Every Smile, Means the World to Us ❤️ | Ghar Aangan",
+            "product_tag": "A2 Badri Cow Ghee"
+          }
+        },
+        "video_8": {
+          "type": "video_review",
+          "settings": {
+            "video_id": "sagu0lGNL68",
+            "video_url": "https://youtube.com/shorts/sagu0lGNL68?feature=share",
+            "video_title": "It’s Not Just the Packaging ❤️ | Our Dedication to Every Customer | Ghar Aangan",
+            "product_tag": "Badri Cow Bilona Ghee"
+          }
+        }
+      },
+      "block_order": [
+        "video_1",
+        "video_2",
+        "video_3",
+        "video_4",
+        "video_5",
+        "video_6",
+        "video_7",
+        "video_8"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "title_color": "#1a332c",
+        "subtitle": "REAL EXPERIENCES",
+        "title": "Loved Across India • Video Reviews",
+        "description": "Watch genuine unboxing and taste reviews from our Ghar Aangan family across India.",
+        "show_arrows": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
     "breadcrumb",
     "main-product",
     "tabs",
+    "ghar_aangan_video_testimonials",
     "sidebar",
     "related-products",
     "recently-products"
