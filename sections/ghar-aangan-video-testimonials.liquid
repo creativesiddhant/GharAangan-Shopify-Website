@@ -725,6 +725,31 @@
         trigger.addEventListener('click', function(e) {
           e.preventDefault();
 
+          // Immediately pause/stop the Pure Pahadi Craftsmanship video up above
+          if (typeof window.gaPauseCraftsmanshipVideo === 'function') {
+            window.gaPauseCraftsmanshipVideo();
+          }
+          window.dispatchEvent(new CustomEvent('ga:pause-craftsmanship-video'));
+          window.dispatchEvent(new CustomEvent('ga:pause-all-media'));
+
+          // Also send pause message to all other iframes and HTML5 videos across the page
+          try {
+            var iframes = document.querySelectorAll('iframe');
+            iframes.forEach(function(frame) {
+              if (frame.contentWindow && frame !== playerBox.querySelector('iframe')) {
+                frame.contentWindow.postMessage(JSON.stringify({
+                  event: 'command',
+                  func: 'pauseVideo',
+                  args: ''
+                }), '*');
+              }
+            });
+            var nativeVideos = document.querySelectorAll('video');
+            nativeVideos.forEach(function(vid) {
+              vid.pause();
+            });
+          } catch (err) {}
+
           // Stop and reset any other currently playing video cards in this section
           cards.forEach(function(otherCard) {
             if (otherCard !== card && otherCard.classList.contains('is-playing')) {
