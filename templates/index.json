@@ -402,6 +402,24 @@
         "padding_bottom": 60
       }
     },
+    "ghar_aangan_storytelling": {
+      "type": "ghar-aangan-storytelling",
+      "settings": {
+        "background_color": "#faf8f5",
+        "header_subtitle": "OUR ROOTS & HERITAGE",
+        "header_title": "Crafted with Intent, Churned with Tradition",
+        "block1_image": "shopify://shop_images/WhatsApp_Image_2026-08-21_at_2.49.14_AM_3.jpg",
+        "block1_subtitle": "THE FOUNDER'S JOURNEY",
+        "block1_title": "Back to the Soil",
+        "block1_description": "At Ghar Aangan, we believe that food is more than nourishment—it is tradition, heritage, family, and trust. Inspired by the timeless kitchens of Uttarakhand, our mission is to reconnect modern families with authentic Himalayan foods prepared using traditional methods that have been preserved for generations.",
+        "block2_image": "shopify://shop_images/homepage_image_2.png",
+        "block2_subtitle": "HIMALAYAN HERITAGE",
+        "block2_title": "Purity from the High Altitudes",
+        "block2_description": "From handcrafted Bilona A2 Ghee made from indigenous Badri cows to mountain-grown grains, heritage pulses, natural jaggery, medicinal fruit squashes, and traditional Himalayan seasonings, every product carries the warmth of home.",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "featured_product": {
       "type": "featured-product",
       "blocks": {
@@ -419,13 +437,6 @@
             "product_price": {
               "type": "_product-price",
               "settings": {},
-              "blocks": {}
-            },
-            "product_description": {
-              "type": "_product-description",
-              "settings": {
-                "des": "1"
-              },
               "blocks": {}
             },
             "product_linked_sizes": {
@@ -471,7 +482,6 @@
           "block_order": [
             "product_title",
             "product_price",
-            "product_description",
             "product_linked_sizes",
             "variant_picker",
             "quantity_selector",
@@ -525,6 +535,211 @@
         "title": "Select Your Ideal Pack Size",
         "description": "Handcrafted over wood-fires from Himalayan Badri cows. Available in 4 convenient sizes for every kitchen need.",
         "background_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ghar_aangan_benefits": {
+      "type": "ghar-aangan-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "heart",
+            "title": "A2 Gut Friendly",
+            "description": "Exclusively sourced from Badri cows yielding A2 beta-casein milk, preventing digestive discomfort common with A1 milk."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shield",
+            "title": "Immunity Enhancer",
+            "description": "Rich in antioxidants, fat-soluble vitamins (A, D, E, K), and essential fatty acids that support cellular regeneration."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "fire",
+            "title": "High Smoke Point",
+            "description": "With a high smoke point of 250°C (482°F), it remains stable during high-heat cooking, preventing free radical creation."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "title": "Rich in CLA",
+            "description": "Natural Conjugated Linoleic Acid assists in metabolism regulation, promoting healthy cholesterol levels and heart health."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
+      "settings": {
+        "background_color": "#faf8f5",
+        "subtitle": "HEALTH & WELLNESS",
+        "title": "Nutritional Benefits of Badri A2 Ghee",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ghar_aangan_process": {
+      "type": "ghar-aangan-process",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "A2 Milk Sourcing",
+            "description": "Milked fresh daily from native Badri cows free-grazing in high-altitude Himalayan valleys."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Firewood Boiling",
+            "description": "Milk is boiled slowly on earthen stoves using firewood, enhancing natural smoky aroma and sanitizing."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Earthen Curd Setting",
+            "description": "The boiled milk is cooled and naturally cultured with curd starter overnight inside earthen pots."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Bilona Wooden Churn",
+            "description": "The curd is churned back-and-forth slowly using traditional wooden whisks to extract pure unsalted butter."
+          }
+        },
+        "step_5": {
+          "type": "step",
+          "settings": {
+            "title": "Slow Melting",
+            "description": "The fresh butter is simmered on wood fires until the water evaporates, leaving golden granular ghee."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "subtitle": "HOW IT'S CRAFTED",
+        "title": "The Traditional 5-Step Bilona Process",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ghar_aangan_trust_badges": {
+      "type": "ghar-aangan-trust-badges",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "built_in_icon": "mountain",
+            "title": "Himalayan High-Altitude",
+            "description": "Sourced at 5000+ ft where the crisp water, fresh air, and rich mountain foliage nurture happier, healthier herds."
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "built_in_icon": "bilona",
+            "title": "Traditional Bilona Churn",
+            "description": "Slowly simmered on firewood and hand-churned in earthen pots back-and-forth, capturing traditional medicinal benefits."
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "built_in_icon": "purity",
+            "title": "A2 Badri Breed",
+            "description": "Made solely from A2 milk of native Badri cows, ensuring easy digestion, light texture, and natural golden color."
+          }
+        },
+        "badge_4": {
+          "type": "badge",
+          "settings": {
+            "built_in_icon": "certified",
+            "title": "Lab Certified Purity",
+            "description": "Rigorous quality inspections guarantee zero trace of heavy metals, starch, chemicals, or standard adulteration."
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "subtitle": "THE GHAR AANGAN PROMISE",
+        "title": "Why Our Himalayan Ghee is Different",
+        "columns_desktop": 4,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ghar_aangan_reviews": {
+      "type": "ghar-aangan-reviews",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "review_text": "Incredibly rich flavor. I've been trying to find authentic A2 Bilona ghee for years, and this is by far the highest quality. Worth every penny.",
+            "reviewer_name": "Rajesh K.",
+            "reviewer_info": "Verified Buyer • Bangalore",
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "review_text": "Perfect granularity and beautiful golden color. It has done wonders for my digestion, and my family loves it on hot rotis.",
+            "reviewer_name": "Meera S.",
+            "reviewer_info": "Verified Buyer • Dehradun",
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "review_text": "The aroma of this ghee is unmatched. You can immediately tell it comes from organic mountain-grazing cows. Highly recommended.",
+            "reviewer_name": "Amit V.",
+            "reviewer_info": "Verified Buyer • Gurugram",
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "background_color": "#faf8f5",
+        "subtitle": "TESTIMONIALS",
+        "title": "Loved by Pure Food Connoisseurs",
+        "show_arrows": true,
+        "enable_autoplay": true,
+        "autoplay_speed": 5,
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -702,9 +917,14 @@
   "order": [
     "ghar_aangan_hero",
     "ghar_aangan_video",
+    "ghar_aangan_storytelling",
     "featured_product",
     "ghar_aangan_pack_sizes",
+    "ghar_aangan_benefits",
+    "ghar_aangan_process",
     "ghar_aangan_quality_trust",
+    "ghar_aangan_trust_badges",
+    "ghar_aangan_reviews",
     "ghar_aangan_video_testimonials",
     "ghar_aangan_faq"
   ]
