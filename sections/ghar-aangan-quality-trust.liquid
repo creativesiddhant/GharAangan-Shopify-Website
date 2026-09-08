@@ -15,12 +15,18 @@
     background-color: {{ section.settings.background_color | default: '#fdfbf7' }};
     border-top: 1px solid rgba(26, 51, 44, 0.08);
     border-bottom: 1px solid rgba(26, 51, 44, 0.08);
+    overflow: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .ga-quality-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   @media screen and (min-width: 990px) {
@@ -37,6 +43,16 @@
     border-radius: 12px;
     padding: 3.5rem 3rem;
     box-shadow: var(--ga-card-shadow);
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ga-quality-card {
+      padding: 2rem 1.4rem;
+    }
   }
 
   .ga-quality-badge-row {
@@ -72,14 +88,26 @@
 
   .ga-table-responsive {
     overflow-x: auto;
-    margin: 2rem 0;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .ga-quality-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 1.35rem;
-    min-width: 480px;
+    box-sizing: border-box;
+  }
+
+  @media screen and (max-width: 640px) {
+    .ga-quality-table th,
+    .ga-quality-table td {
+      padding: 0.8rem 0.6rem;
+      font-size: 1.15rem;
+    }
   }
 
   .ga-quality-table th {

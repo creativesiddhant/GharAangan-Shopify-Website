@@ -23,6 +23,18 @@
   --ga-glass-effect: rgba(250, 248, 245, 0.82);
 }
 
+/* Global Mobile Overflow Protection */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Base Styles & Typography */
 .ga-title {
   font-family: var(--ga-font-family-serif);
