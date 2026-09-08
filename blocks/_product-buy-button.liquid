@@ -138,12 +138,6 @@
                 endif
               -%}
             </div>
-
-            {%- if show_dynamic_checkout and product.available -%}
-              <div class="ga-dynamic-checkout-wrap">
-                {{ form | payment_button }}
-              </div>
-            {%- endif -%}
           </div>
         </hdt-buy-buttons>
       {%- endform -%}
