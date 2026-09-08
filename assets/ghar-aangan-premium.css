@@ -35,6 +35,68 @@ html, body {
   box-sizing: border-box;
 }
 
+/* Product Page Section Streamlining: Hide unneeded redundant sections on product pages */
+body.template-product .hdt-section-ghar-aangan-trust-badges,
+body.template-product .hdt-section-ghar-aangan-benefits,
+body.template-product .hdt-section-ghar-aangan-process,
+body.template-product .hdt-section-ghar-aangan-reviews,
+body.template-product .hdt-section-ghar-aangan-storytelling,
+body.template-product .hdt-section-ghar-aangan-faq,
+body[class*="product"] [id*="ghar_aangan_trust_badges"],
+body[class*="product"] [id*="ghar_aangan_benefits"],
+body[class*="product"] [id*="ghar_aangan_process"],
+body[class*="product"] [id*="ghar_aangan_reviews"],
+body[class*="product"] [id*="ghar_aangan_storytelling"],
+body[class*="product"] [id*="ghar_aangan_faq"],
+body[class*="product"] .ga-badges-section,
+body[class*="product"] .ga-benefits-section,
+body[class*="product"] .ga-process-section,
+body[class*="product"] .ga-reviews-section,
+body[class*="product"] .ga-storytelling-section,
+body[class*="product"] .ga-faq-section {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Product Page Order: Ensure Description Tabs are right below Main Product */
+body.template-product #MainContent {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+body.template-product #MainContent > [id*="breadcrumb"] {
+  order: 1 !important;
+}
+
+body.template-product #MainContent > [id*="main-product"] {
+  order: 2 !important;
+}
+
+body.template-product #MainContent > [id*="tabs"] {
+  order: 3 !important;
+  display: block !important;
+}
+
+body.template-product #MainContent > [id*="ghar_aangan_quality_trust"] {
+  order: 4 !important;
+}
+
+body.template-product #MainContent > [id*="ghar_aangan_video_testimonials"] {
+  order: 5 !important;
+}
+
+body.template-product #MainContent > [id*="related-products"] {
+  order: 6 !important;
+}
+
+body.template-product #MainContent > [id*="recently-products"] {
+  order: 7 !important;
+}
+
 /* Base Styles & Typography */
 .ga-title {
   font-family: var(--ga-font-family-serif);

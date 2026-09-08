@@ -1,3 +1,4 @@
+{%- unless template contains 'product' -%}
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
@@ -162,6 +163,7 @@
     </div>
   </div>
 </div>
+{%- endunless -%}
 
 {% schema %}
 {
