@@ -76,10 +76,46 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section, form_id: product_form_id -%}
         {%- endif -%}
         <div class="hdt-form__message-wrapper hdt-form-message--error" role="alert" ref="addToCartTextError" hidden>{% render 'icon' with 'error' %} <span class="hdt-error-message"></span></div>
-        <hdt-buy-buttons class="hdt-product-form__buttons" form="{{ product_form_id }}">
-          <div class="hdt-product-form__top-buttons hdt-flex">
-            <div class="hdt-flex hdt-product-form-buttons">
-              <button type="submit" name="add" class="hdt-product-form__submit hdt-btn hdt-oh hdt-btn-solid hdt-font-semibold hdt-relative hdt-truncate hdt-btn-loading__svg"{% if selected_variant.available == false or quantity_rule_soldout or un_no_pick == false %} disabled="true"{% endif %}>
+        <hdt-buy-buttons class="hdt-product-form__buttons ga-buy-buttons-enhanced" form="{{ product_form_id }}">
+          <div class="ga-cta-stack">
+            <!-- Primary CTA: BUY NOW -->
+            <button 
+              type="button" 
+              class="ga-btn-buy-now ga-btn-primary hdt-btn hdt-oh hdt-font-semibold hdt-relative"{% if selected_variant.available == false or quantity_rule_soldout or un_no_pick == false %} disabled="true"{% endif %}
+              id="GaBuyNowBtn-{{ section.id }}"
+              onclick="(function(btn){
+                var form = btn.closest('form');
+                if(!form) return;
+                var variantInput = form.querySelector('input[name=\'id\']');
+                var qtyInput = form.querySelector('input[name=\'quantity\']');
+                var variantId = variantInput ? variantInput.value : '{{ selected_variant.id }}';
+                var qty = qtyInput ? qtyInput.value : 1;
+                btn.classList.add('is-loading');
+                if (window.GharAanganAnalytics) {
+                  window.GharAanganAnalytics.trackEvent('cro_buy_now_click', {
+                    variant_id: variantId,
+                    quantity: qty,
+                    price: '{{ price }}'
+                  });
+                }
+                fetch('/cart/add.js', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: parseInt(qty) }] })
+                }).then(function() {
+                  window.location.href = '/checkout';
+                }).catch(function() {
+                  window.location.href = '/checkout';
+                });
+              })(this);"
+            >
+              <span class="ga-btn-icon">⚡</span>
+              <span class="ga-btn-text">{% if un_no_pick == false %}CHOOSE PACK SIZE{% elsif selected_variant.available == false or quantity_rule_soldout %}SOLD OUT{% else %}BUY NOW • FAST CHECKOUT{% endif %}</span>
+            </button>
+
+            <!-- Secondary CTA: ADD TO CART -->
+            <div class="hdt-flex hdt-product-form-buttons ga-atc-wrap">
+              <button type="submit" name="add" class="ga-btn-secondary-atc hdt-product-form__submit hdt-btn hdt-oh hdt-font-semibold hdt-relative hdt-truncate hdt-btn-loading__svg"{% if selected_variant.available == false or quantity_rule_soldout or un_no_pick == false %} disabled="true"{% endif %}>
                 <span class="hdt-btn-atc_text">{% if un_no_pick == false %}{{ 'products.product.choose_options' | t }}{% elsif is_pre_order %}{{ 'products.product.pre_order' | t }}{% elsif selected_variant.available == false or quantity_rule_soldout %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}</span> 
                 {%- if block.settings.show_price_variant -%}
                   <hdt-qty-price variant-price="{{ price }}" class="hdt-qty-price"{% if un_no_pick == false %} hidden{% endif %} form="{{ product_form_id }}"><span style="display:inline-block;margin:0 2px;"> - </span><span class="hdt-money">{{ money_price_clone | default: money_price }}</span></hdt-qty-price>
@@ -102,18 +138,19 @@
                 endif
               -%}
             </div>
+
             {%- if show_dynamic_checkout and product.available -%}
-              {{ form | payment_button }}
-              {%- comment -%}
-                {%- unless selected_variant.available -%}
-                  <style>#shopify-section-{{ section.id }} .shopify-payment-button {display: none; }</style>
-                {%- endunless -%}
-              {%- endcomment -%}
+              <div class="ga-dynamic-checkout-wrap">
+                {{ form | payment_button }}
+              </div>
             {%- endif -%}
           </div>
         </hdt-buy-buttons>
       {%- endform -%}
     </wrapp-hdt-pr-frm>
+
+    <!-- Embedded Indian Pincode Delivery & COD Checker -->
+    {%- render 'ga-pincode-checker' -%}
   {%- else -%}
     <div class="hdt-product-form">
       <div class="hdt-product-form__buttons form">

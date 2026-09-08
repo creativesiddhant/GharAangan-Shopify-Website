@@ -7,218 +7,260 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: var(--ga-glass-effect, rgba(255, 255, 255, 0.95));
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 -5px 25px rgba(26, 51, 44, 0.1);
-      border-top: 1px solid rgba(26, 51, 44, 0.08);
-      z-index: 999;
-      transform: translateY(100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      padding: 1.2rem 0;
+      background: #ffffff;
+      box-shadow: 0 -4px 20px rgba(26, 51, 44, 0.12);
+      border-top: 1.5px solid var(--ga-gold-cream, #cda250);
+      z-index: 9999;
+      transform: translateY(110%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 0.9rem 1.6rem;
+      pointer-events: none;
     }
 
     .ga-sticky-atc-bar.is-visible {
       transform: translateY(0);
+      pointer-events: auto;
     }
 
-    .ga-sticky-atc-flex {
+    .ga-sticky-atc-container {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
 
-    .ga-sticky-atc-info {
+    .ga-sticky-atc-left {
       display: flex;
       align-items: center;
       gap: 1.2rem;
-      flex-grow: 1;
+      min-width: 0;
     }
 
     .ga-sticky-atc-img {
-      width: 4.8rem;
-      height: 4.8rem;
+      width: 4.4rem;
+      height: 4.4rem;
       object-fit: cover;
-      border-radius: 4px;
-      border: 1px solid rgba(26, 51, 44, 0.08);
+      border-radius: 6px;
+      border: 1px solid rgba(26, 51, 44, 0.1);
+      flex-shrink: 0;
+      background: #faf8f5;
     }
 
-    .ga-sticky-atc-details {
+    .ga-sticky-atc-meta {
       display: flex;
       flex-direction: column;
+      min-width: 0;
     }
 
     .ga-sticky-atc-title {
+      font-family: var(--ga-font-family-serif, serif);
       font-size: 1.4rem;
       font-weight: 600;
       color: var(--ga-forest-green, #1a332c);
       margin: 0;
       line-height: 1.2;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
+      white-space: nowrap;
       overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 320px;
     }
 
-    .ga-sticky-atc-price {
-      font-size: 1.4rem;
-      color: var(--ga-gold-cream, #cda250);
-      font-weight: 500;
+    .ga-sticky-atc-price-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
       margin-top: 0.2rem;
     }
 
-    .ga-sticky-atc-form-wrap {
+    .ga-sticky-atc-price {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--ga-forest-green, #1a332c);
+    }
+
+    .ga-sticky-atc-tag {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #16a34a;
+      background: rgba(22, 163, 74, 0.1);
+      padding: 0.1rem 0.6rem;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    .ga-sticky-atc-actions {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.8rem;
+      flex-shrink: 0;
     }
 
     .ga-sticky-atc-select {
-      font-family: var(--ga-font-family-sans);
-      font-size: 1.35rem;
-      padding: 1.2rem 3.5rem 1.2rem 1.8rem;
-      border: 1px solid var(--ga-border-color);
-      border-radius: 4px;
-      background-color: #ffffff;
-      color: var(--ga-dark-text);
+      font-family: var(--ga-font-family-sans, sans-serif);
+      font-size: 1.25rem;
+      padding: 0.8rem 2.8rem 0.8rem 1.2rem;
+      border: 1.5px solid rgba(26, 51, 44, 0.15);
+      border-radius: 6px;
+      background: #faf8f5;
+      color: #1a332c;
+      font-weight: 600;
       cursor: pointer;
-      outline: none;
       appearance: none;
       -webkit-appearance: none;
-      background-image: url("data:image/svg+xml;utf8,<svg fill='%23cda250' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%231a332c' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
       background-repeat: no-repeat;
-      background-position: right 1rem center;
-      transition: var(--ga-transition-smooth);
+      background-position: right 0.8rem center;
     }
 
-    .ga-sticky-atc-select:focus {
-      border-color: var(--ga-gold-cream);
-      box-shadow: 0 0 0 1px var(--ga-gold-cream);
-    }
-
-    .ga-sticky-atc-btn {
-      padding: 1.3rem 2.8rem;
+    .ga-sticky-btn-buy {
+      background-color: var(--ga-forest-green, #1a332c) !important;
+      color: #ffffff !important;
+      font-family: var(--ga-font-family-sans, sans-serif);
+      font-weight: 700;
       font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1.1rem 2.2rem;
+      border-radius: 6px;
+      border: 1px solid var(--ga-forest-green, #1a332c);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.2s ease;
       white-space: nowrap;
-      min-width: 15rem;
-      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(26, 51, 44, 0.2);
     }
 
-    @media screen and (max-width: 749px) {
-      .ga-sticky-atc-details {
-        display: none; /* Hide title & price on very small screens to fit select & button */
+    .ga-sticky-btn-buy:hover {
+      background-color: #284c42 !important;
+      transform: translateY(-1px);
+    }
+
+    @media screen and (max-width: 640px) {
+      .ga-sticky-atc-bar {
+        padding: 0.7rem 1rem;
       }
-      .ga-sticky-atc-info {
-        flex-grow: 0;
+      .ga-sticky-atc-title {
+        max-width: 140px;
+        font-size: 1.25rem;
       }
-      .ga-sticky-atc-flex {
-        justify-content: center;
+      .ga-sticky-atc-tag {
+        display: none;
       }
-      .ga-sticky-atc-form-wrap {
-        flex-grow: 1;
-        width: 100%;
-        justify-content: space-between;
+      .ga-sticky-atc-price {
+        font-size: 1.35rem;
       }
       .ga-sticky-atc-select {
-        flex-grow: 1;
-        max-width: 45%;
+        display: none; /* Hide secondary select on small phones to maximize Buy Now thumb tap target */
       }
-      .ga-sticky-atc-btn {
+      .ga-sticky-btn-buy {
+        padding: 1.1rem 1.8rem;
+        font-size: 1.25rem;
         flex-grow: 1;
-        max-width: 50%;
-        min-width: unset;
+        justify-content: center;
       }
     }
   {%- endstyle -%}
 
-  <div id="GharAanganStickyAtc" class="ga-sticky-atc-bar">
-    <div class="page-width">
-      <div class="ga-sticky-atc-flex">
-        
-        <div class="ga-sticky-atc-info">
-          {%- if product.featured_image != blank -%}
-            <img class="ga-sticky-atc-img" src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.title }}" width="48" height="48" loading="lazy">
-          {%- endif -%}
-          <div class="ga-sticky-atc-details">
-            <h4 class="ga-sticky-atc-title">{{ product.title }}</h4>
-            <span class="ga-sticky-atc-price" id="StickyPrice">{{ current_variant.price | money }}</span>
+  <div id="GharAanganStickyBar" class="ga-sticky-atc-bar">
+    <div class="ga-sticky-atc-container">
+      <div class="ga-sticky-atc-left">
+        {%- if product.featured_image != blank -%}
+          <img class="ga-sticky-atc-img" src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.title | escape }}" width="44" height="44" loading="lazy">
+        {%- endif -%}
+        <div class="ga-sticky-atc-meta">
+          <span class="ga-sticky-atc-title">{{ product.title }}</span>
+          <div class="ga-sticky-atc-price-row">
+            <span class="ga-sticky-atc-price" id="GaStickyPrice">{{ current_variant.price | money }}</span>
+            <span class="ga-sticky-atc-tag">Prepaid: FREE Express</span>
           </div>
         </div>
+      </div>
 
-        {%- form 'product', product, id: 'sticky-atc-form', class: 'ga-sticky-atc-form' -%}
-          <div class="ga-sticky-atc-form-wrap">
-            <input type="hidden" name="id" value="{{ current_variant.id }}" id="StickyVariantId">
-            
-            {%- if product.variants.size > 1 -%}
-              <select class="ga-sticky-atc-select" id="StickyVariantSelector" aria-label="Select variant">
-                {%- for variant in product.variants -%}
-                  <option 
-                    value="{{ variant.id }}" 
-                    data-price="{{ variant.price | money }}"
-                    {% if variant == current_variant %}selected="selected"{% endif %}
-                    {% unless variant.available %}disabled="disabled"{% endunless %}
-                  >
-                    {{ variant.title }} - {% if variant.available %}{{ variant.price | money }}{% else %}Out of stock{% endif %}
-                  </option>
-                {%- endfor -%}
-              </select>
-            {%- endif -%}
+      <div class="ga-sticky-atc-actions">
+        <input type="hidden" id="GaStickyVariantId" value="{{ current_variant.id }}">
+        
+        {%- if product.variants.size > 1 -%}
+          <select class="ga-sticky-atc-select" id="GaStickyVariantSelector" aria-label="Select variant">
+            {%- for variant in product.variants -%}
+              <option 
+                value="{{ variant.id }}" 
+                data-price="{{ variant.price | money }}"
+                {% if variant == current_variant %}selected="selected"{% endif %}
+                {% unless variant.available %}disabled="disabled"{% endunless %}
+              >
+                {{ variant.title }} ({{ variant.price | money }})
+              </option>
+            {%- endfor -%}
+          </select>
+        {%- endif -%}
 
-            <button type="submit" name="add" class="ga-btn-primary ga-sticky-atc-btn" {% unless current_variant.available %}disabled{% endunless %}>
-              {%- if current_variant.available -%}
-                Add to Cart
-              {%- else -%}
-                Out of Stock
-              {%- endif -%}
-            </button>
-          </div>
-        {%- endform -%}
-
+        <button 
+          type="button" 
+          class="ga-sticky-btn-buy" 
+          id="GaStickyBuyBtn"
+          onclick="(function(btn){
+            var variantId = document.getElementById('GaStickyVariantId').value;
+            btn.classList.add('is-loading');
+            btn.innerHTML = '<span>⚡ Opening Checkout...</span>';
+            if (window.GharAanganAnalytics) {
+              window.GharAanganAnalytics.trackEvent('cro_sticky_buy_click', {
+                variant_id: variantId
+              });
+            }
+            fetch('/cart/add.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
+            }).then(function() {
+              window.location.href = '/checkout';
+            }).catch(function() {
+              window.location.href = '/checkout';
+            });
+          })(this);"
+        >
+          <span>⚡ BUY NOW</span>
+        </button>
       </div>
     </div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const stickyBar = document.getElementById('GharAanganStickyAtc');
-      const variantSelector = document.getElementById('StickyVariantSelector');
-      const hiddenInput = document.getElementById('StickyVariantId');
-      const priceDisplay = document.getElementById('StickyPrice');
-      
-      // Update variant ID and price when select changes
+      const stickyBar = document.getElementById('GharAanganStickyBar');
+      const variantSelector = document.getElementById('GaStickyVariantSelector');
+      const hiddenInput = document.getElementById('GaStickyVariantId');
+      const priceDisplay = document.getElementById('GaStickyPrice');
+
       if (variantSelector) {
         variantSelector.addEventListener('change', function(e) {
-          const selectedOption = e.target.options[e.target.selectedIndex];
-          hiddenInput.value = e.target.value;
-          priceDisplay.textContent = selectedOption.getAttribute('data-price');
+          const opt = e.target.options[e.target.selectedIndex];
+          if (hiddenInput) hiddenInput.value = e.target.value;
+          if (priceDisplay && opt.getAttribute('data-price')) {
+            priceDisplay.textContent = opt.getAttribute('data-price');
+          }
         });
       }
 
-      // Intersection Observer to show/hide sticky bar based on main buy button visibility
-      // Look for standard class names used by Shopify Dawn theme for product form buttons
-      const mainBuyButton = document.querySelector('.product-form__submit, button[name="add"]:not(.ga-sticky-atc-btn)');
-      
-      if (mainBuyButton && stickyBar) {
+      // Show sticky bar once scrolled past the above-the-fold purchase area
+      const targetAnchor = document.querySelector('.hdt-main-product-wrap, .ga-buy-buttons-enhanced, form[action*="/cart/add"]');
+      if (targetAnchor && stickyBar) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
-            // When buy button is NOT visible, show the sticky bar
             if (!entry.isIntersecting) {
               stickyBar.classList.add('is-visible');
             } else {
               stickyBar.classList.remove('is-visible');
             }
           });
-        }, {
-          threshold: 0,
-          rootMargin: '-50px 0px 0px 0px' // offset so it doesn't overlap early
-        });
-        
-        observer.observe(mainBuyButton);
+        }, { threshold: 0.1 });
+        observer.observe(targetAnchor);
       } else if (stickyBar) {
-        // Fallback: show sticky bar on scroll if buy button not found
         window.addEventListener('scroll', function() {
-          if (window.scrollY > 400) {
+          if (window.scrollY > 450) {
             stickyBar.classList.add('is-visible');
           } else {
             stickyBar.classList.remove('is-visible');

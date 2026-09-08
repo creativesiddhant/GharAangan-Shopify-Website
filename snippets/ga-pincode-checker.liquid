@@ -1,0 +1,147 @@
+<!-- snippets/ga-pincode-checker.liquid -->
+<div class="ga-pincode-checker" id="GaPincodeChecker">
+  <div class="ga-pincode-header">
+    <span class="ga-pincode-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+      </svg>
+    </span>
+    <span class="ga-pincode-title">Check Delivery &amp; COD Availability</span>
+  </div>
+  
+  <div class="ga-pincode-input-wrap">
+    <div class="ga-pincode-field">
+      <input 
+        type="text" 
+        id="GaPincodeInput" 
+        placeholder="Enter 6-digit PIN code" 
+        maxlength="6" 
+        inputmode="numeric" 
+        pattern="[0-9]*" 
+        aria-label="Enter 6-digit Indian PIN code"
+      />
+      <button type="button" id="GaPincodeBtn" class="ga-pincode-check-btn">
+        <span class="ga-pincode-btn-text">CHECK</span>
+        <span class="ga-pincode-btn-loader" hidden>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ga-spinner"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-linecap="round"></circle></svg>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div id="GaPincodeResult" class="ga-pincode-result" style="display: none;"></div>
+
+  <div class="ga-delivery-perks">
+    <div class="ga-delivery-perk-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+      <span><strong>FREE Express Delivery</strong> on eligible Prepaid orders</span>
+    </div>
+    <div class="ga-delivery-perk-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a332c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+      <span><strong>Cash on Delivery (COD)</strong> available (₹100 charge)</span>
+    </div>
+    <div class="ga-delivery-perk-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#cda250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      <span><strong>100% Glass Jar Replacement</strong> for transit damage</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    function initPincodeChecker() {
+      const input = document.getElementById('GaPincodeInput');
+      const btn = document.getElementById('GaPincodeBtn');
+      const result = document.getElementById('GaPincodeResult');
+      if (!input || !btn || !result) return;
+
+      // Restore saved pincode if present
+      const savedPincode = localStorage.getItem('ga_checked_pincode');
+      if (savedPincode && savedPincode.length === 6) {
+        input.value = savedPincode;
+        checkPincode(savedPincode, false);
+      }
+
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const pin = input.value.trim();
+        checkPincode(pin, true);
+      });
+
+      input.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+
+      // Filter non-numeric inputs
+      input.addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+        if (this.value.length === 6) {
+          result.style.display = 'none';
+        }
+      });
+
+      function checkPincode(pin, isUserClick) {
+        if (!pin || pin.length !== 6 || !/^[1-9][0-9]{5}$/.test(pin)) {
+          result.style.display = 'block';
+          result.className = 'ga-pincode-result ga-pincode-error';
+          result.innerHTML = '<span class="ga-res-icon">⚠️</span><span>Please enter a valid 6-digit Indian PIN code.</span>';
+          return;
+        }
+
+        const loader = btn.querySelector('.ga-pincode-btn-loader');
+        const text = btn.querySelector('.ga-pincode-btn-text');
+        if (loader) loader.hidden = false;
+        if (text) text.hidden = true;
+
+        setTimeout(function() {
+          if (loader) loader.hidden = true;
+          if (text) text.hidden = false;
+
+          localStorage.setItem('ga_checked_pincode', pin);
+
+          result.style.display = 'block';
+          result.className = 'ga-pincode-result ga-pincode-success';
+          result.innerHTML = `
+            <div class="ga-pincode-success-header">
+              <span class="ga-res-check">✓</span>
+              <span><strong>Serviceable to PIN ${pin}</strong> • Direct from Uttarakhand</span>
+            </div>
+            <div class="ga-pincode-timelines">
+              <div class="ga-pincode-row">
+                <span class="ga-pill-prepaid">⚡ PREPAID</span>
+                <span class="ga-time-bold">5 to 6 Business Days</span>
+                <span class="ga-cost-free">FREE Express Delivery</span>
+              </div>
+              <div class="ga-pincode-row">
+                <span class="ga-pill-cod">📦 COD</span>
+                <span class="ga-time-bold">7 to 10 Business Days</span>
+                <span class="ga-cost-cod">₹100 COD Charge</span>
+              </div>
+              <div class="ga-pincode-dispatch">
+                <span>📦 Dispatches within 24 hours via Delhivery / Blue Dart / DTDC / XpressBees</span>
+              </div>
+            </div>
+          `;
+
+          // Trigger CRO analytics event
+          if (isUserClick && window.GharAanganAnalytics) {
+            window.GharAanganAnalytics.trackEvent('cro_pincode_check', {
+              pincode: pin,
+              serviceable: true
+            });
+          }
+        }, 300);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPincodeChecker);
+    } else {
+      initPincodeChecker();
+    }
+  })();
+</script>

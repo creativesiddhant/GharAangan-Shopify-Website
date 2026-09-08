@@ -2593,4 +2593,319 @@ table.hdt-pr_attrs td {
   }
 }
 
+/* ==========================================================================
+   Ghar Aangan - Conversion Rate Optimization (CRO) Upgrade Styling
+   ========================================================================== */
+
+/* Enhanced Above-The-Fold Purchase Hierarchy */
+.ga-cta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  margin-top: 1.4rem;
+  margin-bottom: 1.8rem;
+}
+
+/* Primary BUY NOW CTA */
+.ga-btn-buy-now {
+  width: 100%;
+  min-height: 52px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  background-color: var(--ga-forest-green, #1a332c) !important;
+  color: #ffffff !important;
+  font-family: var(--ga-font-family-sans, sans-serif) !important;
+  font-size: 1.45rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 8px !important;
+  border: 2px solid var(--ga-forest-green, #1a332c) !important;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(26, 51, 44, 0.22) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  padding: 1.4rem 2.4rem !important;
+  position: relative;
+  text-decoration: none !important;
+}
+
+.ga-btn-buy-now:hover {
+  background-color: #24493e !important;
+  border-color: var(--ga-gold-cream, #cda250) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 51, 44, 0.3) !important;
+}
+
+.ga-btn-buy-now .ga-btn-icon {
+  font-size: 1.6rem;
+}
+
+.ga-btn-buy-now.is-loading {
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* Secondary ADD TO CART */
+.ga-atc-wrap {
+  width: 100%;
+}
+
+.ga-btn-secondary-atc {
+  width: 100% !important;
+  min-height: 48px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff !important;
+  color: var(--ga-forest-green, #1a332c) !important;
+  border: 1.5px solid var(--ga-forest-green, #1a332c) !important;
+  border-radius: 8px !important;
+  font-family: var(--ga-font-family-sans, sans-serif) !important;
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease !important;
+  padding: 1.2rem 2.4rem !important;
+}
+
+.ga-btn-secondary-atc:hover {
+  background-color: rgba(26, 51, 44, 0.04) !important;
+  border-color: var(--ga-forest-green, #1a332c) !important;
+}
+
+/* Embedded Pincode Checker */
+.ga-pincode-checker {
+  margin-top: 1.8rem;
+  margin-bottom: 2rem;
+  padding: 1.6rem;
+  background: #fdfbf7;
+  border: 1.5px solid rgba(26, 51, 44, 0.12);
+  border-radius: 10px;
+}
+
+.ga-pincode-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--ga-forest-green, #1a332c);
+  margin-bottom: 1.1rem;
+}
+
+.ga-pincode-header svg {
+  color: var(--ga-gold-cream, #cda250);
+}
+
+.ga-pincode-input-wrap {
+  width: 100%;
+}
+
+.ga-pincode-field {
+  display: flex;
+  gap: 0.8rem;
+}
+
+#GaPincodeInput {
+  flex-grow: 1;
+  padding: 1rem 1.4rem;
+  border: 1.5px solid rgba(26, 51, 44, 0.2);
+  border-radius: 6px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #1a332c;
+  background: #ffffff;
+  outline: none;
+  font-family: var(--ga-font-family-sans, sans-serif);
+}
+
+#GaPincodeInput:focus {
+  border-color: var(--ga-forest-green, #1a332c);
+  box-shadow: 0 0 0 2px rgba(26, 51, 44, 0.1);
+}
+
+.ga-pincode-check-btn {
+  background: var(--ga-forest-green, #1a332c);
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  font-family: var(--ga-font-family-sans, sans-serif);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 85px;
+}
+
+.ga-pincode-check-btn:hover {
+  background: #24493e;
+}
+
+.ga-pincode-result {
+  margin-top: 1.2rem;
+  padding: 1.4rem;
+  border-radius: 8px;
+  animation: gaFadeIn 0.3s ease forwards;
+}
+
+.ga-pincode-success {
+  background: #ffffff;
+  border: 1.5px solid #22c55e;
+}
+
+.ga-pincode-error {
+  background: #fef2f2;
+  border: 1.5px solid #ef4444;
+  color: #b91c1c;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ga-pincode-success-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.35rem;
+  color: #15803d;
+  margin-bottom: 1rem;
+}
+
+.ga-res-check {
+  background: #22c55e;
+  color: #ffffff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.ga-pincode-timelines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.ga-pincode-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.ga-pincode-row:last-child {
+  border-bottom: none;
+}
+
+.ga-pill-prepaid {
+  background: #dcfce7;
+  color: #15803d;
+  padding: 0.2rem 0.7rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.ga-pill-cod {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.2rem 0.7rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.ga-time-bold {
+  font-weight: 700;
+  color: #1a332c;
+}
+
+.ga-cost-free {
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.ga-cost-cod {
+  font-weight: 600;
+  color: #b91c1c;
+}
+
+.ga-pincode-dispatch {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 0.4rem;
+  line-height: 1.4;
+}
+
+.ga-delivery-perks {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  border-top: 1px dashed rgba(26, 51, 44, 0.15);
+  padding-top: 1.2rem;
+}
+
+.ga-delivery-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.28rem;
+  color: #333;
+}
+
+.ga-delivery-perk-item svg {
+  flex-shrink: 0;
+}
+
+/* Spinner */
+.ga-spinner {
+  animation: gaSpin 1s linear infinite;
+}
+
+@keyframes gaSpin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Mobile Responsiveness (360px - 412px) */
+@media screen and (max-width: 640px) {
+  .ga-btn-buy-now {
+    font-size: 1.35rem !important;
+    padding: 1.3rem 1.6rem !important;
+  }
+  .ga-btn-secondary-atc {
+    font-size: 1.25rem !important;
+  }
+  .ga-pincode-checker {
+    padding: 1.4rem 1.2rem;
+  }
+  .ga-pincode-row {
+    font-size: 1.2rem;
+  }
+  .ga-delivery-perk-item {
+    font-size: 1.2rem;
+  }
+}
+
+
 

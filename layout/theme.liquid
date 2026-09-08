@@ -56,6 +56,7 @@
       echo 'hdt-policy.css' | asset_url | stylesheet_tag
       endif
     -%}
+    <script src="{{ 'ga-cro-analytics.js' | asset_url }}" defer="defer"></script>
     {{ content_for_header }}
     {%- endunless -%}
 
@@ -86,6 +87,9 @@
       {{ content_for_layout }}
       {%- if template.suffix == 'only_config' -%}
         {%- section 'color-swatch' -%}
+      {%- endif -%}
+      {%- if request.page_type == 'product' -%}
+        {%- section 'ghar-aangan-sticky-atc' -%}
       {%- endif -%}
     </main>
 

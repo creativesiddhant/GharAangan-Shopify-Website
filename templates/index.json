@@ -902,16 +902,15 @@
         "padding_bottom": 64
       }
     },
-    "ghar_aangan_sales_ticker": {
-      "type": "ghar-aangan-sales-ticker",
+    "ghar_aangan_quality_trust": {
+      "type": "ghar-aangan-quality-trust",
       "settings": {
-        "enable_ticker": true,
-        "mobile_visible": true,
-        "title_prefix": "Verified Purchase",
-        "card_background": "#faf8f5",
-        "text_color": "#1a332c",
-        "display_time": 6,
-        "delay_time": 10
+        "background_color": "#fdfbf7",
+        "subtitle": "100% TRANSPARENCY & VERIFIED ORIGIN",
+        "title": "Quality You Can Verify",
+        "description": "Every jar of Ghar Aangan ghee is pure, unadulterated Badri cow milk fat crafted in Uttarakhand. Below is our verified testing analysis and production standards.",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
@@ -923,10 +922,10 @@
     "ghar_aangan_pack_sizes",
     "ghar_aangan_benefits",
     "ghar_aangan_process",
+    "ghar_aangan_quality_trust",
     "ghar_aangan_trust_badges",
     "ghar_aangan_reviews",
     "ghar_aangan_video_testimonials",
-    "ghar_aangan_faq",
-    "ghar_aangan_sales_ticker"
+    "ghar_aangan_faq"
   ]
 }
