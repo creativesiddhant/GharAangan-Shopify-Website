@@ -42,88 +42,92 @@
 
 <style>
   .hdt-linked-pack-swatches {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 8px;
-    margin-bottom: 14px;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 8px !important;
+    margin-top: 10px !important;
+    margin-bottom: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .hdt-linked-pack-pill {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 9px 16px;
-    border-radius: 8px;
-    border: 1.5px solid #dfd9cb;
-    background: #ffffff;
-    color: #1a332c;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px 4px !important;
+    border-radius: 8px !important;
+    border: 1.5px solid #dfd9cb !important;
+    background: #ffffff !important;
+    color: #1a332c !important;
     text-decoration: none !important;
-    font-size: 13.5px;
-    font-weight: 500;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    min-width: 92px;
-    text-align: center;
-    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
   }
   .hdt-linked-pack-pill:hover {
-    border-color: #1a332c;
-    background: #fdfbf7;
-    color: #1a332c;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    border-color: #1a332c !important;
+    background: #fdfbf7 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06) !important;
   }
   .hdt-linked-pack-pill.is-selected {
-    border-color: #1a332c;
-    background: #1a332c;
+    border-color: #1a332c !important;
+    background: #1a332c !important;
     color: #ffffff !important;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(26, 51, 44, 0.18);
-  }
-  .hdt-linked-pack-pill.is-selected .hdt-pill-sub {
-    color: #dfcaa2;
+    box-shadow: 0 4px 12px rgba(26, 51, 44, 0.18) !important;
   }
   .hdt-linked-pack-pill .hdt-pill-title {
-    font-size: 13.5px;
-    line-height: 1.2;
-    display: block;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    display: block !important;
+    color: #1a332c !important;
+  }
+  .hdt-linked-pack-pill.is-selected .hdt-pill-title {
+    color: #ffffff !important;
   }
   .hdt-linked-pack-pill .hdt-pill-sub {
-    font-size: 11px;
-    font-weight: 600;
-    margin-top: 3px;
-    color: #8c734b;
-    display: block;
-    line-height: 1.1;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    margin-top: 2px !important;
+    color: #8c734b !important;
+    display: block !important;
+    line-height: 1.1 !important;
+  }
+  .hdt-linked-pack-pill.is-selected .hdt-pill-sub {
+    color: #dfcaa2 !important;
   }
   .hdt-linked-pack-pill .hdt-pill-badge {
-    position: absolute;
-    top: -8px;
-    right: -6px;
-    background: #b33b28;
-    color: #ffffff;
-    font-size: 8.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 2px 6px;
-    border-radius: 12px;
-    letter-spacing: 0.3px;
-    line-height: 1;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-    white-space: nowrap;
+    position: absolute !important;
+    top: -8px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: #b33b28 !important;
+    color: #ffffff !important;
+    font-size: 7.5px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    padding: 2px 6px !important;
+    border-radius: 10px !important;
+    letter-spacing: 0.3px !important;
+    line-height: 1 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15) !important;
+    white-space: nowrap !important;
+    z-index: 2 !important;
   }
   .hdt-linked-pack-pill .hdt-pill-badge.badge-gold {
-    background: #c8933b;
-    color: #ffffff;
+    background: #c8933b !important;
+    color: #ffffff !important;
   }
   .hdt-linked-pack-pill .hdt-pill-badge.badge-green {
-    background: #2d5c4e;
-    color: #ffffff;
+    background: #2d5c4e !important;
+    color: #ffffff !important;
   }
-
-
-
   .ga-pack-size-header-wrap {
     display: flex;
     align-items: center;
@@ -151,17 +155,43 @@
     flex-shrink: 0;
   }
   .hdt-linked-pack-pill .hdt-pill-delivery-tag {
-    font-size: 10px;
-    font-weight: 800;
-    color: #dc2626;
-    margin-top: 3px;
-    display: block;
-    line-height: 1;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    color: #16a34a !important;
+    margin-top: 3px !important;
+    display: block !important;
+    line-height: 1.15 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.2px !important;
+    white-space: nowrap !important;
+  }
+  .hdt-linked-pack-pill .hdt-pill-delivery-tag.tag-prepaid {
+    color: #059669 !important;
   }
   .hdt-linked-pack-pill.is-selected .hdt-pill-delivery-tag {
-    color: #fca5a5;
+    color: #86efac !important;
+  }
+  .hdt-linked-pack-pill.is-selected .hdt-pill-delivery-tag.tag-prepaid {
+    color: #a7f3d0 !important;
+  }
+
+  @media screen and (max-width: 640px) {
+    .hdt-linked-pack-swatches {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 12px 8px !important;
+    }
+    .hdt-linked-pack-pill {
+      padding: 10px 4px !important;
+    }
+    .hdt-linked-pack-pill .hdt-pill-title {
+      font-size: 13px !important;
+    }
+    .hdt-linked-pack-pill .hdt-pill-sub {
+      font-size: 10.5px !important;
+    }
+    .hdt-linked-pack-pill .hdt-pill-delivery-tag {
+      font-size: 8.5px !important;
+    }
   }
 
   /* Pahadi Pisyu Loon Direct Discount Box */
@@ -313,7 +343,7 @@
         <a href="/products/a2-desi-pahadi-ghee-2l" class="hdt-linked-pack-pill{% if product.handle contains '2l' %} is-selected{% endif %}">
           <span class="hdt-pill-title">2 Litres</span>
           <span class="hdt-pill-sub">{% if p3.price %}{{ p3.price | money }}{% else %}₹3,198{% endif %}</span>
-          <span class="hdt-pill-delivery-tag" style="background:#f0fdf4; color:#15803d; border-color:#bbf7d0;">Prepaid Only • Free Delivery</span>
+          <span class="hdt-pill-delivery-tag tag-prepaid">Prepaid • Free Delivery</span>
         </a>
 
         <!-- 5 Litres -->
@@ -321,7 +351,7 @@
           <span class="hdt-pill-badge badge-green">FAMILY PACK</span>
           <span class="hdt-pill-title">5 Litres</span>
           <span class="hdt-pill-sub">{% if p4.price %}{{ p4.price | money }}{% else %}₹7,995{% endif %}</span>
-          <span class="hdt-pill-delivery-tag" style="background:#f0fdf4; color:#15803d; border-color:#bbf7d0;">Prepaid Only • Free Delivery</span>
+          <span class="hdt-pill-delivery-tag tag-prepaid">Prepaid • Free Delivery</span>
         </a>
       </div>
 

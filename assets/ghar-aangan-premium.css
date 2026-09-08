@@ -3005,3 +3005,25 @@ body[class*="2l"] .ga-cod-price-note:not(.ga-prepaid-tag),
 body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
   display: none !important;
 }
+
+.ga-cod-price-note.ga-prepaid-tag {
+  background: #f0fdf4 !important;
+  color: #15803d !important;
+  border-color: #bbf7d0 !important;
+  font-weight: 800 !important;
+}
+
+.ga-price-free-shipping-wrap {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 8px !important;
+  margin-bottom: 4px !important;
+}
+
+@media (max-width: 640px) {
+  .ga-price-free-shipping-wrap {
+    gap: 6px !important;
+  }
+}
