@@ -1,4 +1,10 @@
 <!-- snippets/ga-pincode-checker.liquid -->
+{%- liquid
+  assign is_bulk_prepaid_only = false
+  if product.handle contains '2l' or product.handle contains '5l'
+    assign is_bulk_prepaid_only = true
+  endif
+-%}
 <div class="ga-pincode-checker" id="GaPincodeChecker">
   <div class="ga-pincode-header">
     <span class="ga-pincode-icon">
@@ -7,7 +13,7 @@
         <circle cx="12" cy="10" r="3"></circle>
       </svg>
     </span>
-    <span class="ga-pincode-title">Check Delivery &amp; COD Availability</span>
+    <span class="ga-pincode-title">{% if is_bulk_prepaid_only %}Check Delivery Availability (Prepaid Only){% else %}Check Delivery &amp; COD Availability{% endif %}</span>
   </div>
   
   <div class="ga-pincode-input-wrap">
@@ -35,12 +41,19 @@
   <div class="ga-delivery-perks">
     <div class="ga-delivery-perk-item">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
-      <span><strong>FREE Express Delivery</strong> on eligible Prepaid orders</span>
+      <span><strong>FREE Express Delivery</strong> on all Prepaid orders</span>
     </div>
-    <div class="ga-delivery-perk-item">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a332c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-      <span><strong>Cash on Delivery (COD)</strong> available (₹100 charge)</span>
-    </div>
+    {%- if is_bulk_prepaid_only -%}
+      <div class="ga-delivery-perk-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+        <span style="color: #15803d;"><strong>Strictly Prepaid Only:</strong> COD not available for 2L/5L bulk packs</span>
+      </div>
+    {%- else -%}
+      <div class="ga-delivery-perk-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a332c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+        <span><strong>Cash on Delivery (COD)</strong> available (₹100 charge)</span>
+      </div>
+    {%- endif -%}
     <div class="ga-delivery-perk-item">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#cda250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
       <span><strong>100% Glass Jar Replacement</strong> for transit damage</span>
@@ -55,6 +68,8 @@
       const btn = document.getElementById('GaPincodeBtn');
       const result = document.getElementById('GaPincodeResult');
       if (!input || !btn || !result) return;
+
+      const isBulkPrepaidOnly = {% if is_bulk_prepaid_only %}true{% else %}false{% endif %} || window.location.pathname.includes('-2l') || window.location.pathname.includes('-5l');
 
       // Restore saved pincode if present
       const savedPincode = localStorage.getItem('ga_checked_pincode');
@@ -105,12 +120,18 @@
 
           result.style.display = 'block';
           result.className = 'ga-pincode-result ga-pincode-success';
-          result.innerHTML = `
-            <div class="ga-pincode-success-header">
-              <span class="ga-res-check">✓</span>
-              <span><strong>Serviceable to PIN ${pin}</strong> • Direct from Uttarakhand</span>
-            </div>
-            <div class="ga-pincode-timelines">
+
+          const rowsHtml = isBulkPrepaidOnly ? `
+              <div class="ga-pincode-row">
+                <span class="ga-pill-prepaid">⚡ PREPAID ONLY</span>
+                <span class="ga-time-bold">5 to 6 Business Days</span>
+                <span class="ga-cost-free">100% FREE Express Delivery</span>
+              </div>
+              <div class="ga-pincode-row" style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 6px; padding: 7px 10px; font-size: 11px; color: #9a3412; display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 13px; flex-shrink: 0;">🔒</span>
+                <span><strong>Prepaid Only:</strong> Cash on Delivery (COD) is not available for 2L and 5L bulk packs to avoid courier transit damage/refusals.</span>
+              </div>
+          ` : `
               <div class="ga-pincode-row">
                 <span class="ga-pill-prepaid">⚡ PREPAID</span>
                 <span class="ga-time-bold">5 to 6 Business Days</span>
@@ -121,6 +142,15 @@
                 <span class="ga-time-bold">7 to 10 Business Days</span>
                 <span class="ga-cost-cod">₹100 COD Charge</span>
               </div>
+          `;
+
+          result.innerHTML = `
+            <div class="ga-pincode-success-header">
+              <span class="ga-res-check">✓</span>
+              <span><strong>Serviceable to PIN ${pin}</strong> • Direct from Uttarakhand</span>
+            </div>
+            <div class="ga-pincode-timelines">
+              ${rowsHtml}
               <div class="ga-pincode-dispatch">
                 <span>📦 Dispatches within 24 hours via Delhivery / Blue Dart / DTDC / XpressBees</span>
               </div>

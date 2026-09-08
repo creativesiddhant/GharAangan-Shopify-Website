@@ -144,6 +144,10 @@
     if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.tags contains 'free-shipping' or product.tags contains 'Janmashtami'
       assign is_free_shipping_product = true
     endif
+    assign is_bulk_prepaid_only = false
+    if product.handle contains '2l' or product.handle contains '5l'
+      assign is_bulk_prepaid_only = true
+    endif
   -%}
   {%- if is_free_shipping_product -%}
     <div class="ga-price-free-shipping-wrap">
@@ -154,10 +158,18 @@
           <circle cx="5.5" cy="18.5" r="2.5"></circle>
           <circle cx="18.5" cy="18.5" r="2.5"></circle>
         </svg>
-        FREE DELIVERY (PREPAID)
+        {%- if is_bulk_prepaid_only -%}
+          FREE DELIVERY (PREPAID ONLY)
+        {%- else -%}
+          FREE DELIVERY (PREPAID)
+        {%- endif -%}
       </span>
       <span class="ga-festive-pill">🪔 Janmashtami Special</span>
-      <span class="ga-cod-price-note">COD: ₹100 Applied</span>
+      {%- if is_bulk_prepaid_only -%}
+        <span class="ga-cod-price-note ga-prepaid-tag" style="background:#f0fdf4 !important; color:#15803d !important; border-color:#bbf7d0 !important;">PREPAID ONLY (NO COD)</span>
+      {%- else -%}
+        <span class="ga-cod-price-note">COD: ₹100 Applied</span>
+      {%- endif -%}
     </div>
   {%- endif -%}
 </div>

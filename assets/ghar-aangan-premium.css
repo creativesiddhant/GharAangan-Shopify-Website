@@ -2981,5 +2981,27 @@ table.hdt-pr_attrs td {
   }
 }
 
+/* 2L and 5L Bulk Packs: Strict Prepaid Only Styles */
+.ga-pack-shipping-prepaid-only {
+  background: #f0fdf4 !important;
+  border-color: #bbf7d0 !important;
+}
 
+.ga-pill-prepaid-only {
+  background: #15803d !important;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  letter-spacing: 0.4px !important;
+}
 
+body[class*="2l"] .ga-cod-note,
+body[class*="5l"] .ga-cod-note,
+body[class*="2l"] .ga-cod-price-note:not(.ga-prepaid-tag),
+body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
+  display: none !important;
+}

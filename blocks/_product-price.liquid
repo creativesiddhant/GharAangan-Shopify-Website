@@ -27,6 +27,10 @@
     if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.tags contains 'free-shipping' or product.tags contains 'Janmashtami'
       assign is_ghee_product = true
     endif
+    assign is_bulk_prepaid_only = false
+    if product.handle contains '2l' or product.handle contains '5l'
+      assign is_bulk_prepaid_only = true
+    endif
   -%}
   {%- if is_ghee_product -%}
     <div class="ga-janmashtami-banner">
@@ -36,18 +40,29 @@
           <span class="ga-janmashtami-banner__tag">JANMASHTAMI MAHOTSAV OFFER</span>
         </div>
         <div class="ga-janmashtami-banner__headline">
-          <span class="ga-janmashtami-main-msg"><strong>FREE Express Shipping</strong> on Prepaid Orders Only</span>
-          <span class="ga-cod-note">₹100 for COD Orders</span>
+          <span class="ga-janmashtami-main-msg"><strong>FREE Express Shipping</strong> on Prepaid Orders</span>
+          {%- if is_bulk_prepaid_only -%}
+            <span class="ga-cod-note ga-prepaid-note" style="color:#15803d !important; background:#f0fdf4 !important; border-color:#bbf7d0 !important;">Prepaid Only</span>
+          {%- else -%}
+            <span class="ga-cod-note">₹100 for COD Orders</span>
+          {%- endif -%}
         </div>
         <div class="ga-janmashtami-banner__perks">
           <span class="ga-janmashtami-perk-item">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            ⚡ FREE Express Delivery (Prepaid Orders Only)
+            ⚡ FREE Express Delivery (Prepaid Orders)
           </span>
-          <span class="ga-janmashtami-perk-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            💵 ₹100 Applied on COD Orders
-          </span>
+          {%- if is_bulk_prepaid_only -%}
+            <span class="ga-janmashtami-perk-item" style="color: #15803d !important;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              🛡️ Strictly Prepaid Only (No COD on Bulk Packs)
+            </span>
+          {%- else -%}
+            <span class="ga-janmashtami-perk-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              💵 ₹100 Applied on COD Orders
+            </span>
+          {%- endif -%}
           <span class="ga-janmashtami-perk-item">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Pure Badri Cow Bilona Ghee

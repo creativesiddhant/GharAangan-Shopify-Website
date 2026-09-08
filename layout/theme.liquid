@@ -62,7 +62,7 @@
 
   </head>
 
-  <body class="hdt-page-type-{{ request.page_type }}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} template-{{ template.name }}">
+  <body class="hdt-page-type-{{ request.page_type }}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} template-{{ template.name }}{% if product.handle %} product-handle-{{ product.handle }}{% endif %}">
     <!-- Premium Ghar Aangan Preloader -->
     <div id="ga-preloader" class="ga-preloader">
       <div class="ga-preloader-inner">

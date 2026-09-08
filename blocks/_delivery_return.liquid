@@ -6,6 +6,10 @@
         if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.tags contains 'free-shipping' or product.tags contains 'Janmashtami'
           assign is_free_shipping_product = true
         endif
+        assign is_bulk_prepaid_only = false
+        if product.handle contains '2l' or product.handle contains '5l'
+          assign is_bulk_prepaid_only = true
+        endif
       -%}
       <div class="hdt-product__delivery">
         {%- if block.settings.icon_delivery != 'none' -%}
@@ -14,7 +18,9 @@
           </div>
         {%- endif -%}
         <div class="hdt-product__delivery-content">
-          {%- if is_free_shipping_product -%}
+          {%- if is_bulk_prepaid_only -%}
+            <p>🚚 <strong>Fast Delivery (Prepaid Only):</strong> <strong>5 to 6 business days</strong> (100% FREE Delivery). <span style="color: #991b1b; font-weight: 600;">(Bulk pack: Cash on Delivery not available)</span>. Dispatch within <strong>24 hours</strong> from Uttarakhand.</p>
+          {%- elsif is_free_shipping_product -%}
             <p>🚚 <strong>Fast Delivery (Prepaid):</strong> <strong>5 to 6 business days</strong> (FREE Delivery). <strong>Standard Shipping (COD):</strong> <strong>7 to 10 business days</strong> (₹100 applied). Dispatch within <strong>24 hours</strong>.</p>
           {%- else -%}
             {{ block.settings.content_devivery }}
