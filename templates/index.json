@@ -394,7 +394,7 @@
         "background_color": "#faf8f5",
         "header_subtitle": "OUR HERITAGE IN MOTION",
         "header_title": "Pure Pahadi Craftsmanship",
-        "header_description": "Watch how we churn pure A2 Badri cow ghee using traditional Bilona methods in Uttarakhand.",
+        "header_description": "Watch how we churn pure A2 Pahadi Bilona ghee using traditional curd-churning methods in Uttarakhand.",
         "video_url": "https://www.youtube.com/watch?v=jLSVeNXRaRs",
         "video_aspect_ratio": "9_16",
         "video_width_desktop": "medium",
@@ -415,7 +415,7 @@
         "block2_image": "shopify://shop_images/homepage_image_2.png",
         "block2_subtitle": "HIMALAYAN HERITAGE",
         "block2_title": "Purity from the High Altitudes",
-        "block2_description": "From handcrafted Bilona A2 Ghee made from indigenous Badri cows to mountain-grown grains, heritage pulses, natural jaggery, medicinal fruit squashes, and traditional Himalayan seasonings, every product carries the warmth of home.",
+        "block2_description": "From handcrafted Bilona A2 Ghee sourced from indigenous Badri and local Uttarakhand cattle to mountain-grown grains, heritage pulses, natural jaggery, medicinal fruit squashes, and traditional Himalayan seasonings, every product carries the warmth of home.",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -533,7 +533,7 @@
       "settings": {
         "subtitle": "100% PURE BILONA A2 GHEE",
         "title": "Select Your Ideal Pack Size",
-        "description": "Handcrafted over wood-fires from Himalayan Badri cows. Available in 4 convenient sizes for every kitchen need.",
+        "description": "Handcrafted over wood-fires from Himalayan Pahadi cattle. Available in 4 convenient sizes for every kitchen need.",
         "background_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60
@@ -547,7 +547,7 @@
           "settings": {
             "icon": "heart",
             "title": "A2 Gut Friendly",
-            "description": "Exclusively sourced from Badri cows yielding A2 beta-casein milk, preventing digestive discomfort common with A1 milk."
+            "description": "Sourced from high-altitude Uttarakhand cattle yielding tested A2 beta-casein milk, gentle on the gut and easily digestible."
           }
         },
         "benefit_2": {
@@ -584,7 +584,7 @@
       "settings": {
         "background_color": "#faf8f5",
         "subtitle": "HEALTH & WELLNESS",
-        "title": "Nutritional Benefits of Badri A2 Ghee",
+        "title": "Nutritional Benefits of Himalayan A2 Ghee",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -596,7 +596,7 @@
           "type": "step",
           "settings": {
             "title": "A2 Milk Sourcing",
-            "description": "Milked fresh daily from native Badri cows free-grazing in high-altitude Himalayan valleys."
+            "description": "Fresh raw milk sourced daily from free-grazing Himalayan cattle herds, verified for A2 beta-casein."
           }
         },
         "step_2": {
@@ -666,8 +666,8 @@
           "type": "badge",
           "settings": {
             "built_in_icon": "purity",
-            "title": "A2 Badri Breed",
-            "description": "Made solely from A2 milk of native Badri cows, ensuring easy digestion, light texture, and natural golden color."
+            "title": "Verified A2 Beta-Casein",
+            "description": "Carefully sourced from tested A2A2 herds in Uttarakhand—including native Badri and local cattle—for easy digestion and golden purity."
           }
         },
         "badge_4": {
@@ -704,7 +704,7 @@
             "review_text": "Incredibly rich flavor. I've been trying to find authentic A2 Bilona ghee for years, and this is by far the highest quality. Worth every penny.",
             "reviewer_name": "Rajesh K.",
             "reviewer_info": "Verified Buyer • Bangalore",
-            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+            "reviewed_product": "A2 Desi Pahadi Bilona Ghee"
           }
         },
         "review_2": {
@@ -714,7 +714,7 @@
             "review_text": "Perfect granularity and beautiful golden color. It has done wonders for my digestion, and my family loves it on hot rotis.",
             "reviewer_name": "Meera S.",
             "reviewer_info": "Verified Buyer • Dehradun",
-            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+            "reviewed_product": "A2 Desi Pahadi Bilona Ghee"
           }
         },
         "review_3": {
@@ -724,7 +724,7 @@
             "review_text": "The aroma of this ghee is unmatched. You can immediately tell it comes from organic mountain-grazing cows. Highly recommended.",
             "reviewer_name": "Amit V.",
             "reviewer_info": "Verified Buyer • Gurugram",
-            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+            "reviewed_product": "A2 Desi Pahadi Bilona Ghee"
           }
         }
       },
@@ -758,7 +758,14 @@
           "type": "faq",
           "settings": {
             "question": "Why is Badri cow ghee considered premium?",
-            "answer": "<p>Badri cows are native Himalayan humped cattle that graze on pristine Himalayan pastures, herbs, and local flora. They yield a very small daily quantity of milk, which is exceptionally rich in nutrients and A2 beta-casein proteins.</p>"
+            "answer": "<p>Badri cattle are a recognised indigenous breed associated with the hilly terrain and livestock heritage of Uttarakhand. They free-graze on mountain pastures, herbs, and clean flora, yielding a limited, nutrient-rich milk that is deeply revered in traditional Pahadi culture.</p>"
+          }
+        },
+        "faq_breed_clarification": {
+          "type": "faq",
+          "settings": {
+            "question": "Why do we see Jersey or different cow breeds in your videos? Does breed define A1 or A2?",
+            "answer": "<p>A1 or A2 status is defined by the <strong>beta-casein protein variant</strong> in milk, not by cow breed alone. While Badri is a unique Uttarakhand hill breed, scientific studies confirm that A2A2 beta-casein exists within Jersey populations as well as indigenous Indian cattle. At Ghar Aangan, we work directly with Uttarakhand mountain farmers who rear Badri cattle, local Pahadi cattle, and other breeds including Jersey. We test every batch for verified A2 beta-casein while maintaining complete transparency about cattle sourcing.</p>"
           }
         },
         "faq_3": {
@@ -793,6 +800,7 @@
       "block_order": [
         "faq_1",
         "faq_2",
+        "faq_breed_clarification",
         "faq_3",
         "faq_4",
         "faq_5",
@@ -908,7 +916,18 @@
         "background_color": "#fdfbf7",
         "subtitle": "100% TRANSPARENCY & VERIFIED ORIGIN",
         "title": "Quality You Can Verify",
-        "description": "Every jar of Ghar Aangan ghee is pure, unadulterated Badri cow milk fat crafted in Uttarakhand. Below is our verified testing analysis and production standards.",
+        "description": "Every jar of Ghar Aangan ghee is pure, unadulterated Himalayan cow milk fat crafted in Uttarakhand, verified for pure A2 beta-casein. Below is our verified testing analysis and production standards.",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ghar_aangan_breed_clarification": {
+      "type": "ghar-aangan-breed-clarification",
+      "settings": {
+        "subtitle": "TRANSPARENCY & CATTLE HERITAGE",
+        "title": "Understanding Breed Identity & A1/A2 Sourcing",
+        "description": "At Ghar Aangan, we celebrate Uttarakhand’s native Badri cattle while upholding complete transparency on milk genetics, breed characteristics, and verified beta-casein protein standards.",
+        "background_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -923,6 +942,7 @@
     "ghar_aangan_benefits",
     "ghar_aangan_process",
     "ghar_aangan_quality_trust",
+    "ghar_aangan_breed_clarification",
     "ghar_aangan_trust_badges",
     "ghar_aangan_reviews",
     "ghar_aangan_video_testimonials",

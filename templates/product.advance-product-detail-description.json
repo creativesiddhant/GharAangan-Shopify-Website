@@ -174,6 +174,14 @@
             "title": "Nutritional & Purity Details"
           }
         },
+        "tab_breed_clarification": {
+          "type": "tab_html",
+          "settings": {
+            "title": "Breed & A2 Sourcing Clarification",
+            "content": "<div style=\"font-size: 1.5rem; line-height: 1.7; color: #444;\"><p style=\"font-size: 1.6rem; font-weight: 600; color: #1a332c; margin-bottom: 1.2rem;\">“Badri is a recognised indigenous cattle breed of Uttarakhand. A1/A2, on the other hand, refers to variants of the beta-casein protein and does not determine whether a cow is Badri. Ghar Aangan maintains careful sourcing and quality standards across its cattle sources, including Badri and other cattle from Uttarakhand.”</p><h4 style=\"font-size: 1.55rem; color: #1a332c; margin: 2rem 0 0.5rem 0;\">Badri Cow — A Speciality of Uttarakhand</h4><p>Badri cattle are an indigenous cattle breed of Uttarakhand, associated with the state's hilly terrain and local livestock heritage. At Ghar Aangan, Badri cattle are an important part of the Pahadi tradition we want to preserve and share.</p><h4 style=\"font-size: 1.55rem; color: #1a332c; margin: 1.5rem 0 0.5rem 0;\">Badri &amp; A1/A2 Are Not the Same Thing</h4><p>There is an important distinction: Badri is a breed identity, while A1/A2 describes variants of beta-casein, a milk protein. Therefore, A1/A2 status alone cannot be used to identify a cow as Badri. Scientific studies have found A2A2 animals within Jersey populations as well as indigenous Indian cattle populations.</p><h4 style=\"font-size: 1.55rem; color: #1a332c; margin: 1.5rem 0 0.5rem 0;\">Our Sourcing Approach</h4><p>Ghar Aangan works with cattle sourced from Uttarakhand and maintains defined quality and sourcing standards. Our cattle sources may include Badri cattle, local Uttarakhand cattle and other breeds, including Jersey. We keep breed identity and A1/A2 terminology separate and do not use one as proof of the other.</p></div>",
+            "page": ""
+          }
+        },
         "tab_html_fjtD4a": {
           "type": "tab_html",
           "settings": {
@@ -194,6 +202,7 @@
       "block_order": [
         "tab_des_tKqkJj",
         "tab_add_HXf3yk",
+        "tab_breed_clarification",
         "tab_html_fjtD4a",
         "tab_html_GUBKNW"
       ],
@@ -213,7 +222,7 @@
         "background_color": "#fdfbf7",
         "subtitle": "100% TRANSPARENCY & VERIFIED ORIGIN",
         "title": "Quality You Can Verify",
-        "description": "Every jar of Ghar Aangan ghee is pure, unadulterated Badri cow milk fat crafted in Uttarakhand. Below is our verified testing analysis and production standards.",
+        "description": "Every jar of Ghar Aangan ghee is pure, unadulterated Himalayan cow milk fat crafted in Uttarakhand, verified for pure A2 beta-casein. Below is our verified testing analysis and production standards.",
         "padding_top": 50,
         "padding_bottom": 50
       }

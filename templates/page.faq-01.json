@@ -52,7 +52,14 @@
           "type": "accordion_item",
           "settings": {
             "title": "What makes Badri Cow Ghee different from normal cow ghee?",
-            "content": "Badri cows are native Himalayan humped cattle that free-graze on mountain medicinal herbs, fresh air, and organic plants in Uttarakhand. They produce a very limited quantity of A2 milk which is exceptionally rich in nutritional values, creating a deep golden, granular, and aromatic ghee."
+            "content": "Badri cattle are a recognised indigenous hill breed of Uttarakhand, associated with the state's steep terrain and livestock heritage. They free-graze on pristine mountain pastures, medicinal herbs, and fresh foliage. Their milk is naturally concentrated in nutrients and has been revered for generations in Pahadi households."
+          }
+        },
+        "faq-breed-clarification": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Why do we see Jersey or different cow breeds in your videos? Does breed define A1 or A2?",
+            "content": "A1 or A2 status is determined by the beta-casein protein genetics in milk, not by cattle breed alone. While Badri is a celebrated indigenous hill breed of Uttarakhand, scientific studies show that A2A2 beta-casein is present in Jersey populations as well as indigenous Indian cattle. At Ghar Aangan, we work directly with Uttarakhand mountain farmers who rear Badri cattle, local Uttarakhand cattle, and other breeds including Jersey. We test every batch for verified A2 beta-casein purity while keeping breed identity and protein genetics distinct and transparent."
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-2": {
@@ -134,7 +141,7 @@
           "type": "accordion_item",
           "settings": {
             "title": "Why does the color or aroma vary slightly between jars?",
-            "content": "Our ghee is natural and handmade in small batches. Variations in color (from light yellow to deep gold) and aroma occur naturally depending on the seasonal pasture diet of our free-grazing Badri cows. This variation is a sign of an authentic, non-industrialized food product."
+            "content": "Our ghee is natural and handmade in small batches. Variations in color (from light yellow to deep gold) and aroma occur naturally depending on the seasonal pasture diet of our free-grazing mountain cattle. This variation is a sign of an authentic, non-industrialized food product."
           }
         },
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-c": {
@@ -159,6 +166,7 @@
       "block_order": [
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-title-1",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-1",
+        "faq-breed-clarification",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-2",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-3",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-4",
