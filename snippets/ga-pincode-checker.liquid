@@ -17,15 +17,30 @@
   </div>
   
   <div class="ga-pincode-input-wrap">
+    <div class="ga-pincode-country-select-row">
+      <label for="GaCountrySelect" class="ga-country-label">Destination:</label>
+      <select id="GaCountrySelect" class="ga-country-select" aria-label="Select Delivery Destination">
+        <option value="IN" selected>🇮🇳 India (PIN code)</option>
+        <option value="US">🇺🇸 United States (Zip)</option>
+        <option value="GB">🇬🇧 United Kingdom (Postcode)</option>
+        <option value="AU">🇦🇺 Australia (Postcode)</option>
+        <option value="CA">🇨🇦 Canada (Postal Code)</option>
+        <option value="AE">🇦🇪 UAE (Dubai / Abu Dhabi / PO Box)</option>
+        <option value="DE">🇩🇪 Germany (PLZ)</option>
+        <option value="FR">🇫🇷 France (Code Postal)</option>
+        <option value="NZ">🇳🇿 New Zealand (Postcode)</option>
+        <option value="CH">🇨🇭 Switzerland (PLZ)</option>
+        <option value="SG">🇸🇬 Singapore (Postal Code)</option>
+      </select>
+    </div>
     <div class="ga-pincode-field">
       <input 
         type="text" 
         id="GaPincodeInput" 
         placeholder="Enter 6-digit PIN code" 
-        maxlength="6" 
-        inputmode="numeric" 
-        pattern="[0-9]*" 
-        aria-label="Enter 6-digit Indian PIN code"
+        maxlength="10" 
+        aria-label="Enter PIN or Postal code"
+        autocomplete="postal-code"
       />
       <button type="button" id="GaPincodeBtn" class="ga-pincode-check-btn">
         <span class="ga-pincode-btn-text">CHECK</span>
@@ -41,7 +56,7 @@
   <div class="ga-delivery-perks">
     <div class="ga-delivery-perk-item">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
-      <span><strong>FREE Express Delivery</strong> on all Prepaid orders</span>
+      <span><strong>FREE Express Delivery</strong> on all Prepaid orders in India</span>
     </div>
     {%- if is_bulk_prepaid_only -%}
       <div class="ga-delivery-perk-item">
@@ -51,12 +66,16 @@
     {%- else -%}
       <div class="ga-delivery-perk-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a332c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-        <span><strong>Cash on Delivery (COD)</strong> available (₹100 charge)</span>
+        <span><strong>Cash on Delivery (COD)</strong> available across India (₹100 charge)</span>
       </div>
     {%- endif -%}
     <div class="ga-delivery-perk-item">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#cda250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
       <span><strong>100% Glass Jar Replacement</strong> for transit damage</span>
+    </div>
+    <div class="ga-delivery-perk-item ga-delivery-perk-intl">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+      <span><strong>Worldwide Shipping (Prepaid):</strong> USA, UK, Australia, Canada, UAE &amp; 5 others (₹2,499 Flat)</span>
     </div>
   </div>
 </div>
@@ -67,21 +86,63 @@
       const input = document.getElementById('GaPincodeInput');
       const btn = document.getElementById('GaPincodeBtn');
       const result = document.getElementById('GaPincodeResult');
-      if (!input || !btn || !result) return;
+      const countrySelect = document.getElementById('GaCountrySelect');
+      if (!input || !btn || !result || !countrySelect) return;
 
       const isBulkPrepaidOnly = {% if is_bulk_prepaid_only %}true{% else %}false{% endif %} || window.location.pathname.includes('-2l') || window.location.pathname.includes('-5l');
 
-      // Restore saved pincode if present
+      const countryRules = {
+        IN: { name: 'India', placeholder: 'Enter 6-digit PIN code', max: 6, isIntl: false },
+        US: { name: 'United States', placeholder: 'Enter 5-digit US Zip (e.g. 90210)', max: 10, isIntl: true },
+        GB: { name: 'United Kingdom', placeholder: 'Enter UK Postcode (e.g. SW1A 1AA)', max: 8, isIntl: true },
+        AU: { name: 'Australia', placeholder: 'Enter 4-digit AU Postcode (e.g. 2000)', max: 4, isIntl: true },
+        CA: { name: 'Canada', placeholder: 'Enter Postal Code (e.g. M5V 2T6)', max: 7, isIntl: true },
+        AE: { name: 'UAE', placeholder: 'Enter 5-digit PO Box / 00000', max: 15, isIntl: true },
+        DE: { name: 'Germany', placeholder: 'Enter 5-digit PLZ (e.g. 10115)', max: 5, isIntl: true },
+        FR: { name: 'France', placeholder: 'Enter 5-digit Code (e.g. 75001)', max: 5, isIntl: true },
+        NZ: { name: 'New Zealand', placeholder: 'Enter 4-digit Postcode (e.g. 1010)', max: 4, isIntl: true },
+        CH: { name: 'Switzerland', placeholder: 'Enter 4-digit PLZ (e.g. 8001)', max: 4, isIntl: true },
+        SG: { name: 'Singapore', placeholder: 'Enter 6-digit Postal Code (e.g. 238858)', max: 6, isIntl: true }
+      };
+
+      // Restore saved values
+      const savedCountry = localStorage.getItem('ga_checked_country') || 'IN';
+      if (countryRules[savedCountry]) {
+        countrySelect.value = savedCountry;
+        updateInputPlaceholder(savedCountry);
+      }
+
       const savedPincode = localStorage.getItem('ga_checked_pincode');
-      if (savedPincode && savedPincode.length === 6) {
+      if (savedPincode) {
         input.value = savedPincode;
-        checkPincode(savedPincode, false);
+        checkPincode(savedPincode, savedCountry, false);
+      }
+
+      countrySelect.addEventListener('change', function() {
+        const c = this.value;
+        localStorage.setItem('ga_checked_country', c);
+        updateInputPlaceholder(c);
+        result.style.display = 'none';
+        if (input.value.trim().length > 0) {
+          checkPincode(input.value.trim(), c, true);
+        }
+      });
+
+      function updateInputPlaceholder(countryCode) {
+        const r = countryRules[countryCode] || countryRules.IN;
+        input.placeholder = r.placeholder;
+        input.maxLength = r.max;
+        if (countryCode === 'IN' || countryCode === 'AU' || countryCode === 'NZ' || countryCode === 'CH') {
+          input.inputMode = 'numeric';
+        } else {
+          input.inputMode = 'text';
+        }
       }
 
       btn.addEventListener('click', function(e) {
         e.preventDefault();
         const pin = input.value.trim();
-        checkPincode(pin, true);
+        checkPincode(pin, countrySelect.value, true);
       });
 
       input.addEventListener('keypress', function(e) {
@@ -91,20 +152,95 @@
         }
       });
 
-      // Filter non-numeric inputs
       input.addEventListener('input', function() {
-        this.value = this.value.replace(/[^0-9]/g, '');
-        if (this.value.length === 6) {
-          result.style.display = 'none';
+        result.style.display = 'none';
+        const val = this.value.trim().toUpperCase();
+
+        // Smart auto-detection if on India but input clearly matches an international format
+        if (countrySelect.value === 'IN' && val.length >= 3) {
+          // UK format check (e.g. SW1A 1AA, EC1A 1BB, W1A 0AX)
+          if (/^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9]?[A-Z]?$/i.test(val) && /[A-Z]/.test(val)) {
+            countrySelect.value = 'GB';
+            updateInputPlaceholder('GB');
+            localStorage.setItem('ga_checked_country', 'GB');
+          }
+          // Canadian format check (e.g. M5V 2T6, K1A 0B1)
+          else if (/^[A-CEGHJ-NPR-TVXY][0-9][A-CEGHJ-NPR-TV-Z]/i.test(val)) {
+            countrySelect.value = 'CA';
+            updateInputPlaceholder('CA');
+            localStorage.setItem('ga_checked_country', 'CA');
+          }
         }
       });
 
-      function checkPincode(pin, isUserClick) {
-        if (!pin || pin.length !== 6 || !/^[1-9][0-9]{5}$/.test(pin)) {
+      function validatePostalCode(pin, countryCode) {
+        const clean = pin.trim().toUpperCase();
+        switch(countryCode) {
+          case 'IN':
+            // 6-digit Indian PIN (100000 - 999999)
+            if (/^[1-9][0-9]{5}$/.test(clean)) return { valid: true, code: clean, country: 'India' };
+            // Smart format detect: Did user enter a UK or Canada code while on IN?
+            if (/^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i.test(clean)) return { valid: true, code: clean, country: 'United Kingdom', autoCountry: 'GB' };
+            if (/^[A-CEGHJ-NPR-TVXY][0-9][A-CEGHJ-NPR-TV-Z]\s?[0-9][A-CEGHJ-NPR-TV-Z][0-9]$/i.test(clean)) return { valid: true, code: clean, country: 'Canada', autoCountry: 'CA' };
+            if (/^\d{5}(-\d{4})?$/.test(clean)) return { valid: true, code: clean, country: 'United States', autoCountry: 'US' };
+            if (/^[0-9]{4}$/.test(clean)) return { valid: true, code: clean, country: 'Australia', autoCountry: 'AU' };
+            return { valid: false, message: 'Please enter a valid 6-digit Indian PIN code (e.g. 110001, 262402).' };
+          case 'US':
+            if (/^\d{5}(-\d{4})?$/.test(clean)) return { valid: true, code: clean, country: 'United States' };
+            return { valid: false, message: 'Please enter a valid 5-digit US ZIP code (e.g. 90210, 10001).' };
+          case 'GB':
+            if (/^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i.test(clean)) return { valid: true, code: clean, country: 'United Kingdom' };
+            return { valid: false, message: 'Please enter a valid UK postcode (e.g. SW1A 1AA, EC1A 1BB).' };
+          case 'AU':
+            if (/^[0-9]{4}$/.test(clean)) return { valid: true, code: clean, country: 'Australia' };
+            return { valid: false, message: 'Please enter a valid 4-digit Australian postcode (e.g. 2000, 3000).' };
+          case 'CA':
+            if (/^[A-CEGHJ-NPR-TVXY][0-9][A-CEGHJ-NPR-TV-Z]\s?[0-9][A-CEGHJ-NPR-TV-Z][0-9]$/i.test(clean)) return { valid: true, code: clean, country: 'Canada' };
+            return { valid: false, message: 'Please enter a valid Canadian postal code (e.g. M5V 2T6, K1A 0B1).' };
+          case 'AE':
+            if (/^(00000|\d{5}|[A-Z\s]{3,20})$/i.test(clean)) return { valid: true, code: clean, country: 'UAE' };
+            return { valid: false, message: 'Please enter a valid UAE postal code (e.g. 00000, 5-digit PO Box, or Dubai).' };
+          case 'DE':
+            if (/^[0-9]{5}$/.test(clean)) return { valid: true, code: clean, country: 'Germany' };
+            return { valid: false, message: 'Please enter a valid 5-digit German PLZ (e.g. 10115, 80331).' };
+          case 'FR':
+            if (/^[0-9]{5}$/.test(clean)) return { valid: true, code: clean, country: 'France' };
+            return { valid: false, message: 'Please enter a valid 5-digit French postal code (e.g. 75001).' };
+          case 'NZ':
+            if (/^[0-9]{4}$/.test(clean)) return { valid: true, code: clean, country: 'New Zealand' };
+            return { valid: false, message: 'Please enter a valid 4-digit NZ postcode (e.g. 1010, 6011).' };
+          case 'CH':
+            if (/^[0-9]{4}$/.test(clean)) return { valid: true, code: clean, country: 'Switzerland' };
+            return { valid: false, message: 'Please enter a valid 4-digit Swiss PLZ (e.g. 8001, 1201).' };
+          case 'SG':
+            if (/^[0-9]{6}$/.test(clean)) return { valid: true, code: clean, country: 'Singapore' };
+            return { valid: false, message: 'Please enter a valid 6-digit Singapore postal code (e.g. 238858).' };
+          default:
+            return { valid: false, message: 'Please select a supported delivery destination.' };
+        }
+      }
+
+      function checkPincode(pin, currentCountry, isUserClick) {
+        if (!pin) {
           result.style.display = 'block';
           result.className = 'ga-pincode-result ga-pincode-error';
-          result.innerHTML = '<span class="ga-res-icon">⚠️</span><span>Please enter a valid 6-digit Indian PIN code.</span>';
+          result.innerHTML = '<span class="ga-res-icon">⚠️</span><span>Please enter a postal / PIN code.</span>';
           return;
+        }
+
+        const checkRes = validatePostalCode(pin, currentCountry);
+        if (!checkRes.valid) {
+          result.style.display = 'block';
+          result.className = 'ga-pincode-result ga-pincode-error';
+          result.innerHTML = `<span class="ga-res-icon">⚠️</span><span>${checkRes.message}</span>`;
+          return;
+        }
+
+        if (checkRes.autoCountry && checkRes.autoCountry !== currentCountry) {
+          countrySelect.value = checkRes.autoCountry;
+          currentCountry = checkRes.autoCountry;
+          updateInputPlaceholder(currentCountry);
+          localStorage.setItem('ga_checked_country', currentCountry);
         }
 
         const loader = btn.querySelector('.ga-pincode-btn-loader');
@@ -116,55 +252,83 @@
           if (loader) loader.hidden = true;
           if (text) text.hidden = false;
 
-          localStorage.setItem('ga_checked_pincode', pin);
+          localStorage.setItem('ga_checked_pincode', checkRes.code);
+          localStorage.setItem('ga_checked_country', currentCountry);
 
           result.style.display = 'block';
           result.className = 'ga-pincode-result ga-pincode-success';
 
-          const rowsHtml = isBulkPrepaidOnly ? `
-              <div class="ga-pincode-row">
-                <span class="ga-pill-prepaid">⚡ PREPAID ONLY</span>
-                <span class="ga-time-bold">5 to 6 Business Days</span>
-                <span class="ga-cost-free">100% FREE Express Delivery</span>
-              </div>
-              <div class="ga-pincode-row" style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 6px; padding: 7px 10px; font-size: 11px; color: #9a3412; display: flex; align-items: center; gap: 8px;">
-                <span style="font-size: 13px; flex-shrink: 0;">🔒</span>
-                <span><strong>Prepaid Only:</strong> Cash on Delivery (COD) is not available for 2L and 5L bulk packs to avoid courier transit damage/refusals.</span>
-              </div>
-          ` : `
-              <div class="ga-pincode-row">
-                <span class="ga-pill-prepaid">⚡ PREPAID</span>
-                <span class="ga-time-bold">5 to 6 Business Days</span>
-                <span class="ga-cost-free">FREE Express Delivery</span>
-              </div>
-              <div class="ga-pincode-row">
-                <span class="ga-pill-cod">📦 COD</span>
-                <span class="ga-time-bold">7 to 10 Business Days</span>
-                <span class="ga-cost-cod">₹100 COD Charge</span>
-              </div>
-          `;
+          if (currentCountry === 'IN') {
+            // Domestic India result
+            const rowsHtml = isBulkPrepaidOnly ? `
+                <div class="ga-pincode-row">
+                  <span class="ga-pill-prepaid">⚡ PREPAID ONLY</span>
+                  <span class="ga-time-bold">5 to 6 Business Days</span>
+                  <span class="ga-cost-free">100% FREE Express Delivery</span>
+                </div>
+                <div class="ga-pincode-row" style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 6px; padding: 7px 10px; font-size: 11px; color: #9a3412; display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 13px; flex-shrink: 0;">🔒</span>
+                  <span><strong>Prepaid Only:</strong> Cash on Delivery (COD) is not available for 2L and 5L bulk packs to avoid transit damage.</span>
+                </div>
+            ` : `
+                <div class="ga-pincode-row">
+                  <span class="ga-pill-prepaid">⚡ PREPAID</span>
+                  <span class="ga-time-bold">5 to 6 Business Days</span>
+                  <span class="ga-cost-free">FREE Express Delivery</span>
+                </div>
+                <div class="ga-pincode-row">
+                  <span class="ga-pill-cod">📦 COD</span>
+                  <span class="ga-time-bold">7 to 10 Business Days</span>
+                  <span class="ga-cost-cod">₹100 COD Charge</span>
+                </div>
+            `;
 
-          result.innerHTML = `
-            <div class="ga-pincode-success-header">
-              <span class="ga-res-check">✓</span>
-              <span><strong>Serviceable to PIN ${pin}</strong> • Direct from Uttarakhand</span>
-            </div>
-            <div class="ga-pincode-timelines">
-              ${rowsHtml}
-              <div class="ga-pincode-dispatch">
-                <span>📦 Dispatches within 24 hours via Delhivery / Blue Dart / DTDC / XpressBees</span>
+            result.innerHTML = `
+              <div class="ga-pincode-success-header">
+                <span class="ga-res-check">✓</span>
+                <span><strong>Serviceable to PIN ${checkRes.code}</strong> • Direct from Uttarakhand</span>
               </div>
-            </div>
-          `;
+              <div class="ga-pincode-timelines">
+                ${rowsHtml}
+                <div class="ga-pincode-dispatch">
+                  <span>📦 Dispatches within 24 hours via Delhivery / Blue Dart / DTDC / XpressBees</span>
+                </div>
+              </div>
+            `;
+          } else {
+            // International Destination Result
+            const countryMeta = countryRules[currentCountry] || { name: checkRes.country };
+            result.innerHTML = `
+              <div class="ga-pincode-success-header" style="color: #0369a1;">
+                <span class="ga-res-check" style="background: #0284c7;">✓</span>
+                <span><strong>International Delivery Available to ${countryMeta.name} (${checkRes.code})</strong></span>
+              </div>
+              <div class="ga-pincode-timelines">
+                <div class="ga-pincode-row">
+                  <span class="ga-pill-prepaid" style="background: #e0f2fe; color: #0369a1;">✈️ INTERNATIONAL AIR</span>
+                  <span class="ga-time-bold">10 to 15 Business Days</span>
+                  <span class="ga-cost-free" style="color: #0369a1;">₹2,499 Flat Delivery</span>
+                </div>
+                <div class="ga-pincode-row" style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 7px 10px; font-size: 11px; color: #166534; display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 14px; flex-shrink: 0;">💳</span>
+                  <span><strong>International Cards Accepted (Prepaid Only):</strong> Visa, Mastercard, Amex, etc. Cash on Delivery (COD) is strictly not available for international orders.</span>
+                </div>
+                <div class="ga-pincode-dispatch" style="color: #475569;">
+                  <span>✈️ Dispatches from Uttarakhand in 24-48 hours with international shockproof export packaging, full customs documentation, and live courier tracking.</span>
+                </div>
+              </div>
+            `;
+          }
 
           // Trigger CRO analytics event
           if (isUserClick && window.GharAanganAnalytics) {
             window.GharAanganAnalytics.trackEvent('cro_pincode_check', {
-              pincode: pin,
+              pincode: checkRes.code,
+              country: currentCountry,
               serviceable: true
             });
           }
-        }, 300);
+        }, 280);
       }
     }
 
@@ -175,3 +339,4 @@
     }
   })();
 </script>
+

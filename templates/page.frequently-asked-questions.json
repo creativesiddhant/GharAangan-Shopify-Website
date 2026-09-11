@@ -121,8 +121,8 @@
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-8": {
           "type": "accordion_item",
           "settings": {
-            "title": "Do you ship internationally?",
-            "content": "When international shipping is enabled, indicative delivery time is around 15–18 days, with indicative shipping charges around ₹800–₹1,000 per delivery, subject to destination, courier, and applicable customs duties.",
+            "title": "Do you ship internationally and accept international cards?",
+            "content": "Yes! We ship internationally to 10 destination countries: USA, UK, Australia, Canada, Germany, UAE, France, New Zealand, Switzerland, and Singapore. International delivery is ₹2,499 INR flat per order (strictly Prepaid Only via international cards including Visa, Mastercard, and American Express; no COD). Indicative air delivery time is around 10–15 business days with end-to-end tracking.",
             "content_richtext": ""
           }
         },

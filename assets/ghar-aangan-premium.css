@@ -2634,6 +2634,40 @@ table.hdt-pr_attrs td {
   width: 100%;
 }
 
+.ga-pincode-country-select-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.ga-country-label {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #4b5563;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.ga-country-select {
+  flex-grow: 1;
+  padding: 0.55rem 0.9rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a332c;
+  background: #ffffff;
+  border: 1px solid rgba(26, 51, 44, 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  font-family: var(--ga-font-family-sans, sans-serif);
+  transition: border-color 0.2s ease;
+}
+
+.ga-country-select:focus {
+  border-color: var(--ga-forest-green, #1a332c);
+}
+
 .ga-pincode-field {
   display: flex;
   gap: 0.8rem;
@@ -2804,6 +2838,20 @@ table.hdt-pr_attrs td {
 
 .ga-delivery-perk-item svg {
   flex-shrink: 0;
+}
+
+.ga-delivery-perk-intl {
+  color: #0369a1;
+  font-size: 1.22rem;
+}
+
+.ga-intl-delivery-note {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.18rem;
+  color: #0369a1;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 /* Spinner */
