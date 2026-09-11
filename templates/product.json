@@ -87,7 +87,7 @@
               "type": "_delivery_return",
               "settings": {
                 "icon_delivery": "ship",
-                "content_devivery": "<p><strong>Fast Delivery (Prepaid):</strong> 5 to 6 business days (FREE). <strong>Standard Shipping (COD):</strong> 7 to 10 business days (₹100 charge). Dispatch within <strong>24 hours</strong> from Uttarakhand. <span style=\"display:block;margin-top:4px;font-size:0.92em;color:#0369a1;\">✈️ Worldwide Shipping: USA, UK, Australia, Canada, UAE & 5 others (₹2,499 flat, Prepaid Only).</span></p>",
+                "content_devivery": "<p><strong>Fast Delivery (Prepaid):</strong> 5 to 6 business days (FREE). <strong>Standard Shipping (COD):</strong> 7 to 10 business days (₹100 charge). Dispatch within <strong>24 hours</strong> from Uttarakhand.</p>",
                 "icon_return": "return_order",
                 "content_return": "<p>Pure Himalayan food items: <strong>100% replacement</strong> for transit damage with unboxing photo/video within 48 hours.</p>"
               },
@@ -97,7 +97,7 @@
               "type": "_product-trust-badge",
               "settings": {
                 "show_icon": true,
-                "mess": "Guaranteed Safe Checkout • International Cards Accepted",
+                "mess": "Guaranteed Safe Checkout",
                 "source": "1",
                 "wimg": 350,
                 "svg": "visa,paypal,master,american_express,apple_pay",

@@ -17,23 +17,22 @@
   </div>
   
   <div class="ga-pincode-input-wrap">
-    <div class="ga-pincode-country-select-row">
-      <label for="GaCountrySelect" class="ga-country-label">Destination:</label>
-      <select id="GaCountrySelect" class="ga-country-select" aria-label="Select Delivery Destination">
-        <option value="IN" selected>🇮🇳 India (PIN code)</option>
-        <option value="US">🇺🇸 United States (Zip)</option>
-        <option value="GB">🇬🇧 United Kingdom (Postcode)</option>
-        <option value="AU">🇦🇺 Australia (Postcode)</option>
-        <option value="CA">🇨🇦 Canada (Postal Code)</option>
-        <option value="AE">🇦🇪 UAE (Dubai / Abu Dhabi / PO Box)</option>
-        <option value="DE">🇩🇪 Germany (PLZ)</option>
-        <option value="FR">🇫🇷 France (Code Postal)</option>
-        <option value="NZ">🇳🇿 New Zealand (Postcode)</option>
-        <option value="CH">🇨🇭 Switzerland (PLZ)</option>
-        <option value="SG">🇸🇬 Singapore (Postal Code)</option>
-      </select>
-    </div>
     <div class="ga-pincode-field">
+      <div class="ga-country-prefix">
+        <select id="GaCountrySelect" class="ga-country-select" aria-label="Select Country">
+          <option value="IN" selected>🇮🇳 IN</option>
+          <option value="US">🇺🇸 US</option>
+          <option value="GB">🇬🇧 UK</option>
+          <option value="AU">🇦🇺 AU</option>
+          <option value="CA">🇨🇦 CA</option>
+          <option value="AE">🇦🇪 AE</option>
+          <option value="DE">🇩🇪 DE</option>
+          <option value="FR">🇫🇷 FR</option>
+          <option value="NZ">🇳🇿 NZ</option>
+          <option value="CH">🇨🇭 CH</option>
+          <option value="SG">🇸🇬 SG</option>
+        </select>
+      </div>
       <input 
         type="text" 
         id="GaPincodeInput" 
@@ -56,7 +55,7 @@
   <div class="ga-delivery-perks">
     <div class="ga-delivery-perk-item">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
-      <span><strong>FREE Express Delivery</strong> on all Prepaid orders in India</span>
+      <span><strong>FREE Express Delivery</strong> on all Prepaid orders</span>
     </div>
     {%- if is_bulk_prepaid_only -%}
       <div class="ga-delivery-perk-item">
@@ -66,16 +65,12 @@
     {%- else -%}
       <div class="ga-delivery-perk-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a332c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-        <span><strong>Cash on Delivery (COD)</strong> available across India (₹100 charge)</span>
+        <span><strong>Cash on Delivery (COD)</strong> available (₹100 charge)</span>
       </div>
     {%- endif -%}
     <div class="ga-delivery-perk-item">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#cda250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
       <span><strong>100% Glass Jar Replacement</strong> for transit damage</span>
-    </div>
-    <div class="ga-delivery-perk-item ga-delivery-perk-intl">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-      <span><strong>Worldwide Shipping (Prepaid):</strong> USA, UK, Australia, Canada, UAE &amp; 5 others (₹2,499 Flat)</span>
     </div>
   </div>
 </div>
@@ -93,16 +88,16 @@
 
       const countryRules = {
         IN: { name: 'India', placeholder: 'Enter 6-digit PIN code', max: 6, isIntl: false },
-        US: { name: 'United States', placeholder: 'Enter 5-digit US Zip (e.g. 90210)', max: 10, isIntl: true },
+        US: { name: 'United States', placeholder: 'Enter US ZIP (e.g. 90210)', max: 10, isIntl: true },
         GB: { name: 'United Kingdom', placeholder: 'Enter UK Postcode (e.g. SW1A 1AA)', max: 8, isIntl: true },
-        AU: { name: 'Australia', placeholder: 'Enter 4-digit AU Postcode (e.g. 2000)', max: 4, isIntl: true },
+        AU: { name: 'Australia', placeholder: 'Enter AU Postcode (e.g. 2000)', max: 4, isIntl: true },
         CA: { name: 'Canada', placeholder: 'Enter Postal Code (e.g. M5V 2T6)', max: 7, isIntl: true },
-        AE: { name: 'UAE', placeholder: 'Enter 5-digit PO Box / 00000', max: 15, isIntl: true },
-        DE: { name: 'Germany', placeholder: 'Enter 5-digit PLZ (e.g. 10115)', max: 5, isIntl: true },
-        FR: { name: 'France', placeholder: 'Enter 5-digit Code (e.g. 75001)', max: 5, isIntl: true },
-        NZ: { name: 'New Zealand', placeholder: 'Enter 4-digit Postcode (e.g. 1010)', max: 4, isIntl: true },
-        CH: { name: 'Switzerland', placeholder: 'Enter 4-digit PLZ (e.g. 8001)', max: 4, isIntl: true },
-        SG: { name: 'Singapore', placeholder: 'Enter 6-digit Postal Code (e.g. 238858)', max: 6, isIntl: true }
+        AE: { name: 'UAE', placeholder: 'Enter PO Box / 00000', max: 15, isIntl: true },
+        DE: { name: 'Germany', placeholder: 'Enter PLZ (e.g. 10115)', max: 5, isIntl: true },
+        FR: { name: 'France', placeholder: 'Enter Code Postal (e.g. 75001)', max: 5, isIntl: true },
+        NZ: { name: 'New Zealand', placeholder: 'Enter NZ Postcode (e.g. 1010)', max: 4, isIntl: true },
+        CH: { name: 'Switzerland', placeholder: 'Enter PLZ (e.g. 8001)', max: 4, isIntl: true },
+        SG: { name: 'Singapore', placeholder: 'Enter Postal Code (e.g. 238858)', max: 6, isIntl: true }
       };
 
       // Restore saved values
@@ -156,16 +151,13 @@
         result.style.display = 'none';
         const val = this.value.trim().toUpperCase();
 
-        // Smart auto-detection if on India but input clearly matches an international format
+        // Smart auto-detection if on India but input matches international format
         if (countrySelect.value === 'IN' && val.length >= 3) {
-          // UK format check (e.g. SW1A 1AA, EC1A 1BB, W1A 0AX)
           if (/^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9]?[A-Z]?$/i.test(val) && /[A-Z]/.test(val)) {
             countrySelect.value = 'GB';
             updateInputPlaceholder('GB');
             localStorage.setItem('ga_checked_country', 'GB');
-          }
-          // Canadian format check (e.g. M5V 2T6, K1A 0B1)
-          else if (/^[A-CEGHJ-NPR-TVXY][0-9][A-CEGHJ-NPR-TV-Z]/i.test(val)) {
+          } else if (/^[A-CEGHJ-NPR-TVXY][0-9][A-CEGHJ-NPR-TV-Z]/i.test(val)) {
             countrySelect.value = 'CA';
             updateInputPlaceholder('CA');
             localStorage.setItem('ga_checked_country', 'CA');
@@ -177,9 +169,7 @@
         const clean = pin.trim().toUpperCase();
         switch(countryCode) {
           case 'IN':
-            // 6-digit Indian PIN (100000 - 999999)
             if (/^[1-9][0-9]{5}$/.test(clean)) return { valid: true, code: clean, country: 'India' };
-            // Smart format detect: Did user enter a UK or Canada code while on IN?
             if (/^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/i.test(clean)) return { valid: true, code: clean, country: 'United Kingdom', autoCountry: 'GB' };
             if (/^[A-CEGHJ-NPR-TVXY][0-9][A-CEGHJ-NPR-TV-Z]\s?[0-9][A-CEGHJ-NPR-TV-Z][0-9]$/i.test(clean)) return { valid: true, code: clean, country: 'Canada', autoCountry: 'CA' };
             if (/^\d{5}(-\d{4})?$/.test(clean)) return { valid: true, code: clean, country: 'United States', autoCountry: 'US' };
@@ -296,25 +286,25 @@
               </div>
             `;
           } else {
-            // International Destination Result
+            // International Destination Result (using Ghar Aangan theme colors)
             const countryMeta = countryRules[currentCountry] || { name: checkRes.country };
             result.innerHTML = `
-              <div class="ga-pincode-success-header" style="color: #0369a1;">
-                <span class="ga-res-check" style="background: #0284c7;">✓</span>
-                <span><strong>International Delivery Available to ${countryMeta.name} (${checkRes.code})</strong></span>
+              <div class="ga-pincode-success-header">
+                <span class="ga-res-check">✓</span>
+                <span><strong>Serviceable to ${countryMeta.name} (${checkRes.code})</strong></span>
               </div>
               <div class="ga-pincode-timelines">
                 <div class="ga-pincode-row">
-                  <span class="ga-pill-prepaid" style="background: #e0f2fe; color: #0369a1;">✈️ INTERNATIONAL AIR</span>
+                  <span class="ga-pill-prepaid">⚡ PREPAID ONLY</span>
                   <span class="ga-time-bold">10 to 15 Business Days</span>
-                  <span class="ga-cost-free" style="color: #0369a1;">₹2,499 Flat Delivery</span>
+                  <span class="ga-cost-free" style="color: #1a332c;">₹2,499 Flat Delivery</span>
                 </div>
-                <div class="ga-pincode-row" style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 7px 10px; font-size: 11px; color: #166534; display: flex; align-items: center; gap: 8px;">
-                  <span style="font-size: 14px; flex-shrink: 0;">💳</span>
-                  <span><strong>International Cards Accepted (Prepaid Only):</strong> Visa, Mastercard, Amex, etc. Cash on Delivery (COD) is strictly not available for international orders.</span>
+                <div class="ga-pincode-row" style="background: #fdfbf7; border: 1px solid rgba(205, 162, 80, 0.35); border-radius: 6px; padding: 7px 10px; font-size: 11px; color: #1a332c; display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 13px; flex-shrink: 0;">💳</span>
+                  <span><strong>International Cards Accepted (Prepaid Only):</strong> Visa, Mastercard, Amex, etc. Cash on Delivery is not available outside India.</span>
                 </div>
-                <div class="ga-pincode-dispatch" style="color: #475569;">
-                  <span>✈️ Dispatches from Uttarakhand in 24-48 hours with international shockproof export packaging, full customs documentation, and live courier tracking.</span>
+                <div class="ga-pincode-dispatch">
+                  <span>✈️ Dispatches from Uttarakhand in 24-48 hours via express air courier with live tracking.</span>
                 </div>
               </div>
             `;
