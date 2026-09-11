@@ -20,7 +20,7 @@
             "text": "🔥Proudly Made in Uttarakhand"
           }
         },
-        "announcement_janmashtami": {
+        "announcement_cod": {
           "type": "announcement",
           "settings": {
             "text": "🎉 COD Is Now Live! Shop with our new Cash on Delivery option."
@@ -49,22 +49,15 @@
           "settings": {
             "text": "🧂 ₹50 OFF on Salt Orders Up to ₹300"
           }
-        },
-        "announcement_jCPkcY": {
-          "type": "announcement",
-          "settings": {
-            "text": "🦚 Janmashtami Mahotsav Special: FREE DELIVERY on Selected Products with Prepaid Orders!"
-          }
         }
       },
       "block_order": [
         "block-1",
-        "announcement_janmashtami",
+        "announcement_cod",
         "block-2",
         "block-3",
         "announcement_FfhBUT",
-        "announcement_aKArJr",
-        "announcement_jCPkcY"
+        "announcement_aKArJr"
       ],
       "settings": {
         "design": "marquee",

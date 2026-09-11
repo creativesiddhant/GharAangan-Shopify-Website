@@ -141,7 +141,7 @@
     -%}
   {%- liquid
     assign is_free_shipping_product = false
-    if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.tags contains 'free-shipping' or product.tags contains 'Janmashtami'
+    if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.tags contains 'free-shipping'
       assign is_free_shipping_product = true
     endif
     assign is_bulk_prepaid_only = false
@@ -164,7 +164,6 @@
           FREE DELIVERY (PREPAID)
         {%- endif -%}
       </span>
-      <span class="ga-festive-pill">🪔 Janmashtami Special</span>
       {%- if is_bulk_prepaid_only -%}
         <span class="ga-cod-price-note ga-prepaid-tag">⚡ PREPAID ONLY (NO COD)</span>
       {%- else -%}

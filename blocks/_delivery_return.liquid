@@ -3,7 +3,7 @@
     {%- if block.settings.content_devivery != blank -%}
       {%- liquid
         assign is_free_shipping_product = false
-        if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.tags contains 'free-shipping' or product.tags contains 'Janmashtami'
+        if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.tags contains 'free-shipping'
           assign is_free_shipping_product = true
         endif
         assign is_bulk_prepaid_only = false
