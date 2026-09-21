@@ -1,8 +1,27 @@
 {%- liquid
   assign bg_color = section.settings.background_color | default: '#faf8f5'
-  assign title = section.settings.title | default: 'Authentic Pahadi Kitchen Specialties'
-  assign subtitle = section.settings.subtitle | default: 'BEYOND GHEE • DIRECT FROM HIMALAYAN TERRACE FARMS'
-  assign description = section.settings.description | default: 'Ghar Aangan is more than ghee. Discover our handcrafted unpolished heirloom pulses, traditional Sil-Batta stone-crushed herbal salts, and watermill-milled ancient grains brought straight from Uttarakhand.'
+  assign title = section.settings.title | default: 'Authentic Pahadi Specialties & Pure A2 Bilona Ghee'
+  assign subtitle = section.settings.subtitle | default: '100% PURE BILONA A2 GHEE & HIMALAYAN SPECIALTIES'
+  assign description = section.settings.description | default: 'Handcrafted over wood-fires from Himalayan Pahadi cattle alongside unpolished heirloom pulses, traditional Sil-Batta herbal salts, and watermill-milled ancient grains from Uttarakhand.'
+
+  # Dynamic Category Counts
+  assign ghee_count = 0
+  assign dal_count = 0
+  assign salt_count = 0
+  assign millet_count = 0
+  for block in section.blocks
+    case block.settings.category
+      when 'ghee'
+        assign ghee_count = ghee_count | plus: 1
+      when 'dal'
+        assign dal_count = dal_count | plus: 1
+      when 'salt'
+        assign salt_count = salt_count | plus: 1
+      when 'millet'
+        assign millet_count = millet_count | plus: 1
+    endcase
+  endfor
+  assign total_count = section.blocks.size
 -%}
 
 {%- style -%}
@@ -32,7 +51,7 @@
   /* Header */
   .ga-spec-header {
     text-align: center;
-    max-width: 820px;
+    max-width: 840px;
     margin: 0 auto 36px;
   }
 
@@ -166,6 +185,12 @@
     box-shadow: 0 14px 34px rgba(26, 51, 44, 0.11);
   }
 
+  .ga-spec-card.is-featured {
+    border: 2px solid #1a332c;
+    background: #fffdfa;
+    box-shadow: 0 8px 24px rgba(26, 51, 44, 0.08);
+  }
+
   .ga-spec-card.is-hidden {
     display: none !important;
   }
@@ -185,6 +210,11 @@
     border-radius: 20px;
     z-index: 3;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .ga-spec-card.is-featured .ga-spec-badge-left {
+    background: #c8933b;
+    color: #ffffff;
   }
 
   .ga-spec-badge-right {
@@ -591,21 +621,33 @@
     <!-- Category Filter Tabs -->
     <div class="ga-spec-tabs-wrap" role="tablist" aria-label="Product categories">
       <button type="button" class="ga-spec-tab-btn is-active" data-filter="all" role="tab" aria-selected="true">
-        <span>All Specialties</span>
-        <span class="ga-spec-tab-count">9</span>
+        <span>All Products</span>
+        <span class="ga-spec-tab-count">{{ total_count }}</span>
       </button>
-      <button type="button" class="ga-spec-tab-btn" data-filter="dal" role="tab" aria-selected="false">
-        <span>🏔️ Heirloom Pahadi Dals</span>
-        <span class="ga-spec-tab-count">4</span>
-      </button>
-      <button type="button" class="ga-spec-tab-btn" data-filter="salt" role="tab" aria-selected="false">
-        <span>🧂 Sil-Batta Pisyu Loon</span>
-        <span class="ga-spec-tab-count">4</span>
-      </button>
-      <button type="button" class="ga-spec-tab-btn" data-filter="millet" role="tab" aria-selected="false">
-        <span>🌾 Mountain Millets & Flour</span>
-        <span class="ga-spec-tab-count">1</span>
-      </button>
+      {%- if ghee_count > 0 -%}
+        <button type="button" class="ga-spec-tab-btn" data-filter="ghee" role="tab" aria-selected="false">
+          <span>🧈 Pure A2 Bilona Ghee</span>
+          <span class="ga-spec-tab-count">{{ ghee_count }}</span>
+        </button>
+      {%- endif -%}
+      {%- if dal_count > 0 -%}
+        <button type="button" class="ga-spec-tab-btn" data-filter="dal" role="tab" aria-selected="false">
+          <span>🏔️ Heirloom Pahadi Dals</span>
+          <span class="ga-spec-tab-count">{{ dal_count }}</span>
+        </button>
+      {%- endif -%}
+      {%- if salt_count > 0 -%}
+        <button type="button" class="ga-spec-tab-btn" data-filter="salt" role="tab" aria-selected="false">
+          <span>🧂 Sil-Batta Pisyu Loon</span>
+          <span class="ga-spec-tab-count">{{ salt_count }}</span>
+        </button>
+      {%- endif -%}
+      {%- if millet_count > 0 -%}
+        <button type="button" class="ga-spec-tab-btn" data-filter="millet" role="tab" aria-selected="false">
+          <span>🌾 Mountain Millets & Flour</span>
+          <span class="ga-spec-tab-count">{{ millet_count }}</span>
+        </button>
+      {%- endif -%}
     </div>
 
     <!-- Products Grid -->
@@ -621,8 +663,12 @@
           assign primary_img = block.settings.image | default: pr.featured_image
           assign badge_text = block.settings.badge_text
           assign origin_tag = block.settings.origin_tag | default: 'Uttarakhand Himalayas'
-          assign category = block.settings.category | default: 'dal'
+          assign category = block.settings.category | default: 'ghee'
           assign highlight = block.settings.highlight
+          assign is_featured = block.settings.is_featured
+          if badge_text contains 'POPULAR'
+            assign is_featured = true
+          endif
 
           # Pricing logic
           assign first_variant = pr.selected_or_first_available_variant | default: pr.variants.first
@@ -635,7 +681,7 @@
           endif
         -%}
 
-        <div class="ga-spec-card" data-category="{{ category }}" {{ block.shopify_attributes }}>
+        <div class="ga-spec-card{% if is_featured %} is-featured{% endif %}" data-category="{{ category }}" {{ block.shopify_attributes }}>
           {%- if badge_text != blank -%}
             <span class="ga-spec-badge-left">{{ badge_text }}</span>
           {%- endif -%}
@@ -706,7 +752,7 @@
             {%- else -%}
               <div class="ga-spec-single-size-badge">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                <span>{{ block.settings.single_size_label | default: '100g Pure Himalayan Glass Jar' }}</span>
+                <span>{{ block.settings.single_size_label | default: 'Pure Himalayan Pack' }}</span>
               </div>
             {%- endif -%}
           </div>
@@ -732,7 +778,7 @@
           <div class="ga-spec-perks">
             <span class="ga-spec-perk-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              100% Unadulterated
+              {% if category == 'ghee' %}Traditional Bilona{% else %}100% Unadulterated{% endif %}
             </span>
             <span class="ga-spec-perk-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
@@ -760,24 +806,24 @@
     <div class="ga-spec-footer-banner">
       <div class="ga-spec-footer-items">
         <div class="ga-spec-footer-item">
-          <div class="ga-spec-footer-icon">🌾</div>
+          <div class="ga-spec-footer-icon">🧈</div>
           <div>
-            <div>100% Unpolished & Heirloom</div>
-            <div style="font-size:11.5px;color:#666;font-weight:400;">No artificial polish, mineral oils, or chemical sprays</div>
+            <div>100% Pure Bilona Method</div>
+            <div style="font-size:11.5px;color:#666;font-weight:400;">Slow curd-churning in earthen pots over gentle wood-fires</div>
           </div>
         </div>
         <div class="ga-spec-footer-item">
-          <div class="ga-spec-footer-icon">🏔️</div>
+          <div class="ga-spec-footer-icon">🌾</div>
           <div>
-            <div>Direct Himalayan Origin</div>
-            <div style="font-size:11.5px;color:#666;font-weight:400;">Harvested by smallholder farmers in high-altitude Uttarakhand</div>
+            <div>Unpolished Heirloom Harvest</div>
+            <div style="font-size:11.5px;color:#666;font-weight:400;">Zero polish, chemical sprays, or artificial enhancements</div>
           </div>
         </div>
         <div class="ga-spec-footer-item">
           <div class="ga-spec-footer-icon">🚚</div>
           <div>
-            <div>Express Dispatch & COD</div>
-            <div style="font-size:11.5px;color:#666;font-weight:400;">Safe packaging, Pan-India courier & COD supported</div>
+            <div>Direct Dispatch & COD</div>
+            <div style="font-size:11.5px;color:#666;font-weight:400;">Packed safely and delivered Pan-India with Cash on Delivery</div>
           </div>
         </div>
       </div>
@@ -943,19 +989,19 @@
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "BEYOND GHEE • DIRECT FROM HIMALAYAN TERRACE FARMS"
+      "default": "100% PURE BILONA A2 GHEE & HIMALAYAN SPECIALTIES"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Authentic Pahadi Kitchen Specialties"
+      "default": "Authentic Pahadi Specialties & Pure A2 Bilona Ghee"
     },
     {
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "Ghar Aangan is more than ghee. Discover our handcrafted unpolished heirloom pulses, traditional Sil-Batta stone-crushed herbal salts, and watermill-milled ancient grains brought straight from Uttarakhand."
+      "default": "Handcrafted over wood-fires from Himalayan Pahadi cattle alongside unpolished heirloom pulses, traditional Sil-Batta herbal salts, and watermill-milled ancient grains from Uttarakhand."
     },
     {
       "type": "range",
@@ -987,7 +1033,7 @@
           "type": "text",
           "id": "product_handle",
           "label": "Product Handle",
-          "info": "Exact handle of the product (e.g., pahadi-rajma-kidney-beans)"
+          "info": "Exact handle of the product (e.g., a2-desi-pahadi-ghee-1l or pahadi-rajma-kidney-beans)"
         },
         {
           "type": "text",
@@ -1000,17 +1046,24 @@
           "id": "category",
           "label": "Category",
           "options": [
+            { "value": "ghee", "label": "Pure A2 Bilona Ghee" },
             { "value": "dal", "label": "Heirloom Dals" },
             { "value": "salt", "label": "Sil-Batta Salts" },
             { "value": "millet", "label": "Millets & Flour" }
           ],
-          "default": "dal"
+          "default": "ghee"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_featured",
+          "label": "Highlight as Featured (Most Popular)",
+          "default": false
         },
         {
           "type": "text",
           "id": "badge_text",
           "label": "Highlight Badge",
-          "default": "100% Unpolished"
+          "default": "100% Pure"
         },
         {
           "type": "text",
@@ -1028,7 +1081,7 @@
           "type": "text",
           "id": "single_size_label",
           "label": "Single Size Label",
-          "info": "Displayed if product has only 1 variant (e.g., 100g Pure Himalayan Glass Jar)"
+          "info": "Displayed if product has only 1 variant (e.g., 1 Litre Glass Jar or 100g Pure Himalayan Glass Jar)"
         },
         {
           "type": "image_picker",

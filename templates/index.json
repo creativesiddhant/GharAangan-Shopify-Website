@@ -528,17 +528,6 @@
         "padding_rate": 75
       }
     },
-    "ghar_aangan_pack_sizes": {
-      "type": "ghar-aangan-pack-sizes",
-      "settings": {
-        "subtitle": "100% PURE BILONA A2 GHEE",
-        "title": "Select Your Ideal Pack Size",
-        "description": "Handcrafted over wood-fires from Himalayan Pahadi cattle. Available in 4 convenient sizes for every kitchen need.",
-        "background_color": "#ffffff",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
     "ghar_aangan_benefits": {
       "type": "ghar-aangan-benefits",
       "blocks": {
@@ -935,6 +924,55 @@
     "ghar_aangan_specialties": {
       "type": "ghar-aangan-specialties-shop",
       "blocks": {
+        "specialty_ghee_550": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "a2-desi-pahadi-ghee-550ml",
+            "title": "550ml Glass Jar - A2 Desi Pahadi Ghee",
+            "category": "ghee",
+            "badge_text": "Starter Pack",
+            "origin_tag": "Wood-Fired Bilona Method",
+            "highlight": "Perfect for trial, individual daily wellness, and fresh kitchen tadka. Handcrafted from indigenous Pahadi cattle in lead-free glass jar.",
+            "single_size_label": "550ml Fresh Glass Jar"
+          }
+        },
+        "specialty_ghee_1l": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "a2-desi-pahadi-ghee-1l",
+            "title": "1 Litre Glass Jar - A2 Desi Pahadi Ghee",
+            "category": "ghee",
+            "is_featured": true,
+            "badge_text": "MOST POPULAR",
+            "origin_tag": "Danedar Granular Texture",
+            "highlight": "Our flagship best-seller. Optimal monthly family size for pure daily wellness, gut health, and authentic Himalayan aroma.",
+            "single_size_label": "1 Litre Glass Jar"
+          }
+        },
+        "specialty_ghee_2l": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "a2-desi-pahadi-ghee-2l",
+            "title": "2 Litres (2 x 1L) - A2 Desi Pahadi Ghee",
+            "category": "ghee",
+            "badge_text": "Twin Jar Saver",
+            "origin_tag": "100% Free Express Delivery",
+            "highlight": "Two fresh 1L glass jars. Best value pack for couples & small families with economical twin jar savings. Prepaid only.",
+            "single_size_label": "2 Litres (2 x 1L Jars)"
+          }
+        },
+        "specialty_ghee_5l": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "a2-desi-pahadi-ghee-5l",
+            "title": "5 Litres Family Pack - A2 Desi Pahadi Ghee",
+            "category": "ghee",
+            "badge_text": "Family Stock Saver",
+            "origin_tag": "Lowest Cost-Per-Litre",
+            "highlight": "Maximum value family pack. Long 12-18 months shelf-life with guaranteed pure wood-fired Bilona aroma in every scoop. Prepaid only.",
+            "single_size_label": "5 Litres Family Pack"
+          }
+        },
         "specialty_1": {
           "type": "specialty_product",
           "settings": {
@@ -1045,6 +1083,10 @@
         }
       },
       "block_order": [
+        "specialty_ghee_550",
+        "specialty_ghee_1l",
+        "specialty_ghee_2l",
+        "specialty_ghee_5l",
         "specialty_1",
         "specialty_2",
         "specialty_3",
@@ -1057,9 +1099,9 @@
       ],
       "settings": {
         "background_color": "#faf8f5",
-        "subtitle": "BEYOND GHEE • DIRECT FROM HIMALAYAN TERRACE FARMS",
-        "title": "Authentic Pahadi Kitchen Specialties",
-        "description": "Ghar Aangan is more than ghee. Sourced directly from high-altitude village terrace farms & local artisans in Uttarakhand. Discover our 100% unpolished heirloom dals, traditional Sil-Batta herbal salts, and watermill-milled ancient millets.",
+        "subtitle": "100% PURE BILONA A2 GHEE & HIMALAYAN SPECIALTIES",
+        "title": "Authentic Pahadi Specialties & Pure A2 Bilona Ghee",
+        "description": "Handcrafted over wood-fires from Himalayan Pahadi cattle alongside unpolished heirloom pulses, traditional Sil-Batta herbal salts, and watermill-milled ancient grains from Uttarakhand.",
         "padding_top": 70,
         "padding_bottom": 75
       }
@@ -1070,7 +1112,6 @@
     "ghar_aangan_video",
     "ghar_aangan_storytelling",
     "featured_product",
-    "ghar_aangan_pack_sizes",
     "ghar_aangan_specialties",
     "ghar_aangan_benefits",
     "ghar_aangan_process",
