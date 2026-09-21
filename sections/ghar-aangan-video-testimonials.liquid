@@ -522,8 +522,14 @@
       fill: currentColor;
     }
   }
-{%- endstyle -%}
+{%- liquid
+  assign is_ghee = false
+  if product == blank or product.handle contains 'ghee' or product.type == 'Ghee' or template.name != 'product'
+    assign is_ghee = true
+  endif
+-%}
 
+{%- if is_ghee -%}
 <div class="ga-video-reviews-section section-{{ section.id }}-padding" id="ga-video-reviews-{{ section.id }}">
   <div class="ga-vr-header">
     {%- if section.settings.subtitle != blank -%}
@@ -791,6 +797,7 @@
     }
   })();
 </script>
+{%- endif -%}
 
 {% schema %}
 {

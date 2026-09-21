@@ -29,7 +29,16 @@
                         continue
                       endif
                     when 'tab_html'
+                      assign is_ghee = false
+                      if product.type == 'Ghee' or product.handle contains 'ghee'
+                        assign is_ghee = true
+                      endif
                       assign bk_title = block.settings.title | default: block.settings.page.title
+                      if bk_title contains 'Breed' or bk_title contains 'A2 Sourcing'
+                        unless is_ghee
+                          continue
+                        endunless
+                      endif
                       if bk_title == blank or block.settings.content == blank and block.settings.page.content == blank
                         continue
                       endif
@@ -49,7 +58,13 @@
                 {%- case block.type -%}
                   {%- when 'tab_des' -%}
                     {%- if block.settings.title == blank or product.description == blank -%}{% continue %}{%- endif -%}
-                    <div class="hdt-tab-item hdt-rte" tab-item{% if is_first %} tab-selected{% endif %} data-type={{ block.type }}>{{- product.description -}}</div>
+                    <div class="hdt-tab-item hdt-rte" tab-item{% if is_first %} tab-selected{% endif %} data-type={{ block.type }}>
+                      {%- if product.handle contains 'mandua' or product.handle contains 'ragi' -%}
+                        {%- render 'mandua-product-description' -%}
+                      {%- else -%}
+                        {{- product.description -}}
+                      {%- endif -%}
+                    </div>
                     {%- assign is_first = false -%}
                   {%- when 'tab_review' %}
                     {%- if block.settings.title == blank -%}{% continue %}{%- endif -%}
@@ -73,7 +88,16 @@
                     </div>
                     {%- assign is_first = false -%}
                   {%- when 'tab_html' -%}
+                    {%- assign is_ghee = false -%}
+                    {%- if product.type == 'Ghee' or product.handle contains 'ghee' -%}
+                      {%- assign is_ghee = true -%}
+                    {%- endif -%}
                     {%- assign bk_title = block.settings.title | default: block.settings.page.title -%}
+                    {%- if bk_title contains 'Breed' or bk_title contains 'A2 Sourcing' -%}
+                      {%- unless is_ghee -%}
+                        {%- continue -%}
+                      {%- endunless -%}
+                    {%- endif -%}
                     {%- if bk_title == blank or block.settings.content == blank and block.settings.page.content == blank -%} {% continue %} {%- endif -%}
                     <div class="hdt-tab-item" tab-item{% if is_first %} tab-selected{% endif %} data-type={{ block.type }}>
                       <div class="hdt-rte" style="margin-bottom: 2rem">{{ block.settings.content }}</div>
@@ -101,7 +125,13 @@
                         <span class="hdt-product-accordion__text hdt-s-text hdt-font-semibold">{{ block.settings.title }}</span>
                         <span class="hdt-product-accordion__icon"></span>
                       </summary>
-                      <div class="hdt-product-accordion__content hdt-rte">{{- product.description -}}</div>
+                      <div class="hdt-product-accordion__content hdt-rte">
+                        {%- if product.handle contains 'mandua' or product.handle contains 'ragi' -%}
+                          {%- render 'mandua-product-description' -%}
+                        {%- else -%}
+                          {{- product.description -}}
+                        {%- endif -%}
+                      </div>
                     </details>
                   </hdt-accordion>
                 {%- when 'tab_review'-%}
@@ -140,7 +170,16 @@
                     </details>
                   </hdt-accordion>
                 {%- when 'tab_html' -%}
+                  {%- assign is_ghee = false -%}
+                  {%- if product.type == 'Ghee' or product.handle contains 'ghee' -%}
+                    {%- assign is_ghee = true -%}
+                  {%- endif -%}
                   {%- assign bk_title = block.settings.title | default: block.settings.page.title -%}
+                  {%- if bk_title contains 'Breed' or bk_title contains 'A2 Sourcing' -%}
+                    {%- unless is_ghee -%}
+                      {%- continue -%}
+                    {%- endunless -%}
+                  {%- endif -%}
                   {%- if bk_title == blank or block.settings.content == blank and block.settings.page.content == blank -%} {% continue %} {%- endif -%}
                   <hdt-accordion class="hdt-contents">
                     <details class="hdt-product-accordion__item" {% if forloop.first and section.settings.enable_first_tab %}open {% endif %} {{ block.shopify_attributes }}>
@@ -176,7 +215,13 @@
                   {%- if block.settings.title == blank or product.description == blank -%}{% continue %}{%- endif -%}
                   <div class="hdt-product-tab__item">
                     <div class="hdt-product-tab__item-title hdt-s-text hdt-font-semibold">{{ block.settings.title }}</div>
-                    <div class="hdt-product-tab__item-content hdt-rte">{{- product.description -}}</div>
+                    <div class="hdt-product-tab__item-content hdt-rte">
+                      {%- if product.handle contains 'mandua' or product.handle contains 'ragi' -%}
+                        {%- render 'mandua-product-description' -%}
+                      {%- else -%}
+                        {{- product.description -}}
+                      {%- endif -%}
+                    </div>
                   </div>
                 {%- when 'tab_review'-%}
                   {%- if block.settings.title == blank -%}{% continue %}{%- endif -%}
