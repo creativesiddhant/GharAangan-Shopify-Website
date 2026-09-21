@@ -931,6 +931,138 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "ghar_aangan_specialties": {
+      "type": "ghar-aangan-specialties-shop",
+      "blocks": {
+        "specialty_1": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-rajma-kidney-beans",
+            "title": "Pahadi Rajma (Premium Himalayan Kidney Beans)",
+            "category": "dal",
+            "badge_text": "Heirloom Red Rajma",
+            "origin_tag": "Munsyari & Harsil Harvest",
+            "highlight": "Naturally sun-dried unpolished heirloom red kidney beans. Tender melt-in-mouth texture with delicate sweet undertones.",
+            "single_size_label": "500g / 1kg Mountain Pack"
+          }
+        },
+        "specialty_2": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-bhatt-ki-dal-black-soybean",
+            "title": "Pahadi Bhatt Ki Dal (Black Soybean)",
+            "category": "dal",
+            "badge_text": "Anthocyanin Superfood",
+            "origin_tag": "Kumaoni & Garhwali Terraces",
+            "highlight": "Indigenous black soybean celebrated across the hills for authentic Churkani & Dubke. Rich in natural antioxidants & plant protein.",
+            "single_size_label": "500g / 1kg Mountain Pack"
+          }
+        },
+        "specialty_3": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-gahat-gauhat-ki-dal-horsegram",
+            "title": "Pahadi Gahat Ki Dal (Horse Gram / Kulthi)",
+            "category": "dal",
+            "badge_text": "Ayurvedic Therapeutic",
+            "origin_tag": "High-Altitude Kulthi",
+            "highlight": "Ancient mountain pulse revered in Ayurveda for natural warmth, sustained energy, and kidney & urinary wellness.",
+            "single_size_label": "500g / 1kg Mountain Pack"
+          }
+        },
+        "specialty_4": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-lobia-dal-black-eyed-peas",
+            "title": "Pahadi Lobia Dal (Mountain Cowpeas)",
+            "category": "dal",
+            "badge_text": "Easy on Digestion",
+            "origin_tag": "Terrace Cultivation",
+            "highlight": "Delicate, creamy unpolished cowpeas grown in Himalayan terrace fields. Exceptionally light on the stomach and rich in dietary folates.",
+            "single_size_label": "500g / 1kg Mountain Pack"
+          }
+        },
+        "specialty_5": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-bhaang-loon-100g",
+            "title": "Pahadi Bhaang Loon (Roasted Hemp Salt) - 100g",
+            "category": "salt",
+            "badge_text": "Sil-Batta Stone Crushed",
+            "origin_tag": "Roasted Mountain Hemp",
+            "highlight": "Stone-crushed on granite Sil-Batta with roasted Himalayan hemp seeds, rock salt & mountain spices. Irresistibly nutty & warm.",
+            "single_size_label": "100g Pure Himalayan Glass Jar"
+          }
+        },
+        "specialty_6": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-chatpata-laal-mirch-loon-100g",
+            "title": "Pahadi Chatpata Laal Mirch Loon - 100g",
+            "category": "salt",
+            "badge_text": "Zesty & Fiery Kick",
+            "origin_tag": "Sun-Dried Mountain Chillies",
+            "highlight": "Fiery, smoky mountain salt crushed on Sil-Batta with sun-dried Himalayan red chillies, rock salt & roasted jeera. Adds instant zing.",
+            "single_size_label": "100g Pure Himalayan Glass Jar"
+          }
+        },
+        "specialty_7": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-mix-seasoning-loon-100g",
+            "title": "Pahadi Mix Seasoning Loon - 100g",
+            "category": "salt",
+            "badge_text": "Wild Mountain Herbs",
+            "origin_tag": "Herbal Mountain Blend",
+            "highlight": "Ancestral herbal blend stone-ground with wild Himalayan mint, mountain garlic chives, and roasted cumin. All-purpose savory seasoning.",
+            "single_size_label": "100g Pure Himalayan Glass Jar"
+          }
+        },
+        "specialty_8": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-pisyu-loon-trio-combo-pack-300g",
+            "title": "Pahadi Pisyu Loon Trio Pack (3 x 100g)",
+            "category": "salt",
+            "badge_text": "Best Value Trio (300g)",
+            "origin_tag": "Complete Tasting Experience",
+            "highlight": "All 3 signature stone-ground salts: 1x Bhaang Loon, 1x Chatpata Laal Mirch, and 1x Mix Seasoning Loon in a convenient kitchen saver box.",
+            "single_size_label": "3 x 100g Complete Gift Set"
+          }
+        },
+        "specialty_9": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-mandua-ka-aata-ragi",
+            "title": "Pahadi Mandua Ka Aata (Ragi Flour)",
+            "category": "millet",
+            "badge_text": "Watermill Stone-Ground",
+            "origin_tag": "Traditional Gharat Milled",
+            "highlight": "Heirloom high-altitude finger millet cold stone-ground in traditional Himalayan watermills (Gharats). High calcium, iron & 100% gluten-free.",
+            "single_size_label": "1kg / 5kg Farm Pack"
+          }
+        }
+      },
+      "block_order": [
+        "specialty_1",
+        "specialty_2",
+        "specialty_3",
+        "specialty_4",
+        "specialty_5",
+        "specialty_6",
+        "specialty_7",
+        "specialty_8",
+        "specialty_9"
+      ],
+      "settings": {
+        "background_color": "#faf8f5",
+        "subtitle": "BEYOND GHEE • DIRECT FROM HIMALAYAN TERRACE FARMS",
+        "title": "Authentic Pahadi Kitchen Specialties",
+        "description": "Ghar Aangan is more than ghee. Sourced directly from high-altitude village terrace farms & local artisans in Uttarakhand. Discover our 100% unpolished heirloom dals, traditional Sil-Batta herbal salts, and watermill-milled ancient millets.",
+        "padding_top": 70,
+        "padding_bottom": 75
+      }
     }
   },
   "order": [
@@ -939,6 +1071,7 @@
     "ghar_aangan_storytelling",
     "featured_product",
     "ghar_aangan_pack_sizes",
+    "ghar_aangan_specialties",
     "ghar_aangan_benefits",
     "ghar_aangan_process",
     "ghar_aangan_quality_trust",
