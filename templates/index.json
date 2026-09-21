@@ -364,10 +364,10 @@
         "slide_item_Xb9aRY"
       ],
       "settings": {
-        "image_height": "adapt_image_first",
-        "fixed_height": 860,
+        "image_height": "fixed",
+        "fixed_height": 580,
         "image_height_mb": "fixed",
-        "fixed_height_mb": 520,
+        "fixed_height_mb": 380,
         "is_fade": false,
         "loop": true,
         "auto_play": 5,
@@ -1102,17 +1102,16 @@
         "subtitle": "100% PURE BILONA A2 GHEE & HIMALAYAN SPECIALTIES",
         "title": "Authentic Pahadi Specialties & Pure A2 Bilona Ghee",
         "description": "Handcrafted over wood-fires from Himalayan Pahadi cattle alongside unpolished heirloom pulses, traditional Sil-Batta herbal salts, and watermill-milled ancient grains from Uttarakhand.",
-        "padding_top": 70,
-        "padding_bottom": 75
+        "padding_top": 40,
+        "padding_bottom": 60
       }
     }
   },
   "order": [
     "ghar_aangan_hero",
+    "ghar_aangan_specialties",
     "ghar_aangan_video",
     "ghar_aangan_storytelling",
-    "featured_product",
-    "ghar_aangan_specialties",
     "ghar_aangan_benefits",
     "ghar_aangan_process",
     "ghar_aangan_quality_trust",
