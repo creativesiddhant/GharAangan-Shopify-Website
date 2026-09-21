@@ -678,80 +678,157 @@
     }
   }
 
-  /* Section Bottom Banner */
+  /* Section Bottom Reassurance & Explore Banner */
   .ga-spec-footer-banner {
-    margin-top: 48px;
+    margin-top: 52px;
     background: #ffffff;
     border: 1.5px solid #eae3d5;
-    border-radius: 16px;
-    padding: 24px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+    border-radius: 20px;
+    padding: 32px 36px 28px;
+    box-shadow: 0 6px 24px rgba(26, 51, 44, 0.04);
   }
 
-  .ga-spec-footer-items {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    flex-wrap: wrap;
+  .ga-spec-footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
   }
 
   .ga-spec-footer-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13.5px;
-    font-weight: 700;
-    color: #1a332c;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  @media (min-width: 900px) {
+    .ga-spec-footer-item:not(:last-child) {
+      border-right: 1px solid #f0eae1;
+      padding-right: 24px;
+    }
   }
 
   .ga-spec-footer-icon {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: #f5efe3;
+    background: #fbf6ec;
+    border: 1.5px solid #ecdcb9;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #8c734b;
-    font-size: 16px;
+    font-size: 20px;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(140, 115, 75, 0.08);
+  }
+
+  .ga-spec-footer-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ga-spec-footer-item-title {
+    font-family: var(--ga-font-family-serif, 'Playfair Display', Georgia, serif);
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #1a332c;
+    margin: 0 0 5px 0;
+    line-height: 1.25;
+  }
+
+  .ga-spec-footer-item-desc {
+    font-size: 12.5px;
+    color: #586560;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .ga-spec-footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #eee7db;
+    margin-top: 28px;
+    padding-top: 22px;
+    gap: 20px;
+  }
+
+  .ga-spec-footer-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5c6963;
+    letter-spacing: 0.01em;
+  }
+
+  .ga-spec-note-badge {
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
   }
 
   .ga-spec-footer-cta {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     background: #1a332c;
     color: #ffffff !important;
     text-decoration: none !important;
-    padding: 11px 22px;
+    padding: 12px 26px;
     border-radius: 9px;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 750;
-    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1.5px solid #1a332c;
+    box-shadow: 0 4px 14px rgba(26, 51, 44, 0.16);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .ga-spec-footer-cta svg {
+    transition: transform 0.25s ease;
   }
 
   .ga-spec-footer-cta:hover {
-    background: #2b4f44;
-    transform: translateY(-1px);
+    background: #24493e;
+    border-color: #cda250;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(26, 51, 44, 0.25);
   }
 
-  @media (max-width: 767px) {
+  .ga-spec-footer-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 899px) {
     .ga-spec-footer-banner {
+      padding: 24px 20px 20px;
+    }
+    .ga-spec-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .ga-spec-footer-bottom {
       flex-direction: column;
       align-items: stretch;
-      padding: 18px;
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 18px;
+      gap: 14px;
     }
-    .ga-spec-footer-items {
-      gap: 16px;
+    .ga-spec-footer-note {
+      justify-content: center;
+      font-size: 12px;
+      text-align: center;
     }
     .ga-spec-footer-cta {
       justify-content: center;
+      width: 100%;
+      min-height: 42px;
     }
   }
 {%- endstyle -%}
@@ -990,33 +1067,40 @@
 
     <!-- Section Bottom Reassurance Banner -->
     <div class="ga-spec-footer-banner">
-      <div class="ga-spec-footer-items">
+      <div class="ga-spec-footer-grid">
         <div class="ga-spec-footer-item">
           <div class="ga-spec-footer-icon">🧈</div>
-          <div>
-            <div>100% Pure Bilona Method</div>
-            <div style="font-size:11.5px;color:#666;font-weight:400;">Slow curd-churning in earthen pots over gentle wood-fires</div>
+          <div class="ga-spec-footer-content">
+            <h4 class="ga-spec-footer-item-title">100% Pure Bilona Method</h4>
+            <p class="ga-spec-footer-item-desc">Slow curd-churning in earthen pots over gentle wood-fires</p>
           </div>
         </div>
         <div class="ga-spec-footer-item">
           <div class="ga-spec-footer-icon">🌾</div>
-          <div>
-            <div>Unpolished Heirloom Harvest</div>
-            <div style="font-size:11.5px;color:#666;font-weight:400;">Zero polish, chemical sprays, or artificial enhancements</div>
+          <div class="ga-spec-footer-content">
+            <h4 class="ga-spec-footer-item-title">Unpolished Heirloom Harvest</h4>
+            <p class="ga-spec-footer-item-desc">Zero polish, chemical sprays, or artificial enhancements</p>
           </div>
         </div>
         <div class="ga-spec-footer-item">
           <div class="ga-spec-footer-icon">🚚</div>
-          <div>
-            <div>Direct Dispatch & COD</div>
-            <div style="font-size:11.5px;color:#666;font-weight:400;">Packed safely and delivered Pan-India with Cash on Delivery</div>
+          <div class="ga-spec-footer-content">
+            <h4 class="ga-spec-footer-item-title">Direct Dispatch & COD</h4>
+            <p class="ga-spec-footer-item-desc">Packed safely and delivered Pan-India with Cash on Delivery</p>
           </div>
         </div>
       </div>
-      <a href="/collections/all" class="ga-spec-footer-cta">
-        <span>Explore All Products</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
-      </a>
+
+      <div class="ga-spec-footer-bottom">
+        <div class="ga-spec-footer-note">
+          <span class="ga-spec-note-badge">⛰️</span>
+          <span>Authentic Himalayan Harvest & Pure A2 Bilona Ghee from Uttarakhand</span>
+        </div>
+        <a href="/collections/all" class="ga-spec-footer-cta">
+          <span>Explore All Products</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </a>
+      </div>
     </div>
   </div>
 </div>
