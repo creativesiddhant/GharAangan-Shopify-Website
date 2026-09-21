@@ -98,8 +98,36 @@
       min-height: auto;
       margin-bottom: 10px;
     }
+    .ga-spec-price-box {
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 4px 6px;
+      margin-bottom: 10px;
+      padding-top: 9px;
+    }
+    .ga-spec-price-group {
+      gap: 6px;
+      align-items: baseline;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
     .ga-spec-price {
-      font-size: 20px;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      line-height: 1.1;
+    }
+    .ga-spec-compare {
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .ga-spec-saving-pill {
+      font-size: 10.5px;
+      padding: 2.5px 6.5px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
   }
 
@@ -479,12 +507,14 @@
     font-weight: 800;
     color: #1a332c;
     line-height: 1;
+    white-space: nowrap;
   }
 
   .ga-spec-compare {
     font-size: 13.5px;
     color: #8a918e;
     text-decoration: line-through;
+    white-space: nowrap;
   }
 
   .ga-spec-saving-pill {
@@ -494,6 +524,7 @@
     background: #dcfce7;
     padding: 3px 8px;
     border-radius: 6px;
+    white-space: nowrap;
   }
 
   /* Trust perks pill */
@@ -613,6 +644,23 @@
   }
 
   @media (max-width: 480px) {
+    .ga-spec-price-box {
+      align-items: center;
+      gap: 3px 6px;
+    }
+    .ga-spec-price {
+      font-size: 18.5px;
+      white-space: nowrap;
+    }
+    .ga-spec-compare {
+      font-size: 11.5px;
+      white-space: nowrap;
+    }
+    .ga-spec-saving-pill {
+      font-size: 10px;
+      padding: 2px 6px;
+      white-space: nowrap;
+    }
     .ga-spec-actions {
       gap: 6px;
     }
