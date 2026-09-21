@@ -922,15 +922,15 @@
           </div>
 
           <!-- Actions Form (Fast Checkout Buy Now + Add to Cart) -->
-          <form method="post" action="/cart/add" class="ga-spec-form" data-product-form>
+          <form method="post" action="/cart/add" class="ga-spec-form" data-product-form data-product-id="{{ product.id }}">
             <input type="hidden" name="id" value="{{ first_variant.id | default: block.settings.default_variant_id }}">
             <input type="hidden" name="quantity" value="1">
             <div class="ga-spec-actions">
-              <button type="button" class="ga-spec-btn-buynow" data-fast-checkout>
+              <button type="button" class="ga-spec-btn-buynow" data-fast-checkout onclick="window.gaFastCheckout && window.gaFastCheckout(this)">
                 <span class="ga-btn-icon">⚡</span>
                 <span class="ga-buynow-text">BUY NOW • FAST CHECKOUT</span>
               </button>
-              <button type="submit" class="ga-spec-btn-atc" data-add-to-cart>
+              <button type="button" name="add" class="ga-spec-btn-atc" data-add-to-cart onclick="window.gaAddToCart && window.gaAddToCart(this)">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                 <span class="ga-atc-text">Add to Cart</span>
               </button>
@@ -1097,84 +1097,174 @@
       if (buyNowBtn) {
         buyNowBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          const currentVarId = hiddenInput ? hiddenInput.value : null;
-          if (!currentVarId) return;
-
-          buyNowBtn.classList.add('is-loading');
-          if (buyNowText) buyNowText.textContent = 'REDIRECTING...';
-
-          const formData = new FormData();
-          formData.append('id', currentVarId);
-          formData.append('quantity', '1');
-
-          fetch('/cart/add.js', {
-            method: 'POST',
-            body: formData
-          })
-          .then(res => {
-            if (!res.ok) throw new Error('Checkout add failed');
-            window.location.href = '/checkout';
-          })
-          .catch(err => {
-            // Fallback direct permalink
-            window.location.href = `/cart/${currentVarId}:1`;
-          });
+          if (window.gaFastCheckout) window.gaFastCheckout(this);
         });
       }
 
-      // 4. AJAX Add to Cart
+      // 4. Add to Cart Handler
       const form = card.querySelector('form[data-product-form]');
       if (form) {
         form.addEventListener('submit', function(e) {
           e.preventDefault();
-          const submitBtn = form.querySelector('[data-add-to-cart]');
-          const textSpan = form.querySelector('.ga-atc-text');
-          const origText = textSpan ? textSpan.textContent : 'Add to Cart';
-
-          if (submitBtn) submitBtn.classList.add('is-loading');
-          if (textSpan) textSpan.textContent = 'Adding...';
-
-          const formData = new FormData(form);
-
-          fetch('/cart/add.js', {
-            method: 'POST',
-            body: formData
-          })
-          .then(res => {
-            if (!res.ok) throw new Error('Cart add failed');
-            return res.json();
-          })
-          .then(item => {
-            if (textSpan) textSpan.textContent = '✓ Added!';
-            setTimeout(() => {
-              if (submitBtn) submitBtn.classList.remove('is-loading');
-              if (textSpan) textSpan.textContent = origText;
-            }, 1800);
-
-            // Trigger theme cart drawer / header updates
-            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
-            document.dispatchEvent(new CustomEvent('cart:updated', { detail: { item: item }, bubbles: true }));
-
-            // Attempt to open cart drawer if present
-            const cartDrawer = document.getElementById('CartDrawer');
-            const cartDrawerTrigger = document.querySelector('[aria-controls="CartDrawer"]') || document.querySelector('.hdt-cart-trigger');
-            if (cartDrawer && typeof cartDrawer.showModal === 'function') {
-              if (cartDrawerTrigger) {
-                cartDrawerTrigger.click();
-              } else {
-                try { cartDrawer.showModal(); } catch (err) {}
-              }
-            } else if (cartDrawerTrigger) {
-              cartDrawerTrigger.click();
-            }
-          })
-          .catch(err => {
-            console.warn('Standard AJAX failed, falling back to form submit', err);
-            form.submit();
-          });
+          const atcBtnEl = form.querySelector('[data-add-to-cart]');
+          if (atcBtnEl && window.gaAddToCart) {
+            window.gaAddToCart(atcBtnEl);
+          }
+        });
+      }
+      if (atcBtn) {
+        atcBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (window.gaAddToCart) window.gaAddToCart(this);
         });
       }
     });
+
+    // Global Handlers for Direct & Rock-Solid Cart Operations
+    window.gaFastCheckout = function(btn) {
+      if (!btn || btn.disabled || btn.classList.contains('is-loading')) return;
+      const form = btn.closest('form');
+      if (!form) return;
+      const hiddenInput = form.querySelector('input[name="id"]');
+      const varId = hiddenInput ? hiddenInput.value : null;
+      if (!varId) return;
+
+      const textSpan = btn.querySelector('.ga-buynow-text');
+      btn.classList.add('is-loading');
+      btn.disabled = true;
+      if (textSpan) textSpan.textContent = 'REDIRECTING...';
+
+      const formData = new FormData();
+      formData.append('id', varId);
+      formData.append('quantity', '1');
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: formData
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Checkout add failed');
+        window.location.href = '/checkout';
+      })
+      .catch(function() {
+        // Fallback direct permalink
+        window.location.href = '/cart/' + encodeURIComponent(varId) + ':1';
+      });
+    };
+
+    window.gaAddToCart = function(btn) {
+      if (!btn || btn.disabled || btn.classList.contains('is-loading')) return;
+      const form = btn.closest('form');
+      if (!form) return;
+      const card = form.closest('.ga-spec-card');
+      const hiddenInput = form.querySelector('input[name="id"]');
+      const varId = hiddenInput ? hiddenInput.value : null;
+      if (!varId) {
+        console.error('No variant ID found for Add to Cart');
+        return;
+      }
+
+      const textSpan = btn.querySelector('.ga-atc-text');
+      const origText = 'Add to Cart';
+
+      btn.classList.add('is-loading');
+      btn.disabled = true;
+      if (textSpan) textSpan.textContent = 'Adding...';
+
+      // Locate theme CartDrawer element and sectionId
+      const cartDrawer = document.querySelector('hdt-cart-drawer') || document.querySelector('[ref="hdt-cart"]');
+      const sectionId = cartDrawer ? (cartDrawer.getAttribute('section-id') || cartDrawer.sectionId) : 'sections--29530030571680__cart-drawer';
+
+      const formData = new FormData();
+      formData.append('id', varId);
+      formData.append('quantity', '1');
+      if (sectionId) {
+        formData.append('sections', sectionId);
+      }
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'Accept': 'application/json, text/javascript'
+        },
+        body: formData
+      })
+      .then(function(res) {
+        if (!res.ok) {
+          return res.json().then(function(errData) {
+            throw new Error(errData.description || errData.message || 'Cart add failed');
+          });
+        }
+        return res.json();
+      })
+      .then(function(item) {
+        if (textSpan) textSpan.textContent = '✓ Added!';
+        setTimeout(function() {
+          btn.classList.remove('is-loading');
+          btn.disabled = false;
+          if (textSpan) textSpan.textContent = origText;
+        }, 1800);
+
+        const productId = card ? card.getAttribute('data-product-id') : (form.getAttribute('data-product-id') || '');
+
+        // 1. Dispatch theme-native cart:update event with rendered sections so cart drawer DOM updates
+        document.dispatchEvent(new CustomEvent('cart:update', {
+          bubbles: true,
+          detail: {
+            resource: {},
+            sourceId: varId.toString(),
+            cartData: item,
+            actionAfterATC: 'open_cart_drawer',
+            source: 'product-form-component',
+            data: {
+              itemCount: 1,
+              productId: productId,
+              sections: item.sections || {}
+            }
+          }
+        }));
+
+        // 2. Dispatch cart:reload backup
+        document.dispatchEvent(new CustomEvent('cart:reload', { bubbles: true }));
+
+        // 3. Open drawer directly via theme component
+        if (cartDrawer && typeof cartDrawer.open === 'function') {
+          try { cartDrawer.open(); } catch(err) { console.warn('cartDrawer.open error:', err); }
+        } else {
+          const dialog = document.getElementById('CartDrawer');
+          if (dialog && typeof dialog.showModal === 'function' && !dialog.open) {
+            try { dialog.showModal(); } catch(err) {}
+          }
+        }
+
+        // 4. Directly update cart count badges across the page
+        fetch('/cart.js')
+          .then(function(r) { return r.json(); })
+          .then(function(cartData) {
+            if (cartData && typeof cartData.item_count !== 'undefined') {
+              document.querySelectorAll('.hdt-cart-count, [data-cart-count], .cart-count, .hdt-has-count-box span').forEach(function(el) {
+                el.textContent = cartData.item_count;
+              });
+              document.dispatchEvent(new CustomEvent('cart:count:update', {
+                bubbles: true,
+                detail: { item_count: cartData.item_count }
+              }));
+            }
+          })
+          .catch(function() {});
+      })
+      .catch(function(err) {
+        console.warn('AJAX cart add error, falling back to direct cart add:', err);
+        if (textSpan) textSpan.textContent = origText;
+        btn.classList.remove('is-loading');
+        btn.disabled = false;
+        window.location.href = '/cart/add?id=' + encodeURIComponent(varId) + '&quantity=1';
+      });
+    };
   })();
 </script>
 
