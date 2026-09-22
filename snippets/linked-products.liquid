@@ -396,9 +396,9 @@
       <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">
         <span>Select Salt Flavor: 
           <span class="hdt-font-semibold" style="color: #1a332c;">
-            {%- if product.handle contains 'bhaang' -%}Bhaang Loon (100g Glass Jar)
-            {%- elsif product.handle contains 'laal-mirch' -%}Chatpata Laal Mirch (100g Glass Jar)
-            {%- elsif product.handle contains 'mix-seasoning' -%}Mix Seasoning (100g Glass Jar)
+            {%- if product.handle contains 'bhaang' -%}Bhaang Loon (100g Sealed Pouch)
+            {%- elsif product.handle contains 'laal-mirch' -%}Chatpata Laal Mirch (100g Sealed Pouch)
+            {%- elsif product.handle contains 'mix-seasoning' -%}Mix Seasoning (100g Sealed Pouch)
             {%- else -%}{{ product.title }}
             {%- endif -%}
           </span>
@@ -411,7 +411,7 @@
           <span class="hdt-pill-badge badge-gold">BESTSELLER</span>
           <span class="hdt-pill-title">Bhaang Loon</span>
           <span class="hdt-pill-sub">{% if l1.price %}{{ l1.price | money }}{% else %}Rs. 190.00{% endif %}</span>
-          <span class="hdt-pill-delivery-tag">100g Glass Jar</span>
+          <span class="hdt-pill-delivery-tag">100g Sealed Pouch</span>
         </a>
 
         <!-- Laal Mirch Loon -->
@@ -419,7 +419,7 @@
           <span class="hdt-pill-badge badge-rust">CHATPATA</span>
           <span class="hdt-pill-title">Laal Mirch</span>
           <span class="hdt-pill-sub">{% if l2.price %}{{ l2.price | money }}{% else %}Rs. 190.00{% endif %}</span>
-          <span class="hdt-pill-delivery-tag">100g Glass Jar</span>
+          <span class="hdt-pill-delivery-tag">100g Sealed Pouch</span>
         </a>
 
         <!-- Mix Seasoning Loon -->
@@ -427,7 +427,7 @@
           <span class="hdt-pill-badge badge-green">HERBAL</span>
           <span class="hdt-pill-title">Mix Seasoning</span>
           <span class="hdt-pill-sub">{% if l3.price %}{{ l3.price | money }}{% else %}Rs. 190.00{% endif %}</span>
-          <span class="hdt-pill-delivery-tag">100g Glass Jar</span>
+          <span class="hdt-pill-delivery-tag">100g Sealed Pouch</span>
         </a>
       </div>
       <!-- Pahadi Pisyu Loon Direct Automatic Discount Offer Box -->

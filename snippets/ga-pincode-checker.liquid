@@ -70,8 +70,21 @@
     {%- endif -%}
     <div class="ga-delivery-perk-item">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#cda250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-      <span><strong>100% Glass Jar Replacement</strong> for transit damage</span>
+      {%- if product.handle contains 'ghee' -%}
+        {%- if product.handle contains '5l' -%}
+          <span><strong>Traditional Steel Dolchi</strong> &amp; 100% Transit Safe</span>
+        {%- else -%}
+          <span><strong>100% Glass Jar Replacement</strong> for transit damage</span>
+        {%- endif -%}
+      {%- else -%}
+        <span><strong>100% Safe Delivery Guarantee:</strong> Free replacement for transit damage</span>
+      {%- endif -%}
     </div>
+  </div>
+
+  <div class="ga-product-real-disclaimer" style="margin-top: 10px; font-size: 11.5px; color: #6b635b; line-height: 1.45; display: flex; align-items: flex-start; gap: 7px; padding: 7px 11px; background: #faf8f5; border-radius: 8px; border: 1px dashed #dfd7cb;">
+    <span style="font-size: 13px; line-height: 1; flex-shrink: 0; margin-top: 1px;">📷</span>
+    <span><strong>Authentic Mountain Harvest:</strong> Product packaging and appearance in real life may slightly vary from website images due to natural artisanal batches and photographic lighting.</span>
   </div>
 </div>
 
