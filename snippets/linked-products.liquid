@@ -17,14 +17,23 @@
 
   # Automatic support for Pahadi Pisyu Loon products
   assign is_loon = false
-  if product.handle contains 'pahadi-pisyu-loon' or product.handle contains 'salts' or product.handle contains 'loon' or product.handle contains 'pisyu'
+  if product.handle contains 'pahadi-bhaang-loon' or product.handle contains 'pahadi-chatpata-laal-mirch-loon' or product.handle contains 'pahadi-mix-seasoning-loon' or product.handle contains 'pisyu-loon' or product.handle contains 'salts' or product.handle contains 'loon' or product.handle contains 'pisyu'
     assign is_loon = true
   endif
 
   if product_list == blank or product_list.size == 0
-    unless is_ghee or is_loon
+    if is_ghee
+      assign p1 = all_products['a2-desi-pahadi-ghee-550ml']
+      assign p2 = all_products['a2-desi-pahadi-ghee-1l']
+      assign p3 = all_products['a2-desi-pahadi-ghee-2l']
+      assign p4 = all_products['a2-desi-pahadi-ghee-5l']
+    elsif is_loon
+      assign l1 = all_products['pahadi-bhaang-loon-100g']
+      assign l2 = all_products['pahadi-chatpata-laal-mirch-loon-100g']
+      assign l3 = all_products['pahadi-mix-seasoning-loon-100g']
+    else
       break
-    endunless
+    endif
   endif
 -%}
 
@@ -37,6 +46,10 @@
     margin-bottom: 14px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+  .hdt-linked-pack-swatches.hdt-linked-3-items {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
   }
   .hdt-linked-pack-pill {
     display: flex !important;
@@ -116,6 +129,18 @@
     background: #2d5c4e !important;
     color: #ffffff !important;
   }
+  .hdt-linked-pack-pill .hdt-pill-badge.badge-rust {
+    background: #b33b28 !important;
+    color: #ffffff !important;
+  }
+  .ga-pack-size-header-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-bottom: 6px !important;
+  }
   .hdt-linked-pack-pill .hdt-pill-delivery-tag {
     font-size: 9px !important;
     font-weight: 800 !important;
@@ -142,6 +167,10 @@
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 12px 8px !important;
     }
+    .hdt-linked-pack-swatches.hdt-linked-3-items {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 6px !important;
+    }
     .hdt-linked-pack-pill {
       padding: 10px 4px !important;
     }
@@ -154,9 +183,53 @@
     .hdt-linked-pack-pill .hdt-pill-delivery-tag {
       font-size: 8.5px !important;
     }
+    .hdt-linked-3-items .hdt-linked-pack-pill {
+      padding: 9px 3px !important;
+      min-height: 70px !important;
+    }
+    .hdt-linked-3-items .hdt-pill-title {
+      font-size: 11.5px !important;
+      line-height: 1.15 !important;
+    }
+    .hdt-linked-3-items .hdt-pill-sub {
+      font-size: 10px !important;
+      margin-top: 3px !important;
+    }
+    .hdt-linked-3-items .hdt-pill-delivery-tag {
+      font-size: 8px !important;
+      margin-top: 2px !important;
+      letter-spacing: 0 !important;
+    }
+    .hdt-linked-3-items .hdt-pill-badge {
+      font-size: 6.8px !important;
+      padding: 2px 4.5px !important;
+      top: -7px !important;
+    }
   }
 
-
+  @media screen and (max-width: 350px) {
+    .hdt-linked-pack-swatches.hdt-linked-3-items {
+      gap: 4px !important;
+    }
+    .hdt-linked-3-items .hdt-linked-pack-pill {
+      padding: 8px 2px !important;
+      min-height: 66px !important;
+    }
+    .hdt-linked-3-items .hdt-pill-title {
+      font-size: 10px !important;
+    }
+    .hdt-linked-3-items .hdt-pill-sub {
+      font-size: 9px !important;
+    }
+    .hdt-linked-3-items .hdt-pill-delivery-tag {
+      font-size: 7.5px !important;
+    }
+    .hdt-linked-3-items .hdt-pill-badge {
+      font-size: 6px !important;
+      padding: 1.5px 3.5px !important;
+      top: -6.5px !important;
+    }
+  }
 
   /* Pahadi Pisyu Loon Direct Discount Box */
   .ga-loon-offer-container {
@@ -275,7 +348,7 @@
   <div class="hdt-product-form__input">
     {%- if is_ghee -%}
       <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">
-        <span>{{ option_label }}: 
+        <span>Select Pack Size: 
           <span class="hdt-font-semibold" style="color: #1a332c;">
             {%- if product.handle contains '550ml' -%}550ml Glass Jar
             {%- elsif product.handle contains '1l' -%}1 Litre Glass Jar
@@ -319,9 +392,44 @@
         </a>
       </div>
 
-
-
     {%- elsif is_loon -%}
+      <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">
+        <span>Select Salt Flavor: 
+          <span class="hdt-font-semibold" style="color: #1a332c;">
+            {%- if product.handle contains 'bhaang' -%}Bhaang Loon (100g Glass Jar)
+            {%- elsif product.handle contains 'laal-mirch' -%}Chatpata Laal Mirch (100g Glass Jar)
+            {%- elsif product.handle contains 'mix-seasoning' -%}Mix Seasoning (100g Glass Jar)
+            {%- else -%}{{ product.title }}
+            {%- endif -%}
+          </span>
+        </span>
+      </div>
+
+      <div class="hdt-linked-pack-swatches hdt-linked-3-items">
+        <!-- Bhaang Loon -->
+        <a href="/products/pahadi-bhaang-loon-100g" class="hdt-linked-pack-pill{% if product.handle contains 'bhaang' %} is-selected{% endif %}">
+          <span class="hdt-pill-badge badge-gold">BESTSELLER</span>
+          <span class="hdt-pill-title">Bhaang Loon</span>
+          <span class="hdt-pill-sub">{% if l1.price %}{{ l1.price | money }}{% else %}Rs. 190.00{% endif %}</span>
+          <span class="hdt-pill-delivery-tag">100g Glass Jar</span>
+        </a>
+
+        <!-- Laal Mirch Loon -->
+        <a href="/products/pahadi-chatpata-laal-mirch-loon-100g" class="hdt-linked-pack-pill{% if product.handle contains 'laal-mirch' %} is-selected{% endif %}">
+          <span class="hdt-pill-badge badge-rust">CHATPATA</span>
+          <span class="hdt-pill-title">Laal Mirch</span>
+          <span class="hdt-pill-sub">{% if l2.price %}{{ l2.price | money }}{% else %}Rs. 190.00{% endif %}</span>
+          <span class="hdt-pill-delivery-tag">100g Glass Jar</span>
+        </a>
+
+        <!-- Mix Seasoning Loon -->
+        <a href="/products/pahadi-mix-seasoning-loon-100g" class="hdt-linked-pack-pill{% if product.handle contains 'mix-seasoning' %} is-selected{% endif %}">
+          <span class="hdt-pill-badge badge-green">HERBAL</span>
+          <span class="hdt-pill-title">Mix Seasoning</span>
+          <span class="hdt-pill-sub">{% if l3.price %}{{ l3.price | money }}{% else %}Rs. 190.00{% endif %}</span>
+          <span class="hdt-pill-delivery-tag">100g Glass Jar</span>
+        </a>
+      </div>
       <!-- Pahadi Pisyu Loon Direct Automatic Discount Offer Box -->
       <div class="ga-loon-offer-container">
         <div class="ga-loon-offer-card">
