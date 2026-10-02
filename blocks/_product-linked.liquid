@@ -20,6 +20,12 @@
     assign is_ghee = true
   endif
 
+  # Automatic support for Pahadi Honey standalone products
+  assign is_honey = false
+  if product.handle contains 'pahadi-honey' or product.handle contains 'honey'
+    assign is_honey = true
+  endif
+
   # Automatic support for Pahadi Pisyu Loon products
   assign is_loon = false
   if product.handle contains 'pahadi-bhaang-loon' or product.handle contains 'pahadi-chatpata-laal-mirch-loon' or product.handle contains 'pahadi-mix-seasoning-loon' or product.handle contains 'pisyu-loon' or product.handle contains 'salts' or product.handle contains 'loon' or product.handle contains 'pisyu'
@@ -32,6 +38,9 @@
       assign p2 = all_products['a2-desi-pahadi-ghee-1l']
       assign p3 = all_products['a2-desi-pahadi-ghee-2l']
       assign p4 = all_products['a2-desi-pahadi-ghee-5l']
+    elsif is_honey
+      assign h1 = all_products['pahadi-honey-300g']
+      assign h2 = all_products['pahadi-honey-500g']
     elsif is_loon
       assign l1 = all_products['pahadi-bhaang-loon-100g']
       assign l2 = all_products['pahadi-chatpata-laal-mirch-loon-100g']
@@ -51,6 +60,10 @@
     margin-bottom: 14px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+  .hdt-linked-pack-swatches.hdt-linked-2-items {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
   }
   .hdt-linked-pack-swatches.hdt-linked-3-items {
     grid-template-columns: repeat(3, 1fr) !important;
@@ -189,6 +202,10 @@
     .hdt-linked-pack-swatches {
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 12px 8px !important;
+    }
+    .hdt-linked-pack-swatches.hdt-linked-2-items {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
     }
     .hdt-linked-pack-swatches.hdt-linked-3-items {
       grid-template-columns: repeat(3, 1fr) !important;
@@ -412,6 +429,35 @@
           <span class="hdt-pill-title">5 Litres</span>
           <span class="hdt-pill-sub">{% if p4.price %}{{ p4.price | money }}{% else %}₹7,995{% endif %}</span>
           <span class="hdt-pill-delivery-tag tag-prepaid">Prepaid • Free Delivery</span>
+        </a>
+      </div>
+
+    {%- elsif is_honey -%}
+      <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">
+        <span>Select Pack Size: 
+          <span class="hdt-font-semibold" style="color: #1a332c;">
+            {%- if product.handle contains '300g' -%}300g Glass Jar
+            {%- elsif product.handle contains '500g' -%}500g Family Glass Jar
+            {%- else -%}{{ product.title }}
+            {%- endif -%}
+          </span>
+        </span>
+      </div>
+
+      <div class="hdt-linked-pack-swatches hdt-linked-2-items">
+        <!-- 300g -->
+        <a href="/products/pahadi-honey-300g" class="hdt-linked-pack-pill{% if product.handle contains '300g' %} is-selected{% endif %}">
+          <span class="hdt-pill-title">300g</span>
+          <span class="hdt-pill-sub">{% if h1.price %}{{ h1.price | money }}{% else %}₹399{% endif %}</span>
+          <span class="hdt-pill-delivery-tag">300g Glass Jar</span>
+        </a>
+
+        <!-- 500g -->
+        <a href="/products/pahadi-honey-500g" class="hdt-linked-pack-pill{% if product.handle contains '500g' %} is-selected{% endif %}">
+          <span class="hdt-pill-badge badge-gold">FAMILY VALUE</span>
+          <span class="hdt-pill-title">500g</span>
+          <span class="hdt-pill-sub">{% if h2.price %}{{ h2.price | money }}{% else %}₹649{% endif %}</span>
+          <span class="hdt-pill-delivery-tag tag-prepaid">500g Family Jar • Best Value</span>
         </a>
       </div>
 
