@@ -972,6 +972,35 @@
             "highlight": "Heirloom high-altitude finger millet cold stone-ground in traditional Himalayan watermills (Gharats). High calcium, iron & 100% gluten-free.",
             "single_size_label": "1kg / 5kg Farm Pack"
           }
+        },
+        "specialty_honey_300g": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-honey-300g",
+            "title": "Pure Pahadi Honey - 300g Glass Jar",
+            "category": "honey",
+            "badge_text": "100% Raw Honey",
+            "origin_tag": "Wild Himalayan Blooms",
+            "highlight": "Raw, unpasteurized high-altitude wildflower honey harvested ethically from mountain bees. Packed with natural pollen, enzymes & antioxidants.",
+            "single_size_label": "300g Sealed Glass Jar",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_honey_500g": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-honey-500g",
+            "title": "Pure Pahadi Honey - 500g Glass Jar",
+            "category": "honey",
+            "is_featured": true,
+            "badge_text": "Family Value Pack",
+            "origin_tag": "Wild Himalayan Blooms",
+            "highlight": "100% pure mountain honey in a 500g family jar. Unfiltered, unheated, zero added sugar or syrups for daily household wellness & immunity.",
+            "single_size_label": "500g Family Glass Jar",
+            "default_price": 64900,
+            "default_compare_price": 74900
+          }
         }
       },
       "block_order": [
@@ -979,6 +1008,8 @@
         "specialty_ghee_1l",
         "specialty_ghee_2l",
         "specialty_ghee_5l",
+        "specialty_honey_300g",
+        "specialty_honey_500g",
         "specialty_1",
         "specialty_2",
         "specialty_3",

@@ -6,6 +6,7 @@
 
   # Dynamic Category Counts
   assign ghee_count = 0
+  assign honey_count = 0
   assign dal_count = 0
   assign salt_count = 0
   assign millet_count = 0
@@ -13,6 +14,8 @@
     case block.settings.category
       when 'ghee'
         assign ghee_count = ghee_count | plus: 1
+      when 'honey'
+        assign honey_count = honey_count | plus: 1
       when 'dal'
         assign dal_count = dal_count | plus: 1
       when 'salt'
@@ -857,6 +860,12 @@
           <span class="ga-spec-tab-count">{{ ghee_count }}</span>
         </button>
       {%- endif -%}
+      {%- if honey_count > 0 -%}
+        <button type="button" class="ga-spec-tab-btn" data-filter="honey" role="tab" aria-selected="false">
+          <span>🍯 Pure Pahadi Honey</span>
+          <span class="ga-spec-tab-count">{{ honey_count }}</span>
+        </button>
+      {%- endif -%}
       {%- if dal_count > 0 -%}
         <button type="button" class="ga-spec-tab-btn" data-filter="dal" role="tab" aria-selected="false">
           <span>🏔️ Heirloom Pahadi Dals</span>
@@ -944,6 +953,8 @@
                   sizes: '(max-width: 680px) 240px, (max-width: 1100px) 360px, 420px' 
                 }}
               {%- endif -%}
+            {%- elsif category == 'honey' -%}
+              <img src="{{ 'ghar-aangan-product-honey.jpg' | asset_url }}" loading="lazy" decoding="async" class="ga-spec-img" alt="{{ product_title }}" width="460" height="460">
             {%- else -%}
               <svg class="ga-spec-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
             {%- endif -%}
@@ -1038,7 +1049,7 @@
           <div class="ga-spec-perks">
             <span class="ga-spec-perk-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              {% if category == 'ghee' %}Traditional Bilona{% else %}100% Unadulterated{% endif %}
+              {% if category == 'ghee' %}Traditional Bilona{% elsif category == 'honey' %}100% Raw Wildflower{% else %}100% Unadulterated{% endif %}
             </span>
             <span class="ga-spec-perk-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
@@ -1474,6 +1485,7 @@
           "label": "Category",
           "options": [
             { "value": "ghee", "label": "Pure A2 Bilona Ghee" },
+            { "value": "honey", "label": "Pure Pahadi Honey" },
             { "value": "dal", "label": "Heirloom Dals" },
             { "value": "salt", "label": "Sil-Batta Salts" },
             { "value": "millet", "label": "Millets & Flour" }
@@ -1514,6 +1526,18 @@
           "type": "image_picker",
           "id": "image",
           "label": "Override Image"
+        },
+        {
+          "type": "number",
+          "id": "default_price",
+          "label": "Fallback Price (in paise, e.g. 39900 for ₹399)",
+          "default": 39900
+        },
+        {
+          "type": "number",
+          "id": "default_compare_price",
+          "label": "Fallback Compare Price (in paise, e.g. 44900 for ₹449)",
+          "default": 44900
         }
       ]
     }
