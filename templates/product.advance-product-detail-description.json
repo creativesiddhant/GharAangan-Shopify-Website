@@ -13,9 +13,9 @@
       "type": "brc-nav-product",
       "settings": {
         "back_next_pr": true,
-        "color_scheme": "scheme-c9476b69-abc7-454f-a946-2d5a9f5f3a37",
-        "padding_top": 20,
-        "padding_bottom": 16,
+        "color_scheme": "",
+        "padding_top": 12,
+        "padding_bottom": 8,
         "padding_rate": 75
       }
     },
@@ -209,7 +209,7 @@
       "settings": {
         "tabs_design": "tab",
         "enable_first_tab": true,
-        "color_scheme": "scheme-c9476b69-abc7-454f-a946-2d5a9f5f3a37",
+        "color_scheme": "",
         "full_width": false,
         "padding_top": 10,
         "padding_bottom": 50,

@@ -1426,25 +1426,155 @@ button.hdt-btn:not(.hdt-pagination__item):not(.hdt-pagination-part) {
 }
 
 /* ==========================================================================
-   Page Spacing Overrides (Collapse header-to-content whitespace gap)
+   Page Spacing & Breadcrumb Overrides (Eliminates disjointed white gaps & misalignments)
    ========================================================================== */
-.hdt-section-heading .hdt-heading-template {
-  padding-bottom: 0 !important;
-  --section-pb: 0px !important;
+
+/* 1. Eliminate White Background Bars across Breadcrumb & Page Headings */
+.hdt-section-brc-nav-product,
+.hdt-section-brc-nav-product .hdt-breadcrumb,
+.hdt-breadcrumb,
+.hdt-breadcrumb.hdt-s-gradient,
+.hdt-section-heading,
+.hdt-section-heading .hdt-heading-template,
+.hdt-main-heading,
+.hdt-main-heading .hdt-heading-template {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* 2. Product Page Breadcrumb Refined Spacing & Alignment */
+.hdt-section-brc-nav-product {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.hdt-section-brc-nav-product .hdt-breadcrumb,
+.hdt-breadcrumb.hdt-section-spacing {
+  padding-top: 14px !important;
+  padding-bottom: 8px !important;
+  --section-pt: 14px !important;
+  --section-pb: 8px !important;
+}
+
+.hdt-breadcrumb .hdt-container {
+  width: 100% !important;
+}
+
+.hdt-breadcrumb__wrap {
+  align-items: center !important;
+}
+
+/* 3. Luxury Breadcrumb Typography & Elements */
+.hdt-breadcrumb__list {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 0.6rem !important;
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-size: 1.25rem !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.4 !important;
+}
+
+.hdt-breadcrumb__list a {
+  color: rgba(26, 51, 44, 0.6) !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: var(--ga-transition-smooth) !important;
+}
+
+.hdt-breadcrumb__list a:hover {
+  color: var(--ga-gold-cream, #cda250) !important;
+}
+
+.hdt-breadcrumb__list svg {
+  color: var(--ga-gold-cream, #cda250) !important;
+  opacity: 0.85 !important;
+  height: 8px !important;
+  width: auto !important;
+  margin: 0 4px !important;
+}
+
+.hdt-breadcrumb__list .hdt-s-text2,
+.hdt-breadcrumb__list span:last-child {
+  color: var(--ga-forest-green, #1a332c) !important;
+  font-weight: 600 !important;
+}
+
+/* 4. Collapse Spacing Gap between Breadcrumb and Main Product */
+.hdt-section-brc-nav-product + .shopify-section,
+.hdt-section-brc-nav-product + .hdt-section--feature-product,
+.hdt-section-brc-nav-product + [id*="main-product"] {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.hdt-section-brc-nav-product + .shopify-section > .hdt-s-inner,
+.hdt-section-brc-nav-product + .hdt-section--feature-product > .hdt-s-inner,
+.hdt-section-brc-nav-product + [id*="main-product"] > .hdt-s-inner {
+  padding-top: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* 5. Mobile Cleanliness & Compactness */
+@media (max-width: 767px) {
+  .hdt-section-brc-nav-product .hdt-breadcrumb,
+  .hdt-breadcrumb.hdt-section-spacing {
+    padding-top: 8px !important;
+    padding-bottom: 6px !important;
+    --section-pt: 8px !important;
+    --section-pb: 6px !important;
+  }
+
+  .hdt-breadcrumb__list {
+    font-size: 1.15rem !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+
+  .hdt-breadcrumb__list span:last-child,
+  .hdt-breadcrumb__list .hdt-s-text2 {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* 6. Collection, Blog & General Page Headings Cleanup */
+.hdt-section-heading .hdt-heading-template,
+.hdt-main-heading .hdt-heading-template {
+  padding-top: 24px !important;
+  padding-bottom: 16px !important;
+  --section-pt: 24px !important;
+  --section-pb: 16px !important;
 }
 
 .hdt-section-heading + .shopify-section .hdt-section-spacing,
 .hdt-section-heading + .shopify-section .hdt-accordion,
-.hdt-section-heading + .shopify-section .hdt-container {
-  padding-top: 0 !important;
-  --section-pt: 0px !important;
-}
-
+.hdt-section-heading + .shopify-section .hdt-container,
 .hdt-section-heading + .hdt-section .hdt-section-spacing,
 .hdt-section-heading + .hdt-section .hdt-accordion,
 .hdt-section-heading + .hdt-section .hdt-container {
   padding-top: 0 !important;
   --section-pt: 0px !important;
+}
+
+@media (max-width: 767px) {
+  .hdt-section-heading .hdt-heading-template,
+  .hdt-main-heading .hdt-heading-template {
+    padding-top: 16px !important;
+    padding-bottom: 10px !important;
+    --section-pt: 16px !important;
+    --section-pb: 10px !important;
+  }
 }
 
 /* ==========================================================================

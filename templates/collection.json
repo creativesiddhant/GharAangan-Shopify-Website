@@ -42,8 +42,8 @@
         "spacing_hd": 10,
         "image": "shopify://shop_images/z4683181570507_46fb10fa21da971ae2af71e75431028c_f52f84e6-035f-4b0a-a139-3f31ae2a7614.webp",
         "color_scheme": "",
-        "padding_top": 65,
-        "padding_bottom": 65,
+        "padding_top": 28,
+        "padding_bottom": 20,
         "padding_rate": 75
       }
     },
