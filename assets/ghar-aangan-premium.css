@@ -1454,10 +1454,10 @@ button.hdt-btn:not(.hdt-pagination__item):not(.hdt-pagination-part) {
 
 .hdt-section-brc-nav-product .hdt-breadcrumb,
 .hdt-breadcrumb.hdt-section-spacing {
-  padding-top: 14px !important;
-  padding-bottom: 8px !important;
-  --section-pt: 14px !important;
-  --section-pb: 8px !important;
+  padding-top: 16px !important;
+  padding-bottom: 12px !important;
+  --section-pt: 16px !important;
+  --section-pb: 12px !important;
 }
 
 .hdt-breadcrumb .hdt-container {
@@ -1519,6 +1519,46 @@ button.hdt-btn:not(.hdt-pagination__item):not(.hdt-pagination-part) {
   padding-top: 0 !important;
   background: transparent !important;
   background-color: transparent !important;
+}
+
+/* Sticky Left Product Image on Desktop for Balanced Browsing */
+@media (min-width: 990px) {
+  .hdt-main-product-wrap {
+    align-items: flex-start !important;
+  }
+  .hdt-product-media-wrapps {
+    position: sticky !important;
+    top: 115px !important;
+    align-self: flex-start !important;
+    z-index: 2 !important;
+  }
+}
+
+.hdt-product__media-item,
+.hdt-product-media__main {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 16px 38px rgba(26, 51, 44, 0.06) !important;
+  border: 1px solid rgba(26, 51, 44, 0.05) !important;
+}
+
+/* Eliminate Duplicate Delivery/Return text block under Pincode checker */
+.ga-pincode-checker ~ .hdt-product-info__item:has(.hdt-product__delivery-return),
+.ga-pincode-checker + .hdt-product-info__item:has(.hdt-product__delivery-return),
+.hdt-product__delivery-return {
+  display: none !important;
+}
+
+/* Certified Safe Checkout Card Styling */
+.hdt-product-trust-badge,
+.hdt-product-info__item:has([data-type="_product-trust-badge"]) {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(26, 51, 44, 0.08) !important;
+  border-radius: 12px !important;
+  padding: 1.4rem 1.6rem !important;
+  margin-top: 1.4rem !important;
+  text-align: center !important;
+  box-shadow: 0 4px 15px rgba(26, 51, 44, 0.02) !important;
 }
 
 /* 5. Mobile Cleanliness & Compactness */
@@ -2435,16 +2475,47 @@ button[aria-label="Close"] svg {
 
 /* Product Tabs Container & Border */
 .hdt-type-tab .hdt-product-tab__wrap {
-  border: 1px solid rgba(26, 51, 44, 0.12) !important;
-  border-radius: 12px !important;
+  border: 1px solid rgba(205, 162, 80, 0.22) !important;
+  border-radius: 16px !important;
   background: #ffffff !important;
-  box-shadow: 0 4px 20px rgba(26, 51, 44, 0.03) !important;
+  box-shadow: 0 16px 40px rgba(26, 51, 44, 0.04) !important;
   overflow: hidden !important;
+  margin-top: 2rem !important;
 }
 
 .hdt-product-tab__content {
-  padding: 3rem 2.8rem !important;
+  padding: 3.5rem 3.5rem !important;
   background: #ffffff !important;
+}
+
+@media (max-width: 767px) {
+  .hdt-product-tab__content {
+    padding: 2.2rem 1.8rem !important;
+  }
+}
+
+/* Custom Botanical Editorial Bullet Styling inside Description */
+.hdt-product-tab__content ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 1.6rem 0 !important;
+}
+
+.hdt-product-tab__content ul li {
+  position: relative !important;
+  padding-left: 2.4rem !important;
+  margin-bottom: 1.2rem !important;
+  line-height: 1.7 !important;
+}
+
+.hdt-product-tab__content ul li::before {
+  content: '✦' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0.1rem !important;
+  color: var(--ga-gold-cream, #cda250) !important;
+  font-size: 1.2rem !important;
+  line-height: 1 !important;
 }
 
 /* Product Description Base Body Text - Bolder, Dark & Crisp */
