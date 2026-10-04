@@ -1347,10 +1347,13 @@ button.hdt-btn:not(.hdt-pagination__item):not(.hdt-pagination-part) {
 .hdt-main-header,
 .hdt-sticky-header {
   background-color: var(--ga-gold-light, #f4ece1) !important;
-  background-image: none !important;
+  background-image: 
+    linear-gradient(90deg, rgba(26, 51, 44, 0.008) 50%, transparent 50%),
+    linear-gradient(rgba(26, 51, 44, 0.008) 50%, transparent 50%) !important;
+  background-size: 4px 4px !important;
   border-top: 3px solid var(--ga-gold-cream, #cda250) !important;
   border-bottom: 1px solid rgba(26, 51, 44, 0.08) !important;
-  box-shadow: 0 4px 20px rgba(26, 51, 44, 0.04) !important;
+  box-shadow: 0 8px 30px rgba(26, 51, 44, 0.03) !important;
   transition: var(--ga-transition-smooth) !important;
 }
 
