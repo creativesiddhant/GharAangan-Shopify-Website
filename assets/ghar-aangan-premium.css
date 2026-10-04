@@ -9,7 +9,7 @@
   --ga-himalayan-emerald: #2d5c4e;
   --ga-gold-ghee: #d4af37;
   --ga-gold-cream: #cda250;
-  --ga-gold-light: #ffffff;
+  --ga-gold-light: #f4ece1;
   --ga-organic-cream: #ffffff;
   --ga-dark-text: #2d2d2d;
   --ga-light-bg: #ffffff;
@@ -1346,7 +1346,7 @@ button.hdt-btn:not(.hdt-pagination__item):not(.hdt-pagination-part) {
 /* 1. Main Header Background, Border & Accent */
 .hdt-main-header,
 .hdt-sticky-header {
-  background-color: #ffffff !important;
+  background-color: var(--ga-gold-light, #f4ece1) !important;
   background-image: none !important;
   border-top: 3px solid var(--ga-gold-cream, #cda250) !important;
   border-bottom: 1px solid rgba(26, 51, 44, 0.08) !important;
