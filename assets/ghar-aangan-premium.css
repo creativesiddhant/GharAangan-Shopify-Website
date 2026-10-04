@@ -9,10 +9,10 @@
   --ga-himalayan-emerald: #2d5c4e;
   --ga-gold-ghee: #d4af37;
   --ga-gold-cream: #cda250;
-  --ga-gold-light: #f4ece1;
-  --ga-organic-cream: #faf8f5;
+  --ga-gold-light: #ffffff;
+  --ga-organic-cream: #ffffff;
   --ga-dark-text: #2d2d2d;
-  --ga-light-bg: #f9f6f0;
+  --ga-light-bg: #ffffff;
   --ga-border-color: rgba(26, 51, 44, 0.08);
   
   --ga-font-family-serif: 'Playfair Display', Georgia, serif;
@@ -20,7 +20,7 @@
   
   --ga-transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   --ga-card-shadow: 0 15px 35px rgba(26, 51, 44, 0.04);
-  --ga-glass-effect: rgba(250, 248, 245, 0.82);
+  --ga-glass-effect: rgba(255, 255, 255, 0.95);
 }
 
 /* Global Mobile Overflow Protection */
@@ -368,7 +368,7 @@ body.template-product #MainContent > [id*="recently-products"] {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #faf8f5; /* var(--ga-organic-cream) */
+  background-color: #ffffff; /* Crisp white background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -554,7 +554,7 @@ h1, h2, h3, h4, h5 {
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
   padding: 4rem 5rem;
-  background-color: #faf8f5; /* var(--ga-organic-cream) */
+  background-color: #ffffff; /* Clean white */
   border-radius: 8px;
   border: 1px solid var(--ga-border-color);
   max-width: 1200px;
@@ -679,15 +679,15 @@ h1, h2, h3, h4, h5 {
    Nimadi-Farms Inspired Premium Design Updates
    ========================================================================== */
 
-/* 1. Linen Texture */
+/* 1. Pure Crisp White Canvas across entire website */
 body, 
+html,
 .template-index, 
-.ga-organic-texture-bg {
-  background-color: var(--ga-organic-cream, #faf8f5);
-  background-image: 
-    linear-gradient(90deg, rgba(26, 51, 44, 0.012) 50%, transparent 50%),
-    linear-gradient(rgba(26, 51, 44, 0.012) 50%, transparent 50%);
-  background-size: 4px 4px;
+.template-product,
+.ga-organic-texture-bg,
+main#MainContent {
+  background-color: #ffffff !important;
+  background-image: none !important;
 }
 
 /* 2. Traditional Indian Dome Arch shapes */
@@ -1346,14 +1346,11 @@ button.hdt-btn:not(.hdt-pagination__item):not(.hdt-pagination-part) {
 /* 1. Main Header Background, Border & Accent */
 .hdt-main-header,
 .hdt-sticky-header {
-  background-color: var(--ga-gold-light, #f4ece1) !important;
-  background-image: 
-    linear-gradient(90deg, rgba(26, 51, 44, 0.008) 50%, transparent 50%),
-    linear-gradient(rgba(26, 51, 44, 0.008) 50%, transparent 50%) !important;
-  background-size: 4px 4px !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
   border-top: 3px solid var(--ga-gold-cream, #cda250) !important;
   border-bottom: 1px solid rgba(26, 51, 44, 0.08) !important;
-  box-shadow: 0 8px 30px rgba(26, 51, 44, 0.03) !important;
+  box-shadow: 0 4px 20px rgba(26, 51, 44, 0.04) !important;
   transition: var(--ga-transition-smooth) !important;
 }
 
@@ -1429,7 +1426,7 @@ button.hdt-btn:not(.hdt-pagination__item):not(.hdt-pagination-part) {
    Page Spacing & Breadcrumb Overrides (Eliminates disjointed white gaps & misalignments)
    ========================================================================== */
 
-/* 1. Eliminate White Background Bars across Breadcrumb & Page Headings */
+/* 1. Clean White Background across Breadcrumb & Page Headings */
 .hdt-section-brc-nav-product,
 .hdt-section-brc-nav-product .hdt-breadcrumb,
 .hdt-breadcrumb,
@@ -1438,8 +1435,8 @@ button.hdt-btn:not(.hdt-pagination__item):not(.hdt-pagination-part) {
 .hdt-section-heading .hdt-heading-template,
 .hdt-main-heading,
 .hdt-main-heading .hdt-heading-template {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
   box-shadow: none !important;
   border: none !important;
