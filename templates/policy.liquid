@@ -1,6 +1,9 @@
-<!-- templates/policy.liquid -->
 {%- if policy.title == 'Refund policy' or policy.title == 'Refund Policy' or request.path contains 'refund-policy' -%}
   {%- render 'page-refund-policy-custom' -%}
+{%- elsif policy.title contains 'Shipping' or policy.title contains 'shipping' or request.path contains 'shipping-policy' -%}
+  {%- render 'page-shipping-delivery-custom' -%}
+{%- elsif policy.title contains 'Terms' or request.path contains 'terms-of-service' -%}
+  {%- render 'page-terms-custom' -%}
 {%- else -%}
   <!-- Default Policy Layout for other pages (Privacy, Terms, etc.) -->
   <style>

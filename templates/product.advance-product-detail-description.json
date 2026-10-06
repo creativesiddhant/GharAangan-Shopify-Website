@@ -87,7 +87,7 @@
               "type": "_delivery_return",
               "settings": {
                 "icon_delivery": "ship",
-                "content_devivery": "<p><strong>Fast Delivery (Prepaid):</strong> 5 to 6 business days (FREE). <strong>Standard Shipping (COD):</strong> 7 to 10 business days (₹100 charge). Dispatch within <strong>24 hours</strong> from Uttarakhand.</p>",
+                "content_devivery": "<p><strong>India Delivery:</strong> Fast Delivery (Prepaid) 5–6 business days (FREE); Standard COD 7–10 days (₹100). Dispatch within 24 hours.<br><strong>International Delivery:</strong> Available to selected countries (USA, UAE, Australia, Saudi Arabia, Singapore). Shipping charges are calculated based on final packed weight and destination. Additional customs, clearance, handling, or courier charges may apply, if applicable. <a href=\"/pages/shipping-delivery\" style=\"text-decoration: underline; font-weight: 600;\">Shipping Policy</a></p>",
                 "icon_return": "return_order",
                 "content_return": "<p>Pure Himalayan food items: <strong>100% replacement</strong> for transit damage with unboxing photo/video within 48 hours.</p>"
               },

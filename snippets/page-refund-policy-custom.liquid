@@ -3,98 +3,183 @@
   .hdt-section-heading {
     display: none !important;
   }
+  .ga-faq-details {
+    border-bottom: 1px solid var(--ga-border-color, #e5e0d8);
+    padding: 2.2rem 0;
+    cursor: pointer;
+  }
+  .ga-faq-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    outline: none;
+    font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
+    font-size: 1.85rem;
+    font-weight: 600;
+    color: var(--ga-forest-green, #1a332c);
+    gap: 1rem;
+  }
+  .ga-faq-summary::-webkit-details-marker {
+    display: none;
+  }
+  .ga-faq-icon {
+    font-size: 1.8rem;
+    color: var(--ga-gold-cream, #cda250);
+    transition: transform 0.4s ease;
+    flex-shrink: 0;
+  }
+  .ga-faq-details[open] .ga-faq-icon {
+    transform: rotate(45deg);
+  }
+  .ga-faq-content {
+    margin-top: 1.5rem;
+    padding-right: 2rem;
+  }
+  .ga-policy-callout {
+    background: #fdfbf7;
+    border: 1.5px solid var(--ga-gold-cream, #cda250);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2.5rem 0;
+  }
 </style>
 
-<div class="ga-shipping-page-wrapper" style="padding: 2rem 0; font-family: var(--ga-font-family-sans);">
+<div class="ga-shipping-page-wrapper" style="padding: 2rem 0; font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);">
   
   <!-- Editorial Page Header -->
-  <div class="ga-shipping-header-editorial" style="text-align: center; max-width: 800px; margin: 4rem auto 5rem auto; border-bottom: 1.5px solid var(--ga-border-color); padding-bottom: 3.5rem; padding-left: 1.5rem; padding-right: 1.5rem;">
-    <span class="ga-subtitle" style="color: var(--ga-gold-cream); font-size: 1.3rem; letter-spacing: 0.3em; font-weight: 700; text-transform: uppercase;">Ghar Jaisa Shuddh • Parampara Jaisa Anmol</span>
-    <h1 class="ga-title" style="font-size: clamp(3rem, 5vw, 4.4rem); font-family: var(--ga-font-family-serif); margin-top: 1rem; margin-bottom: 1.5rem; color: var(--ga-forest-green);">Refund, Return &amp; Customer Support Policy</h1>
-    <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; max-width: 680px; margin: 0 auto 1.5rem auto;">
-      At Ghar Aangan, we are building a young Indian food brand rooted in the purity, warmth, and traditions of the Pahad. Every order matters to us. This policy explains how we process, ship, deliver, and resolve issues with your order so that you know what to expect.
+  <div class="ga-shipping-header-editorial" style="text-align: center; max-width: 820px; margin: 4rem auto 5rem auto; border-bottom: 1.5px solid var(--ga-border-color, #e5e0d8); padding-bottom: 3.5rem; padding-left: 1.5rem; padding-right: 1.5rem;">
+    <span class="ga-subtitle" style="color: var(--ga-gold-cream, #cda250); font-size: 1.3rem; letter-spacing: 0.3em; font-weight: 700; text-transform: uppercase;">GHAR JAISA SHUDDH • PARAMPARA JAISA ANMOL</span>
+    <h1 class="ga-title" style="font-size: clamp(3rem, 5vw, 4.4rem); font-family: var(--ga-font-family-serif, 'Playfair Display', serif); margin-top: 1rem; margin-bottom: 1.5rem; color: var(--ga-forest-green, #1a332c);">
+      Refund, Return &amp; Customer Support Policy
+    </h1>
+    <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text, #2d2d2d); font-weight: 300; max-width: 720px; margin: 0 auto 1.5rem auto;">
+      At Ghar Aangan, we craft artisanal food and A2 Bilona Cow Ghee rooted in Himalayan traditions. Every jar matters to us. This policy clearly explains our return, replacement, cancellation, and refund principles for both domestic deliveries in India and international shipments.
     </p>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; font-size: 1.4rem; color: var(--ga-forest-green); font-weight: 500;">
-      <span>📞 Support: <strong>+91 90272 48335</strong></span>
-      <span>👤 Owner (Manisha Lohani): <strong>+91 72920 02260</strong></span>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; font-size: 1.4rem; color: var(--ga-forest-green, #1a332c); font-weight: 500;">
+      <span>📞 Support / WhatsApp: <strong>+91 90272 48335</strong></span>
+      <span>👤 Owner &amp; Operations: <strong>+91 72920 02260</strong></span>
       <span>✉️ <strong>gharaanganmani@gmail.com</strong></span>
     </div>
   </div>
 
   <!-- Main Text-Based Policy Content -->
-  <div class="ga-shipping-content-block" style="max-width: 780px; margin: 0 auto 6rem auto; padding: 0 1.5rem;">
+  <div class="ga-shipping-content-block" style="max-width: 800px; margin: 0 auto 6rem auto; padding: 0 1.5rem;">
     
     <!-- Section 1 -->
     <div style="margin-bottom: 4rem;" class="ga-reveal">
       <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">1. Food Safety &amp; Return Nature</h2>
       <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.2rem;">
-        Ghar Aangan provides pure, artisanal food and dairy products prepared with traditional methods. To maintain strict health, safety, and hygiene standards, <strong>we do not accept physical returns or exchanges of opened, seal-broken, or consumed products</strong>.
+        Ghar Aangan provides pure, artisanal food and dairy products prepared using ancient Vedic methods. To maintain rigorous health, hygiene, and biosecurity standards, <strong>we do not accept physical returns or exchanges of opened, seal-broken, or consumed food products</strong>.
       </p>
       <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        Ghar Aangan aims to resolve genuine complaints fairly. Refunds or replacements are considered based on the nature of the issue, evidence provided, product condition, and circumstances of the order. Customers should contact us as soon as possible after delivery when there is a problem.
+        We evaluate genuine issues fairly. Replacements or refunds are assessed based on the specific circumstances, evidence submitted (photographs/unboxing videos), and product state upon delivery.
       </p>
     </div>
 
     <!-- Section 2 -->
     <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">2. Packaging: Glass &amp; Steel</h2>
+      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">2. Packaging: Glass Jars &amp; Steel Dolchi</h2>
       <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        Our <strong>550 ml, 1 litre, and 2 litre</strong> ghee products are packed in premium food-grade glass jars to preserve taste and aroma. Our <strong>5 litre</strong> ghee product is packed in a traditional <strong>steel Dolchi</strong>. Glass is delicate, so we use protective packaging and take reasonable care while preparing every shipment. However, courier handling is outside our direct control.
+        Our <strong>550 ml, 1 litre, and 2 litre</strong> ghee products are packed in lead-free food-grade glass jars to preserve freshness, granulation, and aroma. Our <strong>5 litre</strong> ghee product is packed in a heavy-duty <strong>steel Dolchi</strong>. While all shipments are wrapped in multi-layer shock-absorbent cushioning, couriers handle parcels through multiple transport hubs.
       </p>
     </div>
 
     <!-- Section 3 -->
     <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">3. Damaged Glass on Delivery</h2>
+      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">3. Damaged Shipments on Delivery</h2>
       <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.2rem;">
-        If a glass jar arrives cracked or broken, <strong>do not consume the product</strong>. Contact us immediately and share clear photographs/video of the outer package, shipping label, and damaged product. We will investigate with the courier and work toward an applicable replacement or refund.
+        If a glass jar arrives cracked or damaged in transit, <strong>do not consume the product</strong>. Contact us promptly with clear photographs/videos showing:
       </p>
+      <ul style="padding-left: 1.8rem; font-size: 1.5rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.2rem;">
+        <li>The outer cardboard carton and courier shipping label.</li>
+        <li>The protective bubble/cushioning and seal condition.</li>
+        <li>The cracked or leaking jar.</li>
+      </ul>
       <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        <em>Note: Damage claims should be raised immediately upon delivery. Damage caused by dropping or mishandling the product after delivery is not treated as transit damage.</em>
+        Keep the original packaging until the courier claim is resolved. Ghar Aangan will promptly investigate and arrange an applicable replacement or refund. <em>Damage caused by accidental dropping or mishandling after safe delivery is not covered.</em>
       </p>
     </div>
 
     <!-- Section 4 -->
     <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">4. Damaged, Leaking or Tampered Shipments</h2>
+      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">4. Product Quality Inquiries &amp; Expired Items</h2>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.2rem;">
+        <strong>Quality Concerns:</strong> If you believe a product exhibits an objective defect or unusual spoilage, contact us promptly with batch details and photographs. Depending on verification, an appropriate replacement or refund will be provided.
+      </p>
       <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        If a package appears severely damaged, leaking, or tampered with at delivery, document the condition with photographs/video before opening or consuming it wherever reasonably possible. Contact us promptly with your order number and evidence so we can investigate and, where appropriate, raise a courier claim.
+        <strong>Subjective Taste &amp; Texture:</strong> Authentic wood-fired Bilona ghee has natural variations in color, smoky aroma, and danedaar granulation depending on seasonal mountain foliage. Because taste is subjective, refunds are not offered merely for personal flavor preference on opened jars.
       </p>
     </div>
 
     <!-- Section 5 -->
     <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">5. Product Quality Complaints &amp; Expired Products</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.2rem;">
-        <strong>Quality Concerns:</strong> If a customer believes the ghee has an unusual smell, unacceptable taste, or another genuine quality issue, contact us promptly. We may request photographs, videos, batch details, packaging information, or other reasonable evidence. Depending on the circumstances and our assessment, a replacement or refund may be provided.
-      </p>
+      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">5. Lost Shipments (Domestic India)</h2>
       <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        <strong>Expired Products:</strong> If an expired product is delivered, contact us immediately with photographs showing the product, batch information, and expiry/best-before date. After verification, we will provide an appropriate resolution, which ordinarily includes a full refund or replacement.
+        If a domestic shipment is confirmed lost in transit by the carrier, Ghar Aangan follows up directly with the courier's claims desk. Where the carrier provides a resolution, we communicate it to the customer. Where the carrier fails to provide a full resolution, Ghar Aangan may offer a 50% refund or reshipment courtesy, subject to investigation.
       </p>
     </div>
 
-    <!-- Section 6 -->
+    <!-- Section 6: INTERNATIONAL ORDERS CANCELLATION & REFUND POLICY (NEW 2026 EDITION) -->
     <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">6. Lost Shipments</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        If a shipment is lost in transit, Ghar Aangan will follow up with the relevant logistics partner. The final resolution can depend on the courier investigation and claim process. Where the courier provides a resolution or compensation, we will communicate it to the customer. Where the courier does not provide a full resolution, <strong>Ghar Aangan may provide a 50% refund of the affected product value</strong>, subject to investigation and the circumstances of the case.
+      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">
+        6. International Orders — Cancellation &amp; Refund Terms (2026 Policy)
+      </h2>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.2rem;">
+        International shipments (currently available to the USA, UAE, Australia, Saudi Arabia, and Singapore) involve cross-border customs regulations, airline cargo bookings, export documentation, and destination handling. The following terms govern international cancellations and refunds:
       </p>
+
+      <div class="ga-policy-callout">
+        <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-top: 0; margin-bottom: 0.8rem;">
+          • Cancellation Before Dispatch
+        </h4>
+        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300; margin: 0 0 1.5rem 0;">
+          If the customer requests cancellation before the order is handed to the international courier and no non-refundable third-party costs have been incurred, Ghar Aangan may refund the eligible amount. Any genuinely non-refundable payment-gateway or third-party fee may be excluded where legally permissible and clearly communicated.
+        </p>
+
+        <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-top: 0; margin-bottom: 0.8rem;">
+          • Cancellation After Booking or Dispatch
+        </h4>
+        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300; margin: 0 0 1.5rem 0;">
+          Once booked, picked up, or dispatched, international courier freight and third-party logistics costs are non-refundable. A customer changing their mind after dispatch is therefore not automatically entitled to a full refund. If an in-transit recall is operationally possible, Ghar Aangan will determine the recoverable amount after deducting outbound freight, return freight, and administrative handling.
+        </p>
+
+        <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-top: 0; margin-bottom: 0.8rem;">
+          • Customs Rejection, Failure to Clear or Return
+        </h4>
+        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300; margin: 0 0 1.5rem 0;">
+          <strong>Brand-Controlled Cause:</strong> If a shipment is rejected because Ghar Aangan failed to provide a required export document or because of a Ghar Aangan-controlled compliance failure, the case will be reviewed for an appropriate refund or replacement after recovery of the shipment where possible.
+          <br><br>
+          <strong>Destination / Customer-Side Cause:</strong> If rejection or return occurs because destination country laws prohibit the product, the importer/customer cannot complete clearance, the recipient refuses required duties or legitimate clearance charges, the address is invalid, or the customer fails to supply requested identification/documentation, any refund will be reduced by non-refundable shipping, return carriage, customs, storage, and demurrage costs.
+        </p>
+
+        <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-top: 0; margin-bottom: 0.8rem;">
+          • Lost International Shipments
+        </h4>
+        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300; margin: 0;">
+          For an apparently lost international shipment, Ghar Aangan will first pursue an official investigation with the international courier and insurer. Customer remedy depends on the tracer findings, declared value, insurance coverage, and applicable law. A temporary tracking or customs delay is not automatically treated as final loss.
+        </p>
+      </div>
     </div>
 
-    <!-- Section 7 -->
+    <!-- Section 7: Refund Settlement Timelines -->
     <div style="margin-bottom: 4rem;" class="ga-reveal">
       <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">7. Refund Settlements &amp; Timelines</h2>
       <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1rem;">
-        Once a refund is approved by our support desk:
+        Once an eligible refund is verified and approved by our desk:
       </p>
-      <ul style="list-style-type: none; padding-left: 0; margin-top: 1rem; font-family: var(--ga-font-family-sans); font-size: 1.5rem; line-height: 1.8; color: var(--ga-dark-text);">
+      <ul style="list-style-type: none; padding-left: 0; margin-top: 1rem; font-size: 1.5rem; line-height: 1.8; color: var(--ga-dark-text);">
         <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
           <span style="position: absolute; left: 0; color: var(--ga-gold-cream);">✦</span>
-          <strong>Prepaid Orders (Domestic &amp; International):</strong> The refund is credited directly back to your original payment method (Domestic/International Credit or Debit Card, Netbanking, or UPI wallet). For domestic cards/UPI, it normally reflects within <strong>5 to 7 business days</strong>; for international cards, it reflects within <strong>5 to 10 business days</strong> depending on your card issuer bank.
+          <strong>Domestic Prepaid Orders:</strong> Refunded to original payment method (Credit/Debit Card, UPI, Netbanking). Reflects within <strong>5 to 7 business days</strong>.
         </li>
         <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
           <span style="position: absolute; left: 0; color: var(--ga-gold-cream);">✦</span>
-          <strong>Cash on Delivery (COD):</strong> For eligible COD order returns or replacements, approved refunds are settled via direct bank transfer (NEFT) or UPI upon customer verification within <strong>5 to 7 business days</strong>.
+          <strong>International Card Orders:</strong> Refunded to original international card. Reflects within <strong>5 to 10 business days</strong> depending on your international issuing bank and currency conversion cycles.
+        </li>
+        <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--ga-gold-cream);">✦</span>
+          <strong>Cash on Delivery (COD India):</strong> Settled via verified NEFT bank transfer or UPI within <strong>5 to 7 business days</strong>.
         </li>
       </ul>
     </div>
@@ -102,69 +187,39 @@
     <!-- Section 8 -->
     <div style="margin-bottom: 4rem;" class="ga-reveal">
       <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">8. When Refunds May Not Apply</h2>
-      <ul style="list-style-type: none; padding-left: 0; font-family: var(--ga-font-family-sans); font-size: 1.5rem; line-height: 1.8; color: var(--ga-dark-text);">
+      <ul style="list-style-type: none; padding-left: 0; font-size: 1.5rem; line-height: 1.8; color: var(--ga-dark-text);">
         <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
           <span style="position: absolute; left: 0; color: var(--ga-gold-cream);">✦</span>
-          Refunds are generally not available merely because a customer changes their mind after dispatch.
+          Change of mind after courier dispatch or international air-waybill handover.
         </li>
         <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
           <span style="position: absolute; left: 0; color: var(--ga-gold-cream);">✦</span>
-          Refunds may not be available where a food product has been opened, consumed, or tasted and the complaint is only a matter of subjective personal taste preference, unless there is a genuine quality/safety defect.
+          Opened, consumed, or tasted food products where the concern is subjective personal flavor preference.
         </li>
         <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
           <span style="position: absolute; left: 0; color: var(--ga-gold-cream);">✦</span>
-          <strong>Food Handling After Delivery:</strong> Customers should follow storage instructions on packaging. Once safely delivered, Ghar Aangan cannot be responsible for deterioration caused by improper storage, moisture contamination, mishandling, or accidental dropping.
+          Product spoilage resulting from improper storage after safe delivery (e.g. refrigeration, moisture entry).
+        </li>
+        <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--ga-gold-cream);">✦</span>
+          Customer refusal to pay legitimate customs clearance or destination courier charges.
         </li>
       </ul>
     </div>
 
     <!-- Section 9 -->
     <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">9. GST &amp; Taxes</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        For applicable Ghar Aangan food and dairy products, GST is charged according to Indian tax rules and the product's correct classification/HSN (5% rate where applicable). Intra-state supplies involve CGST + SGST/UTGST, while inter-state supplies involve IGST.
+      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">9. Taxes, Duties &amp; Payment Security</h2>
+      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1rem;">
+        Domestic orders include applicable Indian GST (5% where applicable). International shipments are governed by destination customs rules. Where genuine extra destination fees arise, Ghar Aangan provides courier verification prior to requesting payment via our official Razorpay link (<a href="https://razorpay.me/@gharaangan" target="_blank" rel="noopener noreferrer" style="color: var(--ga-forest-green); font-weight: 600; text-decoration: underline;">https://razorpay.me/@gharaangan</a>). Ghar Aangan will never ask for your card PIN, OTP, or banking password.
       </p>
     </div>
 
   </div>
 
   <!-- FAQ Section (Single Column Text Layout) -->
-  <div style="max-width: 780px; margin: 0 auto 6rem auto; padding: 0 1.5rem; border-top: 1.5px solid var(--ga-border-color); padding-top: 5rem;">
+  <div style="max-width: 800px; margin: 0 auto 6rem auto; padding: 0 1.5rem; border-top: 1.5px solid var(--ga-border-color); padding-top: 5rem;">
     <h2 class="ga-title" style="font-size: 2.4rem; margin-bottom: 3rem; text-align: left; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">Frequently Asked Questions</h2>
-
-    <style>
-      .ga-faq-details {
-        border-bottom: 1px solid var(--ga-border-color);
-        padding: 2.2rem 0;
-        cursor: pointer;
-      }
-      .ga-faq-summary {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        list-style: none;
-        outline: none;
-        font-family: var(--ga-font-family-serif);
-        font-size: 1.85rem;
-        font-weight: 600;
-        color: var(--ga-forest-green);
-      }
-      .ga-faq-summary::-webkit-details-marker {
-        display: none;
-      }
-      .ga-faq-icon {
-        font-size: 1.8rem;
-        color: var(--ga-gold-cream);
-        transition: transform 0.4s ease;
-      }
-      .ga-faq-details[open] .ga-faq-icon {
-        transform: rotate(45deg);
-      }
-      .ga-faq-content {
-        margin-top: 1.5rem;
-        padding-right: 2rem;
-      }
-    </style>
 
     <div class="ga-faq-container">
       
@@ -176,7 +231,7 @@
         </summary>
         <div class="ga-faq-content">
           <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
-            Our A2 Ghee is prepared using traditional wood-fired Bilona churning in earthen pots. This authentic process creates a natural smoky aroma and rich granular (danedaar) texture that differs from factory-produced ghee. Because taste and aroma are subjective preferences, refunds are not available merely for personal flavor choices unless there is a genuine verified quality issue.
+            Our A2 Ghee is prepared using traditional wood-fired Bilona churning in earthen pots. This authentic process creates a natural smoky aroma and rich granular (danedaar) texture that differs from factory-produced ghee. Because taste and aroma are subjective preferences, refunds are not available merely for personal flavor choices on opened jars unless there is a genuine verified quality issue.
           </p>
         </div>
       </details>
@@ -197,12 +252,12 @@
       <!-- FAQ 3 -->
       <details class="ga-faq-details">
         <summary class="ga-faq-summary">
-          <span>What happens if my package is lost in transit?</span>
+          <span>Can I cancel an international order after it is placed?</span>
           <span class="ga-faq-icon">✦</span>
         </summary>
         <div class="ga-faq-content">
           <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
-            If a courier loses a shipment in transit, we follow up directly with the logistics partner. If the courier fails to provide a full resolution, Ghar Aangan may provide a 50% refund of the affected product value, subject to investigation.
+            If you contact us before the parcel is handed over to the international courier and before export documentation fees are incurred, we can cancel and refund the eligible amount. Once dispatched, international courier freight is non-refundable.
           </p>
         </div>
       </details>
@@ -210,12 +265,25 @@
       <!-- FAQ 4 -->
       <details class="ga-faq-details">
         <summary class="ga-faq-summary">
-          <span>Is Cash on Delivery (COD) available?</span>
+          <span>What happens if international customs rejects my package?</span>
           <span class="ga-faq-icon">✦</span>
         </summary>
         <div class="ga-faq-content">
           <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
-            Yes, Cash on Delivery (COD) is available across India with a ₹100 handling fee. Prepaid orders (UPI, Cards, Netbanking) enjoy Free Express Shipping under our promotional offers.
+            If rejection is caused by an error in Ghar Aangan's export documents, we will review the shipment for replacement or refund upon recovery. If rejection is due to recipient refusal of duties, failure to provide ID, or customer address issues, non-refundable freight and customs storage costs will be deducted from any refund.
+          </p>
+        </div>
+      </details>
+
+      <!-- FAQ 5 -->
+      <details class="ga-faq-details">
+        <summary class="ga-faq-summary">
+          <span>What happens if my package is lost in transit?</span>
+          <span class="ga-faq-icon">✦</span>
+        </summary>
+        <div class="ga-faq-content">
+          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+            We immediately file a tracer with the logistics partner. For verified lost domestic parcels where the courier does not provide a full resolution, Ghar Aangan may offer a 50% refund courtesy. For international parcels, resolutions depend on carrier insurance, declared values, and investigation outcomes.
           </p>
         </div>
       </details>
@@ -224,20 +292,23 @@
   </div>
 
   <!-- Help & Support Call-to-Action (CTA) -->
-  <div class="ga-reveal" style="background-color: var(--ga-forest-green); border-radius: 16px; padding: 5rem 3rem; text-align: center; border: 1.5px solid var(--ga-gold-cream); box-shadow: var(--ga-card-shadow); max-width: 780px; margin: 0 auto;">
-    <div style="max-width: 620px; margin: 0 auto;">
-      <span class="ga-subtitle" style="color: var(--ga-gold-cream); display: block; margin-bottom: 1.2rem; font-weight: 700; letter-spacing: 0.2em;">A NOTE TO OUR CUSTOMERS</span>
-      <h2 class="ga-title ga-text-white" style="color: #ffffff; font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1.5rem; font-family: var(--ga-font-family-serif);">We Are Here To Support You</h2>
+  <div class="ga-reveal" style="background-color: var(--ga-forest-green, #1a332c); border-radius: 16px; padding: 4.5rem 2.5rem; text-align: center; border: 1.5px solid var(--ga-gold-cream, #cda250); box-shadow: var(--ga-card-shadow, 0 10px 30px rgba(0,0,0,0.1)); max-width: 800px; margin: 0 auto;">
+    <div style="max-width: 650px; margin: 0 auto;">
+      <span class="ga-subtitle" style="color: var(--ga-gold-cream, #cda250); display: block; margin-bottom: 1.2rem; font-weight: 700; letter-spacing: 0.2em;">CUSTOMER RESOLUTION DESK</span>
+      <h2 class="ga-title ga-text-white" style="color: #ffffff; font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1.5rem; font-family: var(--ga-font-family-serif);">We Are Here To Assist You</h2>
       <p class="ga-body" style="color: rgba(255, 255, 255, 0.9); font-size: 1.5rem; line-height: 1.6; margin-bottom: 2.5rem;">
-        We are a growing brand and genuinely value every customer. If something goes wrong with your order, please contact us before assuming that it cannot be resolved. We will make reasonable efforts to investigate genuine concerns and coordinate with our logistics partners.
+        If you experience any issue with your delivery, contact our team with your order number and unboxing photographs. We strive to resolve all genuine concerns swiftly.
       </p>
       
       <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-items: center;">
-        <a href="mailto:gharaanganmani@gmail.com" class="ga-btn-primary" style="background-color: #ffffff; color: var(--ga-forest-green) !important; border-color: #ffffff; padding: 1.3rem 2.8rem;">
+        <a href="mailto:gharaanganmani@gmail.com" class="ga-btn-primary" style="background-color: #ffffff; color: var(--ga-forest-green, #1a332c) !important; border-color: #ffffff; padding: 1.3rem 2.8rem; border-radius: 999px; text-decoration: none; font-weight: 600;">
           ✉️ Email Support
         </a>
-        <a href="https://wa.me/919027248335" target="_blank" class="ga-btn-secondary" style="border-color: #ffffff; color: #ffffff !important; padding: 1.3rem 2.8rem;">
+        <a href="https://wa.me/919027248335" target="_blank" class="ga-btn-secondary" style="border: 1px solid #ffffff; color: #ffffff !important; padding: 1.3rem 2.8rem; border-radius: 999px; text-decoration: none; font-weight: 600;">
           💬 WhatsApp: +91 90272 48335
+        </a>
+        <a href="tel:+917292002260" class="ga-btn-secondary" style="border: 1px solid rgba(255,255,255,0.6); color: #ffffff !important; padding: 1.3rem 2.2rem; border-radius: 999px; text-decoration: none; font-size: 1.35rem;">
+          👤 Operations: +91 72920 02260
         </a>
       </div>
     </div>

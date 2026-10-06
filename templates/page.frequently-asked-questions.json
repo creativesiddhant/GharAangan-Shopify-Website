@@ -121,8 +121,48 @@
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-8": {
           "type": "accordion_item",
           "settings": {
-            "title": "Do you ship internationally and accept international cards?",
-            "content": "Yes! We ship internationally to 10 destination countries: USA, UK, Australia, Canada, Germany, UAE, France, New Zealand, Switzerland, and Singapore. International delivery is ₹2,499 INR flat per order (strictly Prepaid Only via international cards including Visa, Mastercard, and American Express; no COD). Indicative delivery time via International Express Shipping is around 15–25 business days with end-to-end tracking.",
+            "title": "Do you ship internationally and which countries do you ship to?",
+            "content": "Yes! International shipping is currently available to selected countries: USA, UAE, Australia, Saudi Arabia, and Singapore. Direct-to-consumer ghee orders to the UK and Canada are currently not activated due to destination dairy regulations (UK veterinary residue plan requirements and Canadian CFIA clearance). Orders are strictly Prepaid Only via international credit/debit cards.",
+            "content_richtext": ""
+          }
+        },
+        "faq-intl-rates": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "How much is international shipping and how is it calculated?",
+            "content": "International shipping charges are calculated based on the final packed shipment weight and destination. Default customer rates start from ₹4,499–₹5,999 for up to 1 kg packed weight, scaling across higher weight bands (e.g., a 5L ghee steel Dolchi parcel packed at ~9 kg falls into the 8.01–10 kg band). Final charges reflect the packed parcel with protective materials, not net product weight.",
+            "content_richtext": ""
+          }
+        },
+        "faq-intl-customs": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Are customs duties included and can additional charges apply?",
+            "content": "“International shipping charges are calculated based on the final packed shipment weight and destination. Additional customs, clearance, handling, or courier charges may apply, if applicable.” Shopify duties/taxes calculated at checkout are estimates. Destination charges such as carrier brokerage, disbursement, remote-area fees, or courier handling may still apply. Where genuine charges arise, Ghar Aangan provides documentation and requests payment via our official Razorpay link (https://razorpay.me/@gharaangan).",
+            "content_richtext": ""
+          }
+        },
+        "faq-intl-delivery-time": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "How long does international delivery take?",
+            "content": "Estimated express delivery is 7–15 days after dispatch. This is an estimate, not a guaranteed maximum. Delivery may occasionally take longer due to customs inspection, food/dairy authority checks, international flight routing, weather disruptions, or public holidays.",
+            "content_richtext": ""
+          }
+        },
+        "faq-intl-cancellation-refund": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Can I cancel or get a refund for an international order?",
+            "content": "Cancellations requested before courier dispatch are eligible for a refund of recoverable funds (excluding non-refundable gateway fees where permissible). Once dispatched, international courier freight is non-refundable. If customs rejects a shipment due to Ghar Aangan document failure, it is reviewed for replacement or refund upon recovery. If rejection is due to recipient refusal of duties or invalid details, non-refundable freight and storage costs are deducted. Opened food products are not eligible for subjective flavor preference returns.",
+            "content_richtext": ""
+          }
+        },
+        "faq-intl-uk-canada": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Can I order Ghar Aangan ghee to the UK or Canada?",
+            "content": "Currently, Ghar Aangan ghee is not active for the UK or Canada. Current UK government guidance indicates dairy products originating in India are considered non-compliant and subject to detention because India does not have an approved veterinary residue plan for dairy under UK legislation. Canada requires product-specific CFIA clearance before dairy can be imported.",
             "content_richtext": ""
           }
         },
@@ -242,6 +282,11 @@
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-6",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-7",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-accordion_item-8",
+        "faq-intl-rates",
+        "faq-intl-customs",
+        "faq-intl-delivery-time",
+        "faq-intl-cancellation-refund",
+        "faq-intl-uk-canada",
         "faq-transit-damage",
         "faq-cod-status",
         "template--20718015545618__08421e50-b348-46a3-bbb7-5b26be196b6c-title-3",

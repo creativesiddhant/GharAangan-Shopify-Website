@@ -3,265 +3,787 @@
   .hdt-section-heading {
     display: none !important;
   }
+  .ga-shipping-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 2rem 0;
+    border-radius: 12px;
+    border: 1px solid var(--ga-border-color, #e5e0d8);
+    background: #ffffff;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  }
+  .ga-shipping-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.4rem;
+    text-align: left;
+    min-width: 620px;
+  }
+  .ga-shipping-table th {
+    background-color: var(--ga-forest-green, #1a332c);
+    color: #ffffff;
+    padding: 1.2rem 1.4rem;
+    font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
+    font-weight: 600;
+    font-size: 1.45rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .ga-shipping-table td {
+    padding: 1.1rem 1.4rem;
+    border-bottom: 1px solid rgba(229, 224, 216, 0.6);
+    color: var(--ga-dark-text, #2d2d2d);
+  }
+  .ga-shipping-table tr:nth-child(even) td {
+    background-color: #faf8f5;
+  }
+  .ga-shipping-table tr:hover td {
+    background-color: rgba(205, 162, 80, 0.08);
+  }
+  .ga-badge-active {
+    display: inline-block;
+    background: #e6f4ea;
+    color: #137333;
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+  }
+  .ga-badge-inactive {
+    display: inline-block;
+    background: #fce8e6;
+    color: #c5221f;
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+  }
+  .ga-callout-box {
+    background: #fdfbf7;
+    border: 1.5px solid var(--ga-gold-cream, #cda250);
+    border-radius: 12px;
+    padding: 2.2rem;
+    margin: 2.5rem 0;
+  }
+  .ga-callout-title {
+    font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
+    color: var(--ga-forest-green, #1a332c);
+    font-size: 1.85rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .ga-nav-anchor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .ga-nav-anchor a {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    border-radius: 999px;
+    background: #f7f4ee;
+    color: var(--ga-forest-green, #1a332c);
+    font-size: 1.35rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(26, 51, 44, 0.12);
+    transition: all 0.2s ease;
+  }
+  .ga-nav-anchor a:hover {
+    background: var(--ga-forest-green, #1a332c);
+    color: #ffffff;
+  }
+  .ga-faq-details {
+    border-bottom: 1px solid var(--ga-border-color, #e5e0d8);
+    padding: 2rem 0;
+    cursor: pointer;
+  }
+  .ga-faq-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    outline: none;
+    font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
+    font-size: 1.85rem;
+    font-weight: 600;
+    color: var(--ga-forest-green, #1a332c);
+    gap: 1rem;
+  }
+  .ga-faq-summary::-webkit-details-marker {
+    display: none;
+  }
+  .ga-faq-icon {
+    font-size: 1.8rem;
+    color: var(--ga-gold-cream, #cda250);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  .ga-faq-details[open] .ga-faq-icon {
+    transform: rotate(45deg);
+  }
+  .ga-faq-content {
+    margin-top: 1.4rem;
+    padding-right: 1.5rem;
+  }
 </style>
-<div class="ga-shipping-page-wrapper" style="padding: 2rem 0; font-family: var(--ga-font-family-sans);">
+
+<div class="ga-shipping-page-wrapper" style="padding: 2rem 0; font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);">
   
   <!-- Editorial Page Header -->
-  <div class="ga-shipping-header-editorial" style="text-align: center; max-width: 800px; margin: 4rem auto 5rem auto; border-bottom: 1.5px solid var(--ga-border-color); padding-bottom: 3.5rem; padding-left: 1.5rem; padding-right: 1.5rem;">
-    <span class="ga-subtitle" style="color: var(--ga-gold-cream); font-size: 1.3rem; letter-spacing: 0.3em; font-weight: 700; text-transform: uppercase;">SAFE &amp; ASSURED HIMALAYAN LOGISTICS</span>
-    <h1 class="ga-title" style="font-size: clamp(3rem, 5vw, 4.4rem); font-family: var(--ga-font-family-serif); margin-top: 1rem; margin-bottom: 1.5rem; color: var(--ga-forest-green);">Shipping &amp; Delivery Policy</h1>
-    <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; max-width: 680px; margin: 0 auto 1.5rem auto;">
-      From the pristine hills of Uttarakhand to your home, we take reasonable care in packing and shipping every order so that you receive authentic Pahadi purity in peak condition.
+  <div class="ga-shipping-header-editorial" style="text-align: center; max-width: 860px; margin: 3rem auto 4rem auto; border-bottom: 1.5px solid var(--ga-border-color, #e5e0d8); padding-bottom: 3.5rem; padding-left: 1.5rem; padding-right: 1.5rem;">
+    <span class="ga-subtitle" style="color: var(--ga-gold-cream, #cda250); font-size: 1.3rem; letter-spacing: 0.25em; font-weight: 700; text-transform: uppercase;">GHAR JAISA SHUDDH • PARAMPARA JAISA ANMOL</span>
+    <h1 class="ga-title" style="font-size: clamp(2.8rem, 4.5vw, 4.2rem); font-family: var(--ga-font-family-serif, 'Playfair Display', serif); margin-top: 1rem; margin-bottom: 1.4rem; color: var(--ga-forest-green, #1a332c); line-height: 1.2;">
+      Shipping, Customs, Delivery &amp; Refund Policy
+    </h1>
+    <p style="font-size: 1.35rem; color: #6b635b; margin-bottom: 1.2rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;">
+      2026 Edition • Domestic India &amp; Selected International Markets
     </p>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; font-size: 1.4rem; color: var(--ga-forest-green); font-weight: 500;">
-      <span>📞 Support: <strong>+91 90272 48335</strong></span>
-      <span>👤 Owner (Manisha Lohani): <strong>+91 72920 02260</strong></span>
+    <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text, #2d2d2d); font-weight: 300; max-width: 720px; margin: 0 auto 1.8rem auto;">
+      From the pristine hills of Uttarakhand to your home in India and across selected international destinations, we prepare and dispatch pure handcrafted A2 Bilona Cow Ghee and Himalayan staples with verified transparency, multi-layer protective packaging, and trusted courier logistics.
+    </p>
+
+    <!-- Navigation Anchors -->
+    <div class="ga-nav-anchor">
+      <a href="#domestic-shipping">🇮🇳 Domestic Shipping</a>
+      <a href="#international-shipping">✈️ International Shipping (2026 Policy)</a>
+      <a href="#shipping-rates-table">📊 International Rate Table</a>
+      <a href="#customs-charges">🏛️ Customs &amp; Destination Charges</a>
+      <a href="#cancellation-refunds">🔄 Refunds &amp; Cancellations</a>
+      <a href="#shipping-faq">❓ Shipping FAQ</a>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; font-size: 1.35rem; color: var(--ga-forest-green, #1a332c); font-weight: 500; margin-top: 1.5rem;">
+      <span>📞 Customer Care / WhatsApp: <strong>+91 90272 48335</strong></span>
+      <span>👤 Owner &amp; Operations: <strong>+91 72920 02260</strong></span>
       <span>✉️ <strong>gharaanganmani@gmail.com</strong></span>
     </div>
   </div>
 
-  <!-- Main Text-Based Policy Content -->
-  <div class="ga-shipping-content-block" style="max-width: 780px; margin: 0 auto 6rem auto; padding: 0 1.5rem;">
+  <!-- Main Content Container -->
+  <div class="ga-shipping-content-block" style="max-width: 820px; margin: 0 auto 5rem auto; padding: 0 1.5rem;">
     
-    <!-- Section 1 -->
-    <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">1. Trusted Logistics Partners</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        We primarily use leading national carriers such as <strong>Delhivery, Blue Dart, DTDC, Ecom Express &amp; XpressBees</strong>. <strong>Ekart</strong> and <strong>Amazon Shipping Surface</strong> may be used for select locations based on serviceability. The courier selected for an individual shipment may vary based on destination, serviceability, package characteristics, availability, and operational conditions.
-      </p>
+    <!-- ================= PART 1: DOMESTIC INDIA SHIPPING ================= -->
+    <div id="domestic-shipping" style="margin-bottom: 5rem; padding-bottom: 3.5rem; border-bottom: 1.5px dashed var(--ga-border-color, #e5e0d8);">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+        <span style="font-size: 2.2rem;">🇮🇳</span>
+        <h2 class="ga-title" style="font-size: 2.4rem; font-family: var(--ga-font-family-serif, 'Playfair Display', serif); color: var(--ga-forest-green, #1a332c); margin: 0;">
+          Part 1: Domestic India Shipping &amp; Delivery
+        </h2>
+      </div>
+
+      <!-- Section 1 -->
+      <div style="margin-bottom: 3rem;">
+        <h3 class="ga-title" style="font-size: 2rem; margin-bottom: 1rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">1. Domestic Logistics Partners</h3>
+        <p class="ga-body" style="font-size: 1.5rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
+          Within India, we primarily use leading national carriers including <strong>Delhivery, Blue Dart, DTDC, Ecom Express &amp; XpressBees</strong>. <strong>Ekart</strong> and <strong>Amazon Shipping Surface</strong> may be used for select locations based on serviceability. The carrier selected for each shipment depends on destination pin code, package characteristics, and live operational conditions.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <div style="margin-bottom: 3rem;">
+        <h3 class="ga-title" style="font-size: 2rem; margin-bottom: 1rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">2. Domestic Dispatch &amp; Pickup</h3>
+        <p class="ga-body" style="font-size: 1.5rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
+          Orders are typically prepared and dispatched within <strong>24 hours</strong> of placement from our facility in Uttarakhand. Because Ghar Aangan operates from Nainital district in Uttarakhand, mountain weather or transport connections can occasionally require additional pickup time.
+        </p>
+      </div>
+
+      <!-- Section 3 -->
+      <div style="margin-bottom: 3rem;">
+        <h3 class="ga-title" style="font-size: 2rem; margin-bottom: 1rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">3. Domestic Delivery Timelines &amp; Charges</h3>
+        <ul style="list-style-type: none; padding-left: 0; margin-top: 1rem; font-size: 1.5rem; line-height: 1.8; color: var(--ga-dark-text);">
+          <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--ga-forest-green);">⚡</span>
+            <strong>Prepaid Orders (Cards, UPI, Netbanking):</strong> Delivered in <strong>5 to 6 business days</strong> across India with <strong>100% FREE Express Shipping</strong>.
+          </li>
+          <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
+            <span style="position: absolute; left: 0; color: var(--ga-forest-green);">📦</span>
+            <strong>Cash on Delivery (COD):</strong> Delivered in <strong>7 to 10 business days</strong> across serviceable pin codes (standard ₹100 handling fee applies). COD is available on 550ml and 1L packs; bulk 2L and 5L packs are strictly Prepaid Only to protect heavy shipments from transit rejection.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 4 -->
+      <div style="margin-bottom: 1rem;">
+        <h3 class="ga-title" style="font-size: 2rem; margin-bottom: 1rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">4. Domestic Packaging Safeguards</h3>
+        <p class="ga-body" style="font-size: 1.5rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
+          Our 550ml, 1L, and 2L ghee packs are enclosed in lead-free food-grade glass jars cushioned with shock-absorbent materials. Bulk 5L family packs are housed in traditional heavy-duty steel Dolchis. In the rare event of transit damage, share unboxing photos/video within 48 hours for an immediate free replacement.
+        </p>
+      </div>
     </div>
 
-    <!-- Section 2 -->
-    <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">2. Order Processing &amp; Pickup</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        We generally initiate the shipment/pickup process within <strong>24 hours</strong> of a successful order (in some cases, pickup is generated within only a few hours). Because Ghar Aangan operates from Uttarakhand and some operating locations are relatively remote, courier partners may sometimes take additional time to reach our pickup location. Pickup time can therefore be longer than the usual 24-hour expectation.
-      </p>
-    </div>
 
-    <!-- Section 3 -->
-    <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">3. Delivery Timelines</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1rem;">
-        We dispatch orders within <strong>24 hours</strong>. Domestic delivery timelines across India are:
-      </p>
-      <ul style="list-style-type: none; padding-left: 0; margin-top: 1rem; font-family: var(--ga-font-family-sans); font-size: 1.5rem; line-height: 1.8; color: var(--ga-dark-text);">
-        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--ga-forest-green);">⚡</span>
-          <strong>Fast Delivery (Prepaid Orders):</strong> Delivered in <strong>5 to 6 business days</strong> across India with <strong>FREE Express Shipping</strong>.
-        </li>
-        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--ga-forest-green);">📦</span>
-          <strong>Standard Shipping (Cash on Delivery):</strong> Delivered in <strong>7 to 10 business days</strong> across India (standard ₹100 fee applies). <em>Note: COD is available on 550ml and 1L packs. Bulk and family packs (2 Litres and 5 Litres) are strictly Prepaid Only.</em>
-        </li>
-      </ul>
-    </div>
+    <!-- ================= PART 2: INTERNATIONAL SHIPPING (2026 POLICY) ================= -->
+    <div id="international-shipping" style="margin-bottom: 5rem;">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+        <span style="font-size: 2.2rem;">✈️</span>
+        <h2 class="ga-title" style="font-size: 2.4rem; font-family: var(--ga-font-family-serif, 'Playfair Display', serif); color: var(--ga-forest-green, #1a332c); margin: 0;">
+          Part 2: International Shipping, Customs &amp; Refund Policy (2026 Edition)
+        </h2>
+      </div>
 
-    <!-- Section 4 -->
-    <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">4. Possible Delivery Delays</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        Delays may occur because of vehicle accidents, road blocks, landslides, severe weather, natural events, courier operational issues, network congestion, major festivals, public holidays, address/PIN-code issues, customer unavailability, or other unforeseen circumstances. We will make reasonable efforts to follow up with the logistics partner when a delay is reported.
-      </p>
-    </div>
+      <!-- Introductory Transparency Statement -->
+      <div class="ga-callout-box" style="margin-top: 1.5rem; background: #faf8f5; border-color: rgba(26, 51, 44, 0.2);">
+        <h3 class="ga-callout-title" style="font-size: 1.75rem;">
+          <span>📋</span> Purpose &amp; Regulatory Transparency
+        </h3>
+        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin: 0;">
+          This policy explains how Ghar Aangan currently handles international orders for food products, particularly Pure A2 Bilona Cow Ghee. It is designed to make international ordering, shipping, customs, delivery, additional charges, and refunds as transparent as possible.
+          <br><br>
+          <em>Please Note: This is an operating customer-information policy, not formal legal advice. International food-import, customs, dairy, courier, and tax rules are subject to change. Destination authorities make the final decision regarding import clearance. A courier’s ability to quote or accept a parcel does not itself establish that the food is legally admissible for commercial import or sale.</em>
+        </p>
+      </div>
 
-    <!-- Section 5 -->
-    <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">5. Express Delivery Options</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        Ghar Aangan may offer <strong>Express Priority Delivery</strong> for selected orders and serviceable locations, including selected metro and Delhi/NCR regions. Such faster delivery may require the order to be prepaid. Availability, charges, and estimated timelines depend on serviceability and operational availability.
-      </p>
-    </div>
+      <!-- Current Five-Country Rationale & Status -->
+      <div style="margin-top: 3.5rem;">
+        <h3 class="ga-title" style="font-size: 2.1rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">
+          5. Active International Markets &amp; Country Status
+        </h3>
+        <p class="ga-body" style="font-size: 1.5rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.5rem;">
+          International shipping is currently available to <strong>selected countries</strong>. These five target markets were selected due to strong Indian / South Asian diaspora demand, established international food-import channels, and India's existing dairy export activity (APEDA 2025–26 data lists the UAE, Saudi Arabia, and the USA among India's major dairy export destinations):
+        </p>
 
-    <!-- Section 6 -->
-    <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">6. Shipping Charges</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.2rem;">
-        Under normal circumstances, Ghar Aangan generally charges approximately <strong>₹100 per domestic delivery</strong>. The actual charge can vary by state, city/PIN code, package characteristics, courier service, and active promotions.
-      </p>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        We may offer free shipping on selected products, minimum order values, or festive promotions.
-      </p>
-    </div>
+        <div class="ga-shipping-table-wrap">
+          <table class="ga-shipping-table">
+            <thead>
+              <tr>
+                <th>Country</th>
+                <th>Status</th>
+                <th>Key Regulatory &amp; Import Requirements</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>🇺🇸 United States (USA)</strong></td>
+                <td><span class="ga-badge-active">Active</span></td>
+                <td>FDA food requirements, facility registration, Prior Notice, compliant labelling, commercial invoice, accurate HS codes. U.S. de minimis rules changed on 29 August 2025; imports may be subject to duties/taxes regardless of shipment value.</td>
+              </tr>
+              <tr>
+                <td><strong>🇦🇪 United Arab Emirates (UAE)</strong></td>
+                <td><span class="ga-badge-active">Active</span></td>
+                <td>Dubai Municipality food-item and label assessment; clearance routes confirmed before dispatch; local importer requirements may apply.</td>
+              </tr>
+              <tr>
+                <td><strong>🇦🇺 Australia</strong></td>
+                <td><span class="ga-badge-active">Active</span></td>
+                <td>DAFF / BICON biosecurity, food standards, and dairy-specific import conditions. Australia dairy risk-management measures (Stage 2 beginning 1 September 2026); health certification verified prior to dispatch.</td>
+              </tr>
+              <tr>
+                <td><strong>🇸🇦 Saudi Arabia</strong></td>
+                <td><span class="ga-badge-active">Active</span></td>
+                <td>SFDA importer/product registration, certificate of origin, commercial invoice, bill of lading, and sanitary/health clearance documentation.</td>
+              </tr>
+              <tr>
+                <td><strong>🇸🇬 Singapore</strong></td>
+                <td><span class="ga-badge-active">Active</span></td>
+                <td>Singapore Food Agency (SFA) importer licensing, import permit, compliant labelling, and product-specific dairy health requirements.</td>
+              </tr>
+              <tr>
+                <td><strong>🇬🇧 United Kingdom (UK)</strong></td>
+                <td><span class="ga-badge-inactive">Not Active for Ghee</span></td>
+                <td>Current UK government guidance indicates dairy products originating in India are not imported because India does not have an approved veterinary residue plan for dairy under UK legislation; such products are considered non-compliant and can be detained. Ghar Aangan does not accept direct-to-consumer ghee orders to the UK.</td>
+              </tr>
+              <tr>
+                <td><strong>🇨🇦 Canada</strong></td>
+                <td><span class="ga-badge-inactive">Not Active for Ghee</span></td>
+                <td>Canada is not currently activated for Ghar Aangan ghee pending product-specific Canadian / CFIA clearance.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-    <!-- Section 7 -->
-    <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">7. Packaging: Glass &amp; Steel</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        Our <strong>550 ml, 1 litre, and 2 litre</strong> ghee products are packed in glass jars. Our <strong>5 litre</strong> ghee product is packed in a steel Dolchi. Glass is delicate, so we use protective packaging and take reasonable care while preparing every shipment. However, courier handling is outside our direct control.
-      </p>
-    </div>
+      <!-- Section 6: Packed Weight Rule & Rate Table -->
+      <div id="shipping-rates-table" style="margin-top: 4rem;">
+        <h3 class="ga-title" style="font-size: 2.1rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">
+          6. Packed Weight &amp; Customer-Facing Rate Table
+        </h3>
 
-    <!-- Section 8 -->
-    <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">8. Tracking &amp; Address Accuracy</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.2rem;">
-        <strong>Tracking:</strong> After the courier shipment is generated and picked up, tracking information is available through SMS/email notifications and the courier tracking portal. Courier scans can occasionally update with a delay or show an estimated status that later changes. If tracking appears stuck or unusual, contact us and we will follow up.
-      </p>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        <strong>Address &amp; RTO:</strong> Customers are responsible for providing a complete and accurate delivery address, PIN code, and contact number. Incorrect/incomplete details or unavailability can cause delays, failed attempts, or Return to Origin (RTO). Customers should reasonably remain available for delivery calls.
-      </p>
-    </div>
-
-    <!-- Section 9 -->
-    <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">9. International Delivery &amp; Payment</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.2rem;">
-        Ghar Aangan now delivers authentic Himalayan purity to customers worldwide across <strong>10 destination countries</strong>: <strong>United States (USA), United Kingdom (UK), Australia, Canada, Germany, United Arab Emirates (UAE), France, New Zealand, Switzerland, and Singapore</strong>.
-      </p>
-      <ul style="list-style-type: none; padding-left: 0; margin-top: 1rem; font-family: var(--ga-font-family-sans); font-size: 1.5rem; line-height: 1.8; color: var(--ga-dark-text);">
-        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--ga-forest-green);">✈️</span>
-          <strong>Delivery Fee:</strong> Flat <strong>₹2,499 INR</strong> per international order.
-        </li>
-        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--ga-forest-green);">💳</span>
-          <strong>Payment Mode:</strong> <strong>Prepaid Orders Only</strong>. We accept all major <strong>International Credit &amp; Debit Cards</strong> (Visa, Mastercard, American Express, etc.) via secure checkout. Cash on Delivery (COD) is strictly unavailable for international orders.
-        </li>
-        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--ga-forest-green);">⏱️</span>
-          <strong>Estimated Delivery Time (International Express Shipping):</strong> <strong>15 to 25 business days</strong> via international express air couriers (DHL Express / FedEx / Aramex / India Post EMS) directly from Uttarakhand.
-        </li>
-        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--ga-forest-green);">🛡️</span>
-          <strong>Packaging &amp; Customs:</strong> Multi-layer shockproof export packaging to ensure transit safety. Any customs duties or import taxes levied by the destination country are the recipient's responsibility as per international trade regulations.
-        </li>
-      </ul>
-    </div>
-
-    <!-- Section 10 -->
-    <div style="margin-bottom: 4rem;" class="ga-reveal">
-      <h2 class="ga-title" style="font-size: 2.2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">10. Cash on Delivery (COD) Policy</h2>
-      <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
-        <strong>Yes, Cash on Delivery (COD) is available</strong> for our 550ml and 1 Litre packs across serviceable pin codes in India (7 to 10 business days, standard ₹100 fee applies). <strong>Please Note:</strong> Due to courier weight and transit handling, our bulk packs (<strong>2 Litres and 5 Litres</strong>) are eligible for <strong>Prepaid Orders Only</strong> (UPI, Credit/Debit Cards, Netbanking) and enjoy <strong>100% FREE Express Shipping</strong> directly from Uttarakhand.
-      </p>
-    </div>
-
-  </div>
-
-  <!-- FAQ Section (Single Column Text Layout) -->
-  <div style="max-width: 780px; margin: 0 auto 6rem auto; padding: 0 1.5rem; border-top: 1.5px solid var(--ga-border-color); padding-top: 5rem;">
-    <h2 class="ga-title" style="font-size: 2.4rem; margin-bottom: 3rem; text-align: left; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">Frequently Asked Questions</h2>
-
-    <style>
-      .ga-faq-details {
-        border-bottom: 1px solid var(--ga-border-color);
-        padding: 2.2rem 0;
-        cursor: pointer;
-      }
-      .ga-faq-summary {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        list-style: none;
-        outline: none;
-        font-family: var(--ga-font-family-serif);
-        font-size: 1.85rem;
-        font-weight: 600;
-        color: var(--ga-forest-green);
-      }
-      .ga-faq-summary::-webkit-details-marker {
-        display: none;
-      }
-      .ga-faq-icon {
-        font-size: 1.8rem;
-        color: var(--ga-gold-cream);
-        transition: transform 0.4s ease;
-      }
-      .ga-faq-details[open] .ga-faq-icon {
-        transform: rotate(45deg);
-      }
-      .ga-faq-content {
-        margin-top: 1.5rem;
-        padding-right: 2rem;
-      }
-    </style>
-
-    <div class="ga-faq-container">
-      
-      <!-- FAQ 1 -->
-      <details class="ga-faq-details">
-        <summary class="ga-faq-summary">
-          <span>Which courier partners handle Ghar Aangan shipments?</span>
-          <span class="ga-faq-icon">✦</span>
-        </summary>
-        <div class="ga-faq-content">
-          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
-            We primarily use leading national carriers such as <strong>Delhivery, Blue Dart, DTDC, Ecom Express &amp; XpressBees</strong>. <strong>Ekart</strong> and <strong>Amazon Shipping Surface</strong> may be used for select locations based on serviceability.
+        <div class="ga-callout-box" style="margin-bottom: 2rem;">
+          <h4 class="ga-callout-title">
+            <span>⚖️</span> Critical Rule: Packed Shipment Weight
+          </h4>
+          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 400; margin: 0 0 1rem 0;">
+            <strong>“International shipping charges are based on the final packed shipment weight and destination.”</strong>
+          </p>
+          <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300; margin: 0;">
+            A 5 kg net product does <em>not</em> mean a 5 kg courier parcel. Export food items require heavy protective materials.
+            <br><br>
+            <strong>Example — 5L Steel Dolchi:</strong> A 5L ghee order (~4.5 kg net ghee) combined with the heavy-duty stainless steel Dolchi container, interior cushioning, double-walled export carton, and corner reinforcement can result in a final shipment weight of approximately <strong>9 kg</strong>. This order falls in the <strong>8.01–10 kg</strong> weight band, not a 5 kg band.
           </p>
         </div>
-      </details>
 
-      <!-- FAQ 2 -->
-      <details class="ga-faq-details">
-        <summary class="ga-faq-summary">
-          <span>How long does domestic delivery take?</span>
-          <span class="ga-faq-icon">✦</span>
-        </summary>
-        <div class="ga-faq-content">
-          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
-            Orders are processed and dispatched within 24 hours. <strong>Fast Delivery (Prepaid)</strong> takes <strong>5 to 6 business days</strong>, while <strong>Standard Shipping (COD)</strong> takes <strong>7 to 10 business days</strong> across India.
+        <p class="ga-body" style="font-size: 1.5rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
+          Below are Ghar Aangan's current default customer-facing shipping rates (in Indian Rupees, INR). These are default customer rates and not guaranteed carrier tariffs:
+        </p>
+
+        <div class="ga-shipping-table-wrap">
+          <table class="ga-shipping-table">
+            <thead>
+              <tr>
+                <th>Packed Weight Band</th>
+                <th>🇺🇸 USA</th>
+                <th>🇦🇪 UAE</th>
+                <th>🇦🇺 Australia</th>
+                <th>🇸🇦 Saudi Arabia</th>
+                <th>🇸🇬 Singapore</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Up to 1.00 kg</strong></td>
+                <td>₹5,999</td>
+                <td>₹4,499</td>
+                <td>₹4,999</td>
+                <td>₹4,999</td>
+                <td>₹4,499</td>
+              </tr>
+              <tr>
+                <td><strong>1.01 – 2.00 kg</strong></td>
+                <td>₹7,999</td>
+                <td>₹5,999</td>
+                <td>₹6,999</td>
+                <td>₹6,499</td>
+                <td>₹5,999</td>
+              </tr>
+              <tr>
+                <td><strong>2.01 – 3.00 kg</strong></td>
+                <td>₹10,999</td>
+                <td>₹7,499</td>
+                <td>₹8,999</td>
+                <td>₹7,999</td>
+                <td>₹7,499</td>
+              </tr>
+              <tr>
+                <td><strong>3.01 – 4.00 kg</strong></td>
+                <td>₹12,999</td>
+                <td>₹8,999</td>
+                <td>₹10,999</td>
+                <td>₹9,499</td>
+                <td>₹8,999</td>
+              </tr>
+              <tr>
+                <td><strong>4.01 – 6.00 kg</strong></td>
+                <td>₹20,999</td>
+                <td>₹11,999</td>
+                <td>₹14,999</td>
+                <td>₹12,999</td>
+                <td>₹11,999</td>
+              </tr>
+              <tr>
+                <td><strong>6.01 – 8.00 kg</strong></td>
+                <td>₹22,999</td>
+                <td>₹14,499</td>
+                <td>₹17,999</td>
+                <td>₹15,999</td>
+                <td>₹14,499</td>
+              </tr>
+              <tr>
+                <td><strong>8.01 – 10.00 kg</strong></td>
+                <td>₹25,999</td>
+                <td>₹16,999</td>
+                <td>₹20,999</td>
+                <td>₹18,999</td>
+                <td>₹17,999</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top: 1.5rem; font-size: 1.4rem; color: #555; line-height: 1.65;">
+          <p><strong>Why shipping prices may change:</strong></p>
+          <ul style="padding-left: 1.8rem; margin-top: 0.5rem;">
+            <li>Courier tariff, fuel, or security surcharge fluctuations.</li>
+            <li>Volumetric / dimensional weight exceeding actual gross weight.</li>
+            <li>Remote or extended-area delivery surcharges imposed by carriers.</li>
+            <li>Extra protective packaging required for glass jars or steel Dolchis.</li>
+            <li>Customs brokerage, clearance, disbursement, or destination handling.</li>
+            <li>Special food / dairy documentation, lab testing, or inspection fees.</li>
+            <li>Address corrections, re-delivery attempts, or carrier storage.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 7: Customs & Additional Destination Charges -->
+      <div id="customs-charges" style="margin-top: 4rem;">
+        <h3 class="ga-title" style="font-size: 2.1rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">
+          7. Customs, Duties &amp; Destination Charges
+        </h3>
+
+        <div class="ga-callout-box" style="background: #fdfbf7; border-color: var(--ga-forest-green);">
+          <h4 class="ga-callout-title">
+            <span>🏛️</span> Official Customer-Facing Statement
+          </h4>
+          <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-forest-green); font-weight: 600; margin: 0 0 1rem 0;">
+            “International shipping charges are calculated based on the final packed shipment weight and destination. Additional customs, clearance, handling, or courier charges may apply, if applicable.”
+          </p>
+          <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300; margin: 0;">
+            Duties and import taxes displayed or calculated at checkout are estimates determined by product classification, origin, and destination country rules. Carrier brokerage, disbursement, and destination handling fees are generally not included in standard checkout tax estimates unless specifically covered. Therefore, the amount displayed at checkout cannot be treated as a guarantee that every carrier or destination-side fee is covered.
           </p>
         </div>
-      </details>
 
-      <!-- FAQ 3 -->
-      <details class="ga-faq-details">
-        <summary class="ga-faq-summary">
-          <span>What should I do if my glass jar arrives damaged?</span>
-          <span class="ga-faq-icon">✦</span>
-        </summary>
-        <div class="ga-faq-content">
-          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
-            Do not consume the product. Contact us immediately with clear photographs/video of the outer package, shipping label, and damaged jar. We will investigate with the courier and arrange a prompt replacement or refund.
+        <div style="margin-top: 2rem;">
+          <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.85rem; margin-bottom: 0.8rem;">
+            Additional Payment Process &amp; Razorpay Security
+          </h4>
+          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.2rem;">
+            If a genuine, documented additional fee becomes payable during international transit or destination clearance (such as remote-area surcharge, carrier disbursement, quarantine inspection, or courier storage), Ghar Aangan will contact the customer with the reason, amount, and supporting courier/customs documentation where reasonably available.
+          </p>
+          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1.2rem;">
+            Additional payments may be completed securely using our official Razorpay link:
+            <br>
+            🔗 <a href="https://razorpay.me/@gharaangan" target="_blank" rel="noopener noreferrer" style="color: var(--ga-forest-green); font-weight: 700; text-decoration: underline;">https://razorpay.me/@gharaangan</a>
+          </p>
+          <div style="padding: 1.2rem 1.6rem; background: #fff8e6; border-left: 4px solid #f59e0b; border-radius: 6px; font-size: 1.35rem; color: #78350f;">
+            <strong>⚠️ Security Advisory:</strong> Customers should always verify the amount and reason with official Ghar Aangan representatives before making a payment. <strong>Ghar Aangan will NEVER ask for your credit/debit card PIN, one-time password (OTP), internet banking password, or confidential account credentials.</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 8: Delivery Timeline -->
+      <div style="margin-top: 4rem;">
+        <h3 class="ga-title" style="font-size: 2.1rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">
+          8. International Delivery Timelines
+        </h3>
+        <p class="ga-body" style="font-size: 1.5rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300; margin-bottom: 1rem;">
+          <strong>Estimated Express Delivery: 7–15 days after dispatch.</strong>
+        </p>
+        <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300;">
+          This timeline is an estimate and not a guaranteed maximum. The period normally commences after courier pickup, export clearance, and generation of international air waybills. An order can occasionally take longer than 15 days due to:
+        </p>
+        <ul style="padding-left: 1.8rem; font-size: 1.45rem; line-height: 1.7; color: var(--ga-dark-text); font-weight: 300;">
+          <li>Customs inspection, food/dairy authority evaluations, or laboratory testing.</li>
+          <li>Missing or corrected documentation requested by border agencies.</li>
+          <li>International flight availability, airline routing changes, or airport disruptions.</li>
+          <li>Severe weather events, national public holidays, or weekend customs closures.</li>
+          <li>Remote or regional destination delivery routes.</li>
+          <li>Recipient unavailability, incorrect address, or phone contact issues.</li>
+          <li>Additional payment or customs duty settlement requirements.</li>
+        </ul>
+      </div>
+
+      <!-- Section 9: Cancellations & Refunds -->
+      <div id="cancellation-refunds" style="margin-top: 4rem;">
+        <h3 class="ga-title" style="font-size: 2.1rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">
+          9. International Cancellation &amp; Refund Terms
+        </h3>
+
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-bottom: 0.6rem;">• Before Dispatch</h4>
+          <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300;">
+            If a customer requests cancellation before the order is handed to the international courier and no non-refundable third-party costs have been incurred, Ghar Aangan may refund the eligible amount. Genuinely non-refundable payment-gateway fees may be excluded where legally permissible.
           </p>
         </div>
-      </details>
 
-      <!-- FAQ 4 -->
-      <details class="ga-faq-details">
-        <summary class="ga-faq-summary">
-          <span>Is Cash on Delivery (COD) available?</span>
-          <span class="ga-faq-icon">✦</span>
-        </summary>
-        <div class="ga-faq-content">
-          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
-            Yes! We offer Cash on Delivery (COD) on our 550ml and 1 Litre jars across India (Standard Shipping in 7 to 10 business days, ₹100 fee). For bulk and family packs (2 Litres and 5 Litres), orders are strictly Prepaid Only with 100% FREE Express Shipping to ensure prompt and secure courier delivery.
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-bottom: 0.6rem;">• After Courier Booking or Dispatch</h4>
+          <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300;">
+            Once booked, picked up, or dispatched, courier freight, export documentation, and third-party fees are generally non-refundable. A customer changing their mind after dispatch is therefore not automatically entitled to a full refund. If a parcel recall is operationally possible, recoverable amounts are calculated after deducting courier freight, return freight, and administrative costs.
           </p>
         </div>
-      </details>
 
-      <!-- FAQ 5 -->
-      <details class="ga-faq-details">
-        <summary class="ga-faq-summary">
-          <span>Do you ship internationally and accept international cards?</span>
-          <span class="ga-faq-icon">✦</span>
-        </summary>
-        <div class="ga-faq-content">
-          <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
-            Yes! We now ship to <strong>10 international countries</strong>: USA, UK, Australia, Canada, Germany, UAE, France, New Zealand, Switzerland, and Singapore. International delivery is charged at a flat rate of <strong>₹2,499 INR</strong> per order. We accept all major <strong>International Credit &amp; Debit Cards</strong> (Visa, Mastercard, American Express, etc.). International orders are strictly <strong>Prepaid Only</strong> and typically arrive within <strong>15 to 25 business days</strong> via International Express Shipping with live tracking.
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-bottom: 0.6rem;">• Customs Rejection or Return</h4>
+          <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300;">
+            If a shipment is rejected because Ghar Aangan failed to provide a required export document or due to a Ghar Aangan-controlled compliance failure, the case will be reviewed for an appropriate refund or replacement after recovery of the shipment where possible.
+            <br><br>
+            If rejection or return occurs because destination regulations prohibit the product, the customer/importer cannot complete clearance, the recipient refuses required duties or charges, the address is invalid, or customer information is omitted, any refund will be reduced by non-refundable shipping, return carriage, customs, storage, and demurrage costs.
           </p>
         </div>
-      </details>
+
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-bottom: 0.6rem;">• Damage in Transit</h4>
+          <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300;">
+            If an international parcel arrives damaged, contact Ghar Aangan promptly with unboxing photos/videos of the outer carton, shipping label, and damaged product. Retain all packaging until the courier claim is resolved. Ghar Aangan will investigate and process an applicable replacement or refund.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-bottom: 0.6rem;">• Lost Shipments</h4>
+          <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300;">
+            For an apparently lost international shipment, Ghar Aangan will initiate a carrier/insurance tracer. The customer remedy depends on the investigation outcome, declared value, recoverability, and applicable law. A temporary tracking scan delay is not automatically treated as final loss.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-bottom: 0.6rem;">• Food Quality &amp; Taste Preference</h4>
+          <p class="ga-body" style="font-size: 1.45rem; line-height: 1.65; color: var(--ga-dark-text); font-weight: 300;">
+            Due to strict international food hygiene regulations, opened or consumed ghee is not eligible for preference-based returns simply because a customer dislikes subjective taste, aroma, or granular texture. Genuine quality or safety defects must be reported promptly with supporting evidence.
+          </p>
+        </div>
+      </div>
+
+      <!-- Section 10: Responsibilities & Documentation -->
+      <div style="margin-top: 4rem;">
+        <h3 class="ga-title" style="font-size: 2.1rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">
+          10. Customer &amp; Brand Responsibilities
+        </h3>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+          <div style="background: #faf8f5; padding: 2rem; border-radius: 10px; border: 1px solid var(--ga-border-color);">
+            <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-top: 0; margin-bottom: 1rem;">Customer Responsibilities</h4>
+            <ul style="padding-left: 1.6rem; font-size: 1.4rem; line-height: 1.65; color: var(--ga-dark-text); margin: 0;">
+              <li>Provide accurate recipient name, complete address, postal code, phone, and email.</li>
+              <li>Provide any documentation or ID requested by courier or customs authorities.</li>
+              <li>Review destination food-import restrictions prior to ordering.</li>
+              <li>Pay legitimate clearance, duties, or courier handling fees required for delivery.</li>
+              <li>Remain reachable for courier delivery notices.</li>
+              <li>Never request Ghar Aangan to undervalue or misdeclare products or origin.</li>
+            </ul>
+          </div>
+
+          <div style="background: #faf8f5; padding: 2rem; border-radius: 10px; border: 1px solid var(--ga-border-color);">
+            <h4 style="font-family: var(--ga-font-family-serif); color: var(--ga-forest-green); font-size: 1.75rem; margin-top: 0; margin-bottom: 1rem;">Ghar Aangan Responsibilities</h4>
+            <ul style="padding-left: 1.6rem; font-size: 1.4rem; line-height: 1.65; color: var(--ga-dark-text); margin: 0;">
+              <li>Use reasonable care in packing and protecting shipments for international transit.</li>
+              <li>Provide accurate commercial invoices, HS codes, declared values, and packing lists.</li>
+              <li>Select reputable international couriers based on destination serviceability.</li>
+              <li>Communicate material shipping or customs issues promptly when identified.</li>
+              <li>Explain genuine additional charges before requesting payment where reasonably possible.</li>
+              <li>Stop or cancel shipments when destination restrictions render them non-compliant.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; font-size: 1.4rem; color: #555; line-height: 1.65;">
+          <p><strong>Export Documentation Prepared by Ghar Aangan:</strong> Commercial invoice &amp; packing list, correct HS codes and precise food descriptions, country of origin certification, declared values, batch/lot details, and compliant export labeling.</p>
+        </div>
+      </div>
+
+      <!-- Section 11: Regulatory Reference Sources -->
+      <div style="margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--ga-border-color);">
+        <h3 class="ga-title" style="font-size: 2rem; margin-bottom: 1.2rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">
+          11. Official Reference Sources
+        </h3>
+        <p class="ga-body" style="font-size: 1.4rem; line-height: 1.65; color: #555; font-weight: 300;">
+          Our policies align with official regulatory resources published by food safety and trade authorities:
+        </p>
+        <ul style="padding-left: 1.8rem; font-size: 1.35rem; line-height: 1.65; color: #4b5563;">
+          <li><strong>U.S. FDA:</strong> Importing Food Products into the United States &amp; Human Foods Import Guidance.</li>
+          <li><strong>UK Government:</strong> UK–India FTA Section 42 Advice (dairy veterinary residue plan regulations).</li>
+          <li><strong>Australia DAFF:</strong> Department of Agriculture BICON food import database &amp; dairy risk-management review.</li>
+          <li><strong>Dubai Municipality:</strong> Food Safety Department import item assessment and release guidelines.</li>
+          <li><strong>Saudi SFDA:</strong> Conditions and Requirements for Food Clearance into the Kingdom of Saudi Arabia.</li>
+          <li><strong>Singapore SFA:</strong> Requirements for Commercial Import of Processed Foods and Milk Products.</li>
+          <li><strong>APEDA:</strong> Agricultural &amp; Processed Food Products Export Development Authority (India).</li>
+        </ul>
+      </div>
+
+      <!-- Legal Compliance Note -->
+      <div style="margin-top: 2.5rem; padding: 1.6rem 2rem; background: #faf8f5; border-radius: 8px; border: 1px dashed var(--ga-border-color); font-size: 1.35rem; color: #6b635b; line-height: 1.6;">
+        <strong>Legal &amp; Compliance Disclaimer:</strong> International shipments are subject to the laws, customs requirements, and food-import regulations of the destination country. Destination authorities make the final decision regarding import clearance. Courier serviceability does not guarantee customs or food-import clearance. Ghar Aangan reserves the right to cancel an order where shipment is prohibited, legally restricted, or non-compliant under destination law. Mandatory law and official authority decisions always prevail.
+      </div>
 
     </div>
+
+
+    <!-- ================= PART 3: FREQUENTLY ASKED QUESTIONS ================= -->
+    <div id="shipping-faq" style="margin-top: 5rem; padding-top: 4rem; border-top: 1.5px solid var(--ga-border-color);">
+      <h2 class="ga-title" style="font-size: 2.4rem; margin-bottom: 2.5rem; font-family: var(--ga-font-family-serif); color: var(--ga-forest-green);">
+        Frequently Asked Questions
+      </h2>
+
+      <div class="ga-faq-container">
+        
+        <!-- FAQ 1 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>Do you ship internationally?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              Yes! International shipping is currently available to selected countries: the <strong>United States (USA), United Arab Emirates (UAE), Australia, Saudi Arabia, and Singapore</strong>. Orders are shipped directly from Uttarakhand via express international air couriers with tracking.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>Which countries do you currently ship to?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              We currently ship to <strong>five active destination markets</strong>: USA, UAE, Australia, Saudi Arabia, and Singapore. Direct-to-consumer ghee shipments to the UK and Canada are currently not activated due to destination dairy import and regulatory restrictions.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>How much is international shipping?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              International shipping charges are calculated based on the <strong>final packed shipment weight and destination</strong>. Default customer rates start from <strong>₹4,499 to ₹5,999</strong> for up to 1 kg packed weight, scaling with heavier weight bands up to 10 kg. Please refer to our detailed <a href="#shipping-rates-table" style="color: var(--ga-forest-green); font-weight: 600; text-decoration: underline;">International Shipping Rate Table</a> above.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>Are customs duties included in the order total?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              Duties and import taxes estimated at checkout are based on product classification and country guidelines. However, carrier brokerage, disbursement, and destination handling fees are not included unless covered by carrier arrangements. <em>“International shipping charges are calculated based on the final packed shipment weight and destination. Additional customs, clearance, handling, or courier charges may apply, if applicable.”</em>
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 5 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>Can additional charges apply after ordering?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              Additional destination-side charges may apply if imposed by customs authorities or couriers (e.g. customs clearance fees, disbursement, remote-area surcharge, redelivery, or storage). In such genuine cases, Ghar Aangan communicates the documented reason and amount before requesting payment through our official verified Razorpay link (<a href="https://razorpay.me/@gharaangan" target="_blank" style="color: var(--ga-forest-green); font-weight: 600; text-decoration: underline;">https://razorpay.me/@gharaangan</a>).
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 6 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>How long does international delivery take?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              Estimated express delivery is <strong>7–15 days after dispatch</strong>. This is an estimate, not a guaranteed maximum. Delivery may occasionally take longer due to customs inspection, food authority reviews, international flight scheduling, weather disruptions, or public holidays.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 7 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>Why can an international order be cancelled?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              An order may be cancelled if the destination restricts the specific dairy product, required import permits or health documentation cannot be obtained, the address has unmanageable remote-area restrictions, the courier refuses carriage, regulatory sanctions change, or the recipient fails to provide required clearance information.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 8 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>What happens if customs rejects my order?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              If rejection occurs due to a Ghar Aangan documentation failure, we will review the order for a refund or replacement upon parcel recovery. If rejection occurs because the customer cannot complete clearance, destination law prohibits the item, the recipient refuses legitimate charges, or customer information was missing, any refund is reduced by non-refundable shipping, return carriage, customs, and storage costs.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 9 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>What happens if my parcel is delayed?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              If your tracking shows an unexpected hold or scan delay, reach out to our support team. We will liaise directly with the courier's international desk. Routine customs inspections or transit flight connections do not mean a parcel is lost.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 10 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>What happens if my package is damaged?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              Do not consume the product. Contact us promptly with unboxing photos/video of the outer carton, shipping label, and damaged product. Retain the packaging so our team can file a courier claim and process an applicable replacement or refund.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 11 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>What happens if my package is lost?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              For an apparently lost package, Ghar Aangan initiates a formal courier tracer and insurance investigation. Remedies depend on the investigation outcome, declared coverage, and applicable regulations.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 12 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>Can I get a refund for an international order?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              Cancellations requested before dispatch are eligible for a refund of recoverable funds. Once dispatched, international freight and third-party costs are non-refundable. Opened food items are not eligible for returns based on subjective taste preference. Please see Section 9 above for detailed terms.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 13 -->
+        <details class="ga-faq-details">
+          <summary class="ga-faq-summary">
+            <span>Can I order Ghar Aangan ghee to the UK or Canada?</span>
+            <span class="ga-faq-icon">✦</span>
+          </summary>
+          <div class="ga-faq-content">
+            <p class="ga-body" style="font-size: 1.5rem; line-height: 1.65; font-weight: 300; margin: 0; color: var(--ga-dark-text);">
+              Currently, Ghar Aangan ghee is <strong>not active</strong> for the UK or Canada. Current UK government guidance specifies that dairy products originating in India are not imported because India does not have an approved veterinary residue plan for dairy under UK legislation, making such shipments subject to border detention. Similarly, Canada requires product-specific CFIA clearance before dairy shipments can be activated.
+            </p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
   </div>
 
   <!-- Help & Support Call-to-Action (CTA) -->
-  <div class="ga-reveal" style="background-color: var(--ga-forest-green); border-radius: 16px; padding: 5rem 3rem; text-align: center; border: 1.5px solid var(--ga-gold-cream); box-shadow: var(--ga-card-shadow); max-width: 780px; margin: 0 auto;">
-    <div style="max-width: 620px; margin: 0 auto;">
-      <span class="ga-subtitle" style="color: var(--ga-gold-cream); display: block; margin-bottom: 1.2rem; font-weight: 700; letter-spacing: 0.2em;">CUSTOMER SUPPORT</span>
-      <h2 class="ga-title ga-text-white" style="color: #ffffff; font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1.5rem; font-family: var(--ga-font-family-serif);">Need Help With Your Order?</h2>
+  <div class="ga-reveal" style="background-color: var(--ga-forest-green, #1a332c); border-radius: 16px; padding: 4.5rem 2.5rem; text-align: center; border: 1.5px solid var(--ga-gold-cream, #cda250); box-shadow: var(--ga-card-shadow, 0 10px 30px rgba(0,0,0,0.1)); max-width: 820px; margin: 0 auto;">
+    <div style="max-width: 650px; margin: 0 auto;">
+      <span class="ga-subtitle" style="color: var(--ga-gold-cream, #cda250); display: block; margin-bottom: 1.2rem; font-weight: 700; letter-spacing: 0.2em;">INTERNATIONAL &amp; DOMESTIC SUPPORT</span>
+      <h2 class="ga-title ga-text-white" style="color: #ffffff; font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 1.5rem; font-family: var(--ga-font-family-serif);">Need Help With Your Shipment?</h2>
       <p class="ga-body" style="color: rgba(255, 255, 255, 0.9); font-size: 1.5rem; line-height: 1.6; margin-bottom: 2.5rem;">
-        For order-related support, please include your order number, registered phone number, and a short description of the issue. For damaged shipments, attach clear photographs/video.
+        For shipment updates, international orders, or damage inquiries, please reach out with your order number and details.
       </p>
       
       <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-items: center;">
-        <a href="mailto:gharaanganmani@gmail.com" class="ga-btn-primary" style="background-color: #ffffff; color: var(--ga-forest-green) !important; border-color: #ffffff; padding: 1.3rem 2.8rem;">
+        <a href="mailto:gharaanganmani@gmail.com" class="ga-btn-primary" style="background-color: #ffffff; color: var(--ga-forest-green, #1a332c) !important; border-color: #ffffff; padding: 1.3rem 2.8rem; border-radius: 999px; text-decoration: none; font-weight: 600;">
           ✉️ Email Support
         </a>
-        <a href="https://wa.me/919027248335" target="_blank" class="ga-btn-secondary" style="border-color: #ffffff; color: #ffffff !important; padding: 1.3rem 2.8rem;">
+        <a href="https://wa.me/919027248335" target="_blank" class="ga-btn-secondary" style="border: 1px solid #ffffff; color: #ffffff !important; padding: 1.3rem 2.8rem; border-radius: 999px; text-decoration: none; font-weight: 600;">
           💬 WhatsApp: +91 90272 48335
+        </a>
+        <a href="tel:+917292002260" class="ga-btn-secondary" style="border: 1px solid rgba(255,255,255,0.6); color: #ffffff !important; padding: 1.3rem 2.2rem; border-radius: 999px; text-decoration: none; font-size: 1.35rem;">
+          👤 Operations: +91 72920 02260
         </a>
       </div>
     </div>

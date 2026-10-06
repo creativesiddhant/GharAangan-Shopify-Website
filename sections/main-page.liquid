@@ -21,7 +21,7 @@
       {%- render 'page-mountain-cooperatives-custom' -%}
     {%- elsif page.handle == 'purity-lab-reports' -%}
       {%- render 'page-purity-lab-reports-custom' -%}
-    {%- elsif page.handle == 'shipping-delivery' -%}
+    {%- elsif page.handle == 'shipping-delivery' or page.handle == 'shipping-policy' or page.handle == 'international-shipping' or page.handle == 'shipping' -%}
       {%- render 'page-shipping-delivery-custom' -%}
     {%- elsif page.handle == 'refund-return-policies' or page.handle == 'refund-policy' -%}
       {%- render 'page-refund-policy-custom' -%}
