@@ -19,6 +19,7 @@
     font-weight: 600;
     color: var(--ga-forest-green, #1a332c);
     gap: 1rem;
+    user-select: none;
   }
   .ga-faq-summary::-webkit-details-marker {
     display: none;
@@ -35,13 +36,67 @@
   .ga-faq-content {
     margin-top: 1.5rem;
     padding-right: 2rem;
+    animation: gaFadeIn 0.3s ease forwards;
   }
   .ga-policy-callout {
     background: #fdfbf7;
     border: 1.5px solid var(--ga-gold-cream, #cda250);
     border-radius: 12px;
-    padding: 2rem;
+    padding: 2.2rem;
     margin: 2.5rem 0;
+    box-shadow: 0 3px 12px rgba(26, 51, 44, 0.03);
+  }
+
+  /* Responsive Mobile Refinements */
+  @media (max-width: 768px) {
+    .ga-shipping-page-wrapper {
+      padding: 0.8rem 0 !important;
+    }
+    .ga-shipping-header-editorial {
+      margin: 1.5rem auto 2.5rem auto !important;
+      padding-bottom: 2rem !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    .ga-shipping-header-editorial .ga-subtitle {
+      font-size: 1.15rem !important;
+      letter-spacing: 0.15em !important;
+    }
+    .ga-shipping-header-editorial .ga-title {
+      font-size: 2.4rem !important;
+      line-height: 1.25 !important;
+    }
+    .ga-shipping-header-editorial .ga-body {
+      font-size: 1.4rem !important;
+      line-height: 1.6 !important;
+      margin-bottom: 1.4rem !important;
+    }
+    .ga-shipping-content-block {
+      padding: 0 1rem !important;
+      margin-bottom: 3.5rem !important;
+    }
+    .ga-contact-pills {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0.6rem !important;
+      font-size: 1.25rem !important;
+    }
+    .ga-policy-callout {
+      padding: 1.4rem !important;
+      margin: 1.8rem 0 !important;
+      border-radius: 10px !important;
+    }
+    .ga-faq-summary {
+      font-size: 1.6rem !important;
+      gap: 0.8rem !important;
+    }
+    .ga-faq-icon {
+      font-size: 1.5rem !important;
+    }
+    .ga-faq-content {
+      padding-right: 0 !important;
+      font-size: 1.4rem !important;
+    }
   }
 </style>
 
@@ -56,7 +111,7 @@
     <p class="ga-body" style="font-size: 1.55rem; line-height: 1.7; color: var(--ga-dark-text, #2d2d2d); font-weight: 300; max-width: 720px; margin: 0 auto 1.5rem auto;">
       At Ghar Aangan, we craft artisanal food and A2 Bilona Cow Ghee rooted in Himalayan traditions. Every jar matters to us. This policy clearly explains our return, replacement, cancellation, and refund principles for both domestic deliveries in India and international shipments.
     </p>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; font-size: 1.4rem; color: var(--ga-forest-green, #1a332c); font-weight: 500;">
+    <div class="ga-contact-pills" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; font-size: 1.4rem; color: var(--ga-forest-green, #1a332c); font-weight: 500;">
       <span>📞 Support / WhatsApp: <strong>+91 90272 48335</strong></span>
       <span>👤 Owner &amp; Operations: <strong>+91 72920 02260</strong></span>
       <span>✉️ <strong>gharaanganmani@gmail.com</strong></span>

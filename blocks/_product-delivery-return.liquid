@@ -14,6 +14,17 @@
     {%- if block.settings.page_delivery != blank and block.settings.page_delivery.content != blank -%}
       {{ block.settings.page_delivery.content }}
     {%- else -%}
+      <style>
+        @media (max-width: 640px) {
+          .ga-delivery-modal-content {
+            font-size: 1.35rem !important;
+            line-height: 1.6 !important;
+          }
+          .ga-delivery-modal-content h4 {
+            font-size: 1.6rem !important;
+          }
+        }
+      </style>
       <div class="ga-delivery-modal-content" style="font-family: var(--ga-font-family-sans, 'Outfit', sans-serif); color: var(--ga-dark-text, #2d2d2d); line-height: 1.7; font-size: 1.45rem;">
         
         <div style="margin-bottom: 2.2rem; padding-bottom: 1.8rem; border-bottom: 1px solid rgba(26, 51, 44, 0.08);">

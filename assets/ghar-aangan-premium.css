@@ -3073,6 +3073,8 @@ table.hdt-pr_attrs td {
   }
   .ga-pincode-row {
     font-size: 1.2rem;
+    flex-wrap: wrap;
+    gap: 0.6rem;
   }
   .ga-delivery-perk-item {
     font-size: 1.2rem;

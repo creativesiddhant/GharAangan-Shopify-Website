@@ -7,15 +7,17 @@
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    margin: 2rem 0;
+    margin: 1.8rem 0;
     border-radius: 12px;
     border: 1px solid var(--ga-border-color, #e5e0d8);
     background: #ffffff;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+    position: relative;
   }
   .ga-shipping-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     font-size: 1.4rem;
     text-align: left;
     min-width: 620px;
@@ -29,6 +31,7 @@
     font-size: 1.45rem;
     letter-spacing: 0.03em;
     white-space: nowrap;
+    border-bottom: 2px solid rgba(205, 162, 80, 0.3);
   }
   .ga-shipping-table td {
     padding: 1.1rem 1.4rem;
@@ -65,6 +68,7 @@
     border-radius: 12px;
     padding: 2.2rem;
     margin: 2.5rem 0;
+    box-shadow: 0 3px 12px rgba(26, 51, 44, 0.03);
   }
   .ga-callout-title {
     font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
@@ -94,16 +98,19 @@
     font-weight: 600;
     text-decoration: none;
     border: 1px solid rgba(26, 51, 44, 0.12);
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
   }
   .ga-nav-anchor a:hover {
     background: var(--ga-forest-green, #1a332c);
     color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(26, 51, 44, 0.15);
   }
   .ga-faq-details {
     border-bottom: 1px solid var(--ga-border-color, #e5e0d8);
     padding: 2rem 0;
     cursor: pointer;
+    transition: background 0.2s ease;
   }
   .ga-faq-summary {
     display: flex;
@@ -116,6 +123,7 @@
     font-weight: 600;
     color: var(--ga-forest-green, #1a332c);
     gap: 1rem;
+    user-select: none;
   }
   .ga-faq-summary::-webkit-details-marker {
     display: none;
@@ -132,6 +140,128 @@
   .ga-faq-content {
     margin-top: 1.4rem;
     padding-right: 1.5rem;
+    animation: gaFadeIn 0.3s ease forwards;
+  }
+
+  /* Table swipe indicator for mobile */
+  .ga-table-hint {
+    display: none;
+  }
+
+  /* Mobile and Tablet Responsive Refinements */
+  @media (max-width: 768px) {
+    .ga-shipping-page-wrapper {
+      padding: 0.8rem 0 !important;
+    }
+    .ga-shipping-header-editorial {
+      margin: 1.5rem auto 2.5rem auto !important;
+      padding-bottom: 2rem !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    .ga-shipping-header-editorial .ga-subtitle {
+      font-size: 1.15rem !important;
+      letter-spacing: 0.15em !important;
+    }
+    .ga-shipping-header-editorial .ga-title {
+      font-size: 2.4rem !important;
+      line-height: 1.25 !important;
+    }
+    .ga-shipping-header-editorial .ga-body {
+      font-size: 1.4rem !important;
+      line-height: 1.6 !important;
+      margin-bottom: 1.4rem !important;
+    }
+    .ga-shipping-content-block {
+      padding: 0 1rem !important;
+      margin-bottom: 3.5rem !important;
+    }
+    .ga-nav-anchor {
+      gap: 0.6rem !important;
+      margin: 1.5rem 0 !important;
+      justify-content: flex-start !important;
+      overflow-x: auto !important;
+      flex-wrap: nowrap !important;
+      padding-bottom: 0.6rem !important;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .ga-nav-anchor::-webkit-scrollbar {
+      display: none;
+    }
+    .ga-nav-anchor a {
+      white-space: nowrap !important;
+      font-size: 1.2rem !important;
+      padding: 0.6rem 1.2rem !important;
+      flex-shrink: 0 !important;
+    }
+    .ga-contact-pills {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0.6rem !important;
+      font-size: 1.25rem !important;
+    }
+    .ga-callout-box {
+      padding: 1.4rem !important;
+      margin: 1.8rem 0 !important;
+      border-radius: 10px !important;
+    }
+    .ga-callout-title {
+      font-size: 1.6rem !important;
+      gap: 0.6rem !important;
+    }
+    .ga-table-hint {
+      display: flex !important;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.15rem;
+      color: #8b6e36;
+      background: #fdfbf7;
+      padding: 7px 12px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      font-weight: 500;
+      border: 1px dashed rgba(205, 162, 80, 0.45);
+    }
+    .ga-shipping-table {
+      min-width: 580px;
+    }
+    .ga-shipping-table th {
+      padding: 0.9rem 1rem !important;
+      font-size: 1.25rem !important;
+    }
+    .ga-shipping-table td {
+      padding: 0.85rem 1rem !important;
+      font-size: 1.25rem !important;
+    }
+    /* Sticky Leftmost Column on Mobile */
+    .ga-shipping-table th:first-child,
+    .ga-shipping-table td:first-child {
+      position: sticky;
+      left: 0;
+      background: #ffffff;
+      z-index: 2;
+      box-shadow: 2px 0 6px rgba(0, 0, 0, 0.06);
+    }
+    .ga-shipping-table th:first-child {
+      background: var(--ga-forest-green, #1a332c) !important;
+      color: #ffffff !important;
+      z-index: 3;
+    }
+    .ga-shipping-table tr:nth-child(even) td:first-child {
+      background-color: #faf8f5 !important;
+    }
+    .ga-faq-summary {
+      font-size: 1.6rem !important;
+      gap: 0.8rem !important;
+    }
+    .ga-faq-icon {
+      font-size: 1.5rem !important;
+    }
+    .ga-faq-content {
+      padding-right: 0 !important;
+      font-size: 1.4rem !important;
+    }
   }
 </style>
 
@@ -160,7 +290,7 @@
       <a href="#shipping-faq">❓ Shipping FAQ</a>
     </div>
 
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; font-size: 1.35rem; color: var(--ga-forest-green, #1a332c); font-weight: 500; margin-top: 1.5rem;">
+    <div class="ga-contact-pills" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; font-size: 1.35rem; color: var(--ga-forest-green, #1a332c); font-weight: 500; margin-top: 1.5rem;">
       <span>📞 Customer Care / WhatsApp: <strong>+91 90272 48335</strong></span>
       <span>👤 Owner &amp; Operations: <strong>+91 72920 02260</strong></span>
       <span>✉️ <strong>gharaanganmani@gmail.com</strong></span>
@@ -250,6 +380,10 @@
           International shipping is currently available to <strong>selected countries</strong>. These five target markets were selected due to strong Indian / South Asian diaspora demand, established international food-import channels, and India's existing dairy export activity (APEDA 2025–26 data lists the UAE, Saudi Arabia, and the USA among India's major dairy export destinations):
         </p>
 
+        <div class="ga-table-hint">
+          <span>⇄</span>
+          <span><strong>Scroll Table:</strong> Swipe horizontally to view full country requirements.</span>
+        </div>
         <div class="ga-shipping-table-wrap">
           <table class="ga-shipping-table">
             <thead>
@@ -324,6 +458,10 @@
           Below are Ghar Aangan's current default customer-facing shipping rates (in Indian Rupees, INR). These are default customer rates and not guaranteed carrier tariffs:
         </p>
 
+        <div class="ga-table-hint">
+          <span>⇄</span>
+          <span><strong>Scroll Rates:</strong> Swipe horizontally to view rates for all countries.</span>
+        </div>
         <div class="ga-shipping-table-wrap">
           <table class="ga-shipping-table">
             <thead>
