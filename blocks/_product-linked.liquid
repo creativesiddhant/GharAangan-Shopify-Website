@@ -382,6 +382,157 @@
     align-items: center;
     gap: 6px;
   }
+
+  /* Navratri Festive Ghee Offer Box & Badges */
+  .ga-navratri-offer-container {
+    margin-top: 10px;
+    margin-bottom: 14px;
+  }
+  .ga-navratri-offer-card {
+    background: linear-gradient(135deg, #fffcf7 0%, #fef5ee 100%);
+    border: 1.5px solid #b91c1c;
+    border-radius: 12px;
+    padding: 14px 16px;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(185, 28, 28, 0.08);
+    transition: all 0.25s ease;
+  }
+  .ga-navratri-offer-card:hover {
+    box-shadow: 0 6px 20px rgba(185, 28, 28, 0.14);
+  }
+  .ga-navratri-top-badge {
+    position: absolute;
+    top: -11px;
+    left: 14px;
+    background: linear-gradient(90deg, #991b1b, #b91c1c);
+    color: #ffffff;
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 11px;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(185, 28, 28, 0.35);
+  }
+  .ga-navratri-headline-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 2px;
+    margin-bottom: 6px;
+  }
+  .ga-navratri-headline-left {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .ga-navratri-headline-left .ga-icon {
+    font-size: 17px;
+  }
+  .ga-navratri-main-title {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #881337;
+    line-height: 1.25;
+  }
+  .ga-navratri-highlight-tag {
+    background: #b91c1c;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2.5px 8.5px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+  }
+  .ga-navratri-desc {
+    font-size: 12.5px;
+    color: #4a382c;
+    margin: 0 0 10px 0;
+    line-height: 1.45;
+  }
+  .ga-navratri-coupon-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border: 1.5px dashed #b91c1c;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .ga-navratri-coupon-box:hover {
+    background: #fff8f5;
+    border-color: #991b1b;
+  }
+  .ga-navratri-coupon-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ga-navratri-code-label {
+    font-size: 9px;
+    font-weight: 750;
+    color: #991b1b;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .ga-navratri-code-val {
+    font-size: 15px;
+    font-weight: 900;
+    color: #991b1b;
+    letter-spacing: 1px;
+  }
+  .ga-navratri-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #b91c1c;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 750;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    transition: background 0.2s;
+  }
+  .ga-navratri-coupon-box:hover .ga-navratri-copy-btn {
+    background: #991b1b;
+  }
+  .ga-navratri-sub-points {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ga-navratri-sub-points li {
+    font-size: 12px;
+    color: #4a3e30;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ga-navratri-pill-tag {
+    background: #b91c1c !important;
+    color: #ffffff !important;
+  }
+  .ga-navratri-label-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 750;
+    color: #991b1b;
+    background: #fee2e2;
+    padding: 2px 7px;
+    border-radius: 5px;
+    margin-left: 6px;
+    letter-spacing: 0.2px;
+  }
 </style>
 
 <div class="hdt-variant-picker hdt-linked-product" {{ block.shopify_attributes }}>
@@ -397,12 +548,14 @@
             {%- else -%}{{ product.title }}
             {%- endif -%}
           </span>
+          <span class="ga-navratri-label-tag">🌸 ₹100 OFF with MATARANI</span>
         </span>
       </div>
 
       <div class="hdt-linked-pack-swatches">
         <!-- 550ml -->
         <a href="/products/a2-desi-pahadi-ghee-550ml" class="hdt-linked-pack-pill{% if product.handle contains '550ml' %} is-selected{% endif %}">
+          <span class="hdt-pill-badge ga-navratri-pill-tag">₹100 OFF</span>
           <span class="hdt-pill-title">550ml</span>
           <span class="hdt-pill-sub">{% if p1.price %}{{ p1.price | money }}{% else %}₹799{% endif %}</span>
           <span class="hdt-pill-delivery-tag">Free Delivery</span>
@@ -410,7 +563,7 @@
 
         <!-- 1 Litre -->
         <a href="/products/a2-desi-pahadi-ghee-1l" class="hdt-linked-pack-pill{% if product.handle contains '1l' or product.handle == 'a2-desi-pahadi-ghee' %} is-selected{% endif %}">
-          <span class="hdt-pill-badge badge-gold">POPULAR</span>
+          <span class="hdt-pill-badge ga-navratri-pill-tag">₹100 OFF</span>
           <span class="hdt-pill-title">1 Litre</span>
           <span class="hdt-pill-sub">{% if p2.price %}{{ p2.price | money }}{% else %}₹1,599{% endif %}</span>
           <span class="hdt-pill-delivery-tag">Free Delivery</span>
@@ -418,6 +571,7 @@
 
         <!-- 2 Litres -->
         <a href="/products/a2-desi-pahadi-ghee-2l" class="hdt-linked-pack-pill{% if product.handle contains '2l' %} is-selected{% endif %}">
+          <span class="hdt-pill-badge ga-navratri-pill-tag">₹100 OFF</span>
           <span class="hdt-pill-title">2 Litres</span>
           <span class="hdt-pill-sub">{% if p3.price %}{{ p3.price | money }}{% else %}₹3,198{% endif %}</span>
           <span class="hdt-pill-delivery-tag tag-prepaid">Prepaid • Free Delivery</span>
@@ -425,12 +579,59 @@
 
         <!-- 5 Litres -->
         <a href="/products/a2-desi-pahadi-ghee-5l" class="hdt-linked-pack-pill{% if product.handle contains '5l' %} is-selected{% endif %}">
-          <span class="hdt-pill-badge badge-green">FAMILY PACK</span>
+          <span class="hdt-pill-badge ga-navratri-pill-tag">₹100 OFF</span>
           <span class="hdt-pill-title">5 Litres</span>
           <span class="hdt-pill-sub">{% if p4.price %}{{ p4.price | money }}{% else %}₹7,995{% endif %}</span>
           <span class="hdt-pill-delivery-tag tag-prepaid">Prepaid • Free Delivery</span>
         </a>
       </div>
+
+      <!-- Navratri Ghee ₹100 OFF Special Offer Box -->
+      <div class="ga-navratri-offer-container">
+        <div class="ga-navratri-offer-card">
+          <span class="ga-navratri-top-badge">🌸 NAVRATRI UTSAV SPECIAL</span>
+          
+          <div class="ga-navratri-headline-row">
+            <div class="ga-navratri-headline-left">
+              <span class="ga-icon">🪔</span>
+              <span class="ga-navratri-main-title">Flat ₹100 OFF on All Pure A2 Ghee</span>
+            </div>
+            <span class="ga-navratri-highlight-tag">FESTIVE DISCOUNT</span>
+          </div>
+
+          <p class="ga-navratri-desc">
+            Celebrate the auspicious festival of Navratri with sacred Himalayan wood-fired A2 Bilona Ghee. Apply coupon code below at checkout for <strong>flat ₹100 Instant Discount</strong>!
+          </p>
+
+          <div class="ga-navratri-coupon-box" onclick="if(navigator.clipboard){navigator.clipboard.writeText('MATARANI');} gaCopyNavratriCardCode();" title="Click to copy coupon MATARANI">
+            <div class="ga-navratri-coupon-left">
+              <span class="ga-navratri-code-label">COUPON CODE (TAP TO COPY)</span>
+              <span class="ga-navratri-code-val">MATARANI</span>
+            </div>
+            <button type="button" class="ga-navratri-copy-btn" id="gaNavratriCardCopyBtn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span id="gaNavratriCardCopyTxt">COPY CODE</span>
+            </button>
+          </div>
+
+          <ul class="ga-navratri-sub-points">
+            <li><span>🌸</span> <strong>Applicable on All Sizes:</strong> Save flat ₹100 on 550ml, 1L, 2L &amp; 5L packs with code <strong>MATARANI</strong>.</li>
+            <li><span>⏳</span> <strong>Limited Time:</strong> Discount valid during Navratri festival only.</li>
+            <li><span>🪔</span> <strong>100% Sattvic &amp; Vedic:</strong> Prepared from indigenous Himalayan cows over wood fires — pure for Pooja &amp; Fasting.</li>
+            <li><span>🚚</span> <strong>Pan-India Delivery:</strong> Dispatched within 24 hours in sealed glass packaging.</li>
+          </ul>
+        </div>
+      </div>
+
+      <script>
+        function gaCopyNavratriCardCode() {
+          var t = document.getElementById('gaNavratriCardCopyTxt');
+          if (t) {
+            t.innerText = 'COPIED!';
+            setTimeout(function() { t.innerText = 'COPY CODE'; }, 2500);
+          }
+        }
+      </script>
 
     {%- elsif is_honey -%}
       <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">

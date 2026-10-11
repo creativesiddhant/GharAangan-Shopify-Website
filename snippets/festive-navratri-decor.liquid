@@ -1,0 +1,128 @@
+{%- comment -%}
+  Ghar Aangan - Festive Navratri Decoration & Exclusive Discount Banner
+  Offer: Flat ₹100 OFF on all Pure A2 Ghee products with coupon code MATARANI
+  Valid till Navratri ends only.
+{%- endcomment -%}
+
+{%- assign enable_navratri_decor = true -%}
+
+{%- if enable_navratri_decor -%}
+<style>
+  /* 🌸 Festive Navratri Top Announcement Ribbon */
+  .ga-navratri-topbar {
+    background: linear-gradient(90deg, #991b1b 0%, #b91c1c 30%, #c2410c 70%, #991b1b 100%);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    padding: 8px 16px;
+    position: relative;
+    z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    letter-spacing: 0.3px;
+    box-shadow: 0 2px 10px rgba(153, 27, 27, 0.25);
+  }
+  .ga-navratri-topbar-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .ga-navratri-topbar strong {
+    color: #fff;
+    font-weight: 800;
+  }
+  .ga-navratri-topbar a.ga-navratri-shop-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #ffd992;
+    color: #831818 !important;
+    text-decoration: none !important;
+    font-weight: 750;
+    font-size: 11.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left: 4px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .ga-navratri-topbar a.ga-navratri-shop-btn:hover {
+    background: #ffffff;
+    color: #991b1b !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  .ga-navratri-code-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px dashed #ffd992;
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    user-select: all;
+  }
+  .ga-navratri-code-chip:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(1.03);
+  }
+  .ga-navratri-code-chip .ga-copy-text {
+    font-size: 9.5px;
+    color: #ffd992;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  @media (max-width: 768px) {
+    .ga-navratri-topbar {
+      font-size: 11.5px;
+      padding: 7px 10px;
+      line-height: 1.35;
+    }
+    .ga-navratri-topbar-content {
+      gap: 5px;
+    }
+    .ga-navratri-topbar a.ga-navratri-shop-btn {
+      font-size: 10.5px;
+      padding: 2px 8px;
+    }
+  }
+</style>
+
+<div class="ga-navratri-topbar" id="gaNavratriTopBanner">
+  <div class="ga-navratri-topbar-content">
+    <span>🌸 <strong>Navratri Utsav Special:</strong> Flat <strong>₹100 OFF</strong> on All Pure A2 Desi Ghee</span>
+    <span>• Code: 
+      <span class="ga-navratri-code-chip" onclick="if(navigator.clipboard){navigator.clipboard.writeText('MATARANI');} gaNavratriBarCopied();" title="Click to copy coupon code">
+        MATARANI <span class="ga-copy-text" id="gaNavratriTopCopyTxt">(Tap to Copy)</span>
+      </span>
+    </span>
+    <span class="ga-navratri-expiry" style="font-size: 11px; opacity: 0.95; color: #fef08a;">• Valid Till Navratri Ends</span>
+    <a href="/products/a2-desi-pahadi-ghee-1l" class="ga-navratri-shop-btn">Order Pure Ghee →</a>
+  </div>
+</div>
+
+<script>
+  function gaNavratriBarCopied() {
+    var el = document.getElementById('gaNavratriTopCopyTxt');
+    if (el) {
+      el.innerText = 'COPIED!';
+      el.style.color = '#ffffff';
+      setTimeout(function() { 
+        el.innerText = '(Tap to Copy)'; 
+        el.style.color = '#ffd992';
+      }, 2500);
+    }
+  }
+</script>
+{%- endif -%}

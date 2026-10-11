@@ -197,7 +197,11 @@
           <span class="ga-sticky-atc-title">{{ product.title }}</span>
           <div class="ga-sticky-atc-price-row">
             <span class="ga-sticky-atc-price" id="GaStickyPrice">{{ current_variant.price | money }}</span>
-            <span class="ga-sticky-atc-tag">Prepaid: FREE Express</span>
+            {%- if product.handle contains 'ghee' -%}
+              <span class="ga-sticky-atc-tag" style="background:#fee2e2; color:#991b1b; font-weight:800; border:1px solid #fecaca;">🌸 ₹100 OFF: MATARANI</span>
+            {%- else -%}
+              <span class="ga-sticky-atc-tag">Prepaid: FREE Express</span>
+            {%- endif -%}
           </div>
         </div>
       </div>
