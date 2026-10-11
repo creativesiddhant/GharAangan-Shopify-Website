@@ -231,24 +231,26 @@
     color: #ffffff;
   }
 
-  /* Grid Layout: Bigger and Beautiful */
+  /* Grid Layout: Responsive, fluid, and robust against overflow */
   .ga-spec-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 26px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1080px) {
     .ga-spec-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
     }
   }
 
-  @media (max-width: 680px) {
+  @media (max-width: 640px) {
     .ga-spec-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
     }
   }
 
@@ -263,6 +265,9 @@
     position: relative;
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 5px 18px rgba(26, 51, 44, 0.04);
+    min-width: 0;
+    box-sizing: border-box;
+    width: 100%;
   }
 
   .ga-spec-card:hover {
@@ -492,17 +497,21 @@
   /* Price Box */
   .ga-spec-price-box {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    margin-bottom: 8px;
     padding-top: 10px;
     border-top: 1px dashed #eae3d5;
+    min-width: 0;
   }
 
   .ga-spec-price-group {
     display: flex;
     align-items: baseline;
     gap: 8px;
+    min-width: 0;
   }
 
   .ga-spec-price {
@@ -564,6 +573,8 @@
     flex-direction: column;
     gap: 7px;
     margin-top: auto;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   /* Primary BUY NOW FAST CHECKOUT CTA - Matches Product Page exactly */
@@ -578,7 +589,7 @@
     color: #ffffff !important;
     font-size: 12.5px !important;
     font-weight: 750 !important;
-    letter-spacing: 0.07em !important;
+    letter-spacing: 0.05em !important;
     text-transform: uppercase !important;
     border-radius: 8px !important;
     border: 1.5px solid #1a332c !important;
@@ -588,6 +599,7 @@
     padding: 10px 14px !important;
     position: relative;
     text-decoration: none !important;
+    box-sizing: border-box;
     white-space: nowrap;
   }
 
@@ -837,10 +849,12 @@
 
   /* Navratri Festive Announcement on Specialties Shop */
   .ga-navratri-spec-banner {
+    width: 100%;
+    box-sizing: border-box;
     background: linear-gradient(135deg, #fffcf7 0%, #fef5ee 100%);
     border: 1.5px solid #b91c1c;
     border-radius: 14px;
-    padding: 14px 20px;
+    padding: 15px 22px;
     margin-bottom: 24px;
     box-shadow: 0 4px 16px rgba(185, 28, 28, 0.08);
   }
@@ -848,54 +862,85 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
+    gap: 16px 24px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .ga-navratri-spec-left {
     display: flex;
     align-items: center;
-    gap: 12px;
-    flex: 1;
-    min-width: 260px;
+    gap: 14px;
+    flex: 1 1 540px;
+    min-width: 0;
   }
   .ga-navratri-spec-icon {
     font-size: 26px;
     line-height: 1;
+    flex-shrink: 0;
+  }
+  .ga-navratri-spec-text {
+    flex: 1;
+    min-width: 0;
   }
   .ga-navratri-spec-text strong {
     display: block;
     font-size: 14.5px;
     font-weight: 800;
     color: #881337;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
+    line-height: 1.35;
   }
   .ga-navratri-spec-text span {
     font-size: 12.5px;
     color: #4a382c;
-    line-height: 1.4;
+    line-height: 1.45;
+    display: block;
+  }
+  .ga-navratri-coupon-inline {
+    font-weight: 800;
+    color: #991b1b;
+    background: #fee2e2;
+    padding: 1px 7px;
+    border-radius: 4px;
+    border: 1px dashed #b91c1c;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
   }
   .ga-navratri-spec-badge-box {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 4px;
+    gap: 5px;
+    flex-shrink: 0;
   }
   .ga-navratri-spec-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     background: #b91c1c;
     color: #ffffff;
     font-size: 11.5px;
     font-weight: 800;
-    padding: 6px 14px;
+    padding: 7px 15px;
     border-radius: 8px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(185, 28, 28, 0.25);
-    transition: background 0.2s, transform 0.15s;
+    transition: all 0.2s ease;
     user-select: all;
+    border: none;
+    text-align: center;
+    white-space: nowrap;
+    font-family: inherit;
   }
   .ga-navratri-spec-chip:hover {
     background: #991b1b;
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(185, 28, 28, 0.35);
+  }
+  .ga-navratri-spec-chip.is-copied {
+    background: #15803d !important;
+    box-shadow: 0 2px 8px rgba(21, 128, 61, 0.35) !important;
   }
   .ga-navratri-spec-validity {
     font-size: 10.5px;
@@ -910,38 +955,73 @@
     background: #fee2e2;
     color: #991b1b;
     border: 1px solid #fecaca;
-    font-size: 10.5px;
+    font-size: 11px;
     font-weight: 750;
-    padding: 2.5px 8px;
+    padding: 3px 9px;
     border-radius: 6px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     letter-spacing: 0.3px;
   }
+  .ga-spec-festive-tag-wrap {
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
   .ga-spec-festive-price-tag {
-    font-size: 10.5px;
+    font-size: 11px;
     font-weight: 750;
     color: #991b1b;
     background: #fef2f2;
     border: 1px dashed #b91c1c;
-    padding: 2px 6px;
-    border-radius: 4px;
-    white-space: nowrap;
+    padding: 3px 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
   }
-  @media (max-width: 767px) {
-    .ga-navratri-spec-banner {
-      padding: 12px 14px;
-      margin-bottom: 18px;
+  @media (max-width: 860px) {
+    .ga-navratri-spec-banner-inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
     }
     .ga-navratri-spec-left {
-      min-width: 100%;
+      flex: 1 1 auto;
+      min-width: 0;
     }
     .ga-navratri-spec-badge-box {
-      align-items: flex-start;
+      align-items: stretch;
       width: 100%;
     }
     .ga-navratri-spec-chip {
       width: 100%;
+      justify-content: center;
+      padding: 9px 14px;
+      font-size: 12px;
+    }
+    .ga-navratri-spec-validity {
       text-align: center;
+    }
+  }
+  @media (max-width: 640px) {
+    .ga-navratri-spec-banner {
+      padding: 12px 14px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+    }
+    .ga-navratri-spec-icon {
+      font-size: 22px;
+    }
+    .ga-navratri-spec-text strong {
+      font-size: 13.5px;
+    }
+    .ga-navratri-spec-text span {
+      font-size: 12px;
+      line-height: 1.4;
     }
   }
 {%- endstyle -%}
@@ -1003,11 +1083,13 @@
           <span class="ga-navratri-spec-icon">🌸</span>
           <div class="ga-navratri-spec-text">
             <strong>Navratri Festive Offer: Flat ₹100 OFF on All Pure A2 Desi Ghee</strong>
-            <span>Handcrafted over wood-fires in Uttarakhand. Add sacred purity to your pooja &amp; fasting. Use code <strong>MATARANI</strong> at checkout!</span>
+            <span>Handcrafted over wood-fires in Uttarakhand. Add sacred purity to your pooja &amp; fasting. Use coupon <span class="ga-navratri-coupon-inline">MATARANI</span> at checkout!</span>
           </div>
         </div>
         <div class="ga-navratri-spec-badge-box">
-          <span class="ga-navratri-spec-chip" onclick="if(navigator.clipboard){navigator.clipboard.writeText('MATARANI');} alert('Coupon code MATARANI copied! Use it at checkout.');">COUPON: <strong>MATARANI</strong> (Click to Copy)</span>
+          <button type="button" class="ga-navratri-spec-chip" onclick="gaCopyNavratriSpecCoupon(this)" title="Click to copy coupon code MATARANI">
+            COUPON: <strong>MATARANI</strong> <span class="ga-spec-chip-action">(Click to Copy)</span>
+          </button>
           <span class="ga-navratri-spec-validity">⏳ Valid Till Navratri Ends</span>
         </div>
       </div>
@@ -1173,10 +1255,13 @@
             {%- else -%}
               <span class="ga-spec-saving-pill" data-spec-saving-pill style="display:none;"></span>
             {%- endif -%}
-            {%- if category == 'ghee' -%}
-              <span class="ga-spec-festive-price-tag">🌸 ₹100 OFF with MATARANI</span>
-            {%- endif -%}
           </div>
+
+          {%- if category == 'ghee' -%}
+            <div class="ga-spec-festive-tag-wrap">
+              <span class="ga-spec-festive-price-tag">🌸 Flat ₹100 OFF with code MATARANI</span>
+            </div>
+          {%- endif -%}
 
           <!-- Trust & Shipping Perks -->
           <div class="ga-spec-perks">
@@ -1197,7 +1282,7 @@
             <div class="ga-spec-actions">
               <button type="button" class="ga-spec-btn-buynow" data-fast-checkout onclick="window.gaFastCheckout && window.gaFastCheckout(this)">
                 <span class="ga-btn-icon">⚡</span>
-                <span class="ga-buynow-text">{% if category == 'ghee' %}BUY NOW • ₹100 OFF WITH MATARANI{% else %}BUY NOW • FAST CHECKOUT{% endif %}</span>
+                <span class="ga-buynow-text">BUY NOW • FAST CHECKOUT</span>
               </button>
               <button type="button" name="add" class="ga-spec-btn-atc" data-add-to-cart onclick="window.gaAddToCart && window.gaAddToCart(this)">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -1540,6 +1625,22 @@
         btn.disabled = false;
         window.location.href = '/cart/add?id=' + encodeURIComponent(varId) + '&quantity=1';
       });
+    };
+
+    window.gaCopyNavratriSpecCoupon = function(btn) {
+      if (!btn) return;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText('MATARANI');
+      }
+      const actionSpan = btn.querySelector('.ga-spec-chip-action');
+      if (actionSpan) {
+        actionSpan.textContent = '(COPIED! ✓)';
+      }
+      btn.classList.add('is-copied');
+      setTimeout(function() {
+        if (actionSpan) actionSpan.textContent = '(Click to Copy)';
+        btn.classList.remove('is-copied');
+      }, 2500);
     };
   })();
 </script>
