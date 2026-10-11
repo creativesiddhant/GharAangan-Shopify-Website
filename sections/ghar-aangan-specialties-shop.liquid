@@ -847,107 +847,7 @@
     }
   }
 
-  /* Navratri Festive Announcement on Specialties Shop */
-  .ga-navratri-spec-banner {
-    width: 100%;
-    box-sizing: border-box;
-    background: linear-gradient(135deg, #fffcf7 0%, #fef5ee 100%);
-    border: 1.5px solid #b91c1c;
-    border-radius: 14px;
-    padding: 15px 22px;
-    margin-bottom: 24px;
-    box-shadow: 0 4px 16px rgba(185, 28, 28, 0.08);
-  }
-  .ga-navratri-spec-banner-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px 24px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .ga-navratri-spec-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex: 1 1 540px;
-    min-width: 0;
-  }
-  .ga-navratri-spec-icon {
-    font-size: 26px;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-  .ga-navratri-spec-text {
-    flex: 1;
-    min-width: 0;
-  }
-  .ga-navratri-spec-text strong {
-    display: block;
-    font-size: 14.5px;
-    font-weight: 800;
-    color: #881337;
-    margin-bottom: 3px;
-    line-height: 1.35;
-  }
-  .ga-navratri-spec-text span {
-    font-size: 12.5px;
-    color: #4a382c;
-    line-height: 1.45;
-    display: block;
-  }
-  .ga-navratri-coupon-inline {
-    font-weight: 800;
-    color: #991b1b;
-    background: #fee2e2;
-    padding: 1px 7px;
-    border-radius: 4px;
-    border: 1px dashed #b91c1c;
-    white-space: nowrap;
-    letter-spacing: 0.5px;
-  }
-  .ga-navratri-spec-badge-box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 5px;
-    flex-shrink: 0;
-  }
-  .ga-navratri-spec-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #b91c1c;
-    color: #ffffff;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 7px 15px;
-    border-radius: 8px;
-    letter-spacing: 0.4px;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(185, 28, 28, 0.25);
-    transition: all 0.2s ease;
-    user-select: all;
-    border: none;
-    text-align: center;
-    white-space: nowrap;
-    font-family: inherit;
-  }
-  .ga-navratri-spec-chip:hover {
-    background: #991b1b;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(185, 28, 28, 0.35);
-  }
-  .ga-navratri-spec-chip.is-copied {
-    background: #15803d !important;
-    box-shadow: 0 2px 8px rgba(21, 128, 61, 0.35) !important;
-  }
-  .ga-navratri-spec-validity {
-    font-size: 10.5px;
-    font-weight: 700;
-    color: #991b1b;
-    letter-spacing: 0.2px;
-  }
+  /* Navratri Festive Badges on Cards */
   .ga-spec-navratri-pill {
     display: inline-flex;
     align-items: center;
@@ -982,47 +882,6 @@
     width: 100%;
     box-sizing: border-box;
     text-align: center;
-  }
-  @media (max-width: 860px) {
-    .ga-navratri-spec-banner-inner {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 12px;
-    }
-    .ga-navratri-spec-left {
-      flex: 1 1 auto;
-      min-width: 0;
-    }
-    .ga-navratri-spec-badge-box {
-      align-items: stretch;
-      width: 100%;
-    }
-    .ga-navratri-spec-chip {
-      width: 100%;
-      justify-content: center;
-      padding: 9px 14px;
-      font-size: 12px;
-    }
-    .ga-navratri-spec-validity {
-      text-align: center;
-    }
-  }
-  @media (max-width: 640px) {
-    .ga-navratri-spec-banner {
-      padding: 12px 14px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-    }
-    .ga-navratri-spec-icon {
-      font-size: 22px;
-    }
-    .ga-navratri-spec-text strong {
-      font-size: 13.5px;
-    }
-    .ga-navratri-spec-text span {
-      font-size: 12px;
-      line-height: 1.4;
-    }
   }
 {%- endstyle -%}
 
@@ -1076,24 +935,7 @@
       {%- endif -%}
     </div>
 
-    <!-- Navratri Festive Offer Banner -->
-    <div class="ga-navratri-spec-banner">
-      <div class="ga-navratri-spec-banner-inner">
-        <div class="ga-navratri-spec-left">
-          <span class="ga-navratri-spec-icon">🌸</span>
-          <div class="ga-navratri-spec-text">
-            <strong>Navratri Festive Offer: Flat ₹100 OFF on All Pure A2 Desi Ghee</strong>
-            <span>Handcrafted over wood-fires in Uttarakhand. Add sacred purity to your pooja &amp; fasting. Use coupon <span class="ga-navratri-coupon-inline">MATARANI</span> at checkout!</span>
-          </div>
-        </div>
-        <div class="ga-navratri-spec-badge-box">
-          <button type="button" class="ga-navratri-spec-chip" onclick="gaCopyNavratriSpecCoupon(this)" title="Click to copy coupon code MATARANI">
-            COUPON: <strong>MATARANI</strong> <span class="ga-spec-chip-action">(Click to Copy)</span>
-          </button>
-          <span class="ga-navratri-spec-validity">⏳ Valid Till Navratri Ends</span>
-        </div>
-      </div>
-    </div>
+
 
     <!-- Products Grid -->
     <div class="ga-spec-grid" id="ga-spec-products-grid">
@@ -1625,22 +1467,6 @@
         btn.disabled = false;
         window.location.href = '/cart/add?id=' + encodeURIComponent(varId) + '&quantity=1';
       });
-    };
-
-    window.gaCopyNavratriSpecCoupon = function(btn) {
-      if (!btn) return;
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText('MATARANI');
-      }
-      const actionSpan = btn.querySelector('.ga-spec-chip-action');
-      if (actionSpan) {
-        actionSpan.textContent = '(COPIED! ✓)';
-      }
-      btn.classList.add('is-copied');
-      setTimeout(function() {
-        if (actionSpan) actionSpan.textContent = '(Click to Copy)';
-        btn.classList.remove('is-copied');
-      }, 2500);
     };
   })();
 </script>

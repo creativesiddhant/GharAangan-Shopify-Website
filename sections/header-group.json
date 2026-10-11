@@ -44,12 +44,6 @@
             "text": "🚫 No Preservatives"
           }
         },
-        "announcement_navratri_ghee": {
-          "type": "announcement",
-          "settings": {
-            "text": "🌸 Navratri Special: Flat ₹100 OFF on All A2 Desi Ghee | Use Code: MATARANI (Till Navratri Ends)"
-          }
-        },
         "announcement_aKArJr": {
           "type": "announcement",
           "settings": {
@@ -58,7 +52,6 @@
         }
       },
       "block_order": [
-        "announcement_navratri_ghee",
         "block-1",
         "announcement_cod",
         "block-2",
