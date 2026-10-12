@@ -582,7 +582,7 @@
         <span>Select Pack Size: 
           <span class="hdt-font-semibold" style="color: #1a332c;">
             {%- if product.handle contains 'combo' or product.handle contains '35g' -%}35g × 2 Pack (2-in-1 Combo)
-            {%- elsif product.handle contains '500g' or product.handle contains '550g' -%}500g Family Glass Jar
+            {%- elsif product.handle contains '500g' or product.handle contains '550g' -%}550g Family Glass Jar
             {%- else -%}{{ product.title }}
             {%- endif -%}
           </span>
@@ -598,12 +598,12 @@
           <span class="hdt-pill-delivery-tag">Two Mini Jars</span>
         </a>
 
-        <!-- 500g -->
+        <!-- 550g -->
         <a href="/products/pahadi-honey-500g" class="hdt-linked-pack-pill{% if product.handle contains '500g' or product.handle contains '550g' %} is-selected{% endif %}">
           <span class="hdt-pill-badge badge-gold">FAMILY VALUE</span>
-          <span class="hdt-pill-title">500g</span>
-          <span class="hdt-pill-sub">{% if h2.price %}{{ h2.price | money }}{% else %}₹649{% endif %}</span>
-          <span class="hdt-pill-delivery-tag tag-prepaid">500g Family Jar • Best Value</span>
+          <span class="hdt-pill-title">550g</span>
+          <span class="hdt-pill-sub">{% if h2.price %}{{ h2.price | money }}{% else %}Rs. 1,099.00{% endif %}</span>
+          <span class="hdt-pill-delivery-tag tag-prepaid">550g Family Jar • Best Value</span>
         </a>
       </div>
 

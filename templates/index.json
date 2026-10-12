@@ -991,15 +991,15 @@
           "type": "specialty_product",
           "settings": {
             "product_handle": "pahadi-honey-500g",
-            "title": "Pure Pahadi Honey - 500g Glass Jar",
+            "title": "Pure Pahadi Honey - 550g Glass Jar",
             "category": "honey",
             "is_featured": true,
             "badge_text": "Family Value Pack",
             "origin_tag": "Wild Himalayan Blooms",
-            "highlight": "100% pure mountain honey in a 500g family jar. Unfiltered, unheated, zero added sugar or syrups for daily household wellness & immunity.",
-            "single_size_label": "500g Family Glass Jar",
-            "default_price": 64900,
-            "default_compare_price": 74900
+            "highlight": "100% pure mountain honey in a 550g family jar. Unfiltered, unheated, zero added sugar or syrups for daily household wellness & immunity.",
+            "single_size_label": "550g Family Glass Jar",
+            "default_price": 109900,
+            "default_compare_price": 129900
           }
         }
       },
