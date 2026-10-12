@@ -973,18 +973,18 @@
             "single_size_label": "1kg / 5kg Farm Pack"
           }
         },
-        "specialty_honey_300g": {
+        "specialty_honey_combo_35g": {
           "type": "specialty_product",
           "settings": {
-            "product_handle": "pahadi-honey-300g",
-            "title": "Pure Pahadi Honey - 300g Glass Jar",
+            "product_handle": "pahadi-honey-2-in-1-combo-35g",
+            "title": "Pure Pahadi Honey - 35g × 2 Pack",
             "category": "honey",
-            "badge_text": "100% Raw Honey",
+            "badge_text": "2-in-1 Combo Pack",
             "origin_tag": "Wild Himalayan Blooms",
-            "highlight": "Raw, unpasteurized high-altitude wildflower honey harvested ethically from mountain bees. Packed with natural pollen, enzymes & antioxidants.",
-            "single_size_label": "300g Sealed Glass Jar",
-            "default_price": 39900,
-            "default_compare_price": 44900
+            "highlight": "Raw, unpasteurized high-altitude wildflower honey in an exclusive 2-in-1 combo of two 35g mini glass jars. 100% pure mountain harvest.",
+            "single_size_label": "35g × 2 Mini Glass Jars",
+            "default_price": 22900,
+            "default_compare_price": 29900
           }
         },
         "specialty_honey_500g": {
@@ -1008,7 +1008,7 @@
         "specialty_ghee_1l",
         "specialty_ghee_2l",
         "specialty_ghee_5l",
-        "specialty_honey_300g",
+        "specialty_honey_combo_35g",
         "specialty_honey_500g",
         "specialty_1",
         "specialty_2",
