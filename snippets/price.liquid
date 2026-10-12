@@ -141,12 +141,16 @@
     -%}
   {%- liquid
     assign is_free_shipping_product = false
-    if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.tags contains 'free-shipping'
+    if product.handle contains 'a2-desi-pahadi-ghee' or product.handle == 'a2-desi-pahadi-ghee-1l' or product.handle == 'a2-desi-pahadi-ghee-2l' or product.handle == 'a2-desi-pahadi-ghee-550ml' or product.handle == 'a2-desi-pahadi-ghee-5l' or product.handle contains 'pahadi-honey' or product.tags contains 'free-shipping'
       assign is_free_shipping_product = true
     endif
     assign is_bulk_prepaid_only = false
     if product.handle contains '2l' or product.handle contains '5l'
       assign is_bulk_prepaid_only = true
+    endif
+    assign is_honey_combo_35g = false
+    if product.handle contains 'pahadi-honey-2-in-1-combo-35g' or product.handle contains 'combo-35g'
+      assign is_honey_combo_35g = true
     endif
   -%}
   {%- if is_free_shipping_product -%}
@@ -166,6 +170,8 @@
       </span>
       {%- if is_bulk_prepaid_only -%}
         <span class="ga-cod-price-note ga-prepaid-tag">⚡ PREPAID ONLY (NO COD)</span>
+      {%- elsif is_honey_combo_35g -%}
+        <span class="ga-cod-price-note">COD: ₹50 Applied</span>
       {%- else -%}
         <span class="ga-cod-price-note">COD: ₹100 Applied</span>
       {%- endif -%}

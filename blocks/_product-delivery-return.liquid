@@ -32,9 +32,17 @@
           <ul style="padding-left: 1.8rem; margin: 0;">
             <li style="margin-bottom: 0.7rem;"><strong>Order Processing:</strong> Dispatched within <strong>24 hours</strong> from our facility in Uttarakhand.</li>
             <li style="margin-bottom: 0.7rem;"><strong>Fast Delivery (Prepaid):</strong> Delivered within <strong>5 to 6 business days</strong> across India (<strong>FREE Express Shipping</strong>).</li>
-            <li style="margin-bottom: 0.7rem;"><strong>Standard Shipping (COD):</strong> Delivered within <strong>7 to 10 business days</strong> across India (₹100 delivery fee applied).</li>
+            {%- if product.handle contains 'pahadi-honey-2-in-1-combo-35g' or product.handle contains 'combo-35g' -%}
+              <li style="margin-bottom: 0.7rem;"><strong>Standard Shipping (COD):</strong> Delivered within <strong>7 to 10 business days</strong> across India (₹50 delivery fee applied).</li>
+            {%- else -%}
+              <li style="margin-bottom: 0.7rem;"><strong>Standard Shipping (COD):</strong> Delivered within <strong>7 to 10 business days</strong> across India (₹100 delivery fee applied).</li>
+            {%- endif -%}
             <li style="margin-bottom: 0.7rem;"><strong>Trusted Logistics:</strong> Primarily dispatched via Delhivery, Blue Dart, DTDC, Ecom Express &amp; XpressBees.</li>
-            <li><strong>Shipping Rates:</strong> FREE on Prepaid orders; ₹100 on COD orders.</li>
+            {%- if product.handle contains 'pahadi-honey-2-in-1-combo-35g' or product.handle contains 'combo-35g' -%}
+              <li><strong>Shipping Rates:</strong> FREE on Prepaid orders; ₹50 on COD orders.</li>
+            {%- else -%}
+              <li><strong>Shipping Rates:</strong> FREE on Prepaid orders; ₹100 on COD orders.</li>
+            {%- endif -%}
           </ul>
         </div>
 

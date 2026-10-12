@@ -10,6 +10,10 @@
         if product.handle contains '2l' or product.handle contains '5l'
           assign is_bulk_prepaid_only = true
         endif
+        assign is_honey_combo_35g = false
+        if product.handle contains 'pahadi-honey-2-in-1-combo-35g' or product.handle contains 'combo-35g'
+          assign is_honey_combo_35g = true
+        endif
       -%}
       <div class="hdt-product__delivery">
         {%- if block.settings.icon_delivery != 'none' -%}
@@ -20,6 +24,8 @@
         <div class="hdt-product__delivery-content">
           {%- if is_bulk_prepaid_only -%}
             <p>🚚 <strong>Fast Delivery (Prepaid Only):</strong> <strong>5 to 6 business days</strong> (100% FREE Delivery). <span style="color: #991b1b; font-weight: 600;">(Bulk pack: Cash on Delivery not available)</span>. Dispatch within <strong>24 hours</strong> from Uttarakhand.</p>
+          {%- elsif is_honey_combo_35g -%}
+            <p>🚚 <strong>Fast Delivery (Prepaid):</strong> <strong>5 to 6 business days</strong> (FREE Delivery). <strong>Standard Shipping (COD):</strong> <strong>7 to 10 business days</strong> (₹50 applied). Dispatch within <strong>24 hours</strong>.</p>
           {%- elsif is_free_shipping_product -%}
             <p>🚚 <strong>Fast Delivery (Prepaid):</strong> <strong>5 to 6 business days</strong> (FREE Delivery). <strong>Standard Shipping (COD):</strong> <strong>7 to 10 business days</strong> (₹100 applied). Dispatch within <strong>24 hours</strong>.</p>
           {%- else -%}
