@@ -2839,6 +2839,8 @@ table.hdt-pr_attrs td {
   display: flex;
   gap: 0.8rem;
   align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .ga-country-prefix {
@@ -2867,7 +2869,10 @@ table.hdt-pr_attrs td {
 }
 
 #GaPincodeInput {
-  flex-grow: 1;
+  flex: 1 1 auto;
+  min-width: 0 !important;
+  width: 100%;
+  box-sizing: border-box;
   padding: 1rem 1.4rem;
   border: 1.5px solid rgba(26, 51, 44, 0.2);
   border-radius: 6px;
@@ -2887,7 +2892,7 @@ table.hdt-pr_attrs td {
 .ga-pincode-check-btn {
   background: var(--ga-forest-green, #1a332c);
   color: #ffffff;
-  padding: 1rem 2rem;
+  padding: 1rem 1.6rem;
   border: none;
   border-radius: 6px;
   font-weight: 700;
@@ -2899,7 +2904,10 @@ table.hdt-pr_attrs td {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 85px;
+  min-width: 70px;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  box-sizing: border-box;
 }
 
 .ga-pincode-check-btn:hover {
@@ -3042,8 +3050,8 @@ table.hdt-pr_attrs td {
   100% { transform: rotate(360deg); }
 }
 
-/* Mobile Responsiveness (360px - 412px) */
-@media screen and (max-width: 640px) {
+/* Tablet & Mobile Responsiveness (up to 1024px) */
+@media screen and (max-width: 1024px) {
   .ga-btn-buy-now {
     font-size: 1.35rem !important;
     padding: 1.3rem 1.6rem !important;
@@ -3052,24 +3060,29 @@ table.hdt-pr_attrs td {
     font-size: 1.25rem !important;
   }
   .ga-pincode-checker {
-    padding: 1.4rem 1.2rem;
+    padding: 1.3rem 1.1rem;
+    box-sizing: border-box;
+    max-width: 100%;
   }
   .ga-pincode-field {
     gap: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
   .ga-country-prefix .ga-country-select {
-    padding: 0.8rem 0.4rem;
+    padding: 0.8rem 0.5rem;
     font-size: 1.2rem;
   }
   #GaPincodeInput {
     padding: 0.8rem 0.8rem;
     font-size: 1.25rem;
-    min-width: 0;
+    min-width: 0 !important;
   }
   .ga-pincode-check-btn {
     padding: 0.8rem 1.2rem;
     min-width: 66px;
     font-size: 1.15rem;
+    flex-shrink: 0 !important;
   }
   .ga-pincode-row {
     font-size: 1.2rem;
