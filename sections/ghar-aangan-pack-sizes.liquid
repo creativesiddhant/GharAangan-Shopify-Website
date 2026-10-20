@@ -265,21 +265,6 @@
     background: #1a332c;
     color: #ffffff !important;
   }
-  .ga-navratri-pack-ribbon {
-    background: linear-gradient(135deg, #fff7ed 0%, #fef2f2 100%);
-    border: 1.5px solid #b91c1c;
-    border-radius: 12px;
-    padding: 12px 18px;
-    margin-bottom: 24px;
-    text-align: center;
-    font-size: 13.5px;
-    color: #881337;
-    box-shadow: 0 4px 14px rgba(185, 28, 28, 0.08);
-  }
-  .ga-navratri-badge {
-    background: linear-gradient(90deg, #991b1b, #b91c1c) !important;
-    color: #ffffff !important;
-  }
 {%- endstyle -%}
 
 <div class="ga-packs-wrapper">
@@ -290,14 +275,9 @@
       <p class="ga-packs-desc">{{ section.settings.description }}</p>
     </div>
 
-    <div class="ga-navratri-pack-ribbon">
-      <span>🌸 <strong>Navratri Festive Special:</strong> Flat <strong>₹100 OFF</strong> on all Ghee pack sizes with coupon code <strong style="background: #ffffff; border: 1px dashed #b91c1c; color: #b91c1c; padding: 2px 7px; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px;" onclick="if(navigator.clipboard){navigator.clipboard.writeText('MATARANI');} alert('Coupon MATARANI copied!');">MATARANI</strong> • Valid Till Navratri Ends</span>
-    </div>
-
     <div class="ga-packs-grid">
       <!-- 550ml Card -->
       <div class="ga-pack-card">
-        <span class="ga-pack-badge ga-navratri-badge">🌸 ₹100 OFF • STARTER</span>
         <a href="/products/a2-desi-pahadi-ghee-550ml" class="ga-pack-image-wrap">
           {%- if img_550 != blank -%}
             {{ img_550 | image_url: width: 400 | image_tag: loading: 'lazy', alt: '550ml Glass Jar - A2 Desi Pahadi Ghee' }}
@@ -342,7 +322,7 @@
 
       <!-- 1 Litre Card -->
       <div class="ga-pack-card is-featured">
-        <span class="ga-pack-badge ga-navratri-badge">🌸 ₹100 OFF • POPULAR</span>
+        <span class="ga-pack-badge">MOST POPULAR</span>
         <a href="/products/a2-desi-pahadi-ghee-1l" class="ga-pack-image-wrap">
           {%- if img_1l != blank -%}
             {{ img_1l | image_url: width: 400 | image_tag: loading: 'lazy', alt: '1 Litre Glass Jar - A2 Desi Pahadi Ghee' }}
@@ -387,7 +367,6 @@
 
       <!-- 2 Litres Card -->
       <div class="ga-pack-card">
-        <span class="ga-pack-badge ga-navratri-badge">🌸 ₹100 OFF • TWIN SAVER</span>
         <a href="/products/a2-desi-pahadi-ghee-2l" class="ga-pack-image-wrap">
           {%- if img_2l != blank -%}
             {{ img_2l | image_url: width: 400 | image_tag: loading: 'lazy', alt: '2 Litres Combo - A2 Desi Pahadi Ghee' }}
@@ -432,7 +411,6 @@
 
       <!-- 5 Litres Card -->
       <div class="ga-pack-card">
-        <span class="ga-pack-badge ga-navratri-badge">🌸 ₹100 OFF • 5L PACK</span>
         <a href="/products/a2-desi-pahadi-ghee-5l" class="ga-pack-image-wrap">
           {%- if img_5l != blank -%}
             {{ img_5l | image_url: width: 400 | image_tag: loading: 'lazy', alt: '5 Litres Family Pack - A2 Desi Pahadi Ghee' }}

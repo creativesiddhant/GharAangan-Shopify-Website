@@ -26,12 +26,6 @@
             "text": "🎉 COD Is Now Live! Shop with our new Cash on Delivery option."
           }
         },
-        "announcement_navratri_ghee": {
-          "type": "announcement",
-          "settings": {
-            "text": "🌸 Navratri Special: Flat ₹100 OFF on All A2 Desi Ghee | Use Code: MATARANI (Till Navratri Ends)"
-          }
-        },
         "block-2": {
           "type": "announcement",
           "settings": {
@@ -60,7 +54,6 @@
       "block_order": [
         "block-1",
         "announcement_cod",
-        "announcement_navratri_ghee",
         "block-2",
         "block-3",
         "announcement_FfhBUT",

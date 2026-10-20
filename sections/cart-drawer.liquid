@@ -39,21 +39,7 @@
           {%- render 'cart-shipping-bar', shipping_amount: shipping_amount -%}
         </div>
       {%- endif -%}
-      {%- liquid
-        assign has_ghee_in_cart = false
-        for item in cart_items
-          if item.product.handle contains 'ghee'
-            assign has_ghee_in_cart = true
-            break
-          endif
-        endfor
-      -%}
-      {%- if has_ghee_in_cart -%}
-        <div class="ga-cart-ghee-navratri-notice" style="background: linear-gradient(135deg, #fff7ed 0%, #fef2f2 100%); border-bottom: 1px solid #fecaca; padding: 7px 16px; font-size: 11.5px; color: #991b1b; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-          <span>🌸 <strong>Navratri Offer:</strong> ₹100 OFF on Ghee with code <strong>MATARANI</strong></span>
-          <span style="font-weight: 800; text-decoration: underline; cursor: pointer; white-space: nowrap;" onclick="if(navigator.clipboard){navigator.clipboard.writeText('MATARANI');} alert('Coupon MATARANI copied! Apply in checkout or click discount icon below.');">Copy Code</span>
-        </div>
-      {%- endif -%}
+
       <cart-items-component class="hdt-mini-cart__wrap hdt-flex hdt-flex-col">
         <div class="hdt-mini-cart__main hdt-relative" ref="cart-items">
           <div data-hdt-scroll-me class="hdt-mini-cart__sroll hdt-current-scrollbar hdt-full-width-link">
@@ -299,12 +285,7 @@
                     <div class="hdt-discount-input-wrapper">
                       <input type="text" name="discount" class="hdt-input" data-cart-discount-input placeholder="{{ 'sections.cart.tool.placeholder_discount' | t | escape }}" data-value="{{ cart.cart_level_discount_applications | map: 'title' | join: ',' }}">
                       <div data-cart-discount-error class="hdt-discount-error hdt-text-error hdt-mt-2" style="display: none;">{{ section.settings.discount_error_message }}</div>
-                      <div class="ga-cart-festive-chip-wrap" style="margin-top: 10px; margin-bottom: 6px; padding: 8px 10px; background: #fffcf7; border: 1px dashed #b91c1c; border-radius: 8px; text-align: left;">
-                        <span style="font-size: 11px; font-weight: 700; color: #881337; display: block; margin-bottom: 5px;">🌸 Navratri Special (Flat ₹100 OFF on Ghee):</span>
-                        <button type="button" onclick="(function(btn){ var inp = btn.closest('.hdt-mini-cart__coupon').querySelector('[data-cart-discount-input]'); if(inp){ inp.value='MATARANI'; var applyBtn = btn.closest('.hdt-mini-cart__coupon').querySelector('[data-cart-discount-apply]'); if(applyBtn){ applyBtn.click(); } } })(this);" style="background: #b91c1c; color: #ffffff; border: none; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 800; cursor: pointer; letter-spacing: 0.5px;">
-                          Apply Code: MATARANI
-                        </button>
-                      </div>
+
                     </div>
                     <div class="hdt-cart__tool-btns hdt-row-flex hdt-flex-cols-1 lg:hdt-flex-cols-2 hdt-justify-center hdt-align-center hdt-text-center">
                       <div class="hdt-col">

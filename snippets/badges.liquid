@@ -153,9 +153,6 @@
       {%- for badge in product.metafields.theme.custom_badges.value limit: 5 -%}{%- assign style_hidden = false -%}
         <span class="hdt-badge hdt-badge__custom hdt-badge__{{ badge | handle }}">{{ badge | escape }}</span>
       {%- endfor -%}
-    {%- if product.handle contains 'ghee' -%}
-      {%- assign style_hidden = false -%}
-      <span class="hdt-badge ga-navratri-card-badge" style="background: linear-gradient(90deg, #991b1b, #b91c1c); color: #ffffff; font-weight: 800; font-size: 9.5px; letter-spacing: 0.4px; border-radius: 4px; padding: 2.5px 7px; box-shadow: 0 2px 6px rgba(185,28,28,0.3);">🌸 ₹100 OFF</span>
     {%- endif -%}
 
     {%- liquid

@@ -366,115 +366,6 @@
     gap: 6px;
   }
 
-  /* Sleek, High-Converting Navratri Coupon Strip */
-  .ga-navratri-coupon-strip {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    background: linear-gradient(135deg, #fffcf7 0%, #fef5ee 100%);
-    border: 1.5px dashed #b91c1c;
-    border-radius: 9px;
-    padding: 9px 12px;
-    margin-top: 10px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(185, 28, 28, 0.05);
-    user-select: all;
-  }
-  .ga-navratri-coupon-strip:hover {
-    background: #fff8f3;
-    border-color: #991b1b;
-    box-shadow: 0 3px 10px rgba(185, 28, 28, 0.1);
-  }
-  .ga-navratri-strip-content {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    min-width: 0;
-    flex: 1;
-  }
-  .ga-navratri-strip-icon {
-    font-size: 15px;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-  .ga-navratri-strip-text {
-    font-size: 12.5px;
-    color: #4a382c;
-    line-height: 1.35;
-    white-space: normal;
-    word-break: normal;
-  }
-  .ga-navratri-strip-text strong {
-    color: #881337;
-  }
-  .ga-navratri-strip-code {
-    display: inline-block;
-    background: #fee2e2;
-    color: #991b1b;
-    font-weight: 800;
-    font-size: 11.5px;
-    padding: 1px 6px;
-    border-radius: 4px;
-    letter-spacing: 0.5px;
-    border: 1px solid #fecaca;
-  }
-  .ga-navratri-strip-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: #b91c1c;
-    color: #ffffff;
-    border: none;
-    padding: 5px 11px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 750;
-    letter-spacing: 0.3px;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: background 0.2s, transform 0.15s;
-    font-family: inherit;
-  }
-  .ga-navratri-coupon-strip:hover .ga-navratri-strip-btn {
-    background: #991b1b;
-  }
-  .ga-navratri-strip-btn.is-copied {
-    background: #15803d !important;
-  }
-  @media (max-width: 1024px) {
-    .ga-navratri-coupon-strip {
-      padding: 8px 10px;
-      gap: 8px;
-    }
-    .ga-navratri-strip-text {
-      font-size: 11.5px;
-      white-space: normal;
-      line-height: 1.35;
-    }
-    .ga-navratri-strip-btn {
-      padding: 5px 9px;
-      font-size: 10.5px;
-      flex-shrink: 0;
-    }
-  }
-  .ga-navratri-pill-tag {
-    background: #b91c1c !important;
-    color: #ffffff !important;
-  }
-  .ga-navratri-label-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 750;
-    color: #991b1b;
-    background: #fee2e2;
-    padding: 2px 7px;
-    border-radius: 5px;
-    margin-left: 6px;
-    letter-spacing: 0.2px;
-  }
 </style>
 
 <div class="hdt-variant-picker hdt-linked-product" {{ block.shopify_attributes }}>
@@ -490,14 +381,12 @@
             {%- else -%}{{ product.title }}
             {%- endif -%}
           </span>
-          <span class="ga-navratri-label-tag">🌸 ₹100 OFF with MATARANI</span>
         </span>
       </div>
 
       <div class="hdt-linked-pack-swatches">
         <!-- 550ml -->
         <a href="/products/a2-desi-pahadi-ghee-550ml" class="hdt-linked-pack-pill{% if product.handle contains '550ml' %} is-selected{% endif %}">
-          <span class="hdt-pill-badge ga-navratri-pill-tag">₹100 OFF</span>
           <span class="hdt-pill-title">550ml</span>
           <span class="hdt-pill-sub">{% if p1.price %}{{ p1.price | money }}{% else %}₹799{% endif %}</span>
           <span class="hdt-pill-delivery-tag">Free Delivery</span>
@@ -505,7 +394,7 @@
 
         <!-- 1 Litre -->
         <a href="/products/a2-desi-pahadi-ghee-1l" class="hdt-linked-pack-pill{% if product.handle contains '1l' or product.handle == 'a2-desi-pahadi-ghee' %} is-selected{% endif %}">
-          <span class="hdt-pill-badge ga-navratri-pill-tag">₹100 OFF</span>
+          <span class="hdt-pill-badge badge-gold">POPULAR</span>
           <span class="hdt-pill-title">1 Litre</span>
           <span class="hdt-pill-sub">{% if p2.price %}{{ p2.price | money }}{% else %}₹1,599{% endif %}</span>
           <span class="hdt-pill-delivery-tag">Free Delivery</span>
@@ -513,7 +402,6 @@
 
         <!-- 2 Litres -->
         <a href="/products/a2-desi-pahadi-ghee-2l" class="hdt-linked-pack-pill{% if product.handle contains '2l' %} is-selected{% endif %}">
-          <span class="hdt-pill-badge ga-navratri-pill-tag">₹100 OFF</span>
           <span class="hdt-pill-title">2 Litres</span>
           <span class="hdt-pill-sub">{% if p3.price %}{{ p3.price | money }}{% else %}₹3,198{% endif %}</span>
           <span class="hdt-pill-delivery-tag tag-prepaid">Prepaid • Free Delivery</span>
@@ -521,45 +409,12 @@
 
         <!-- 5 Litres -->
         <a href="/products/a2-desi-pahadi-ghee-5l" class="hdt-linked-pack-pill{% if product.handle contains '5l' %} is-selected{% endif %}">
-          <span class="hdt-pill-badge ga-navratri-pill-tag">₹100 OFF</span>
+          <span class="hdt-pill-badge badge-green">FAMILY PACK</span>
           <span class="hdt-pill-title">5 Litres</span>
           <span class="hdt-pill-sub">{% if p4.price %}{{ p4.price | money }}{% else %}₹7,995{% endif %}</span>
           <span class="hdt-pill-delivery-tag tag-prepaid">Prepaid • Free Delivery</span>
         </a>
       </div>
-
-      <!-- Sleek Navratri ₹100 OFF Coupon Strip -->
-      <div class="ga-navratri-coupon-strip" onclick="gaCopyNavratriPdpCode(this)" title="Click to copy coupon code MATARANI">
-        <div class="ga-navratri-strip-content">
-          <span class="ga-navratri-strip-icon">🌸</span>
-          <span class="ga-navratri-strip-text">
-            <strong>Navratri Offer:</strong> Flat <strong>₹100 OFF</strong> with code <span class="ga-navratri-strip-code">MATARANI</span>
-          </span>
-        </div>
-        <button type="button" class="ga-navratri-strip-btn" aria-label="Copy coupon code MATARANI">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-          <span class="ga-strip-btn-label">Copy Code</span>
-        </button>
-      </div>
-
-      <script>
-        function gaCopyNavratriPdpCode(el) {
-          if (navigator.clipboard) {
-            navigator.clipboard.writeText('MATARANI');
-          }
-          var btn = el ? el.querySelector('.ga-navratri-strip-btn') : null;
-          var txt = el ? el.querySelector('.ga-strip-btn-label') : null;
-          if (btn && txt) {
-            var orig = txt.innerText;
-            txt.innerText = 'COPIED! ✓';
-            btn.classList.add('is-copied');
-            setTimeout(function() {
-              txt.innerText = orig;
-              btn.classList.remove('is-copied');
-            }, 2000);
-          }
-        }
-      </script>
 
     {%- elsif is_honey -%}
       <div class="hdt-product-form__label hdt-s-text" style="font-weight:600; font-size:14px; margin-bottom: 4px;">

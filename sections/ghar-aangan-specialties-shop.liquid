@@ -846,43 +846,6 @@
       min-height: 42px;
     }
   }
-
-  /* Navratri Festive Badges on Cards */
-  .ga-spec-navratri-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: #fee2e2;
-    color: #991b1b;
-    border: 1px solid #fecaca;
-    font-size: 11px;
-    font-weight: 750;
-    padding: 3px 9px;
-    border-radius: 6px;
-    margin-bottom: 6px;
-    letter-spacing: 0.3px;
-  }
-  .ga-spec-festive-tag-wrap {
-    width: 100%;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-  }
-  .ga-spec-festive-price-tag {
-    font-size: 11px;
-    font-weight: 750;
-    color: #991b1b;
-    background: #fef2f2;
-    border: 1px dashed #b91c1c;
-    padding: 3px 8px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-  }
 {%- endstyle -%}
 
 <div class="ga-spec-section-wrapper" id="ga-specialties-shop">
@@ -905,7 +868,7 @@
       </button>
       {%- if ghee_count > 0 -%}
         <button type="button" class="ga-spec-tab-btn" data-filter="ghee" role="tab" aria-selected="false">
-          <span>🧈 Pure A2 Bilona Ghee (₹100 OFF)</span>
+          <span>🧈 Pure A2 Bilona Ghee</span>
           <span class="ga-spec-tab-count">{{ ghee_count }}</span>
         </button>
       {%- endif -%}
@@ -1025,9 +988,6 @@
 
           <!-- Product Title -->
           <a href="{{ product_url }}" class="ga-spec-title-link">
-            {%- if category == 'ghee' -%}
-              <div style="margin-bottom: 4px;"><span class="ga-spec-navratri-pill">🌸 ₹100 OFF with code MATARANI</span></div>
-            {%- endif -%}
             <h3 class="ga-spec-prod-name">{{ product_title }}</h3>
           </a>
 
@@ -1098,12 +1058,6 @@
               <span class="ga-spec-saving-pill" data-spec-saving-pill style="display:none;"></span>
             {%- endif -%}
           </div>
-
-          {%- if category == 'ghee' -%}
-            <div class="ga-spec-festive-tag-wrap">
-              <span class="ga-spec-festive-price-tag">🌸 Flat ₹100 OFF with code MATARANI</span>
-            </div>
-          {%- endif -%}
 
           <!-- Trust & Shipping Perks -->
           <div class="ga-spec-perks">
