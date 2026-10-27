@@ -16,8 +16,8 @@
           "type": "_slide-item",
           "name": "t:sections.slideshow.blocks.slide.name",
           "settings": {
-            "image": "shopify://shop_images/WhatsApp_Image_2026-08-25_at_12.41.59_AM.jpg",
-            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-08-25_at_1.32.49_AM.jpg",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-28_at_3.00.04_AM.jpg",
+            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-10-28_at_3.00.07_AM.jpg",
             "url": "",
             "banner_target": false,
             "color_scheme": "",
@@ -388,6 +388,261 @@
         "padding_rate": 75
       }
     },
+    "ghar_aangan_specialties": {
+      "type": "ghar-aangan-specialties-shop",
+      "blocks": {
+        "specialty_ghee_550": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "a2-desi-pahadi-ghee-550ml",
+            "title": "550ml Glass Jar - A2 Desi Pahadi Ghee",
+            "category": "ghee",
+            "is_featured": false,
+            "badge_text": "Starter Pack",
+            "origin_tag": "Wood-Fired Bilona Method",
+            "highlight": "Perfect for trial, individual daily wellness, and fresh kitchen tadka. Handcrafted from indigenous Pahadi cattle in lead-free glass jar.",
+            "single_size_label": "550ml Fresh Glass Jar",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_ghee_1l": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "a2-desi-pahadi-ghee-1l",
+            "title": "1 Litre Glass Jar - A2 Desi Pahadi Ghee",
+            "category": "ghee",
+            "is_featured": true,
+            "badge_text": "MOST POPULAR",
+            "origin_tag": "Danedar Granular Texture",
+            "highlight": "Our flagship best-seller. Optimal monthly family size for pure daily wellness, gut health, and authentic Himalayan aroma.",
+            "single_size_label": "1 Litre Glass Jar",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_ghee_2l": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "a2-desi-pahadi-ghee-2l",
+            "title": "2 Litres (2 x 1L) - A2 Desi Pahadi Ghee",
+            "category": "ghee",
+            "is_featured": false,
+            "badge_text": "Twin Jar Saver",
+            "origin_tag": "100% Free Express Delivery",
+            "highlight": "Two fresh 1L glass jars with economical twin jar savings. Free Express Delivery.",
+            "single_size_label": "2 Litres (2 x 1L Jars)",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_ghee_5l": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "a2-desi-pahadi-ghee-5l",
+            "title": "5 Litres Family Pack - A2 Desi Pahadi Ghee",
+            "category": "ghee",
+            "is_featured": false,
+            "badge_text": "Family Stock Saver",
+            "origin_tag": "Lowest Cost-Per-Litre",
+            "highlight": "Maximum value family pack with 12-18 months shelf-life & Free Express Delivery.",
+            "single_size_label": "5 Litres Family Pack",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_honey_combo_35g": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-honey-2-in-1-combo-35g",
+            "title": "Pure Pahadi Honey - 35g × 2 Pack",
+            "category": "honey",
+            "is_featured": false,
+            "badge_text": "2-in-1 Combo Pack",
+            "origin_tag": "Wild Himalayan Blooms",
+            "highlight": "Raw, unpasteurized high-altitude wildflower honey in an exclusive 2-in-1 combo of two 35g mini glass jars. 100% pure mountain harvest.",
+            "single_size_label": "35g × 2 Mini Glass Jars",
+            "default_price": 22900,
+            "default_compare_price": 29900
+          }
+        },
+        "specialty_honey_500g": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-honey-500g",
+            "title": "Pure Pahadi Honey - 550g Glass Jar",
+            "category": "honey",
+            "is_featured": true,
+            "badge_text": "Family Value Pack",
+            "origin_tag": "Wild Himalayan Blooms",
+            "highlight": "100% pure mountain honey in a 550g family jar. Unfiltered, unheated, zero added sugar or syrups for daily household wellness & immunity.",
+            "single_size_label": "550g Family Glass Jar",
+            "default_price": 109900,
+            "default_compare_price": 129900
+          }
+        },
+        "specialty_1": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-rajma-kidney-beans",
+            "title": "Pahadi Rajma (Premium Himalayan Kidney Beans)",
+            "category": "dal",
+            "is_featured": false,
+            "badge_text": "Heirloom Red Rajma",
+            "origin_tag": "Munsyari & Harsil Harvest",
+            "highlight": "Naturally sun-dried unpolished heirloom red kidney beans. Tender melt-in-mouth texture with delicate sweet undertones.",
+            "single_size_label": "500g / 1kg Mountain Pack",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_2": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-bhatt-ki-dal-black-soybean",
+            "title": "Pahadi Bhatt Ki Dal (Black Soybean)",
+            "category": "dal",
+            "is_featured": false,
+            "badge_text": "Anthocyanin Superfood",
+            "origin_tag": "Kumaoni & Garhwali Terraces",
+            "highlight": "Indigenous black soybean celebrated across the hills for authentic Churkani & Dubke. Rich in natural antioxidants & plant protein.",
+            "single_size_label": "500g / 1kg Mountain Pack",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_3": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-gahat-gauhat-ki-dal-horsegram",
+            "title": "Pahadi Gahat Ki Dal (Horse Gram / Kulthi)",
+            "category": "dal",
+            "is_featured": false,
+            "badge_text": "Ayurvedic Therapeutic",
+            "origin_tag": "High-Altitude Kulthi",
+            "highlight": "Ancient mountain pulse revered in Ayurveda for natural warmth, sustained energy, and kidney & urinary wellness.",
+            "single_size_label": "500g / 1kg Mountain Pack",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_4": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-lobia-dal-black-eyed-peas",
+            "title": "Pahadi Lobia Dal (Mountain Cowpeas)",
+            "category": "dal",
+            "is_featured": false,
+            "badge_text": "Easy on Digestion",
+            "origin_tag": "Terrace Cultivation",
+            "highlight": "Delicate, creamy unpolished cowpeas grown in Himalayan terrace fields. Exceptionally light on the stomach and rich in dietary folates.",
+            "single_size_label": "500g / 1kg Mountain Pack",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_5": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-bhaang-loon-100g",
+            "title": "Pahadi Bhaang Loon (Roasted Hemp Salt) - 100g",
+            "category": "salt",
+            "is_featured": false,
+            "badge_text": "Sil-Batta Stone Crushed",
+            "origin_tag": "Roasted Mountain Hemp",
+            "highlight": "Stone-crushed on granite Sil-Batta with roasted Himalayan hemp seeds, rock salt & mountain spices. Irresistibly nutty & warm.",
+            "single_size_label": "100g Sealed Mountain Pouch",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_6": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-chatpata-laal-mirch-loon-100g",
+            "title": "Pahadi Chatpata Laal Mirch Loon - 100g",
+            "category": "salt",
+            "is_featured": false,
+            "badge_text": "Zesty & Fiery Kick",
+            "origin_tag": "Sun-Dried Mountain Chillies",
+            "highlight": "Fiery, smoky mountain salt crushed on Sil-Batta with sun-dried Himalayan red chillies, rock salt & roasted jeera. Adds instant zing.",
+            "single_size_label": "100g Sealed Mountain Pouch",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_7": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-mix-seasoning-loon-100g",
+            "title": "Pahadi Mix Seasoning Loon - 100g",
+            "category": "salt",
+            "is_featured": false,
+            "badge_text": "Wild Mountain Herbs",
+            "origin_tag": "Herbal Mountain Blend",
+            "highlight": "Ancestral herbal blend stone-ground with wild Himalayan mint, mountain garlic chives, and roasted cumin. All-purpose savory seasoning.",
+            "single_size_label": "100g Sealed Mountain Pouch",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_8": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-pisyu-loon-trio-combo-pack-300g",
+            "title": "Pahadi Pisyu Loon Trio Pack (3 x 100g)",
+            "category": "salt",
+            "is_featured": false,
+            "badge_text": "Best Value Trio (300g)",
+            "origin_tag": "Complete Tasting Experience",
+            "highlight": "All 3 signature stone-ground salts: 1x Bhaang Loon, 1x Chatpata Laal Mirch, and 1x Mix Seasoning Loon in a convenient kitchen saver box.",
+            "single_size_label": "3 x 100g Complete Gift Set",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        },
+        "specialty_9": {
+          "type": "specialty_product",
+          "settings": {
+            "product_handle": "pahadi-mandua-ka-aata-ragi",
+            "title": "Pahadi Mandua Ka Aata (Ragi Flour)",
+            "category": "millet",
+            "is_featured": false,
+            "badge_text": "Watermill Stone-Ground",
+            "origin_tag": "Traditional Gharat Milled",
+            "highlight": "Heirloom high-altitude finger millet cold stone-ground in traditional Himalayan watermills (Gharats). High calcium, iron & 100% gluten-free.",
+            "single_size_label": "1kg / 5kg Farm Pack",
+            "default_price": 39900,
+            "default_compare_price": 44900
+          }
+        }
+      },
+      "block_order": [
+        "specialty_ghee_550",
+        "specialty_ghee_1l",
+        "specialty_ghee_2l",
+        "specialty_ghee_5l",
+        "specialty_honey_combo_35g",
+        "specialty_honey_500g",
+        "specialty_1",
+        "specialty_2",
+        "specialty_3",
+        "specialty_4",
+        "specialty_5",
+        "specialty_6",
+        "specialty_7",
+        "specialty_8",
+        "specialty_9"
+      ],
+      "settings": {
+        "background_color": "#faf8f5",
+        "subtitle": "100% PURE BILONA A2 GHEE & HIMALAYAN SPECIALTIES",
+        "title": "Authentic Pahadi Specialties & Pure A2 Bilona Ghee",
+        "description": "Handcrafted over wood-fires from Himalayan Pahadi cattle alongside unpolished heirloom pulses, traditional Sil-Batta herbal salts, and watermill-milled ancient grains from Uttarakhand.",
+        "padding_top": 40,
+        "padding_bottom": 60
+      }
+    },
     "ghar_aangan_video": {
       "type": "ghar-aangan-video",
       "settings": {
@@ -524,6 +779,28 @@
         "padding_bottom": 60
       }
     },
+    "ghar_aangan_quality_trust": {
+      "type": "ghar-aangan-quality-trust",
+      "settings": {
+        "background_color": "#fdfbf7",
+        "subtitle": "100% TRANSPARENCY & VERIFIED ORIGIN",
+        "title": "Quality You Can Verify",
+        "description": "Every jar of Ghar Aangan ghee is pure, unadulterated Himalayan cow milk fat crafted in Uttarakhand, verified for pure A2 beta-casein. Below is our verified testing analysis and production standards.",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ghar_aangan_breed_clarification": {
+      "type": "ghar-aangan-breed-clarification",
+      "settings": {
+        "subtitle": "TRANSPARENCY & CATTLE HERITAGE",
+        "title": "Understanding Breed Identity & A1/A2 Sourcing",
+        "description": "At Ghar Aangan, we celebrate Uttarakhand’s native Badri cattle while upholding complete transparency on milk genetics, breed characteristics, and verified beta-casein protein standards.",
+        "background_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "ghar_aangan_trust_badges": {
       "type": "ghar-aangan-trust-badges",
       "blocks": {
@@ -625,76 +902,6 @@
         "padding_bottom": 60
       }
     },
-    "ghar_aangan_faq": {
-      "type": "ghar-aangan-faq",
-      "blocks": {
-        "faq_1": {
-          "type": "faq",
-          "settings": {
-            "question": "What is the shelf life of Ghar Aangan Ghee?",
-            "answer": "<p>Pure, hand-churned ghee is highly stable and does not spoil easily. It can last up to 12-18 months at room temperature. Keep it in a dry, dark place and always use a clean, dry spoon to extend its shelf life.</p>"
-          }
-        },
-        "faq_2": {
-          "type": "faq",
-          "settings": {
-            "question": "Why is Badri cow ghee considered premium?",
-            "answer": "<p>Badri cattle are a recognised indigenous breed associated with the hilly terrain and livestock heritage of Uttarakhand. They free-graze on mountain pastures, herbs, and clean flora, yielding a limited, nutrient-rich milk that is deeply revered in traditional Pahadi culture.</p>"
-          }
-        },
-        "faq_breed_clarification": {
-          "type": "faq",
-          "settings": {
-            "question": "Why do we see Jersey or different cow breeds in your videos? Does breed define A1 or A2?",
-            "answer": "<p>A1 or A2 status is defined by the <strong>beta-casein protein variant</strong> in milk, not by cow breed alone. While Badri is a unique Uttarakhand hill breed, scientific studies confirm that A2A2 beta-casein exists within Jersey populations as well as indigenous Indian cattle. At Ghar Aangan, we work directly with Uttarakhand mountain farmers who rear Badri cattle, local Pahadi cattle, and other breeds including Jersey. We test every batch for verified A2 beta-casein while maintaining complete transparency about cattle sourcing.</p>"
-          }
-        },
-        "faq_3": {
-          "type": "faq",
-          "settings": {
-            "question": "Does it need refrigeration?",
-            "answer": "<p>No, pure ghee does not require refrigeration. In fact, storing it in the fridge will alter its granular texture. It is best stored in its original glass jar in your kitchen pantry.</p>"
-          }
-        },
-        "faq_4": {
-          "type": "faq",
-          "settings": {
-            "question": "How is Pahadi Gud (Traditional Jaggery) prepared?",
-            "answer": "<p>Our traditional jaggery is made by slow wood-fired boiling of fresh sugarcane juice, unrefined and chemical-free. We blend it with native mountain herbs, seeds, and premium dry fruits (like Kaju, Badam, Kismis, and Saunf) to create delicious, mineral-rich sweetener options.</p>"
-          }
-        },
-        "faq_5": {
-          "type": "faq",
-          "settings": {
-            "question": "What is Pisyu Loon (Salts) and Mandua Flour?",
-            "answer": "<p>Pisyu Loon is Uttarakhand's heritage salt, hand-crushed on traditional stone (Sil-Batta) with native mountain herbs, seeds (like Bhaang/Hemp), and chilis. Mandua Ka Aata (Ragi) is high-altitude, stone-ground finger millet flour that is naturally gluten-free and rich in calcium, iron, and fiber.</p>"
-          }
-        },
-        "faq_6": {
-          "type": "faq",
-          "settings": {
-            "question": "Are the pulses and fruit juices organic and natural?",
-            "answer": "<p>Yes! Our Heritage Dals & Pulses (like Rajma, Bhatt Ki Dal, Gauhat, and Lobia) are mountain-grown, unpolished, and protein-dense. Our Fruit Juices & Squashes (like Buransh/Rhododendron, Amla, and Orange) are crafted from wild-harvested Himalayan fruits and flowers, rich in Vitamin C and antioxidants.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_1",
-        "faq_2",
-        "faq_breed_clarification",
-        "faq_3",
-        "faq_4",
-        "faq_5",
-        "faq_6"
-      ],
-      "settings": {
-        "background_color": "#ffffff",
-        "subtitle": "HELP & SUPPORT",
-        "title": "Frequently Answered Questions",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
     "ghar_aangan_video_testimonials": {
       "type": "ghar-aangan-video-testimonials",
       "blocks": {
@@ -783,6 +990,7 @@
       ],
       "settings": {
         "background_color": "#ffffff",
+        "title_color": "#1a332c",
         "subtitle": "REAL EXPERIENCES",
         "title": "Loved Across India • Video Reviews",
         "description": "Watch honest unboxing and taste reviews from our verified Ghar Aangan family across India.",
@@ -791,241 +999,73 @@
         "padding_bottom": 64
       }
     },
-    "ghar_aangan_quality_trust": {
-      "type": "ghar-aangan-quality-trust",
-      "settings": {
-        "background_color": "#fdfbf7",
-        "subtitle": "100% TRANSPARENCY & VERIFIED ORIGIN",
-        "title": "Quality You Can Verify",
-        "description": "Every jar of Ghar Aangan ghee is pure, unadulterated Himalayan cow milk fat crafted in Uttarakhand, verified for pure A2 beta-casein. Below is our verified testing analysis and production standards.",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "ghar_aangan_breed_clarification": {
-      "type": "ghar-aangan-breed-clarification",
-      "settings": {
-        "subtitle": "TRANSPARENCY & CATTLE HERITAGE",
-        "title": "Understanding Breed Identity & A1/A2 Sourcing",
-        "description": "At Ghar Aangan, we celebrate Uttarakhand’s native Badri cattle while upholding complete transparency on milk genetics, breed characteristics, and verified beta-casein protein standards.",
-        "background_color": "#ffffff",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "ghar_aangan_specialties": {
-      "type": "ghar-aangan-specialties-shop",
+    "ghar_aangan_faq": {
+      "type": "ghar-aangan-faq",
       "blocks": {
-        "specialty_ghee_550": {
-          "type": "specialty_product",
+        "faq_1": {
+          "type": "faq",
           "settings": {
-            "product_handle": "a2-desi-pahadi-ghee-550ml",
-            "title": "550ml Glass Jar - A2 Desi Pahadi Ghee",
-            "category": "ghee",
-            "badge_text": "Starter Pack",
-            "origin_tag": "Wood-Fired Bilona Method",
-            "highlight": "Perfect for trial, individual daily wellness, and fresh kitchen tadka. Handcrafted from indigenous Pahadi cattle in lead-free glass jar.",
-            "single_size_label": "550ml Fresh Glass Jar"
+            "question": "What is the shelf life of Ghar Aangan Ghee?",
+            "answer": "<p>Pure, hand-churned ghee is highly stable and does not spoil easily. It can last up to 12-18 months at room temperature. Keep it in a dry, dark place and always use a clean, dry spoon to extend its shelf life.</p>"
           }
         },
-        "specialty_ghee_1l": {
-          "type": "specialty_product",
+        "faq_2": {
+          "type": "faq",
           "settings": {
-            "product_handle": "a2-desi-pahadi-ghee-1l",
-            "title": "1 Litre Glass Jar - A2 Desi Pahadi Ghee",
-            "category": "ghee",
-            "is_featured": true,
-            "badge_text": "MOST POPULAR",
-            "origin_tag": "Danedar Granular Texture",
-            "highlight": "Our flagship best-seller. Optimal monthly family size for pure daily wellness, gut health, and authentic Himalayan aroma.",
-            "single_size_label": "1 Litre Glass Jar"
+            "question": "Why is Badri cow ghee considered premium?",
+            "answer": "<p>Badri cattle are a recognised indigenous breed associated with the hilly terrain and livestock heritage of Uttarakhand. They free-graze on mountain pastures, herbs, and clean flora, yielding a limited, nutrient-rich milk that is deeply revered in traditional Pahadi culture.</p>"
           }
         },
-        "specialty_ghee_2l": {
-          "type": "specialty_product",
+        "faq_breed_clarification": {
+          "type": "faq",
           "settings": {
-            "product_handle": "a2-desi-pahadi-ghee-2l",
-            "title": "2 Litres (2 x 1L) - A2 Desi Pahadi Ghee",
-            "category": "ghee",
-            "badge_text": "Twin Jar Saver",
-            "origin_tag": "100% Free Express Delivery",
-            "highlight": "Two fresh 1L glass jars with economical twin jar savings. Free Express Delivery.",
-            "single_size_label": "2 Litres (2 x 1L Jars)"
+            "question": "Why do we see Jersey or different cow breeds in your videos? Does breed define A1 or A2?",
+            "answer": "<p>A1 or A2 status is defined by the <strong>beta-casein protein variant</strong> in milk, not by cow breed alone. While Badri is a unique Uttarakhand hill breed, scientific studies confirm that A2A2 beta-casein exists within Jersey populations as well as indigenous Indian cattle. At Ghar Aangan, we work directly with Uttarakhand mountain farmers who rear Badri cattle, local Pahadi cattle, and other breeds including Jersey. We test every batch for verified A2 beta-casein while maintaining complete transparency about cattle sourcing.</p>"
           }
         },
-        "specialty_ghee_5l": {
-          "type": "specialty_product",
+        "faq_3": {
+          "type": "faq",
           "settings": {
-            "product_handle": "a2-desi-pahadi-ghee-5l",
-            "title": "5 Litres Family Pack - A2 Desi Pahadi Ghee",
-            "category": "ghee",
-            "badge_text": "Family Stock Saver",
-            "origin_tag": "Lowest Cost-Per-Litre",
-            "highlight": "Maximum value family pack with 12-18 months shelf-life & Free Express Delivery.",
-            "single_size_label": "5 Litres Family Pack"
+            "question": "Does it need refrigeration?",
+            "answer": "<p>No, pure ghee does not require refrigeration. In fact, storing it in the fridge will alter its granular texture. It is best stored in its original glass jar in your kitchen pantry.</p>"
           }
         },
-        "specialty_1": {
-          "type": "specialty_product",
+        "faq_4": {
+          "type": "faq",
           "settings": {
-            "product_handle": "pahadi-rajma-kidney-beans",
-            "title": "Pahadi Rajma (Premium Himalayan Kidney Beans)",
-            "category": "dal",
-            "badge_text": "Heirloom Red Rajma",
-            "origin_tag": "Munsyari & Harsil Harvest",
-            "highlight": "Naturally sun-dried unpolished heirloom red kidney beans. Tender melt-in-mouth texture with delicate sweet undertones.",
-            "single_size_label": "500g / 1kg Mountain Pack"
+            "question": "How is Pahadi Gud (Traditional Jaggery) prepared?",
+            "answer": "<p>Our traditional jaggery is made by slow wood-fired boiling of fresh sugarcane juice, unrefined and chemical-free. We blend it with native mountain herbs, seeds, and premium dry fruits (like Kaju, Badam, Kismis, and Saunf) to create delicious, mineral-rich sweetener options.</p>"
           }
         },
-        "specialty_2": {
-          "type": "specialty_product",
+        "faq_5": {
+          "type": "faq",
           "settings": {
-            "product_handle": "pahadi-bhatt-ki-dal-black-soybean",
-            "title": "Pahadi Bhatt Ki Dal (Black Soybean)",
-            "category": "dal",
-            "badge_text": "Anthocyanin Superfood",
-            "origin_tag": "Kumaoni & Garhwali Terraces",
-            "highlight": "Indigenous black soybean celebrated across the hills for authentic Churkani & Dubke. Rich in natural antioxidants & plant protein.",
-            "single_size_label": "500g / 1kg Mountain Pack"
+            "question": "What is Pisyu Loon (Salts) and Mandua Flour?",
+            "answer": "<p>Pisyu Loon is Uttarakhand's heritage salt, hand-crushed on traditional stone (Sil-Batta) with native mountain herbs, seeds (like Bhaang/Hemp), and chilis. Mandua Ka Aata (Ragi) is high-altitude, stone-ground finger millet flour that is naturally gluten-free and rich in calcium, iron, and fiber.</p>"
           }
         },
-        "specialty_3": {
-          "type": "specialty_product",
+        "faq_6": {
+          "type": "faq",
           "settings": {
-            "product_handle": "pahadi-gahat-gauhat-ki-dal-horsegram",
-            "title": "Pahadi Gahat Ki Dal (Horse Gram / Kulthi)",
-            "category": "dal",
-            "badge_text": "Ayurvedic Therapeutic",
-            "origin_tag": "High-Altitude Kulthi",
-            "highlight": "Ancient mountain pulse revered in Ayurveda for natural warmth, sustained energy, and kidney & urinary wellness.",
-            "single_size_label": "500g / 1kg Mountain Pack"
-          }
-        },
-        "specialty_4": {
-          "type": "specialty_product",
-          "settings": {
-            "product_handle": "pahadi-lobia-dal-black-eyed-peas",
-            "title": "Pahadi Lobia Dal (Mountain Cowpeas)",
-            "category": "dal",
-            "badge_text": "Easy on Digestion",
-            "origin_tag": "Terrace Cultivation",
-            "highlight": "Delicate, creamy unpolished cowpeas grown in Himalayan terrace fields. Exceptionally light on the stomach and rich in dietary folates.",
-            "single_size_label": "500g / 1kg Mountain Pack"
-          }
-        },
-        "specialty_5": {
-          "type": "specialty_product",
-          "settings": {
-            "product_handle": "pahadi-bhaang-loon-100g",
-            "title": "Pahadi Bhaang Loon (Roasted Hemp Salt) - 100g",
-            "category": "salt",
-            "badge_text": "Sil-Batta Stone Crushed",
-            "origin_tag": "Roasted Mountain Hemp",
-            "highlight": "Stone-crushed on granite Sil-Batta with roasted Himalayan hemp seeds, rock salt & mountain spices. Irresistibly nutty & warm.",
-            "single_size_label": "100g Sealed Mountain Pouch"
-          }
-        },
-        "specialty_6": {
-          "type": "specialty_product",
-          "settings": {
-            "product_handle": "pahadi-chatpata-laal-mirch-loon-100g",
-            "title": "Pahadi Chatpata Laal Mirch Loon - 100g",
-            "category": "salt",
-            "badge_text": "Zesty & Fiery Kick",
-            "origin_tag": "Sun-Dried Mountain Chillies",
-            "highlight": "Fiery, smoky mountain salt crushed on Sil-Batta with sun-dried Himalayan red chillies, rock salt & roasted jeera. Adds instant zing.",
-            "single_size_label": "100g Sealed Mountain Pouch"
-          }
-        },
-        "specialty_7": {
-          "type": "specialty_product",
-          "settings": {
-            "product_handle": "pahadi-mix-seasoning-loon-100g",
-            "title": "Pahadi Mix Seasoning Loon - 100g",
-            "category": "salt",
-            "badge_text": "Wild Mountain Herbs",
-            "origin_tag": "Herbal Mountain Blend",
-            "highlight": "Ancestral herbal blend stone-ground with wild Himalayan mint, mountain garlic chives, and roasted cumin. All-purpose savory seasoning.",
-            "single_size_label": "100g Sealed Mountain Pouch"
-          }
-        },
-        "specialty_8": {
-          "type": "specialty_product",
-          "settings": {
-            "product_handle": "pahadi-pisyu-loon-trio-combo-pack-300g",
-            "title": "Pahadi Pisyu Loon Trio Pack (3 x 100g)",
-            "category": "salt",
-            "badge_text": "Best Value Trio (300g)",
-            "origin_tag": "Complete Tasting Experience",
-            "highlight": "All 3 signature stone-ground salts: 1x Bhaang Loon, 1x Chatpata Laal Mirch, and 1x Mix Seasoning Loon in a convenient kitchen saver box.",
-            "single_size_label": "3 x 100g Complete Gift Set"
-          }
-        },
-        "specialty_9": {
-          "type": "specialty_product",
-          "settings": {
-            "product_handle": "pahadi-mandua-ka-aata-ragi",
-            "title": "Pahadi Mandua Ka Aata (Ragi Flour)",
-            "category": "millet",
-            "badge_text": "Watermill Stone-Ground",
-            "origin_tag": "Traditional Gharat Milled",
-            "highlight": "Heirloom high-altitude finger millet cold stone-ground in traditional Himalayan watermills (Gharats). High calcium, iron & 100% gluten-free.",
-            "single_size_label": "1kg / 5kg Farm Pack"
-          }
-        },
-        "specialty_honey_combo_35g": {
-          "type": "specialty_product",
-          "settings": {
-            "product_handle": "pahadi-honey-2-in-1-combo-35g",
-            "title": "Pure Pahadi Honey - 35g × 2 Pack",
-            "category": "honey",
-            "badge_text": "2-in-1 Combo Pack",
-            "origin_tag": "Wild Himalayan Blooms",
-            "highlight": "Raw, unpasteurized high-altitude wildflower honey in an exclusive 2-in-1 combo of two 35g mini glass jars. 100% pure mountain harvest.",
-            "single_size_label": "35g × 2 Mini Glass Jars",
-            "default_price": 22900,
-            "default_compare_price": 29900
-          }
-        },
-        "specialty_honey_500g": {
-          "type": "specialty_product",
-          "settings": {
-            "product_handle": "pahadi-honey-500g",
-            "title": "Pure Pahadi Honey - 550g Glass Jar",
-            "category": "honey",
-            "is_featured": true,
-            "badge_text": "Family Value Pack",
-            "origin_tag": "Wild Himalayan Blooms",
-            "highlight": "100% pure mountain honey in a 550g family jar. Unfiltered, unheated, zero added sugar or syrups for daily household wellness & immunity.",
-            "single_size_label": "550g Family Glass Jar",
-            "default_price": 109900,
-            "default_compare_price": 129900
+            "question": "Are the pulses and fruit juices organic and natural?",
+            "answer": "<p>Yes! Our Heritage Dals & Pulses (like Rajma, Bhatt Ki Dal, Gauhat, and Lobia) are mountain-grown, unpolished, and protein-dense. Our Fruit Juices & Squashes (like Buransh/Rhododendron, Amla, and Orange) are crafted from wild-harvested Himalayan fruits and flowers, rich in Vitamin C and antioxidants.</p>"
           }
         }
       },
       "block_order": [
-        "specialty_ghee_550",
-        "specialty_ghee_1l",
-        "specialty_ghee_2l",
-        "specialty_ghee_5l",
-        "specialty_honey_combo_35g",
-        "specialty_honey_500g",
-        "specialty_1",
-        "specialty_2",
-        "specialty_3",
-        "specialty_4",
-        "specialty_5",
-        "specialty_6",
-        "specialty_7",
-        "specialty_8",
-        "specialty_9"
+        "faq_1",
+        "faq_2",
+        "faq_breed_clarification",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6"
       ],
       "settings": {
-        "background_color": "#faf8f5",
-        "subtitle": "100% PURE BILONA A2 GHEE & HIMALAYAN SPECIALTIES",
-        "title": "Authentic Pahadi Specialties & Pure A2 Bilona Ghee",
-        "description": "Handcrafted over wood-fires from Himalayan Pahadi cattle alongside unpolished heirloom pulses, traditional Sil-Batta herbal salts, and watermill-milled ancient grains from Uttarakhand.",
-        "padding_top": 40,
+        "background_color": "#ffffff",
+        "subtitle": "HELP & SUPPORT",
+        "title": "Frequently Answered Questions",
+        "padding_top": 60,
         "padding_bottom": 60
       }
     }
