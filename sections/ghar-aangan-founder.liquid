@@ -77,12 +77,12 @@
     border: 2px solid #ecdcb9;
     box-shadow: 0 12px 30px rgba(26, 51, 44, 0.07);
     background-color: #0c1412;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4 / 5;
   }
 
   @media screen and (min-width: 860px) {
     .ga-founder-image-frame {
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 4 / 5;
     }
   }
 
@@ -93,20 +93,21 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 25%;
+    object-position: center 30%;
     display: block;
     transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .ga-founder-card:hover .ga-founder-img {
-    transform: scale(1.04);
+    transform: scale(1.03);
   }
 
-  /* Floating Authentic Badge */
+  /* Floating Authentic Badge: Positioned at top-left over the background trees so founder is never covered */
   .ga-founder-floating-badge {
     position: absolute;
-    bottom: 16px;
+    top: 16px;
     left: 16px;
+    bottom: auto;
     right: auto;
     background: rgba(26, 51, 44, 0.9);
     backdrop-filter: blur(10px);
@@ -291,25 +292,72 @@
     color: #a8792c;
   }
 
-  /* Mobile Tweaks */
+  /* Mobile Tweaks: Full-bleed wide image and complete 3:4 portrait visibility */
   @media screen and (max-width: 859px) {
     .ga-founder-card {
-      border-radius: 18px;
-      padding: 22px 18px 26px 18px;
+      border-radius: 20px;
+      padding: 0 0 26px 0; /* Full bleed image across the top of card */
+      overflow: hidden;
     }
 
     .ga-founder-grid {
-      gap: 22px;
+      gap: 0;
+    }
+
+    .ga-founder-image-col {
+      width: 100%;
+      margin: 0;
     }
 
     .ga-founder-image-frame {
-      aspect-ratio: 4 / 3;
-      border-radius: 14px;
+      width: 100%;
+      aspect-ratio: 3 / 4; /* Generous 3:4 portrait ratio shows the person, traditional jewelry, hands & ghee completely */
+      border-radius: 19px 19px 0 0;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 2px solid #ecdcb9;
+      box-shadow: none;
+    }
+
+    .ga-founder-img {
+      object-position: center 30%; /* Balanced focus on face, traditional jewelry and ghee bowl */
+    }
+
+    .ga-founder-floating-badge {
+      top: 14px;
+      left: 14px;
+      bottom: auto;
+      right: auto;
+      font-size: 11.5px;
+      padding: 6px 12px;
+    }
+
+    .ga-founder-content-col {
+      padding: 24px 20px 0 20px; /* Clean, spacious padding for text below the full-width image */
+    }
+
+    .ga-founder-header-area {
+      margin-bottom: 16px;
+    }
+
+    .ga-founder-title {
+      font-size: clamp(2.2rem, 5.5vw, 2.8rem);
+      margin-bottom: 12px;
+    }
+
+    .ga-founder-divider {
+      margin-bottom: 16px;
     }
 
     .ga-founder-quote-box {
       padding-left: 14px;
       margin-bottom: 20px;
+    }
+
+    .ga-founder-text {
+      font-size: 1.5rem;
+      line-height: 1.75;
     }
 
     .ga-founder-values {
@@ -354,9 +402,9 @@
               alt="{{ section.settings.title | escape }} - Ghar Aangan Founder Story"
               loading="lazy"
               width="900"
-              height="675"
+              height="1200"
             >
-            <!-- Authentic Corner Badge -->
+            <!-- Authentic Corner Badge: Placed top-left in the sky/foliage area so founder is never obscured -->
             <div class="ga-founder-floating-badge">
               <svg viewBox="0 0 24 24"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2L7.25 10 2 17h20L14 6z"/></svg>
               <span>Timeless Uttarakhand Kitchens</span>
@@ -439,7 +487,7 @@
       "type": "image_picker",
       "id": "image",
       "label": "Founder Image",
-      "info": "Upload founder photograph. Optimal 4:3 or 1:1 ratio."
+      "info": "Upload founder photograph. Optimal 3:4 or 4:5 ratio."
     },
     {
       "type": "text",
