@@ -657,20 +657,32 @@
         "padding_bottom": 60
       }
     },
-    "ghar_aangan_storytelling": {
-      "type": "ghar-aangan-storytelling",
+    "ghar_aangan_founder": {
+      "type": "ghar-aangan-founder",
+      "settings": {
+        "background_color": "#ffffff",
+        "card_bg": "#faf8f5",
+        "image": "shopify://shop_images/WhatsApp_Image_2026-08-21_at_2.49.14_AM_3.jpg",
+        "subtitle": "THE FOUNDER'S JOURNEY",
+        "title": "Back to the Soil",
+        "description": "At Ghar Aangan, we believe that food is more than nourishment—it is tradition, heritage, family, and trust. Inspired by the timeless kitchens of Uttarakhand, our mission is to reconnect modern families with authentic Himalayan foods prepared using traditional methods that have been preserved for generations.",
+        "cta_label": "Explore Our Products",
+        "cta_link": "#ga-specialties-shop",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ghar_aangan_heritage": {
+      "type": "ghar-aangan-heritage",
       "settings": {
         "background_color": "#faf8f5",
-        "header_subtitle": "OUR ROOTS & HERITAGE",
-        "header_title": "Crafted with Intent, Churned with Tradition",
-        "block1_image": "shopify://shop_images/WhatsApp_Image_2026-08-21_at_2.49.14_AM_3.jpg",
-        "block1_subtitle": "THE FOUNDER'S JOURNEY",
-        "block1_title": "Back to the Soil",
-        "block1_description": "At Ghar Aangan, we believe that food is more than nourishment—it is tradition, heritage, family, and trust. Inspired by the timeless kitchens of Uttarakhand, our mission is to reconnect modern families with authentic Himalayan foods prepared using traditional methods that have been preserved for generations.",
-        "block2_image": "shopify://shop_images/homepage_image_2.png",
-        "block2_subtitle": "HIMALAYAN HERITAGE",
-        "block2_title": "Purity from the High Altitudes",
-        "block2_description": "From handcrafted Bilona A2 Ghee sourced from indigenous Badri and local Uttarakhand cattle to mountain-grown grains, heritage pulses, natural jaggery, medicinal fruit squashes, and traditional Himalayan seasonings, every product carries the warmth of home.",
+        "card_bg": "#ffffff",
+        "image": "shopify://shop_images/homepage_image_2.png",
+        "subtitle": "HIMALAYAN HERITAGE",
+        "title": "Purity from the High Altitudes",
+        "description": "From handcrafted Bilona A2 Ghee sourced from indigenous Badri and local Uttarakhand cattle to mountain-grown grains, heritage pulses, natural jaggery, medicinal fruit squashes, and traditional Himalayan seasonings, every product carries the warmth of home.",
+        "cta_label": "Shop Pure Specialties",
+        "cta_link": "#ga-specialties-shop",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -1072,9 +1084,10 @@
   },
   "order": [
     "ghar_aangan_hero",
-    "ghar_aangan_specialties",
     "ghar_aangan_video",
-    "ghar_aangan_storytelling",
+    "ghar_aangan_founder",
+    "ghar_aangan_specialties",
+    "ghar_aangan_heritage",
     "ghar_aangan_benefits",
     "ghar_aangan_process",
     "ghar_aangan_quality_trust",
