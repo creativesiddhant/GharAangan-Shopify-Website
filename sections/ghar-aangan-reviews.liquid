@@ -82,7 +82,15 @@
     pointer-events: none;
   }
 
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 641px) and (max-width: 990px) {
+    .ga-review-item {
+      flex: 0 0 calc(50% - 1.5rem);
+      scroll-snap-align: start;
+      padding: 3.8rem 2.6rem;
+    }
+  }
+
+  @media screen and (min-width: 991px) {
     .ga-review-item {
       flex: 0 0 calc(33.333% - 2rem);
       scroll-snap-align: start;

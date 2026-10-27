@@ -56,9 +56,16 @@
     z-index: 1;
   }
 
-  @media screen and (min-width: 860px) {
+  /* Tablet & Desktop Grid */
+  @media screen and (min-width: 641px) {
     .ga-founder-grid {
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+      gap: 32px;
+    }
+  }
+
+  @media screen and (min-width: 1025px) {
+    .ga-founder-grid {
       gap: 52px;
     }
   }
@@ -78,12 +85,6 @@
     box-shadow: 0 12px 30px rgba(26, 51, 44, 0.07);
     background-color: #0c1412;
     aspect-ratio: 4 / 5;
-  }
-
-  @media screen and (min-width: 860px) {
-    .ga-founder-image-frame {
-      aspect-ratio: 4 / 5;
-    }
   }
 
   .ga-founder-img {
@@ -292,11 +293,102 @@
     color: #a8792c;
   }
 
-  /* Mobile Tweaks: Full-bleed wide image and complete 3:4 portrait visibility */
-  @media screen and (max-width: 859px) {
+  /* Tablet Portrait Specific Tweaks (iPad, Android Tablets 641px - 899px) */
+  @media screen and (min-width: 641px) and (max-width: 899px) {
     .ga-founder-card {
       border-radius: 20px;
-      padding: 0 0 26px 0; /* Full bleed image across the top of card */
+      padding: 26px 22px;
+    }
+
+    .ga-founder-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 24px;
+    }
+
+    .ga-founder-image-frame {
+      aspect-ratio: 4 / 5;
+      border-radius: 14px;
+    }
+
+    .ga-founder-floating-badge {
+      top: 12px;
+      left: 12px;
+      font-size: 11px;
+      padding: 5px 10px;
+    }
+
+    .ga-founder-header-area {
+      margin-bottom: 14px;
+    }
+
+    .ga-founder-title {
+      font-size: clamp(2.1rem, 3.2vw, 2.6rem);
+      margin-bottom: 10px;
+    }
+
+    .ga-founder-divider {
+      margin-bottom: 14px;
+    }
+
+    .ga-founder-quote-box {
+      padding-left: 14px;
+      margin-bottom: 16px;
+    }
+
+    .ga-founder-text {
+      font-size: 1.4rem;
+      line-height: 1.68;
+    }
+
+    .ga-founder-values {
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .ga-founder-value-pill {
+      font-size: 11px;
+      padding: 5px 10px;
+    }
+
+    .ga-founder-action-row {
+      gap: 12px;
+    }
+
+    .ga-founder-cta-btn {
+      padding: 11px 20px;
+      font-size: 11.5px;
+    }
+
+    .ga-founder-origin-badge {
+      font-size: 11px;
+    }
+  }
+
+  /* Tablet Landscape Specific Tweaks (900px - 1080px) */
+  @media screen and (min-width: 900px) and (max-width: 1080px) {
+    .ga-founder-card {
+      padding: 34px 28px;
+    }
+
+    .ga-founder-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+      gap: 34px;
+    }
+
+    .ga-founder-title {
+      font-size: clamp(2.5rem, 3.4vw, 3.2rem);
+    }
+
+    .ga-founder-text {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Mobile Tweaks (max-width: 640px): Full-bleed wide image and complete 3:4 portrait visibility */
+  @media screen and (max-width: 640px) {
+    .ga-founder-card {
+      border-radius: 20px;
+      padding: 0 0 26px 0; /* Full bleed image across the top of card on mobile */
       overflow: hidden;
     }
 

@@ -19,11 +19,21 @@
   .ga-process-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
     position: relative;
   }
 
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 641px) and (max-width: 990px) {
+    .ga-process-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .ga-process-card {
+      padding: 4rem 2rem 3rem 2rem;
+    }
+  }
+
+  @media screen and (min-width: 991px) {
     .ga-process-grid {
       grid-template-columns: repeat(5, 1fr);
       gap: 2.2rem;

@@ -79,6 +79,13 @@
     max-width: 1200px;
   }
 
+  /* Tablet portrait constraint for 9:16 portrait video to prevent excessive height on iPads */
+  @media screen and (min-width: 641px) and (max-width: 1024px) {
+    .ga-video-ratio-9_16.ga-video-width-medium {
+      max-width: 390px;
+    }
+  }
+
   /* Make sure video scales inside the aspect ratio wrapper */
   .ga-video-wrapper iframe {
     position: absolute;

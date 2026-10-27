@@ -18,11 +18,21 @@
 
   .ga-badges-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 480px) and (max-width: 990px) {
+    .ga-badges-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+    .ga-badge-card {
+      padding: 3.5rem 2rem;
+    }
+  }
+
+  @media screen and (min-width: 991px) {
     .ga-badges-grid {
       grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
       gap: 3.5rem;
