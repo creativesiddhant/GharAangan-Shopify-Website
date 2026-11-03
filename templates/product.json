@@ -301,6 +301,15 @@
             "video_title": "It’s Not Just the Packaging ❤️ | Our Dedication to Every Customer | Ghar Aangan",
             "product_tag": "Badri Cow Bilona Ghee"
           }
+        },
+        "video_9": {
+          "type": "video_review",
+          "settings": {
+            "video_id": "EA36pnBhptA",
+            "video_url": "https://youtube.com/shorts/EA36pnBhptA?feature=share",
+            "video_title": "Our Tiny Little Star Unboxes Ghar Aangan Ghee!",
+            "product_tag": "A2 Badri Cow Ghee"
+          }
         }
       },
       "block_order": [
@@ -311,7 +320,8 @@
         "video_5",
         "video_6",
         "video_7",
-        "video_8"
+        "video_8",
+        "video_9"
       ],
       "settings": {
         "background_color": "#ffffff",
