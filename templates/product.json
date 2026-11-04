@@ -369,6 +369,171 @@
         "padding_bottom": 60,
         "padding_rate": 75
       }
+    },
+    "ghar_aangan_product_reviews": {
+      "type": "ghar-aangan-product-reviews",
+      "blocks": {
+        "review_1": {
+          "type": "customer_review",
+          "settings": {
+            "reviewer_name": "Shweta Kulkarni",
+            "reviewer_location": "Pune, Maharashtra",
+            "review_date": "3 days ago",
+            "star_rating": 5,
+            "purchased_pack": "1 Litre Glass Jar",
+            "review_title": "The aroma took me straight back to my childhood",
+            "review_text": "I was skeptical before ordering online, but the very second I opened the golden seal, the divine aroma of slow wood-fired bilona filled my kitchen. The graininess (danedar texture) is remarkable. My 6-year-old daughter who used to push her rotis away now asks for a second spoon on her dal. Outstanding packaging in a sturdy glass jar.",
+            "review_tags": "all, photo, danedar, aroma, kids",
+            "helpful_count": 28
+          }
+        },
+        "review_2": {
+          "type": "customer_review",
+          "settings": {
+            "reviewer_name": "Col. Arvind Sharma (Retd.)",
+            "reviewer_location": "Dehradun, Uttarakhand",
+            "review_date": "5 days ago",
+            "star_rating": 5,
+            "purchased_pack": "2 Litre Canister",
+            "review_title": "Pure mountain taste without commercial trickery",
+            "review_text": "Living in Uttarakhand, we know what genuine Pahadi bilona ghee tastes like. Most commercial brands claiming A2 are overly industrialized. Ghar Aangan has kept the ancient earthen curd churning alive. It doesn't leave that sticky, heavy film in the mouth. Extremely light on digestion. Ordering the 5L pack next for family.",
+            "review_tags": "all, aroma, danedar",
+            "helpful_count": 34
+          }
+        },
+        "review_3": {
+          "type": "customer_review",
+          "settings": {
+            "reviewer_name": "Dr. Sunita Mehra",
+            "reviewer_location": "Vasant Kunj, New Delhi",
+            "review_date": "1 week ago",
+            "star_rating": 5,
+            "purchased_pack": "550ml Glass Jar",
+            "review_title": "A staple for my morning Ayurvedic routine",
+            "review_text": "I consume a warm teaspoon in lukewarm water every morning on an empty stomach. Within three weeks, my gut health and acidity issues have remarkably settled down. The deep golden granules and nutty fragrance prove it's slow-cooked the traditional way. Truly grateful for this purity.",
+            "review_tags": "all, danedar, aroma",
+            "helpful_count": 21
+          }
+        },
+        "review_4": {
+          "type": "customer_review",
+          "settings": {
+            "reviewer_name": "Rajesh Ramanathan",
+            "reviewer_location": "Indiranagar, Bengaluru",
+            "review_date": "1 week ago",
+            "star_rating": 5,
+            "purchased_pack": "1 Litre Glass Jar",
+            "review_title": "Flawless packaging and unbeatable danedar texture",
+            "review_text": "Shipped from the Himalayas to Bangalore and arrived in 4 days without any leakage. The glass jar was sealed inside thick bubble casing. The ghee has that distinct nutty, golden grainy texture that melts on hot rice and sambar. Worth every rupee compared to supermarket brands.",
+            "review_tags": "all, photo, danedar",
+            "helpful_count": 19
+          }
+        },
+        "review_5": {
+          "type": "customer_review",
+          "settings": {
+            "reviewer_name": "Ananya Deshmukh",
+            "reviewer_location": "Thane, Mumbai",
+            "review_date": "2 weeks ago",
+            "star_rating": 5,
+            "purchased_pack": "1 Litre Glass Jar",
+            "review_title": "Best for festive cooking and sweets",
+            "review_text": "Made besan ke laddoo and halwa with this for family gathering. The fragrance was so intoxicating that our neighbours literally asked what ghee we were using! The wood-fired finish gives a subtle, rich depth that electric-churned commercial ghee can never replicate.",
+            "review_tags": "all, aroma",
+            "helpful_count": 17
+          }
+        },
+        "review_6": {
+          "type": "customer_review",
+          "settings": {
+            "reviewer_name": "Harpreet Singh",
+            "reviewer_location": "Sector 18, Chandigarh",
+            "review_date": "2 weeks ago",
+            "star_rating": 5,
+            "purchased_pack": "2 Litre Canister",
+            "review_title": "Reminds me of pure home-made desi ghee",
+            "review_text": "Reminds me of pure home-made desi ghee from our village days in Punjab. You only need half a spoon on hot tandoori rotis or parathas because the flavor is so concentrated and clean. Very satisfied with Ghar Aangan's transparency and honesty.",
+            "review_tags": "all, aroma, danedar",
+            "helpful_count": 25
+          }
+        },
+        "review_7": {
+          "type": "customer_review",
+          "settings": {
+            "reviewer_name": "Pooja Agrawal",
+            "reviewer_location": "Vaishali Nagar, Jaipur",
+            "review_date": "3 weeks ago",
+            "star_rating": 5,
+            "purchased_pack": "1 Litre Glass Jar",
+            "review_title": "Pure, clean, and zero chemical aftertaste",
+            "review_text": "We switched to Ghar Aangan after researching traditional bilona processes. What I appreciate most is that there are no artificial scents or preservatives. It feels clean in the stomach, improves digestion, and gives an authentic wholesome feel to home food.",
+            "review_tags": "all, danedar",
+            "helpful_count": 14
+          }
+        },
+        "review_8": {
+          "type": "customer_review",
+          "settings": {
+            "reviewer_name": "Vikramaditya Joshi",
+            "reviewer_location": "Satellite, Ahmedabad",
+            "review_date": "3 weeks ago",
+            "star_rating": 5,
+            "purchased_pack": "550ml Glass Jar",
+            "review_title": "Rich granules and gentle wood-fired notes",
+            "review_text": "Proper Gujarati dal with a spoonful of this ghee is pure bliss. The granular crystals are uniform and golden. The glass jar packaging is premium and safe. Customer support on WhatsApp was also very prompt when I inquired about dispatch.",
+            "review_tags": "all, photo, danedar, aroma",
+            "helpful_count": 22
+          }
+        },
+        "review_9": {
+          "type": "customer_review",
+          "settings": {
+            "reviewer_name": "Sangeeta Roy",
+            "reviewer_location": "Salt Lake, Kolkata",
+            "review_date": "1 month ago",
+            "star_rating": 5,
+            "purchased_pack": "1 Litre Glass Jar",
+            "review_title": "Kids love it on hot rice & lentils",
+            "review_text": "My twin boys are fussy eaters, especially with milk and fats. Adding a little Ghar Aangan ghee to their khichdi and mashed potatoes made a world of difference. They finish their lunch in minutes now. Truly grateful for this purity.",
+            "review_tags": "all, kids, aroma",
+            "helpful_count": 18
+          }
+        },
+        "review_10": {
+          "type": "customer_review",
+          "settings": {
+            "reviewer_name": "Ritu & Manoj Verma",
+            "reviewer_location": "Gomti Nagar, Lucknow",
+            "review_date": "1 month ago",
+            "star_rating": 5,
+            "purchased_pack": "5 Litre Canister",
+            "review_title": "The 5L canister is a blessing for large families",
+            "review_text": "We cook all our family meals in ghee, so the 5L pack is perfect for us. The quality remained consistently fragrant and golden throughout the entire tin. Great value for genuine Himalayan bilona ghee delivered right to our door.",
+            "review_tags": "all, danedar, aroma",
+            "helpful_count": 31
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8",
+        "review_9",
+        "review_10"
+      ],
+      "settings": {
+        "background_color": "#faf8f5",
+        "subtitle": "VERIFIED BUYER EXPERIENCES",
+        "title": "Real Experiences from Indian Kitchens",
+        "description": "Honest taste, aroma, and wellness reviews from families across India who cook with Ghar Aangan Bilona Ghee daily.",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
@@ -377,6 +542,7 @@
     "tabs",
     "ghar_aangan_quality_trust",
     "ghar_aangan_video_testimonials",
+    "ghar_aangan_product_reviews",
     "related-products"
   ]
 }

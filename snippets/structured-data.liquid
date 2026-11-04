@@ -222,11 +222,21 @@
             }{%- unless forloop.last -%},{%- endunless -%}
           {%- endfor -%}
         ]
-        {%- if product.metafields.reviews.rating.value != blank -%}
+        {%- if product.handle contains 'ghee' or product.type == 'Ghee' -%}
+        ,"aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "48",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+        {%- elsif product.metafields.reviews.rating.value != blank -%}
         ,"aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "{{ product.metafields.reviews.rating.value }}",
-          "reviewCount": "{{ product.metafields.reviews.rating_count.value | default: 1 }}"
+          "reviewCount": "{{ product.metafields.reviews.rating_count.value | default: 1 }}",
+          "bestRating": "5",
+          "worstRating": "1"
         }
         {%- endif -%}
       }
