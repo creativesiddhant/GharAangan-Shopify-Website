@@ -1117,7 +1117,7 @@
               <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             {%- endfor -%}
           </div>
-          <div class="ga-pr-score-label">Based on 48 Verified Ratings</div>
+          <div class="ga-pr-score-label" id="ga-summary-rating-count">Based on 48 Verified Ratings</div>
           <div class="ga-pr-recommend-pill">
             <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
             98% Customers Recommend
@@ -1194,7 +1194,7 @@
       <!-- Filter Pills & Search Bar (Ghee Only) -->
       <div class="ga-pr-filter-bar">
         <div class="ga-pr-filter-pills">
-          <button class="ga-pr-pill is-active" data-filter="all">All Reviews (48)</button>
+          <button class="ga-pr-pill is-active" data-filter="all" id="ga-filter-all-btn">All Reviews (48)</button>
           <button class="ga-pr-pill" data-filter="photo">With Photos (5)</button>
           <button class="ga-pr-pill" data-filter="5star">5 Star Only (45)</button>
           <button class="ga-pr-pill" data-filter="danedar">Danedar Texture</button>
@@ -3531,6 +3531,40 @@
         } catch(e) {}
       }
 
+      // Update All Review Counters across the page
+      function updateAllCounters() {
+        var baseCount = isGhee ? 48 : 0;
+        var totalCount = baseCount + savedReviews.length;
+
+        // 1. Header Rating Badge Count (blocks/_product-title.liquid)
+        var heroCount = document.getElementById('ga-header-review-count') || document.querySelector('.ga-hero-count');
+        if (heroCount) {
+          if (isGhee) {
+            heroCount.textContent = '(' + totalCount + ' Verified Reviews)';
+          } else {
+            if (totalCount > 0) {
+              heroCount.textContent = '(' + totalCount + ' ' + (totalCount === 1 ? 'Review' : 'Reviews') + ')';
+              heroCount.classList.remove('ga-hero-count--first');
+            } else {
+              heroCount.textContent = 'Be the first to review';
+              heroCount.classList.add('ga-hero-count--first');
+            }
+          }
+        }
+
+        // 2. Summary Rating Score Label
+        var scoreLabel = document.getElementById('ga-summary-rating-count') || document.querySelector('.ga-pr-score-label');
+        if (scoreLabel && isGhee) {
+          scoreLabel.textContent = 'Based on ' + totalCount + ' Verified Ratings';
+        }
+
+        // 3. Filter Pill "All Reviews"
+        var allFilterPill = document.getElementById('ga-filter-all-btn') || document.querySelector('.ga-pr-pill[data-filter="all"]');
+        if (allFilterPill && isGhee) {
+          allFilterPill.textContent = 'All Reviews (' + totalCount + ')';
+        }
+      }
+
       // Load Saved Reviews on Page Load
       var savedReviews = readStorage();
 
@@ -3550,12 +3584,10 @@
             introDesc.textContent = 'Showing verified customer reviews from buyers across India.';
           }
         }
-
-        var heroCount = document.querySelector('.ga-hero-count--first');
-        if (heroCount) {
-          heroCount.textContent = '(' + savedReviews.length + ' ' + (savedReviews.length === 1 ? 'Review' : 'Reviews') + ')';
-        }
       }
+
+      // Sync counters with current review total
+      updateAllCounters();
 
       // Initialize filter & pagination on start
       updateFilterAndPagination();
@@ -3597,11 +3629,8 @@
           savedReviews.unshift(reviewObj);
           writeStorage(savedReviews);
 
-          var heroCount = document.querySelector('.ga-hero-count--first');
-          if (heroCount) {
-            var totalCount = savedReviews.length;
-            heroCount.textContent = '(' + totalCount + ' ' + (totalCount === 1 ? 'Review' : 'Reviews') + ')';
-          }
+          // Update counters everywhere immediately (e.g. 48 -> 49)
+          updateAllCounters();
 
           var successName = document.getElementById('ga-success-name');
           if (successName) successName.textContent = name;
