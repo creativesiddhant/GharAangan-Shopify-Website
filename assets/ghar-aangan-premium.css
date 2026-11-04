@@ -3465,6 +3465,11 @@ body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
   padding: 2px 8px !important;
 }
 
+/* Hide review dates for timeless brand presentation */
+.jdgm-rev__timestamp {
+  display: none !important;
+}
+
 .jdgm-rev__title {
   font-family: var(--ga-font-family-serif, 'Playfair Display', serif) !important;
   font-size: 1.65rem !important;

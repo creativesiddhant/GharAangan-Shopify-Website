@@ -328,10 +328,10 @@
     border-radius: 12px !important;
   }
 
-  .ga-judgeme-wrap .jdgm-rev__timestamp {
-    color: #888888 !important;
-    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
-    font-size: 1.25rem !important;
+  /* Hide review timestamps for timeless evergreen presentation */
+  .ga-judgeme-wrap .jdgm-rev__timestamp,
+  .jdgm-rev__timestamp {
+    display: none !important;
   }
 
   /* Review Headline & Content */
