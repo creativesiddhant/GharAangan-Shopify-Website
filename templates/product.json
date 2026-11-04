@@ -13,9 +13,9 @@
       "type": "brc-nav-product",
       "settings": {
         "back_next_pr": true,
-        "color_scheme": "",
-        "padding_top": 12,
-        "padding_bottom": 8,
+        "color_scheme": "scheme-c9476b69-abc7-454f-a946-2d5a9f5f3a37",
+        "padding_top": 20,
+        "padding_bottom": 16,
         "padding_rate": 75
       }
     },
@@ -55,6 +55,7 @@
               "settings": {
                 "option_name": "Select Pack Size",
                 "option_values": "550ml Glass Jar, 1 Litre Glass Jar, 2 Litres (2x1L), 5 Litres Family Pack",
+                "product_list": [],
                 "linked_type": "block",
                 "linked_size": "medium"
               },
@@ -87,7 +88,7 @@
               "type": "_delivery_return",
               "settings": {
                 "icon_delivery": "ship",
-                "content_devivery": "<p><strong>India Delivery:</strong> Fast Delivery (Prepaid) 5–6 business days (FREE); Standard COD 7–10 days (₹100). Dispatch within 24 hours.<br><strong>International Delivery:</strong> Available to selected countries (USA, UAE, Australia, Saudi Arabia, Singapore). Shipping charges are calculated based on final packed weight and destination. Additional customs, clearance, handling, or courier charges may apply, if applicable. <a href=\"/pages/shipping-delivery\" style=\"text-decoration: underline; font-weight: 600;\">Shipping Policy</a></p>",
+                "content_devivery": "<p><strong>Fast Delivery (Prepaid):</strong> 5 to 6 business days (FREE). <strong>Standard Shipping (COD):</strong> 7 to 10 business days (₹100 charge). Dispatch within <strong>24 hours</strong> from Uttarakhand.</p>",
                 "icon_return": "return_order",
                 "content_return": "<p>Pure Himalayan food items: <strong>100% replacement</strong> for transit damage with unboxing photo/video within 48 hours.</p>"
               },
@@ -100,7 +101,7 @@
                 "mess": "Guaranteed Safe Checkout",
                 "source": "1",
                 "wimg": 350,
-                "svg": "visa,paypal,master,american_express,apple_pay",
+                "svg": "visa,paypal,master,american_express",
                 "height": 28
               },
               "blocks": {}
@@ -155,65 +156,163 @@
         "color_scheme": "",
         "full_width": false,
         "padding_top": 0,
-        "padding_bottom": 40,
+        "padding_bottom": 60,
         "padding_rate": 50
       }
     },
-    "tabs": {
-      "type": "main-product-tabs",
+    "ghar_aangan_trust_badges": {
+      "type": "ghar-aangan-trust-badges",
       "blocks": {
-        "tab_des_tKqkJj": {
-          "type": "tab_des",
+        "badge_1": {
+          "type": "badge",
           "settings": {
-            "title": "Description"
+            "built_in_icon": "mountain",
+            "title": "Himalayan High-Altitude",
+            "description": "Sourced at 5000+ ft where crisp mountain air and native medicinal grasses nourish healthier Badri herds."
           }
         },
-        "tab_add_HXf3yk": {
-          "type": "tab_add",
+        "badge_2": {
+          "type": "badge",
           "settings": {
-            "title": "Nutritional & Purity Details"
+            "built_in_icon": "bilona",
+            "title": "Traditional Bilona Churn",
+            "description": "Curd-churned in earthen pots using wooden whisks and slow firewood simmering for pure danedar texture."
           }
         },
-        "tab_breed_clarification": {
-          "type": "tab_html",
+        "badge_3": {
+          "type": "badge",
           "settings": {
-            "title": "Breed & A2 Sourcing Clarification",
-            "content": "<div style=\"font-size: 1.5rem; line-height: 1.7; color: #444;\"><p style=\"font-size: 1.6rem; font-weight: 600; color: #1a332c; margin-bottom: 1.2rem;\">“Badri is a recognised indigenous cattle breed of Uttarakhand. A1/A2, on the other hand, refers to variants of the beta-casein protein and does not determine whether a cow is Badri. Ghar Aangan maintains careful sourcing and quality standards across its cattle sources, including Badri and other cattle from Uttarakhand.”</p><h4 style=\"font-size: 1.55rem; color: #1a332c; margin: 2rem 0 0.5rem 0;\">Badri Cow — A Speciality of Uttarakhand</h4><p>Badri cattle are an indigenous cattle breed of Uttarakhand, associated with the state's hilly terrain and local livestock heritage. At Ghar Aangan, Badri cattle are an important part of the Pahadi tradition we want to preserve and share.</p><h4 style=\"font-size: 1.55rem; color: #1a332c; margin: 1.5rem 0 0.5rem 0;\">Badri &amp; A1/A2 Are Not the Same Thing</h4><p>There is an important distinction: Badri is a breed identity, while A1/A2 describes variants of beta-casein, a milk protein. Therefore, A1/A2 status alone cannot be used to identify a cow as Badri. Scientific studies have found A2A2 animals within Jersey populations as well as indigenous Indian cattle populations.</p><h4 style=\"font-size: 1.55rem; color: #1a332c; margin: 1.5rem 0 0.5rem 0;\">Our Sourcing Approach</h4><p>Ghar Aangan works with cattle sourced from Uttarakhand and maintains defined quality and sourcing standards. Our cattle sources may include Badri cattle, local Uttarakhand cattle and other breeds, including Jersey. We keep breed identity and A1/A2 terminology separate and do not use one as proof of the other.</p></div>",
-            "page": ""
+            "built_in_icon": "purity",
+            "title": "A2 Badri Breed",
+            "description": "Exclusively from indigenous Badri cows yielding nutrient-dense A2 beta-casein milk, easy on digestion."
           }
         },
-        "tab_html_fjtD4a": {
-          "type": "tab_html",
+        "badge_4": {
+          "type": "badge",
           "settings": {
-            "title": "Shipping & Delivery",
-            "content": "",
-            "page": "shipping-delivery"
-          }
-        },
-        "tab_html_GUBKNW": {
-          "type": "tab_html",
-          "settings": {
-            "title": "Refund & Return Policy",
-            "content": "",
-            "page": "refund-policy"
+            "built_in_icon": "certified",
+            "title": "Lab Certified Purity",
+            "description": "Batch tested by NABL accredited labs: zero adulteration, zero palm oil, zero preservatives, and zero chemicals."
           }
         }
       },
       "block_order": [
-        "tab_des_tKqkJj",
-        "tab_add_HXf3yk",
-        "tab_breed_clarification",
-        "tab_html_fjtD4a",
-        "tab_html_GUBKNW"
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4"
       ],
       "settings": {
-        "tabs_design": "tab",
-        "enable_first_tab": true,
-        "color_scheme": "",
-        "full_width": false,
-        "padding_top": 10,
-        "padding_bottom": 50,
-        "padding_rate": 50
+        "background_color": "#ffffff",
+        "subtitle": "THE GHAR AANGAN PROMISE",
+        "title": "Why Our Himalayan Ghee is Different",
+        "columns_desktop": 4,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "ghar_aangan_benefits": {
+      "type": "ghar-aangan-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "heart",
+            "title": "A2 Gut Friendly",
+            "description": "Exclusively sourced from Badri cows yielding A2 beta-casein milk, preventing digestive discomfort common with commercial A1 dairy."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shield",
+            "title": "Immunity & Vitality",
+            "description": "Rich in fat-soluble vitamins (A, D, E, K) and antioxidants naturally absorbed through high-altitude Himalayan grazing."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "fire",
+            "title": "High Smoke Point (250°C)",
+            "description": "Ideal for healthy Indian cooking and tadka without breaking down into harmful free radicals."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "title": "Rich in Natural CLA",
+            "description": "Contains natural Conjugated Linoleic Acid and butyric acid that support metabolism and cellular health."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
+      "settings": {
+        "background_color": "#faf8f5",
+        "subtitle": "HEALTH & WELLNESS",
+        "title": "Nutritional Benefits of Badri A2 Ghee",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "ghar_aangan_process": {
+      "type": "ghar-aangan-process",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "1. Badri Cow Milk Sourcing",
+            "description": "Milked fresh daily from free-grazing native Badri cattle in high-altitude Himalayan pastures."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "2. Firewood Boiling",
+            "description": "Milk is boiled slowly on earthen Chulha stoves using firewood, locking in authentic natural aroma."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "3. Overnight Curd Setting",
+            "description": "The boiled milk is cooled and naturally cultured into whole-milk curds overnight inside earthen pots."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "4. Wooden Bilona Churn",
+            "description": "Curds are hand-churned bi-directionally with wooden whisks (Valona) to separate pure cultured butter (makhan)."
+          }
+        },
+        "step_5": {
+          "type": "step",
+          "settings": {
+            "title": "5. Slow Firewood Clarification",
+            "description": "Fresh butter is slowly melted over low firewood flame until water evaporates, yielding rich golden danedar ghee."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "subtitle": "FROM COW TO JAR. THE TRADITIONAL WAY.",
+        "title": "The Authentic 5-Step Ayurvedic Bilona Process",
+        "padding_top": 56,
+        "padding_bottom": 56
       }
     },
     "ghar_aangan_quality_trust": {
@@ -222,9 +321,9 @@
         "background_color": "#fdfbf7",
         "subtitle": "100% TRANSPARENCY & VERIFIED ORIGIN",
         "title": "Quality You Can Verify",
-        "description": "Every jar of Ghar Aangan ghee is pure, unadulterated Himalayan cow milk fat crafted in Uttarakhand, verified for pure A2 beta-casein. Below is our verified testing analysis and production standards.",
-        "padding_top": 50,
-        "padding_bottom": 50
+        "description": "Every jar of Ghar Aangan ghee is pure, unadulterated Badri cow milk fat crafted in Uttarakhand. Below is our verified testing analysis and production standards.",
+        "padding_top": 56,
+        "padding_bottom": 56
       }
     },
     "ghar_aangan_video_testimonials": {
@@ -301,15 +400,6 @@
             "video_title": "It’s Not Just the Packaging ❤️ | Our Dedication to Every Customer | Ghar Aangan",
             "product_tag": "Badri Cow Bilona Ghee"
           }
-        },
-        "video_9": {
-          "type": "video_review",
-          "settings": {
-            "video_id": "EA36pnBhptA",
-            "video_url": "https://youtube.com/shorts/EA36pnBhptA?feature=share",
-            "video_title": "Our Tiny Little Star Unboxes Ghar Aangan Ghee!",
-            "product_tag": "A2 Badri Cow Ghee"
-          }
         }
       },
       "block_order": [
@@ -320,8 +410,7 @@
         "video_5",
         "video_6",
         "video_7",
-        "video_8",
-        "video_9"
+        "video_8"
       ],
       "settings": {
         "background_color": "#ffffff",
@@ -330,8 +419,218 @@
         "title": "Loved Across India • Video Reviews",
         "description": "Watch genuine unboxing and taste reviews from our Ghar Aangan family across India.",
         "show_arrows": true,
-        "padding_top": 50,
-        "padding_bottom": 50
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "ghar_aangan_reviews": {
+      "type": "ghar-aangan-reviews",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "review_text": "Incredibly rich flavor. I've been trying to find authentic A2 Bilona ghee for years, and this is by far the highest quality. Worth every penny.",
+            "reviewer_name": "Rajesh K.",
+            "reviewer_info": "Verified Buyer • Bangalore",
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "review_text": "Perfect granularity and beautiful golden color. It has done wonders for my digestion, and my family loves it on hot rotis.",
+            "reviewer_name": "Meera S.",
+            "reviewer_info": "Verified Buyer • Dehradun",
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "star_rating": 5,
+            "review_text": "The aroma of this ghee is unmatched. You can immediately tell it comes from organic mountain-grazing cows. Highly recommended.",
+            "reviewer_name": "Amit V.",
+            "reviewer_info": "Verified Buyer • Gurugram",
+            "reviewed_product": "A2 Badri Cow Bilona Ghee"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "background_color": "#faf8f5",
+        "subtitle": "TESTIMONIALS",
+        "title": "Loved by Pure Food Connoisseurs",
+        "show_arrows": true,
+        "enable_autoplay": true,
+        "autoplay_speed": 5,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "ghar_aangan_storytelling": {
+      "type": "ghar-aangan-storytelling",
+      "settings": {
+        "background_color": "#ffffff",
+        "header_subtitle": "OUR ROOTS & HERITAGE",
+        "header_title": "Crafted with Intent, Churned with Tradition",
+        "block1_image": "shopify://shop_images/WhatsApp_Image_2026-08-21_at_2.49.14_AM_3.jpg",
+        "block1_subtitle": "THE FOUNDER'S JOURNEY",
+        "block1_title": "Back to the Soil",
+        "block1_description": "At Ghar Aangan, we believe that food is more than nourishment—it is tradition, heritage, family, and trust. Inspired by the timeless kitchens of Uttarakhand, our mission is to reconnect modern families with authentic Himalayan foods prepared using traditional methods that have been preserved for generations.",
+        "block2_image": "shopify://shop_images/homepage_image_2.png",
+        "block2_subtitle": "HIMALAYAN HERITAGE",
+        "block2_title": "Purity from the High Altitudes",
+        "block2_description": "From handcrafted Bilona A2 Ghee made from indigenous Badri cows to mountain-grown grains, heritage pulses, natural jaggery, medicinal fruit squashes, and traditional Himalayan seasonings, every product carries the warmth of home.",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "ghar_aangan_faq": {
+      "type": "ghar-aangan-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What is Bilona ghee?",
+            "answer": "<p>Traditional Bilona ghee is prepared by culturing boiled whole milk into curd, churning the curd back-and-forth using a wooden whisk in earthen vessels to extract cultured butter (makhan), and simmering that butter slowly over firewood to yield pure golden danedar ghee.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How is Ghar Aangan ghee prepared?",
+            "answer": "<p>We adhere strictly to the Vedic 5-step Bilona method: fresh A2 milk from free-grazing Badri cows is boiled over firewood Chulhas, cultured into curd in clay pots, churned with wooden bilonas, and clarified slowly over gentle flame. We never use industrial cream separators or machine heating.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Where is it made?",
+            "answer": "<p>Ghar Aangan ghee is handcrafted and packed directly in Uttarakhand, India, working in close collaboration with small local mountain farming communities and women's self-help collectives.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "What are the ingredients?",
+            "answer": "<p>100% Pure Badri Cow Milk Fat. There are absolutely no additives, preservatives, colors, artificial fragrances, or vegetable oils.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "How should it be stored?",
+            "answer": "<p>Store it in its original glass jar at normal room temperature in a dry, dark kitchen pantry. Always use a clean, dry spoon. Do not refrigerate, as cold temperatures harden the ghee and diminish its natural danedar grain.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the shelf life?",
+            "answer": "<p>Pure wood-fired Bilona ghee with low moisture (0.12%) naturally stays fresh for 12 to 18 months from manufacturing date when stored at room temperature away from direct moisture.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "Is COD (Cash on Delivery) available?",
+            "answer": "<p>Yes, Cash on Delivery is available across most serviceable pin codes across India.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the COD charge?",
+            "answer": "<p>A flat fee of ₹100 is applied on Cash on Delivery orders to cover courier cash-handling costs. Prepaid orders (UPI, Cards, Netbanking) enjoy 100% FREE Express Delivery.</p>"
+          }
+        },
+        "faq_9": {
+          "type": "faq",
+          "settings": {
+            "question": "Is delivery available to my pincode?",
+            "answer": "<p>We ship Pan-India via Delhivery, Blue Dart, DTDC, and XpressBees. You can verify your exact 6-digit pin code right above on this page using our instant Pincode Checker.</p>"
+          }
+        },
+        "faq_10": {
+          "type": "faq",
+          "settings": {
+            "question": "What happens if the parcel arrives damaged?",
+            "answer": "<p>We pack every glass jar securely with multi-layer protective packaging. In the rare event of transit damage, we offer a 100% free immediate replacement when you share an unboxing photo/video within 48 hours to our support team at +91 90272 48335 or gharaanganmani@gmail.com.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8",
+        "faq_9",
+        "faq_10"
+      ],
+      "settings": {
+        "background_color": "#faf8f5",
+        "subtitle": "HELP & SUPPORT",
+        "title": "Frequently Asked Questions",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "tabs": {
+      "type": "main-product-tabs",
+      "blocks": {
+        "tab_des_tKqkJj": {
+          "type": "tab_des",
+          "settings": {
+            "title": "Description"
+          }
+        },
+        "tab_add_HXf3yk": {
+          "type": "tab_add",
+          "settings": {
+            "title": "Nutritional & Purity Details"
+          }
+        },
+        "tab_html_fjtD4a": {
+          "type": "tab_html",
+          "settings": {
+            "title": "Shipping & Delivery",
+            "content": "",
+            "page": "shipping-delivery"
+          }
+        },
+        "tab_html_GUBKNW": {
+          "type": "tab_html",
+          "settings": {
+            "title": "Refund & Return Policy",
+            "content": "",
+            "page": "refund-policy"
+          }
+        }
+      },
+      "block_order": [
+        "tab_des_tKqkJj",
+        "tab_add_HXf3yk",
+        "tab_html_fjtD4a",
+        "tab_html_GUBKNW"
+      ],
+      "settings": {
+        "tabs_design": "tab",
+        "enable_first_tab": false,
+        "color_scheme": "scheme-c9476b69-abc7-454f-a946-2d5a9f5f3a37",
+        "full_width": false,
+        "padding_top": 20,
+        "padding_bottom": 60,
+        "padding_rate": 50
       }
     },
     "related-products": {
@@ -370,179 +669,40 @@
         "padding_rate": 75
       }
     },
-    "ghar_aangan_product_reviews": {
-      "type": "ghar-aangan-product-reviews",
+    "1793831614d962e086": {
+      "type": "apps",
       "blocks": {
-        "review_1": {
-          "type": "customer_review",
+        "judge_me_reviews_review_widget_Jpyp4J": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
-            "reviewer_name": "Shweta Kulkarni",
-            "reviewer_location": "Pune, Maharashtra",
-            "review_date": "3 days ago",
-            "star_rating": 5,
-            "purchased_pack": "1 Litre Glass Jar",
-            "review_title": "The handwritten note & aroma touched our hearts",
-            "review_text": "I was skeptical before ordering online, but the very second I opened the parcel with Manisha's warm handwritten note and broke the golden seal, the divine aroma of slow wood-fired bilona filled my kitchen. The graininess (danedar texture) is remarkable. My 6-year-old daughter who used to push her rotis away now asks for a second spoon on her dal. Outstanding packaging in a sturdy glass jar.",
-            "review_tags": "all, photo, danedar, aroma, kids",
-            "helpful_count": 28
-          }
-        },
-        "review_2": {
-          "type": "customer_review",
-          "settings": {
-            "reviewer_name": "Col. Arvind Sharma (Retd.)",
-            "reviewer_location": "Dehradun, Uttarakhand",
-            "review_date": "5 days ago",
-            "star_rating": 5,
-            "purchased_pack": "2 Litre Glass Jar",
-            "review_title": "Pure mountain taste without commercial trickery",
-            "review_text": "Living in Uttarakhand, we know what genuine Pahadi bilona ghee tastes like. Most commercial brands claiming A2 are overly industrialized. Ghar Aangan has kept the ancient earthen curd churning alive. It doesn't leave that sticky, heavy film in the mouth. Extremely light on digestion. Ordering the 5L pack next for family.",
-            "review_tags": "all, photo, aroma, danedar",
-            "helpful_count": 34
-          }
-        },
-        "review_3": {
-          "type": "customer_review",
-          "settings": {
-            "reviewer_name": "Dr. Sunita Mehra",
-            "reviewer_location": "Vasant Kunj, New Delhi",
-            "review_date": "1 week ago",
-            "star_rating": 5,
-            "purchased_pack": "550ml Glass Jar",
-            "review_title": "A staple for my morning Ayurvedic routine",
-            "review_text": "I consume a warm teaspoon in lukewarm water every morning on an empty stomach. Within three weeks, my gut health and acidity issues have remarkably settled down. The deep golden granules and nutty fragrance prove it's slow-cooked the traditional way. Truly grateful for this purity.",
-            "review_tags": "all, danedar, aroma",
-            "helpful_count": 21
-          }
-        },
-        "review_4": {
-          "type": "customer_review",
-          "settings": {
-            "reviewer_name": "Rajesh Ramanathan",
-            "reviewer_location": "Indiranagar, Bengaluru",
-            "review_date": "1 week ago",
-            "star_rating": 5,
-            "purchased_pack": "1 Litre Glass Jar",
-            "review_title": "Flawless packaging and unbeatable danedar texture",
-            "review_text": "Shipped from Uttarakhand to Bangalore and arrived in 4 days without any leakage. The glass jar was sealed inside thick custom thermocol casing and bubble mold. The ghee has that distinct nutty, golden grainy texture that melts on hot rice and sambar. Worth every rupee compared to supermarket brands.",
-            "review_tags": "all, photo, danedar",
-            "helpful_count": 19
-          }
-        },
-        "review_5": {
-          "type": "customer_review",
-          "settings": {
-            "reviewer_name": "Ananya Deshmukh",
-            "reviewer_location": "Thane, Mumbai",
-            "review_date": "2 weeks ago",
-            "star_rating": 5,
-            "purchased_pack": "1 Litre Glass Jar",
-            "review_title": "Best for festive cooking and sweets",
-            "review_text": "Made besan ke laddoo and halwa with this for family gathering. The fragrance was so intoxicating that our neighbours literally asked what ghee we were using! The wood-fired finish gives a subtle, rich depth that electric-churned commercial ghee can never replicate.",
-            "review_tags": "all, photo, aroma",
-            "helpful_count": 17
-          }
-        },
-        "review_6": {
-          "type": "customer_review",
-          "settings": {
-            "reviewer_name": "Harpreet Singh",
-            "reviewer_location": "Sector 18, Chandigarh",
-            "review_date": "2 weeks ago",
-            "star_rating": 5,
-            "purchased_pack": "2 Litre Glass Jar",
-            "review_title": "Reminds me of pure home-made desi ghee",
-            "review_text": "Reminds me of pure home-made desi ghee from our village days in Punjab. You only need half a spoon on hot tandoori rotis or parathas because the flavor is so concentrated and clean. Very satisfied with Ghar Aangan's transparency and honesty.",
-            "review_tags": "all, aroma, danedar",
-            "helpful_count": 25
-          }
-        },
-        "review_7": {
-          "type": "customer_review",
-          "settings": {
-            "reviewer_name": "Pooja Agrawal",
-            "reviewer_location": "Vaishali Nagar, Jaipur",
-            "review_date": "3 weeks ago",
-            "star_rating": 5,
-            "purchased_pack": "1 Litre Glass Jar",
-            "review_title": "Pure, clean, and zero chemical aftertaste",
-            "review_text": "We switched to Ghar Aangan after researching traditional bilona processes. What I appreciate most is that there are no artificial scents or preservatives. It feels clean in the stomach, improves digestion, and gives an authentic wholesome feel to home food.",
-            "review_tags": "all, danedar",
-            "helpful_count": 14
-          }
-        },
-        "review_8": {
-          "type": "customer_review",
-          "settings": {
-            "reviewer_name": "Vikramaditya Joshi",
-            "reviewer_location": "Satellite, Ahmedabad",
-            "review_date": "3 weeks ago",
-            "star_rating": 5,
-            "purchased_pack": "550ml Glass Jar",
-            "review_title": "Rich granules and gentle wood-fired notes",
-            "review_text": "Proper Gujarati dal with a spoonful of this ghee is pure bliss. The granular crystals are uniform and golden throughout the jar. The glass jar packaging is premium and safe. Customer support on WhatsApp was also very prompt when I inquired about dispatch.",
-            "review_tags": "all, photo, danedar, aroma",
-            "helpful_count": 22
-          }
-        },
-        "review_9": {
-          "type": "customer_review",
-          "settings": {
-            "reviewer_name": "Sangeeta Roy",
-            "reviewer_location": "Salt Lake, Kolkata",
-            "review_date": "1 month ago",
-            "star_rating": 5,
-            "purchased_pack": "1 Litre Glass Jar",
-            "review_title": "Kids love it on hot rice & lentils",
-            "review_text": "My twin boys are fussy eaters, especially with milk and fats. Adding a little Ghar Aangan ghee to their khichdi and mashed potatoes made a world of difference. They finish their lunch in minutes now. Truly grateful for this purity.",
-            "review_tags": "all, kids, aroma",
-            "helpful_count": 18
-          }
-        },
-        "review_10": {
-          "type": "customer_review",
-          "settings": {
-            "reviewer_name": "Ritu & Manoj Verma",
-            "reviewer_location": "Gomti Nagar, Lucknow",
-            "review_date": "1 month ago",
-            "star_rating": 5,
-            "purchased_pack": "5 Litre Steel Dolchi",
-            "review_title": "The 5L Steel Dolchi is a blessing for large families",
-            "review_text": "We cook all our family meals in ghee, so the 5L pack is perfect for us. The quality remained consistently fragrant and golden throughout the entire tin. Great value for genuine Himalayan bilona ghee delivered right to our door.",
-            "review_tags": "all, danedar, aroma",
-            "helpful_count": 31
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
           }
         }
       },
       "block_order": [
-        "review_1",
-        "review_2",
-        "review_3",
-        "review_4",
-        "review_5",
-        "review_6",
-        "review_7",
-        "review_8",
-        "review_9",
-        "review_10"
+        "judge_me_reviews_review_widget_Jpyp4J"
       ],
       "settings": {
-        "background_color": "#faf8f5",
-        "subtitle": "VERIFIED BUYER EXPERIENCES",
-        "title": "Real Experiences from Indian Kitchens",
-        "description": "Honest taste, aroma, and wellness reviews from families across India who cook with Ghar Aangan Bilona Ghee daily.",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "include_margins": true
       }
     }
   },
   "order": [
     "breadcrumb",
     "main-product",
-    "tabs",
+    "ghar_aangan_trust_badges",
+    "ghar_aangan_benefits",
+    "ghar_aangan_process",
     "ghar_aangan_quality_trust",
     "ghar_aangan_video_testimonials",
-    "ghar_aangan_product_reviews",
-    "related-products"
+    "ghar_aangan_reviews",
+    "ghar_aangan_storytelling",
+    "ghar_aangan_faq",
+    "tabs",
+    "related-products",
+    "1793831614d962e086"
   ]
 }
