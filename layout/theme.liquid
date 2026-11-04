@@ -36,14 +36,43 @@
     {%- endunless -%}
     {%- if settings.library_font == 'google' -%}{{ settings.embed_google_font }}{%- endif -%}
 
+    {%- if current_tags or current_page != 1 or request.page_type == 'search' or request.page_type == 'cart' or template == '404' or template == 'customers/login' or template == 'customers/register' -%}
+      <meta name="robots" content="noindex, follow">
+    {%- else -%}
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    {%- endif -%}
+
     <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; {{ 'general.meta.tag' | t }} "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t }} {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- if request.page_type == 'index' -%}
+        {%- if page_title != blank and page_title != shop.name -%}
+          {{ page_title }} | {{ shop.name }}
+        {%- else -%}
+          {{ shop.name }} | Pure A2 Badri Cow Bilona Ghee & Himalayan Heritage
+        {%- endif -%}
+      {%- else -%}
+        {{ page_title }}
+        {%- if current_tags %} &ndash; {{ 'general.meta.tag' | t }} "{{ current_tags | join: ', ' }}"{% endif -%}
+        {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t }} {{ current_page }}{% endif -%}
+        {%- unless page_title contains shop.name %} | {{ shop.name }}{% endunless -%}
+      {%- endif -%}
     </title>
 
-    {%- if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+    {%- capture seo_description -%}
+      {%- if page_description != blank -%}
+        {{ page_description | escape }}
+      {%- elsif request.page_type == 'product' -%}
+        Buy {{ product.title }} by Ghar Aangan. Handcrafted Vedic A2 Badri cow Bilona ghee & Himalayan foods from Uttarakhand. 100% pure, lab-tested, delivered across India.
+      {%- elsif request.page_type == 'collection' -%}
+        Explore authentic {{ collection.title }} handcrafted in Uttarakhand by Ghar Aangan. Pure Vedic Bilona A2 Badri cow ghee, mountain raw honey & organic Pahadi essentials.
+      {%- elsif request.page_type == 'article' -%}
+        {{ article.excerpt_or_content | strip_html | truncatewords: 25 | escape }}
+      {%- elsif request.page_type == 'page' and page.content != blank -%}
+        {{ page.content | strip_html | truncatewords: 25 | escape }}
+      {%- else -%}
+        Pure Himalayan foods & wood-fired A2 Badri cow Bilona ghee, handcrafted in Uttarakhand with ancient Vedic traditions. Certified A2 purity delivered across India.
+      {%- endif -%}
+    {%- endcapture -%}
+    <meta name="description" content="{{ seo_description | strip }}">
 
     {%- liquid
       render 'social-meta-tags'
