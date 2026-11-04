@@ -478,3 +478,49 @@
   }
 </style>
 
+<script>
+  (function() {
+    function enforceJudgeMeLuxuryStyles() {
+      // 1. Hide review timestamps completely across all AJAX renders
+      var timestamps = document.querySelectorAll('.jdgm-rev__timestamp, [class*="timestamp"]');
+      for (var i = 0; i < timestamps.length; i++) {
+        timestamps[i].style.setProperty('display', 'none', 'important');
+      }
+
+      // 2. Enforce warm gold stars everywhere
+      var stars = document.querySelectorAll('.jdgm-star');
+      for (var j = 0; j < stars.length; j++) {
+        var s = stars[j];
+        if (!s.classList.contains('jdgm--off')) {
+          s.style.setProperty('color', '#cda250', 'important');
+        } else {
+          s.style.setProperty('color', 'rgba(205, 162, 80, 0.28)', 'important');
+        }
+      }
+    }
+
+    // Run immediately and on DOM load
+    enforceJudgeMeLuxuryStyles();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', enforceJudgeMeLuxuryStyles);
+    }
+
+    // Observe Judge.me dynamic review rendering and pagination clicks
+    if (window.MutationObserver) {
+      var observer = new MutationObserver(function() {
+        enforceJudgeMeLuxuryStyles();
+      });
+      var target = document.getElementById('ga-product-reviews') || document.body;
+      observer.observe(target, { childList: true, subtree: true });
+    }
+
+    // Periodic safety check for the first 5 seconds
+    var timerCount = 0;
+    var safetyTimer = setInterval(function() {
+      enforceJudgeMeLuxuryStyles();
+      timerCount++;
+      if (timerCount > 10) clearInterval(safetyTimer);
+    }, 500);
+  })();
+</script>
+
