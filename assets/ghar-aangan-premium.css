@@ -3377,3 +3377,109 @@ body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
   }
 }
 
+
+/* ==========================================================================
+   Ghar Aangan - Judge.me Luxury Review Widget Styling
+   ========================================================================== */
+.jdgm-widget.jdgm-review-widget {
+  max-width: 1240px !important;
+  margin: 30px auto !important;
+  padding: 0 20px !important;
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+}
+
+.jdgm-star {
+  color: #cda250 !important;
+}
+
+.jdgm-rev-widg__title {
+  font-family: var(--ga-font-family-serif, 'Playfair Display', serif) !important;
+  color: #1a332c !important;
+  font-size: 2.4rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.jdgm-rev-widg__summary-text {
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  color: #555555 !important;
+  font-size: 1.45rem !important;
+}
+
+.jdgm-write-rev-link,
+.jdgm-submit-rev {
+  background-color: #1a332c !important;
+  color: #ffffff !important;
+  border: 1px solid #1a332c !important;
+  border-radius: 6px !important;
+  padding: 12px 28px !important;
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  transition: all 0.25s ease !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px rgba(26, 51, 44, 0.15) !important;
+}
+
+.jdgm-write-rev-link:hover,
+.jdgm-submit-rev:hover {
+  background-color: #27473e !important;
+  border-color: #27473e !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(26, 51, 44, 0.22) !important;
+}
+
+.jdgm-rev {
+  padding: 24px 0 !important;
+  border-bottom: 1px solid rgba(205, 162, 80, 0.18) !important;
+}
+
+.jdgm-rev__icon {
+  background-color: #1a332c !important;
+  color: #cda250 !important;
+  font-family: var(--ga-font-family-serif, 'Playfair Display', serif) !important;
+  font-weight: 700 !important;
+}
+
+.jdgm-rev__author {
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-weight: 600 !important;
+  color: #1a332c !important;
+  font-size: 1.45rem !important;
+}
+
+.jdgm-rev__buyer-badge {
+  background-color: rgba(26, 51, 44, 0.08) !important;
+  color: #1a332c !important;
+  border-radius: 4px !important;
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  padding: 2px 8px !important;
+}
+
+.jdgm-rev__title {
+  font-family: var(--ga-font-family-serif, 'Playfair Display', serif) !important;
+  font-size: 1.65rem !important;
+  font-weight: 700 !important;
+  color: #1a332c !important;
+  margin-top: 8px !important;
+  margin-bottom: 6px !important;
+}
+
+.jdgm-rev__body p {
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-size: 1.45rem !important;
+  line-height: 1.7 !important;
+  color: #4a5550 !important;
+}
+
+.jdgm-paginate__page {
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+}
+
+.jdgm-paginate__page.jdgm-cur-page {
+  background-color: #1a332c !important;
+  color: #ffffff !important;
+}

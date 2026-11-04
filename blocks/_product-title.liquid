@@ -13,7 +13,7 @@
 {%- else -%}
   <h1 class="hdt-product__title hdt-{{ block.settings.hdt_pr_title_size }}" {{ block.shopify_attributes }}>{{ product.title | escape }}</h1>
   {%- if product.handle contains 'ghee' or product.type == 'Ghee' -%}
-    <a href="#ga-product-reviews" class="ga-hero-rating-badge" title="Jump to verified customer reviews">
+    <a href="#judgeme_product_reviews" class="ga-hero-rating-badge" onclick="var r=document.getElementById('judgeme_product_reviews')||document.getElementById('ga-product-reviews');if(r){event.preventDefault();r.scrollIntoView({behavior:'smooth'});}" title="Jump to verified customer reviews">
       <div class="ga-hero-stars" aria-hidden="true">
         {%- for i in (1..5) -%}
           <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
