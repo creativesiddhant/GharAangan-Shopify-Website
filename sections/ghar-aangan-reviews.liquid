@@ -1,15 +1,5 @@
 {%- if template contains 'product' -%}
-  {%- liquid
-    assign is_ghee = false
-    if product.handle contains 'ghee' or product.type == 'Ghee'
-      assign is_ghee = true
-    elsif request.design_mode
-      assign is_ghee = true
-    endif
-  -%}
-  {%- if is_ghee -%}
-    {%- render 'ghar-aangan-product-reviews-content' -%}
-  {%- endif -%}
+  {%- render 'ghar-aangan-product-reviews-content' -%}
 {%- else -%}
 {%- style -%}
   .section-{{ section.id }}-padding {

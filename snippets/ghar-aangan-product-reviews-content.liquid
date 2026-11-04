@@ -1,4 +1,12 @@
 <!-- snippets/ghar-aangan-product-reviews-content.liquid -->
+{%- liquid
+  assign is_ghee = false
+  if product.handle contains 'ghee' or product.type == 'Ghee'
+    assign is_ghee = true
+  elsif request.design_mode
+    assign is_ghee = true
+  endif
+-%}
 {%- style -%}
   html {
     scroll-behavior: smooth;
@@ -925,6 +933,83 @@
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
+
+  /* Non-Ghee Invitation Card */
+  .ga-pr-empty-card {
+    background: #ffffff;
+    border: 1.5px solid rgba(205, 162, 80, 0.32);
+    border-radius: 18px;
+    padding: clamp(2.8rem, 4vw, 4rem) clamp(1.8rem, 3vw, 3rem);
+    box-shadow: 0 12px 32px rgba(26, 51, 44, 0.06);
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 3.5rem auto;
+  }
+
+  .ga-pr-empty-stars {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 1.4rem;
+  }
+
+  .ga-pr-empty-stars svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--ga-gold-cream, #cda250);
+  }
+
+  .ga-pr-empty-title {
+    font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
+    font-size: clamp(2.2rem, 3vw, 2.8rem);
+    color: var(--ga-forest-green, #1a332c);
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 1rem 0;
+  }
+
+  .ga-pr-empty-desc {
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.55rem;
+    line-height: 1.65;
+    color: #4a5550;
+    max-width: 580px;
+    margin: 0 auto 2.2rem auto;
+    font-weight: 300;
+  }
+
+  .ga-pr-empty-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-bottom: 2.6rem;
+  }
+
+  .ga-pr-empty-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.25rem;
+    color: #1a332c;
+    background: #f7f3eb;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .ga-pr-empty-badge svg {
+    width: 15px;
+    height: 15px;
+    fill: #15803d;
+  }
+
+  .ga-pr-btn-write--center {
+    margin: 0 auto;
+    width: fit-content;
+  }
+
 {%- endstyle -%}
 
 <section class="ga-pr-section section-{{ section.id }}-padding" id="ga-product-reviews">
@@ -934,118 +1019,167 @@
     <div class="ga-pr-header">
       <div class="ga-pr-subtitle">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        <span>{{ section.settings.subtitle | default: 'VERIFIED BUYER EXPERIENCES' | escape }}</span>
+        <span>
+          {%- if is_ghee -%}
+            {{ section.settings.subtitle | default: 'VERIFIED BUYER EXPERIENCES' | escape }}
+          {%- else -%}
+            AUTHENTIC CUSTOMER EXPERIENCES
+          {%- endif -%}
+        </span>
       </div>
-      <h2 class="ga-pr-title">{{ section.settings.title | default: 'Real Experiences from Indian Kitchens' | escape }}</h2>
+      <h2 class="ga-pr-title">
+        {%- if is_ghee -%}
+          {{ section.settings.title | default: 'Real Experiences from Indian Kitchens' | escape }}
+        {%- else -%}
+          Customer Reviews for {{ product.title | escape }}
+        {%- endif -%}
+      </h2>
       <p class="ga-pr-description">
-        {{ section.settings.description | default: 'Honest taste, aroma, and wellness reviews from families across India who cook with Ghar Aangan Bilona Ghee daily.' | escape }}
+        {%- if is_ghee -%}
+          {{ section.settings.description | default: 'Honest taste, aroma, and wellness reviews from families across India who cook with Ghar Aangan Bilona Ghee daily.' | escape }}
+        {%- else -%}
+          Handcrafted in the pristine hills of Uttarakhand. Share your honest culinary experience and photos with the Ghar Aangan community.
+        {%- endif -%}
       </p>
     </div>
 
-    <!-- Rating Summary Dashboard -->
-    <div class="ga-pr-summary-card">
-      <!-- 1. Score -->
-      <div class="ga-pr-score-box">
-        <div class="ga-pr-score-num">4.9<span>/5</span></div>
-        <div class="ga-pr-stars-gold">
+    {%- if is_ghee -%}
+      <!-- Rating Summary Dashboard (Ghee Only) -->
+      <div class="ga-pr-summary-card">
+        <!-- 1. Score -->
+        <div class="ga-pr-score-box">
+          <div class="ga-pr-score-num">4.9<span>/5</span></div>
+          <div class="ga-pr-stars-gold">
+            {%- for i in (1..5) -%}
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            {%- endfor -%}
+          </div>
+          <div class="ga-pr-score-label">Based on 48 Verified Ratings</div>
+          <div class="ga-pr-recommend-pill">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            98% Customers Recommend
+          </div>
+        </div>
+
+        <!-- 2. Breakdown Bars -->
+        <div class="ga-pr-bars-box">
+          <div class="ga-pr-bar-row" data-star="5">
+            <span class="ga-pr-bar-label">5 <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
+            <div class="ga-pr-bar-track">
+              <div class="ga-pr-bar-fill" style="width: 94%;"></div>
+            </div>
+            <span class="ga-pr-bar-count">45</span>
+          </div>
+
+          <div class="ga-pr-bar-row" data-star="4">
+            <span class="ga-pr-bar-label">4 <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
+            <div class="ga-pr-bar-track">
+              <div class="ga-pr-bar-fill" style="width: 6%;"></div>
+            </div>
+            <span class="ga-pr-bar-count">3</span>
+          </div>
+
+          <div class="ga-pr-bar-row" data-star="3">
+            <span class="ga-pr-bar-label">3 <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
+            <div class="ga-pr-bar-track">
+              <div class="ga-pr-bar-fill" style="width: 0%;"></div>
+            </div>
+            <span class="ga-pr-bar-count">0</span>
+          </div>
+
+          <div class="ga-pr-bar-row" data-star="2">
+            <span class="ga-pr-bar-label">2 <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
+            <div class="ga-pr-bar-track">
+              <div class="ga-pr-bar-fill" style="width: 0%;"></div>
+            </div>
+            <span class="ga-pr-bar-count">0</span>
+          </div>
+
+          <div class="ga-pr-bar-row" data-star="1">
+            <span class="ga-pr-bar-label">1 <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
+            <div class="ga-pr-bar-track">
+              <div class="ga-pr-bar-fill" style="width: 0%;"></div>
+            </div>
+            <span class="ga-pr-bar-count">0</span>
+          </div>
+        </div>
+
+        <!-- 3. Action & Purity Highlights -->
+        <div class="ga-pr-action-box">
+          <div class="ga-pr-trust-bullets">
+            <div class="ga-pr-trust-item">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <span>Traditional Bilona Churned</span>
+            </div>
+            <div class="ga-pr-trust-item">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <span>Slow Wood-Fired in Brass</span>
+            </div>
+            <div class="ga-pr-trust-item">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              <span>Heavy-Duty Glass Packaging</span>
+            </div>
+          </div>
+
+          <button class="ga-pr-btn-write" id="ga-open-review-modal" aria-label="Write a Customer Review">
+            <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            <span>Write a Review</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Pills & Search Bar (Ghee Only) -->
+      <div class="ga-pr-filter-bar">
+        <div class="ga-pr-filter-pills">
+          <button class="ga-pr-pill is-active" data-filter="all">All Reviews (48)</button>
+          <button class="ga-pr-pill" data-filter="photo">With Photos (5)</button>
+          <button class="ga-pr-pill" data-filter="5star">5 Star Only (45)</button>
+          <button class="ga-pr-pill" data-filter="danedar">Danedar Texture</button>
+          <button class="ga-pr-pill" data-filter="aroma">Aroma & Memory</button>
+          <button class="ga-pr-pill" data-filter="kids">Kids & Family</button>
+        </div>
+
+        <div class="ga-pr-search-box">
+          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input type="text" class="ga-pr-search-input" id="ga-review-search" placeholder="Search reviews..." aria-label="Search within reviews">
+        </div>
+      </div>
+    {%- else -%}
+      <!-- Non-Ghee Invitation Card -->
+      <div class="ga-pr-empty-card" id="ga-pr-non-ghee-intro">
+        <div class="ga-pr-empty-stars" aria-hidden="true">
           {%- for i in (1..5) -%}
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           {%- endfor -%}
         </div>
-        <div class="ga-pr-score-label">Based on 48 Verified Ratings</div>
-        <div class="ga-pr-recommend-pill">
-          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-          98% Customers Recommend
-        </div>
-      </div>
-
-      <!-- 2. Breakdown Bars -->
-      <div class="ga-pr-bars-box">
-        <div class="ga-pr-bar-row" data-star="5">
-          <span class="ga-pr-bar-label">5 <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
-          <div class="ga-pr-bar-track">
-            <div class="ga-pr-bar-fill" style="width: 94%;"></div>
-          </div>
-          <span class="ga-pr-bar-count">45</span>
-        </div>
-
-        <div class="ga-pr-bar-row" data-star="4">
-          <span class="ga-pr-bar-label">4 <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
-          <div class="ga-pr-bar-track">
-            <div class="ga-pr-bar-fill" style="width: 6%;"></div>
-          </div>
-          <span class="ga-pr-bar-count">3</span>
-        </div>
-
-        <div class="ga-pr-bar-row" data-star="3">
-          <span class="ga-pr-bar-label">3 <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
-          <div class="ga-pr-bar-track">
-            <div class="ga-pr-bar-fill" style="width: 0%;"></div>
-          </div>
-          <span class="ga-pr-bar-count">0</span>
-        </div>
-
-        <div class="ga-pr-bar-row" data-star="2">
-          <span class="ga-pr-bar-label">2 <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
-          <div class="ga-pr-bar-track">
-            <div class="ga-pr-bar-fill" style="width: 0%;"></div>
-          </div>
-          <span class="ga-pr-bar-count">0</span>
-        </div>
-
-        <div class="ga-pr-bar-row" data-star="1">
-          <span class="ga-pr-bar-label">1 <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
-          <div class="ga-pr-bar-track">
-            <div class="ga-pr-bar-fill" style="width: 0%;"></div>
-          </div>
-          <span class="ga-pr-bar-count">0</span>
-        </div>
-      </div>
-
-      <!-- 3. Action & Purity Highlights -->
-      <div class="ga-pr-action-box">
-        <div class="ga-pr-trust-bullets">
-          <div class="ga-pr-trust-item">
+        <h3 class="ga-pr-empty-title">Be the first to review {{ product.title | escape }}</h3>
+        <p class="ga-pr-empty-desc">
+          Have you enjoyed this pure mountain harvest? Share your honest review, culinary pairings, and unboxing photos with fellow food lovers!
+        </p>
+        <div class="ga-pr-empty-badges">
+          <div class="ga-pr-empty-badge">
             <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            <span>Traditional Bilona Churned</span>
+            <span>100% Himalayan Harvest</span>
           </div>
-          <div class="ga-pr-trust-item">
+          <div class="ga-pr-empty-badge">
             <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            <span>Slow Wood-Fired in Brass</span>
+            <span>Direct from Mountain Farmers</span>
           </div>
-          <div class="ga-pr-trust-item">
+          <div class="ga-pr-empty-badge">
             <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            <span>Heavy-Duty Glass Packaging</span>
+            <span>Verified Buyer Reviews</span>
           </div>
         </div>
-
-        <button class="ga-pr-btn-write" id="ga-open-review-modal" aria-label="Write a Customer Review">
+        <button class="ga-pr-btn-write ga-pr-btn-write--center" id="ga-open-review-modal-nonghee" aria-label="Write a review">
           <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
           <span>Write a Review</span>
         </button>
       </div>
-    </div>
+    {%- endif -%}
 
-    <!-- Filter Pills & Search Bar -->
-    <div class="ga-pr-filter-bar">
-      <div class="ga-pr-filter-pills">
-        <button class="ga-pr-pill is-active" data-filter="all">All Reviews (48)</button>
-        <button class="ga-pr-pill" data-filter="photo">With Photos (5)</button>
-        <button class="ga-pr-pill" data-filter="5star">5 Star Only (45)</button>
-        <button class="ga-pr-pill" data-filter="danedar">Danedar Texture</button>
-        <button class="ga-pr-pill" data-filter="aroma">Aroma & Memory</button>
-        <button class="ga-pr-pill" data-filter="kids">Kids & Family</button>
-      </div>
-
-      <div class="ga-pr-search-box">
-        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-        <input type="text" class="ga-pr-search-input" id="ga-review-search" placeholder="Search reviews..." aria-label="Search within reviews">
-      </div>
-    </div>
-
-    <!-- Review Cards Grid -->
     <div class="ga-pr-reviews-grid" id="ga-reviews-list">
-      {%- if section.blocks.size > 0 and section.blocks.first.type == 'customer_review' -%}
+      {%- if is_ghee -%}
+{%- if section.blocks.size > 0 and section.blocks.first.type == 'customer_review' -%}
         {%- for block in section.blocks -%}
           <div class="ga-pr-card" 
                data-stars="{{ block.settings.star_rating | default: 5 }}" 
@@ -1441,7 +1575,8 @@
           </div>
         </div>
       {%- endif -%}
-    </div>
+      {%- endif -%}
+</div>
 
   </div>
 </section>
@@ -1454,8 +1589,20 @@
     </button>
 
     <div id="ga-modal-form-view">
-      <h3 class="ga-pr-modal-title">Write an Honest Review</h3>
-      <p class="ga-pr-modal-subtitle">Share your aroma, taste, and cooking experience with our Ghar Aangan family.</p>
+      <h3 class="ga-pr-modal-title">
+        {%- if is_ghee -%}
+          Write an Honest Review
+        {%- else -%}
+          Review {{ product.title | escape }}
+        {%- endif -%}
+      </h3>
+      <p class="ga-pr-modal-subtitle">
+        {%- if is_ghee -%}
+          Share your aroma, taste, and cooking experience with our Ghar Aangan family.
+        {%- else -%}
+          Share your culinary pairings, taste, and experience with fellow food lovers.
+        {%- endif -%}
+      </p>
 
       <form id="ga-review-form">
         <div class="ga-pr-form-group">
@@ -1473,11 +1620,11 @@
         <div class="ga-pr-form-row">
           <div class="ga-pr-form-group">
             <label class="ga-pr-label" for="ga-input-name">Your Full Name *</label>
-            <input type="text" id="ga-input-name" class="ga-pr-input" placeholder="e.g. Ananya Deshmukh" required>
+            <input type="text" id="ga-input-name" class="ga-pr-input" placeholder="e.g. Ananya Sharma" required>
           </div>
           <div class="ga-pr-form-group">
-            <label class="ga-pr-label" for="ga-input-location">City & State *</label>
-            <input type="text" id="ga-input-location" class="ga-pr-input" placeholder="e.g. Pune, Maharashtra" required>
+            <label class="ga-pr-label" for="ga-input-location">City / State *</label>
+            <input type="text" id="ga-input-location" class="ga-pr-input" placeholder="e.g. Dehradun, Uttarakhand" required>
           </div>
         </div>
 
@@ -1487,24 +1634,32 @@
             <input type="email" id="ga-input-email" class="ga-pr-input" placeholder="you@gmail.com" required>
           </div>
           <div class="ga-pr-form-group">
-            <label class="ga-pr-label" for="ga-select-pack">Pack Purchased</label>
+            <label class="ga-pr-label" for="ga-select-pack">Pack / Variant Purchased</label>
             <select id="ga-select-pack" class="ga-pr-select">
-              <option value="1 Litre Glass Jar">1 Litre Glass Jar</option>
-              <option value="550ml Glass Jar">550ml Glass Jar</option>
-              <option value="2 Litre Canister">2 Litre Canister</option>
-              <option value="5 Litre Canister">5 Litre Canister</option>
+              {%- if is_ghee -%}
+                <option value="1 Litre Glass Jar">1 Litre Glass Jar</option>
+                <option value="550ml Glass Jar">550ml Glass Jar</option>
+                <option value="2 Litre Canister">2 Litre Canister</option>
+                <option value="5 Litre Canister">5 Litre Canister</option>
+              {%- elsif product.variants.size > 0 -%}
+                {%- for variant in product.variants -%}
+                  <option value="{{ variant.title | escape }}">{{ variant.title | escape }}</option>
+                {%- endfor -%}
+              {%- else -%}
+                <option value="{{ product.title | escape }}">{{ product.title | escape }}</option>
+              {%- endif -%}
             </select>
           </div>
         </div>
 
         <div class="ga-pr-form-group">
           <label class="ga-pr-label" for="ga-input-headline">Review Headline *</label>
-          <input type="text" id="ga-input-headline" class="ga-pr-input" placeholder="e.g. The authentic granular texture we were searching for!" required>
+          <input type="text" id="ga-input-headline" class="ga-pr-input" placeholder="{% if is_ghee %}e.g. The authentic granular texture we were searching for!{% else %}e.g. Pure mountain flavour and unbeatable freshness!{% endif %}" required>
         </div>
 
         <div class="ga-pr-form-group">
           <label class="ga-pr-label" for="ga-input-body">Detailed Review *</label>
-          <textarea id="ga-input-body" class="ga-pr-textarea" rows="4" placeholder="Tell us about the aroma, taste on hot rotis, digestion, packaging, or how your family enjoyed it..." required></textarea>
+          <textarea id="ga-input-body" class="ga-pr-textarea" rows="4" placeholder="{% if is_ghee %}Tell us about the aroma, taste on hot rotis, digestion, packaging, or how your family enjoyed it...{% else %}Tell us about the aroma, taste, recipe pairings, packaging, or how your family enjoyed it...{% endif %}" required></textarea>
         </div>
 
         <div class="ga-pr-form-group">
@@ -1546,6 +1701,10 @@
 <script>
   (function() {
     function initGharAanganReviews() {
+      var isGhee = {{ is_ghee | json }};
+      var productHandle = {{ product.handle | json }};
+      var storageKey = 'ga_reviews_' + (productHandle || 'product');
+
       // Lightbox Handlers
       var lightbox = document.getElementById('ga-photo-lightbox');
       var lightboxImg = document.getElementById('ga-lightbox-img');
@@ -1571,8 +1730,8 @@
       if (lbCloseBg) lbCloseBg.addEventListener('click', closeLightbox);
 
       // Helpful Button Toggling
-      var helpfulBtns = document.querySelectorAll('.ga-pr-helpful-btn');
-      helpfulBtns.forEach(function(btn) {
+      function attachHelpfulListener(btn) {
+        if (!btn) return;
         btn.addEventListener('click', function() {
           var voted = btn.getAttribute('data-voted') === 'true';
           var countSpan = btn.querySelector('.ga-count');
@@ -1587,18 +1746,21 @@
             countSpan.textContent = Math.max(0, count - 1);
           }
         });
-      });
+      }
 
-      // Filter Pills
+      var helpfulBtns = document.querySelectorAll('.ga-pr-helpful-btn');
+      helpfulBtns.forEach(attachHelpfulListener);
+
+      // Filter Pills & Search
       var pills = document.querySelectorAll('.ga-pr-pill');
-      var cards = document.querySelectorAll('.ga-pr-card');
       pills.forEach(function(pill) {
         pill.addEventListener('click', function() {
           pills.forEach(function(p) { p.classList.remove('is-active'); });
           pill.classList.add('is-active');
           var filter = pill.getAttribute('data-filter');
 
-          cards.forEach(function(card) {
+          var currentCards = document.querySelectorAll('.ga-pr-card');
+          currentCards.forEach(function(card) {
             var stars = card.getAttribute('data-stars');
             var hasPhoto = card.getAttribute('data-has-photo') === 'true';
             var tags = (card.getAttribute('data-tags') || '').toLowerCase();
@@ -1616,12 +1778,12 @@
         });
       });
 
-      // Search Filter
       var searchInput = document.getElementById('ga-review-search');
       if (searchInput) {
         searchInput.addEventListener('input', function() {
           var q = searchInput.value.toLowerCase().trim();
-          cards.forEach(function(card) {
+          var currentCards = document.querySelectorAll('.ga-pr-card');
+          currentCards.forEach(function(card) {
             var text = card.textContent.toLowerCase();
             card.style.display = text.indexOf(q) !== -1 ? 'flex' : 'none';
           });
@@ -1630,18 +1792,21 @@
 
       // Modal Triggers
       var openModalBtn = document.getElementById('ga-open-review-modal');
+      var openModalNonGheeBtn = document.getElementById('ga-open-review-modal-nonghee');
       var modalOverlay = document.getElementById('ga-review-modal-overlay');
       var closeModalBtn = document.getElementById('ga-close-review-modal');
       var successCloseBtn = document.getElementById('ga-btn-success-close');
       var formView = document.getElementById('ga-modal-form-view');
       var successView = document.getElementById('ga-modal-success-view');
 
-      function openModal() {
+      window.gaOpenReviewModal = function() {
         if (!modalOverlay) return;
+        if (formView) formView.style.display = 'block';
+        if (successView) successView.style.display = 'none';
         modalOverlay.classList.add('is-active');
         modalOverlay.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
-      }
+      };
 
       function closeModal() {
         if (!modalOverlay) return;
@@ -1650,7 +1815,8 @@
         document.body.style.overflow = '';
       }
 
-      if (openModalBtn) openModalBtn.addEventListener('click', openModal);
+      if (openModalBtn) openModalBtn.addEventListener('click', window.gaOpenReviewModal);
+      if (openModalNonGheeBtn) openModalNonGheeBtn.addEventListener('click', window.gaOpenReviewModal);
       if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
       if (successCloseBtn) successCloseBtn.addEventListener('click', closeModal);
       if (modalOverlay) {
@@ -1675,7 +1841,7 @@
         star.addEventListener('click', function() {
           var val = parseInt(star.getAttribute('data-val'), 10);
           starPicker.setAttribute('data-rating', val);
-          starHint.textContent = hints[val];
+          if (starHint) starHint.textContent = hints[val];
           updateStars(val);
         });
 
@@ -1731,6 +1897,86 @@
         });
       }
 
+      // Render Review Card
+      function renderReviewCard(rev, container, prepend) {
+        var card = document.createElement('div');
+        card.className = 'ga-pr-card';
+        card.setAttribute('data-stars', rev.rating || 5);
+        card.setAttribute('data-has-photo', rev.photo ? 'true' : 'false');
+        card.setAttribute('data-tags', 'all');
+
+        var starsHtml = '';
+        for (var i = 0; i < (rev.rating || 5); i++) {
+          starsHtml += '<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>';
+        }
+
+        var photoHtml = '';
+        if (rev.photo) {
+          photoHtml = '<div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector(\'img\').src)"><img class="ga-pr-card-img" src="' + rev.photo + '" alt="' + (rev.headline || '') + '"></div>';
+        }
+
+        var initial = (rev.name && rev.name.charAt(0).toUpperCase()) || 'G';
+
+        card.innerHTML = 
+          '<div>' +
+            '<div class="ga-pr-card-top">' +
+              '<div class="ga-pr-avatar">' + initial + '</div>' +
+              '<div class="ga-pr-meta">' +
+                '<div class="ga-pr-meta-row">' +
+                  '<span class="ga-pr-reviewer-name">' + rev.name + '</span>' +
+                  '<span class="ga-pr-verified-badge">' +
+                    '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>' +
+                    'Verified' +
+                  '</span>' +
+                '</div>' +
+                '<div class="ga-pr-meta-sub">' + (rev.location || 'Verified Buyer • India') + ' • ' + (rev.date || 'Recent') + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="ga-pr-stars-row">' +
+              '<div class="ga-pr-stars">' + starsHtml + '</div>' +
+              (rev.pack ? '<span class="ga-pr-purchase-tag">' + rev.pack + '</span>' : '') +
+            '</div>' +
+            '<h3 class="ga-pr-card-headline">' + rev.headline + '</h3>' +
+            '<p class="ga-pr-card-text">' + rev.body + '</p>' +
+            photoHtml +
+          '</div>' +
+          '<div class="ga-pr-card-footer">' +
+            '<span class="ga-pr-helpful-txt">Was this helpful?</span>' +
+            '<button class="ga-pr-helpful-btn" data-voted="false">' +
+              '<svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>' +
+              '<span>Helpful (<span class="ga-count">1</span>)</span>' +
+            '</button>' +
+          '</div>';
+
+        attachHelpfulListener(card.querySelector('.ga-pr-helpful-btn'));
+
+        if (prepend && container.firstChild) {
+          container.insertBefore(card, container.firstChild);
+        } else {
+          container.appendChild(card);
+        }
+      }
+
+      // Load Saved Reviews from LocalStorage
+      var reviewsList = document.getElementById('ga-reviews-list');
+      var savedReviews = [];
+      try {
+        var raw = localStorage.getItem(storageKey);
+        if (raw) savedReviews = JSON.parse(raw);
+      } catch(e) {}
+
+      if (reviewsList && Array.isArray(savedReviews) && savedReviews.length > 0) {
+        savedReviews.forEach(function(rev) {
+          renderReviewCard(rev, reviewsList, false);
+        });
+
+        // Update hero badge count if on non-ghee product
+        var heroCount = document.querySelector('.ga-hero-count--first');
+        if (heroCount) {
+          heroCount.textContent = '(' + savedReviews.length + ' ' + (savedReviews.length === 1 ? 'Review' : 'Reviews') + ')';
+        }
+      }
+
       // Form Submit
       var reviewForm = document.getElementById('ga-review-form');
       if (reviewForm) {
@@ -1740,66 +1986,66 @@
           var location = document.getElementById('ga-input-location').value.trim();
           var headline = document.getElementById('ga-input-headline').value.trim();
           var body = document.getElementById('ga-input-body').value.trim();
-          var pack = document.getElementById('ga-select-pack').value;
+          var packSelect = document.getElementById('ga-select-pack');
+          var pack = packSelect ? packSelect.value : '';
           var rating = parseInt(starPicker.getAttribute('data-rating'), 10) || 5;
 
-          var reviewsList = document.getElementById('ga-reviews-list');
+          var photoSrc = null;
+          if (previewStrip && previewStrip.children.length > 0) {
+            photoSrc = previewStrip.children[0].src;
+          }
+
+          var reviewObj = {
+            name: name,
+            location: location,
+            headline: headline,
+            body: body,
+            pack: pack,
+            rating: rating,
+            photo: photoSrc,
+            date: 'Just now'
+          };
+
           if (reviewsList) {
-            var newCard = document.createElement('div');
-            newCard.className = 'ga-pr-card';
-            newCard.setAttribute('data-stars', rating);
-            newCard.setAttribute('data-has-photo', previewStrip && previewStrip.children.length > 0 ? 'true' : 'false');
-            newCard.setAttribute('data-tags', 'all');
+            renderReviewCard(reviewObj, reviewsList, true);
+          }
 
-            var starsHtml = '';
-            for (var i = 0; i < rating; i++) {
-              starsHtml += '<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>';
+          // Save to localStorage
+          try {
+            var currentSaved = [];
+            try {
+              var r = localStorage.getItem(storageKey);
+              if (r) currentSaved = JSON.parse(r);
+            } catch(err) {}
+            currentSaved.unshift(reviewObj);
+            try {
+              localStorage.setItem(storageKey, JSON.stringify(currentSaved));
+            } catch(quotaErr) {
+              // Try saving without large base64 photo
+              var fallback = currentSaved.map(function(item) {
+                return Object.assign({}, item, { photo: null });
+              });
+              localStorage.setItem(storageKey, JSON.stringify(fallback));
             }
+          } catch(e) {
+            console.warn('Could not save review locally', e);
+          }
 
-            var photoHtml = '';
-            if (previewStrip && previewStrip.children.length > 0) {
-              var firstImgSrc = previewStrip.children[0].src;
-              photoHtml = '<div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector(\'img\').src)"><img class="ga-pr-card-img" src="' + firstImgSrc + '" alt="' + headline + '"></div>';
-            }
-
-            newCard.innerHTML = 
-              '<div>' +
-                '<div class="ga-pr-card-top">' +
-                  '<div class="ga-pr-avatar">' + (name ? name.charAt(0).toUpperCase() : 'G') + '</div>' +
-                  '<div class="ga-pr-meta">' +
-                    '<div class="ga-pr-meta-row">' +
-                      '<span class="ga-pr-reviewer-name">' + name + '</span>' +
-                      '<span class="ga-pr-verified-badge">' +
-                        '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>' +
-                        'Verified' +
-                      '</span>' +
-                    '</div>' +
-                    '<div class="ga-pr-meta-sub">' + location + ' • Just now</div>' +
-                  '</div>' +
-                '</div>' +
-                '<div class="ga-pr-stars-row">' +
-                  '<div class="ga-pr-stars">' + starsHtml + '</div>' +
-                  '<span class="ga-pr-purchase-tag">' + pack + '</span>' +
-                '</div>' +
-                '<h3 class="ga-pr-card-headline">' + headline + '</h3>' +
-                '<p class="ga-pr-card-text">' + body + '</p>' +
-                photoHtml +
-              '</div>' +
-              '<div class="ga-pr-card-footer">' +
-                '<span class="ga-pr-helpful-txt">Was this helpful?</span>' +
-                '<button class="ga-pr-helpful-btn" data-voted="false">' +
-                  '<svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>' +
-                  '<span>Helpful (<span class="ga-count">1</span>)</span>' +
-                '</button>' +
-              '</div>';
-
-            reviewsList.insertBefore(newCard, reviewsList.firstChild);
+          // Update hero badge
+          var heroCount = document.querySelector('.ga-hero-count--first');
+          if (heroCount) {
+            var totalCount = (savedReviews ? savedReviews.length : 0) + 1;
+            heroCount.textContent = '(' + totalCount + ' ' + (totalCount === 1 ? 'Review' : 'Reviews') + ')';
           }
 
           var successName = document.getElementById('ga-success-name');
           if (successName) successName.textContent = name;
           if (formView) formView.style.display = 'none';
           if (successView) successView.style.display = 'block';
+
+          // Reset form inputs
+          reviewForm.reset();
+          if (previewStrip) previewStrip.innerHTML = '';
         });
       }
     }
