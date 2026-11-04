@@ -3388,8 +3388,15 @@ body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
   font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
 }
 
-.jdgm-star {
+.jdgm-star,
+.jdgm-star.jdgm--on,
+.jdgm-star.jdgm--half,
+.jdgm-prev-badge__stars .jdgm-star {
   color: #cda250 !important;
+}
+
+.jdgm-star.jdgm--off {
+  color: rgba(205, 162, 80, 0.28) !important;
 }
 
 .jdgm-rev-widg__title {
