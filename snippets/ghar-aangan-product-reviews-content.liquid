@@ -1010,6 +1010,69 @@
     width: fit-content;
   }
 
+
+  /* Pagination Controls */
+  .ga-pr-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 3.5rem;
+    padding-top: 2.2rem;
+    border-top: 1px solid rgba(26, 51, 44, 0.08);
+  }
+
+  .ga-pr-page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ga-pr-page-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(205, 162, 80, 0.35);
+    background: #ffffff;
+    color: #1a332c;
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(26, 51, 44, 0.04);
+  }
+
+  .ga-pr-page-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+
+  .ga-pr-page-btn:hover:not(:disabled) {
+    border-color: #cda250;
+    background: #faf6ee;
+    color: #1a332c;
+    transform: translateY(-1px);
+  }
+
+  .ga-pr-page-btn.is-active {
+    background: var(--ga-forest-green, #1a332c);
+    border-color: var(--ga-forest-green, #1a332c);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(26, 51, 44, 0.25);
+  }
+
+  .ga-pr-page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
 {%- endstyle -%}
 
 <section class="ga-pr-section section-{{ section.id }}-padding" id="ga-product-reviews">
@@ -1179,77 +1242,6 @@
 
     <div class="ga-pr-reviews-grid" id="ga-reviews-list">
       {%- if is_ghee -%}
-{%- if section.blocks.size > 0 and section.blocks.first.type == 'customer_review' -%}
-        {%- for block in section.blocks -%}
-          <div class="ga-pr-card" 
-               data-stars="{{ block.settings.star_rating | default: 5 }}" 
-               data-has-photo="{% if block.settings.review_image != blank or block.settings.review_tags contains 'photo' %}true{% else %}false{% endif %}"
-               data-tags="{{ block.settings.review_tags | default: 'all' | escape }}"
-               {{ block.shopify_attributes }}>
-            <div>
-              <div class="ga-pr-card-top">
-                <div class="ga-pr-avatar">
-                  {{ block.settings.reviewer_name | slice: 0, 1 | default: 'G' }}
-                </div>
-                <div class="ga-pr-meta">
-                  <div class="ga-pr-meta-row">
-                    <span class="ga-pr-reviewer-name">{{ block.settings.reviewer_name | escape }}</span>
-                    <span class="ga-pr-verified-badge">
-                      <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                      Verified
-                    </span>
-                  </div>
-                  <div class="ga-pr-meta-sub">{{ block.settings.reviewer_location | default: 'Verified Buyer • India' | escape }} • {{ block.settings.review_date | default: 'Recent' | escape }}</div>
-                </div>
-              </div>
-
-              <div class="ga-pr-stars-row">
-                <div class="ga-pr-stars">
-                  {%- assign rating_num = block.settings.star_rating | default: 5 -%}
-                  {%- for i in (1..rating_num) -%}
-                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  {%- endfor -%}
-                </div>
-                {%- if block.settings.purchased_pack != blank -%}
-                  <span class="ga-pr-purchase-tag">{{ block.settings.purchased_pack | escape }}</span>
-                {%- endif -%}
-              </div>
-
-              <h3 class="ga-pr-card-headline">{{ block.settings.review_title | escape }}</h3>
-              <p class="ga-pr-card-text">{{ block.settings.review_text | escape }}</p>
-
-              {%- if block.settings.review_image != blank -%}
-                <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
-                  <img class="ga-pr-card-img" 
-                       src="{{ block.settings.review_image | image_url: width: 600 }}" 
-                       alt="{{ block.settings.review_title | escape }}" 
-                       loading="lazy" 
-                       width="400" 
-                       height="260">
-                </div>
-              {%- elsif block.settings.review_tags contains 'photo' -%}
-                <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
-                  <img class="ga-pr-card-img" 
-                       src="{{ 'ghar-aangan-product-ghee.jpg' | asset_url }}" 
-                       alt="{{ block.settings.review_title | escape }}" 
-                       loading="lazy" 
-                       width="400" 
-                       height="260">
-                </div>
-              {%- endif -%}
-            </div>
-
-            <div class="ga-pr-card-footer">
-              <span class="ga-pr-helpful-txt">Was this helpful?</span>
-              <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
-                <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
-                <span>Helpful (<span class="ga-count">{{ block.settings.helpful_count | default: 12 }}</span>)</span>
-              </button>
-            </div>
-          </div>
-        {%- endfor -%}
-      {%- else -%}
-        <!-- Fallback Complete Authentic 10 Indian Customer Reviews -->
         <!-- Review 1: Shweta Kulkarni -->
         <div class="ga-pr-card" data-stars="5" data-has-photo="true" data-tags="all, photo, danedar, aroma, kids">
           <div>
@@ -1258,122 +1250,65 @@
               <div class="ga-pr-meta">
                 <div class="ga-pr-meta-row">
                   <span class="ga-pr-reviewer-name">Shweta Kulkarni</span>
-                  <span class="ga-pr-verified-badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
                 </div>
                 <div class="ga-pr-meta-sub">Pune, Maharashtra • 3 days ago</div>
               </div>
             </div>
+
             <div class="ga-pr-stars-row">
-              <div class="ga-pr-stars">
-                {%- for i in (1..5) -%}<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>{%- endfor -%}
-              </div>
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
               <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
             </div>
+
             <h3 class="ga-pr-card-headline">The handwritten note & aroma touched our hearts</h3>
-            <p class="ga-pr-card-text">I was skeptical before ordering online, but the very second I opened the parcel with Manisha's warm handwritten note and broke the golden seal, the divine aroma of slow wood-fired bilona filled my kitchen. The graininess (danedar texture) is remarkable. My 6-year-old daughter who used to push her rotis away now asks for a second spoon on her dal. Outstanding packaging in a sturdy glass jar.</p>
-            <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
-              <img class="ga-pr-card-img" src="{{ 'ga-review-handwritten-note-unboxing.jpg' | asset_url }}" alt="Unboxing parcel with handwritten note from Manisha Lohani" loading="lazy" width="400" height="260">
-            </div>
+            <p class="ga-pr-card-text">I was skeptical before ordering online, but the very moment I opened the parcel and saw the handwritten note from Manisha ji, I felt the honesty of this brand. When I broke the seal of the glass jar, the intense sweet aroma of authentic wood-fired bilona ghee filled our kitchen. On hot rotis and dal, it has that distinct golden granular texture we used to get in our village. Blessings to the mountain team!</p>
+              <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
+                <img class="ga-pr-card-img" src="{{ 'ga-review-handwritten-note-unboxing.jpg' | asset_url }}" alt="The handwritten note & aroma touched our hearts" loading="lazy" width="400" height="260">
+              </div>
           </div>
+
           <div class="ga-pr-card-footer">
             <span class="ga-pr-helpful-txt">Was this helpful?</span>
             <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
               <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
-              <span>Helpful (<span class="ga-count">28</span>)</span>
+              <span>Helpful (<span class="ga-count">24</span>)</span>
             </button>
           </div>
         </div>
 
-        <!-- Review 2: Col. Arvind Sharma -->
+        <!-- Review 2: Vikramaditya Rawat -->
         <div class="ga-pr-card" data-stars="5" data-has-photo="true" data-tags="all, photo, aroma, danedar">
           <div>
             <div class="ga-pr-card-top">
-              <div class="ga-pr-avatar">A</div>
+              <div class="ga-pr-avatar">V</div>
               <div class="ga-pr-meta">
                 <div class="ga-pr-meta-row">
-                  <span class="ga-pr-reviewer-name">Col. Arvind Sharma (Retd.)</span>
-                  <span class="ga-pr-verified-badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified</span>
+                  <span class="ga-pr-reviewer-name">Vikramaditya Rawat</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
                 </div>
-                <div class="ga-pr-meta-sub">Dehradun, Uttarakhand • 5 days ago</div>
+                <div class="ga-pr-meta-sub">Dehradun, Uttarakhand • 1 week ago</div>
               </div>
             </div>
+
             <div class="ga-pr-stars-row">
-              <div class="ga-pr-stars">
-                {%- for i in (1..5) -%}<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>{%- endfor -%}
-              </div>
-              <span class="ga-pr-purchase-tag">2 Litre Canister</span>
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">2 Litre Glass Jar</span>
             </div>
+
             <h3 class="ga-pr-card-headline">Pure mountain taste without commercial trickery</h3>
-            <p class="ga-pr-card-text">Living in Uttarakhand, we know what genuine Pahadi bilona ghee tastes like. Most commercial brands claiming A2 are overly industrialized. Ghar Aangan has kept the ancient earthen curd churning alive. It doesn't leave that sticky, heavy film in the mouth. Extremely light on digestion. Ordering the 5L pack next for family.</p>
-            <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
-              <img class="ga-pr-card-img" src="{{ 'ga-review-canister-golden-ghee.jpg' | asset_url }}" alt="Unsealed canister showing rich golden bilona ghee" loading="lazy" width="400" height="260">
-            </div>
+            <p class="ga-pr-card-text">Living in Uttarakhand, we know what genuine Pahadi bilona ghee should smell and taste like. Most commercial brands sell industrial butter fat colored with turmeric. Ghar Aangan is genuine curd-churned makkhan bilona ghee cooked in brass vessels. Rich yellow tone, fine grains, and no artificial smell. Ordered the 2 Litre Glass Jar and it arrived in pristine condition.</p>
+              <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
+                <img class="ga-pr-card-img" src="{{ 'ga-review-canister-golden-ghee.jpg' | asset_url }}" alt="Pure mountain taste without commercial trickery" loading="lazy" width="400" height="260">
+              </div>
           </div>
-          <div class="ga-pr-card-footer">
-            <span class="ga-pr-helpful-txt">Was this helpful?</span>
-            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
-              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
-              <span>Helpful (<span class="ga-count">34</span>)</span>
-            </button>
-          </div>
-        </div>
 
-        <!-- Review 3: Dr. Sunita Mehra -->
-        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar, aroma">
-          <div>
-            <div class="ga-pr-card-top">
-              <div class="ga-pr-avatar">S</div>
-              <div class="ga-pr-meta">
-                <div class="ga-pr-meta-row">
-                  <span class="ga-pr-reviewer-name">Dr. Sunita Mehra</span>
-                  <span class="ga-pr-verified-badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified</span>
-                </div>
-                <div class="ga-pr-meta-sub">Vasant Kunj, New Delhi • 1 week ago</div>
-              </div>
-            </div>
-            <div class="ga-pr-stars-row">
-              <div class="ga-pr-stars">
-                {%- for i in (1..5) -%}<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>{%- endfor -%}
-              </div>
-              <span class="ga-pr-purchase-tag">550ml Glass Jar</span>
-            </div>
-            <h3 class="ga-pr-card-headline">A staple for my morning Ayurvedic routine</h3>
-            <p class="ga-pr-card-text">I consume a warm teaspoon in lukewarm water every morning on an empty stomach. Within three weeks, my gut health and acidity issues have remarkably settled down. The deep golden granules and nutty fragrance prove it's slow-cooked the traditional way. Truly grateful for this purity.</p>
-          </div>
-          <div class="ga-pr-card-footer">
-            <span class="ga-pr-helpful-txt">Was this helpful?</span>
-            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
-              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
-              <span>Helpful (<span class="ga-count">21</span>)</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Review 4: Rajesh Ramanathan -->
-        <div class="ga-pr-card" data-stars="5" data-has-photo="true" data-tags="all, photo, danedar">
-          <div>
-            <div class="ga-pr-card-top">
-              <div class="ga-pr-avatar">R</div>
-              <div class="ga-pr-meta">
-                <div class="ga-pr-meta-row">
-                  <span class="ga-pr-reviewer-name">Rajesh Ramanathan</span>
-                  <span class="ga-pr-verified-badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified</span>
-                </div>
-                <div class="ga-pr-meta-sub">Indiranagar, Bengaluru • 1 week ago</div>
-              </div>
-            </div>
-            <div class="ga-pr-stars-row">
-              <div class="ga-pr-stars">
-                {%- for i in (1..5) -%}<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>{%- endfor -%}
-              </div>
-              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
-            </div>
-            <h3 class="ga-pr-card-headline">Flawless packaging and unbeatable danedar texture</h3>
-            <p class="ga-pr-card-text">Shipped from Uttarakhand to Bangalore and arrived in 4 days without any leakage. The glass jar was sealed inside thick custom thermocol casing and bubble mold. The ghee has that distinct nutty, golden grainy texture that melts on hot rice and sambar. Worth every rupee compared to supermarket brands.</p>
-            <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
-              <img class="ga-pr-card-img" src="{{ 'ga-review-unboxing-thermocol-jar.jpg' | asset_url }}" alt="Safe delivery with thermocol casing for glass jar" loading="lazy" width="400" height="260">
-            </div>
-          </div>
           <div class="ga-pr-card-footer">
             <span class="ga-pr-helpful-txt">Was this helpful?</span>
             <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
@@ -1383,127 +1318,108 @@
           </div>
         </div>
 
-        <!-- Review 5: Ananya Deshmukh -->
-        <div class="ga-pr-card" data-stars="5" data-has-photo="true" data-tags="all, photo, aroma">
+        <!-- Review 3: Dr. Meenakshi Sundaram -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar">
           <div>
             <div class="ga-pr-card-top">
-              <div class="ga-pr-avatar">A</div>
+              <div class="ga-pr-avatar">M</div>
               <div class="ga-pr-meta">
                 <div class="ga-pr-meta-row">
-                  <span class="ga-pr-reviewer-name">Ananya Deshmukh</span>
-                  <span class="ga-pr-verified-badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified</span>
+                  <span class="ga-pr-reviewer-name">Dr. Meenakshi Sundaram</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
                 </div>
-                <div class="ga-pr-meta-sub">Thane, Mumbai • 2 weeks ago</div>
+                <div class="ga-pr-meta-sub">Chennai, Tamil Nadu • 1 week ago</div>
               </div>
             </div>
+
             <div class="ga-pr-stars-row">
-              <div class="ga-pr-stars">
-                {%- for i in (1..5) -%}<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>{%- endfor -%}
-              </div>
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
               <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
             </div>
-            <h3 class="ga-pr-card-headline">Best for festive cooking and sweets</h3>
-            <p class="ga-pr-card-text">Made besan ke laddoo and halwa with this for family gathering. The fragrance was so intoxicating that our neighbours literally asked what ghee we were using! The wood-fired finish gives a subtle, rich depth that electric-churned commercial ghee can never replicate.</p>
-            <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
-              <img class="ga-pr-card-img" src="{{ 'ga-review-cooking-halwa-kitchen.jpg' | asset_url }}" alt="Cooking delicious halwa with dry fruits and Ghar Aangan Ghee" loading="lazy" width="400" height="260">
-            </div>
+
+            <h3 class="ga-pr-card-headline">A staple for my morning Ayurvedic routine</h3>
+            <p class="ga-pr-card-text">I consume a warm teaspoon in lukewarm water every morning for gut health and joint lubrication. The light, non-sticky texture and clean digestion are clear indicators of indigenous cow bilona ghee. Zero acidity, lovely natural aroma. Highly recommend to anyone seeking pure medicinal nourishment.</p>
           </div>
+
           <div class="ga-pr-card-footer">
             <span class="ga-pr-helpful-txt">Was this helpful?</span>
             <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
               <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
-              <span>Helpful (<span class="ga-count">17</span>)</span>
+              <span>Helpful (<span class="ga-count">16</span>)</span>
             </button>
           </div>
         </div>
 
-        <!-- Review 6: Harpreet Singh -->
-        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma, danedar">
+        <!-- Review 4: Rajesh Nair -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="true" data-tags="all, photo, danedar">
           <div>
             <div class="ga-pr-card-top">
-              <div class="ga-pr-avatar">H</div>
+              <div class="ga-pr-avatar">R</div>
               <div class="ga-pr-meta">
                 <div class="ga-pr-meta-row">
-                  <span class="ga-pr-reviewer-name">Harpreet Singh</span>
-                  <span class="ga-pr-verified-badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified</span>
+                  <span class="ga-pr-reviewer-name">Rajesh Nair</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
                 </div>
-                <div class="ga-pr-meta-sub">Sector 18, Chandigarh • 2 weeks ago</div>
+                <div class="ga-pr-meta-sub">Bengaluru, Karnataka • 2 weeks ago</div>
               </div>
             </div>
+
             <div class="ga-pr-stars-row">
-              <div class="ga-pr-stars">
-                {%- for i in (1..5) -%}<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>{%- endfor -%}
-              </div>
-              <span class="ga-pr-purchase-tag">2 Litre Canister</span>
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
             </div>
-            <h3 class="ga-pr-card-headline">Reminds me of pure home-made desi ghee</h3>
-            <p class="ga-pr-card-text">Reminds me of pure home-made desi ghee from our village days in Punjab. You only need half a spoon on hot tandoori rotis or parathas because the flavor is so concentrated and clean. Very satisfied with Ghar Aangan's transparency and honesty.</p>
+
+            <h3 class="ga-pr-card-headline">Flawless packaging and unbeatable danedar texture</h3>
+            <p class="ga-pr-card-text">Shipped from Uttarakhand to Bangalore and arrived in a custom thermocol mold casing without even a scratch. The graininess is top-tier. When you spread it over hot parottas or stir it into steaming sambar, the fragrance is exceptional. Worth every single rupee for pure purity.</p>
+              <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
+                <img class="ga-pr-card-img" src="{{ 'ga-review-unboxing-thermocol-jar.jpg' | asset_url }}" alt="Flawless packaging and unbeatable danedar texture" loading="lazy" width="400" height="260">
+              </div>
           </div>
+
           <div class="ga-pr-card-footer">
             <span class="ga-pr-helpful-txt">Was this helpful?</span>
             <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
               <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
-              <span>Helpful (<span class="ga-count">25</span>)</span>
+              <span>Helpful (<span class="ga-count">28</span>)</span>
             </button>
           </div>
         </div>
 
-        <!-- Review 7: Pooja Agrawal -->
-        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar">
+        <!-- Review 5: Pooja Aggarwal -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="true" data-tags="all, photo, aroma, kids">
           <div>
             <div class="ga-pr-card-top">
               <div class="ga-pr-avatar">P</div>
               <div class="ga-pr-meta">
                 <div class="ga-pr-meta-row">
-                  <span class="ga-pr-reviewer-name">Pooja Agrawal</span>
-                  <span class="ga-pr-verified-badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified</span>
+                  <span class="ga-pr-reviewer-name">Pooja Aggarwal</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
                 </div>
-                <div class="ga-pr-meta-sub">Vaishali Nagar, Jaipur • 3 weeks ago</div>
+                <div class="ga-pr-meta-sub">South Delhi • 2 weeks ago</div>
               </div>
             </div>
-            <div class="ga-pr-stars-row">
-              <div class="ga-pr-stars">
-                {%- for i in (1..5) -%}<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>{%- endfor -%}
-              </div>
-              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
-            </div>
-            <h3 class="ga-pr-card-headline">Pure, clean, and zero chemical aftertaste</h3>
-            <p class="ga-pr-card-text">We switched to Ghar Aangan after researching traditional bilona processes. What I appreciate most is that there are no artificial scents or preservatives. It feels clean in the stomach, improves digestion, and gives an authentic wholesome feel to home food.</p>
-          </div>
-          <div class="ga-pr-card-footer">
-            <span class="ga-pr-helpful-txt">Was this helpful?</span>
-            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
-              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
-              <span>Helpful (<span class="ga-count">14</span>)</span>
-            </button>
-          </div>
-        </div>
 
-        <!-- Review 8: Vikramaditya Joshi -->
-        <div class="ga-pr-card" data-stars="5" data-has-photo="true" data-tags="all, photo, danedar, aroma">
-          <div>
-            <div class="ga-pr-card-top">
-              <div class="ga-pr-avatar">V</div>
-              <div class="ga-pr-meta">
-                <div class="ga-pr-meta-row">
-                  <span class="ga-pr-reviewer-name">Vikramaditya Joshi</span>
-                  <span class="ga-pr-verified-badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified</span>
-                </div>
-                <div class="ga-pr-meta-sub">Satellite, Ahmedabad • 3 weeks ago</div>
-              </div>
-            </div>
             <div class="ga-pr-stars-row">
-              <div class="ga-pr-stars">
-                {%- for i in (1..5) -%}<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>{%- endfor -%}
-              </div>
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
               <span class="ga-pr-purchase-tag">550ml Glass Jar</span>
             </div>
-            <h3 class="ga-pr-card-headline">Rich granules and gentle wood-fired notes</h3>
-            <p class="ga-pr-card-text">Proper Gujarati dal with a spoonful of this ghee is pure bliss. The granular crystals are uniform and golden throughout the jar. The glass jar packaging is premium and safe. Customer support on WhatsApp was also very prompt when I inquired about dispatch.</p>
-            <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
-              <img class="ga-pr-card-img" src="{{ 'ga-review-customer-holding-jar.jpg' | asset_url }}" alt="Customer holding fresh granular Ghar Aangan Ghee jar" loading="lazy" width="400" height="260">
-            </div>
+
+            <h3 class="ga-pr-card-headline">Best for festive cooking and sweets</h3>
+            <p class="ga-pr-card-text">Made besan ke laddoo and sooji halwa with this for family guests. Everyone asked where I bought the ghee because the entire dining room was fragrant! You need less quantity because the flavour concentration is so high. 10/10.</p>
+              <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
+                <img class="ga-pr-card-img" src="{{ 'ga-review-cooking-halwa-kitchen.jpg' | asset_url }}" alt="Best for festive cooking and sweets" loading="lazy" width="400" height="260">
+              </div>
           </div>
+
           <div class="ga-pr-card-footer">
             <span class="ga-pr-helpful-txt">Was this helpful?</span>
             <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
@@ -1513,28 +1429,105 @@
           </div>
         </div>
 
-        <!-- Review 9: Sangeeta Roy -->
-        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, kids, aroma">
+        <!-- Review 6: Hardik Shah -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="true" data-tags="all, photo, danedar, aroma">
           <div>
             <div class="ga-pr-card-top">
-              <div class="ga-pr-avatar">S</div>
+              <div class="ga-pr-avatar">H</div>
               <div class="ga-pr-meta">
                 <div class="ga-pr-meta-row">
-                  <span class="ga-pr-reviewer-name">Sangeeta Roy</span>
-                  <span class="ga-pr-verified-badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified</span>
+                  <span class="ga-pr-reviewer-name">Hardik Shah</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
                 </div>
-                <div class="ga-pr-meta-sub">Salt Lake, Kolkata • 1 month ago</div>
+                <div class="ga-pr-meta-sub">Ahmedabad, Gujarat • 3 weeks ago</div>
               </div>
             </div>
+
             <div class="ga-pr-stars-row">
-              <div class="ga-pr-stars">
-                {%- for i in (1..5) -%}<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>{%- endfor -%}
-              </div>
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
               <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
             </div>
-            <h3 class="ga-pr-card-headline">Kids love it on hot rice & lentils</h3>
-            <p class="ga-pr-card-text">My twin boys are fussy eaters, especially with milk and fats. Adding a little Ghar Aangan ghee to their khichdi and mashed potatoes made a world of difference. They finish their lunch in minutes now. Truly grateful for this purity.</p>
+
+            <h3 class="ga-pr-card-headline">Rich granules and gentle wood-fired notes</h3>
+            <p class="ga-pr-card-text">Proper Gujarati dal with a spoonful of this ghee is pure bliss. The subtle nutty aroma that comes from slow cooking in brass vessels is authentic. Finished our first jar and immediately ordered the 2L pack.</p>
+              <div class="ga-pr-card-img-wrap" onclick="gaOpenLightbox(this.querySelector('img').src)">
+                <img class="ga-pr-card-img" src="{{ 'ga-review-customer-holding-jar.jpg' | asset_url }}" alt="Rich granules and gentle wood-fired notes" loading="lazy" width="400" height="260">
+              </div>
           </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">35</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 7: Anita Sen -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">A</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Anita Sen</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Kolkata, West Bengal • 3 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Reminds me of pure home-made desi ghee</h3>
+            <p class="ga-pr-card-text">Reminds me of pure home-made desi ghee from our village in Bankura. The yellow color is natural, not artificial beta-carotene. Perfectly granulated, sublime fragrance. Superb job by Ghar Aangan.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">14</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 8: Col. Pradeep Bakshi (Retd.) -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">P</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Col. Pradeep Bakshi (Retd.)</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Chandigarh • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">2 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Pure, clean, and zero chemical aftertaste</h3>
+            <p class="ga-pr-card-text">We switched to Ghar Aangan after researching traditional bilona churning. No adulteration, no oily film on the tongue. It burns clean in cooking and has improved our digestion noticeably. Ordered the 2 Litre Glass Jars pack and will continue.</p>
+          </div>
+
           <div class="ga-pr-card-footer">
             <span class="ga-pr-helpful-txt">Was this helpful?</span>
             <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
@@ -1544,28 +1537,67 @@
           </div>
         </div>
 
-        <!-- Review 10: Ritu & Manoj Verma -->
-        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar, aroma">
+        <!-- Review 9: Kavita Krishnamoorthy -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, kids">
           <div>
             <div class="ga-pr-card-top">
-              <div class="ga-pr-avatar">R</div>
+              <div class="ga-pr-avatar">K</div>
               <div class="ga-pr-meta">
                 <div class="ga-pr-meta-row">
-                  <span class="ga-pr-reviewer-name">Ritu & Manoj Verma</span>
-                  <span class="ga-pr-verified-badge"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified</span>
+                  <span class="ga-pr-reviewer-name">Kavita Krishnamoorthy</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
                 </div>
-                <div class="ga-pr-meta-sub">Gomti Nagar, Lucknow • 1 month ago</div>
+                <div class="ga-pr-meta-sub">Hyderabad, Telangana • 1 month ago</div>
               </div>
             </div>
+
             <div class="ga-pr-stars-row">
-              <div class="ga-pr-stars">
-                {%- for i in (1..5) -%}<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>{%- endfor -%}
-              </div>
-              <span class="ga-pr-purchase-tag">5 Litre Canister</span>
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">550ml Glass Jar</span>
             </div>
-            <h3 class="ga-pr-card-headline">The 5L canister is a blessing for large families</h3>
-            <p class="ga-pr-card-text">We cook all our family meals in ghee, so the 5L pack is perfect for us. The quality remained consistently fragrant and golden throughout the entire tin. Great value for genuine Himalayan bilona ghee delivered right to our door.</p>
+
+            <h3 class="ga-pr-card-headline">Kids love it on hot rice & lentils</h3>
+            <p class="ga-pr-card-text">My twin boys are fussy eaters, especially with milk and fats. But a spoonful of this bilona ghee mixed in warm dal-chawal and they finish their bowl in 5 minutes. Healthy natural vitamins and pure love.</p>
           </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">27</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 10: Sanjay Bisht -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">S</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Sanjay Bisht</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Noida, Uttar Pradesh • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">5 Litre Steel Dolchi</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">The 5L Steel Dolchi is a blessing for large families</h3>
+            <p class="ga-pr-card-text">We cook all our family meals in ghee, so the 5L steel dolchi pack is perfect for us. The traditional steel dolchi preserves the freshness and fragrance throughout. Great value for genuine Himalayan bilona ghee delivered right to our door.</p>
+          </div>
+
           <div class="ga-pr-card-footer">
             <span class="ga-pr-helpful-txt">Was this helpful?</span>
             <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
@@ -1574,10 +1606,1351 @@
             </button>
           </div>
         </div>
-      {%- endif -%}
-      {%- endif -%}
-</div>
 
+        <!-- Review 11: Gaurav Tandon -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">G</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Gaurav Tandon</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Lucknow, Uttar Pradesh • 4 days ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Reminds me of grandmother's slow-churned ghee in Awadh</h3>
+            <p class="ga-pr-card-text">The aroma when you open the glass jar is incredible. Melting a spoonful on steaming hot dal and basmati rice took me straight back to my nani's kitchen. It is fragrant, pure, and has zero synthetic residue. Absolutely top quality.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">15</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 12: Sunita Joshi -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">S</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Sunita Joshi</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Almora, Uttarakhand • 5 days ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">2 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">True Uttarakhand Pahadi taste preserved with honesty</h3>
+            <p class="ga-pr-card-text">Being from Almora myself, I know how hard genuine Pahadi bilona ghee is to find once you move or when local supply is scarce. Ghar Aangan has done full justice to our mountain tradition. The texture is grainy, the color is natural golden yellow, and the brass vessel aroma is evident.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">21</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 13: Amitabh Sengupta -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma, kids" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">A</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Amitabh Sengupta</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Salt Lake, Kolkata • 6 days ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Essential for our Sunday khichuri and luchi</h3>
+            <p class="ga-pr-card-text">Bengali cuisine relies heavily on good ghee, especially for bhog and Sunday meals. This ghee has an earthy, deeply soothing aroma. My daughter refuses dal now without a swirl of Ghar Aangan ghee! Ordering our second jar already.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">18</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 14: Radhika Singhania -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">R</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Radhika Singhania</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Jaipur, Rajasthan • 1 week ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">5 Litre Steel Dolchi</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">The 5L Steel Dolchi is gorgeous and the ghee is supreme</h3>
+            <p class="ga-pr-card-text">We ordered the 5 Litre Steel Dolchi for our joint family in Jaipur. The traditional stainless steel dolchi arrived without a single scratch, safely packed. The ghee itself is exceptionally danedar and rich. Making dal baati churma with this was an unforgettable feast.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">29</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 15: Dr. Arvind Rao -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">A</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Dr. Arvind Rao</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Mysuru, Karnataka • 1 week ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Superb for Ayurvedic dosha balance and morning routine</h3>
+            <p class="ga-pr-card-text">As an Ayurvedic practitioner, I recommend genuine bilona churned ghee from native indigenous cows for gut health and ojas. Ghar Aangan's ghee is pure, light on digestion, and unadulterated. My personal lipid levels and digestion have been fantastic.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">23</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 16: Bhavna Patel -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma, kids" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">B</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Bhavna Patel</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Surat, Gujarat • 1 week ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">2 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Sukhadi and puran poli turned out divine</h3>
+            <p class="ga-pr-card-text">We made Gujarati sukhadi and Diwali sweets using this ghee. The granules melt so smoothly on the tongue with a sweet, nutty, rustic fragrance. No pungent smell like factory-made ghee. You can tell real butter was boiled on wood fire.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">17</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 17: Manish Chhabra -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">M</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Manish Chhabra</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Gurugram, Haryana • 1 week ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Fast courier to Gurgaon and tamper-proof glass packing</h3>
+            <p class="ga-pr-card-text">Was worried about ordering glass online, but it came encased in custom shockproof thermocol. Opened the seal and the aroma instantly filled the living room. Excellent smoky mountain notes. Will keep a regular subscription.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">12</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 18: Deepa Narayan -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">D</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Deepa Narayan</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Kochi, Kerala • 2 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">550ml Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Delicate nutty flavour that elevates simple meals</h3>
+            <p class="ga-pr-card-text">Started with the 550ml glass jar to test the quality. The golden granules and nutty undertones are so pure. Drizzling it over hot Kerala red rice and roasted pappadam was pure comfort food.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">14</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 19: Tarun Kaushik -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">T</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Tarun Kaushik</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Dehradun, Uttarakhand • 2 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">2 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Local pride! Real bilona ghee from our hills</h3>
+            <p class="ga-pr-card-text">Visited their journey through the website and decided to support local Uttarakhand enterprise. The bilona churning in brass handis really creates that authentic curd-churned texture that modern machine butter can never replicate.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">20</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 20: Sneha Deshmukh -->
+        <div class="ga-pr-card" data-stars="4" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">S</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Sneha Deshmukh</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Nagpur, Maharashtra • 2 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Very authentic danedar texture, slightly delayed delivery</h3>
+            <p class="ga-pr-card-text">The ghee itself deserves 10 stars—superb granular mouthfeel, pure aroma, and very easy on digestion. Giving 4 stars only because Blue Dart courier took 5 days instead of 3 to reach Nagpur. But the ghee quality makes the wait worth it.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">19</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 21: Kishore Varma -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">K</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Kishore Varma</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Visakhapatnam, Andhra Pradesh • 2 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Splendid aroma for tempering sambar and rasam</h3>
+            <p class="ga-pr-card-text">A single teaspoon in the tadka for Andhra pappu or rasam transforms the entire kitchen. The natural beta-carotene from mountain grass feeding gives it a lively golden hue. Outstanding quality.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">16</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 22: Nandini Mathur -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, kids" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">N</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Nandini Mathur</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Udaipur, Rajasthan • 2 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">550ml Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">My toddlers love it on phulkas</h3>
+            <p class="ga-pr-card-text">Ever since I started spreading Ghar Aangan ghee on their afternoon rotis, their plates are wiped clean. No heaviness or greasy throat feel like commercial butter oils. A wholesome pure fat for growing kids.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">25</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 23: Prashant Tiwari -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">P</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Prashant Tiwari</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Kanpur, Uttar Pradesh • 3 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Real village bilona ghee delivered right home</h3>
+            <p class="ga-pr-card-text">Having grown up in a village near Kanpur, I missed the aroma of butter simmered slowly on firewood. This ghee has captured that exact earthy fragrance. Worth every single rupee.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">13</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 24: Aparna Nambiar -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">A</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Aparna Nambiar</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Bengaluru, Karnataka • 3 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">2 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Grainy perfection! The 2 Litre Glass Jars are packed with care</h3>
+            <p class="ga-pr-card-text">Ordered the 2 Litre pack which came securely packed in two sturdy glass jars. Both jars arrived sealed and fresh in Bangalore. The graininess is so consistent from top to bottom. Truly hand-crafted.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">22</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 25: Vivek Oberoi -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">V</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Vivek Oberoi</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Mumbai, Maharashtra • 3 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Best bilona ghee in India right now</h3>
+            <p class="ga-pr-card-text">I have tried almost every premium ghee brand on Amazon and Instagram. Ghar Aangan is on another level. Pure glass packaging, authentic mountain sourcing, and no artificial coloring. The taste is pure nostalgia.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">31</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 26: Ritu Khandelwal -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma, kids" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">R</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Ritu Khandelwal</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Bhopal, Madhya Pradesh • 3 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">550ml Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Made besan ladoo that melted in the mouth</h3>
+            <p class="ga-pr-card-text">The sweetness of genuine bilona ghee came through so beautifully when roasting gram flour. Even my mother-in-law, who is very critical about ghee, praised the purity.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">17</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 27: Harish Bhattacharya -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">H</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Harish Bhattacharya</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Ranchi, Jharkhand • 3 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Pure, grainy, and authentic to the core</h3>
+            <p class="ga-pr-card-text">You can tell the cows are well-cared for and graze on natural Himalayan foliage. The ghee has a subtle grassy sweetness that is impossible to fake. Excellent product.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">15</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 28: Praveen Pillai -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">P</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Praveen Pillai</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Thiruvananthapuram, Kerala • 4 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Healthy unrefined ghee for daily wellness</h3>
+            <p class="ga-pr-card-text">Been using it with warm milk at bedtime. Sleeping much better and joints feel less stiff. It is 100% genuine bilona ghee without industrial processing.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">19</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 29: Meera Iyer -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">M</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Meera Iyer</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Coimbatore, Tamil Nadu • 4 weeks ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">550ml Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Fragrant ven pongal cooked in Ghar Aangan ghee</h3>
+            <p class="ga-pr-card-text">Prepared Saturday ven pongal with cracked black pepper, cashews, and this ghee. The aroma was divine. A small jar goes a long way because the flavour is so concentrated and pure.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">24</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 30: Siddharth Malhotra -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar, kids" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">S</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Siddharth Malhotra</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">South Extension, New Delhi • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">2 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Our permanent household ghee now</h3>
+            <p class="ga-pr-card-text">We have completely eliminated refined vegetable oils and market ghee. We cook solely in Ghar Aangan bilona ghee now. It is light, fragrant, and leaves no oily residue on plates.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">28</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 31: Jaspreet Kaur -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">J</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Jaspreet Kaur</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Amritsar, Punjab • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">5 Litre Steel Dolchi</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Pure pind di khushboo in a sturdy steel dolchi!</h3>
+            <p class="ga-pr-card-text">We Punjabis know our ghee very well. This 5 Litre Steel Dolchi has won our whole family over. Paranthas, saag, and dal makhani taste like heaven. The steel dolchi is also reusable and looks vintage on our kitchen counter.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">33</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 32: Anand Kulkarni -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">A</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Anand Kulkarni</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Nashik, Maharashtra • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Rich granules and pleasant golden color</h3>
+            <p class="ga-pr-card-text">The danedar texture is so uniform. Even at room temperature in Nashik, it retains that granular crystalline structure of true curd-churned bilona ghee.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">12</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 33: Swati Bhardwaj -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">S</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Swati Bhardwaj</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Haridwar, Uttarakhand • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Ghar Aangan brings authentic Devbhoomi goodness</h3>
+            <p class="ga-pr-card-text">I stay close to Haridwar and understand the quality of Himalayan cow milk. Ghar Aangan's process honors the tradition. The aroma is serene and deeply pure.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">16</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 34: Rameshwar Gupta -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">R</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Rameshwar Gupta</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Varanasi, Uttar Pradesh • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">2 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Outstanding quality for traditional sweets and puja</h3>
+            <p class="ga-pr-card-text">Used it for Satyanarayan katha prasad and daily cooking. The purity is unmatched. Even the flame in the diya burned with a soothing, divine aroma.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">19</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 35: Kavita Chawla -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma, kids" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">K</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Kavita Chawla</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Indore, Madhya Pradesh • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">550ml Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Indori poha with a spoon of Ghar Aangan ghee</h3>
+            <p class="ga-pr-card-text">Added a teaspoon over warm Indori poha with sev and coriander. The taste elevated tenfold! My kids love having it every morning before school.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">21</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 36: Arun Kumar -->
+        <div class="ga-pr-card" data-stars="4" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">A</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Arun Kumar</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Patna, Bihar • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Excellent ghee, courier tracking could be smoother</h3>
+            <p class="ga-pr-card-text">The ghee is 5-star quality—rich granules, pleasant aroma, and no heaviness. Took 4 stars only because SMS tracking link took a day to activate. Customer support was very courteous and responsive on WhatsApp though.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">14</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 37: Shalini Saxena -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">S</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Shalini Saxena</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Ghaziabad, Uttar Pradesh • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">The personal note from Manisha ji was so heartwarming</h3>
+            <p class="ga-pr-card-text">Loved the handwritten note included with the package. You can feel the love and dedication of a homegrown brand. The ghee itself is golden, aromatic, and melts instantly.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">26</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 38: Devendra Trivedi -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">D</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Devendra Trivedi</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Vadodara, Gujarat • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">2 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">True bilona butter churned in wooden mathani</h3>
+            <p class="ga-pr-card-text">My grandfather immediately identified that this is real bilona ghee churned from curd (makkhan), not cream (malai). The light, digestible quality is unmistakable.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">20</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 39: Pooja Hegde -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">P</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Pooja Hegde</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Mangalore, Karnataka • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">550ml Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Sublime aroma and beautiful packaging</h3>
+            <p class="ga-pr-card-text">Ordered after seeing a recommendation on Instagram. The packing was impeccable—thick glass jar nestled in snug thermocol. Ghee aroma is pure mountain bliss.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">15</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 40: Nitin Bansal -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar, kids" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">N</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Nitin Bansal</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Faridabad, Haryana • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Great taste on phulkas and khichdi</h3>
+            <p class="ga-pr-card-text">Very satisfied with the quality. It has a rich, granular consistency and leaves no sticky feeling in the mouth. Both my parents and children enjoy it daily.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">17</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 41: Bhavani Shankar -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">B</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Bhavani Shankar</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Bhubaneswar, Odisha • 1 month ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Perfect for Dalma and temple-style cooking</h3>
+            <p class="ga-pr-card-text">In Odisha, we love finishing our Dalma and Kanika with authentic fragrant ghee. Ghar Aangan gave our Sunday meal an authentic temple prasad aroma.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">18</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 42: Geeta Ramachandran -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">G</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Geeta Ramachandran</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Madurai, Tamil Nadu • 2 months ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Pure, light, and soothing for the stomach</h3>
+            <p class="ga-pr-card-text">I have mild gastritis with heavy commercial butter, but Ghar Aangan ghee causes zero reflux. It is soothing and deeply nourishing. Highly recommended.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">21</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 43: Manoj Upadhyay -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">M</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Manoj Upadhyay</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Nainital, Uttarakhand • 2 months ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">2 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Pahadi bilona ghee at its absolute peak</h3>
+            <p class="ga-pr-card-text">Ghar Aangan represents the best of Uttarakhand. The golden texture, wood-fire aroma, and pure glass jars make it a proud culinary ambassador of our state.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">25</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 44: Monika Jain -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">M</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Monika Jain</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Ludhiana, Punjab • 2 months ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">5 Litre Steel Dolchi</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">5L Steel Dolchi is the best purchase we made this winter</h3>
+            <p class="ga-pr-card-text">We go through ghee quickly in winters for pinni, panjiri, and paranthas. The traditional steel dolchi keeps the ghee fresh and smells heavenly. Will definitely reorder.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">30</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 45: Sunil Grover -->
+        <div class="ga-pr-card" data-stars="4" data-has-photo="false" data-tags="all, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">S</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Sunil Grover</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Chandigarh • 2 months ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">550ml Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Rich aroma and taste, wish smaller sample packs were available</h3>
+            <p class="ga-pr-card-text">The 550ml jar is fantastic, aromatic, and granular. Rated 4 only because I wish they offered a 250ml trial jar for gifting to colleagues. The ghee itself is world-class.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">11</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 46: Usha Raghavan -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar, kids" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">U</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Usha Raghavan</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Secunderabad, Telangana • 2 months ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Healthy and pure for our entire family</h3>
+            <p class="ga-pr-card-text">I cook daliya, khichdi, and sambar with this ghee. My 7-year-old daughter loves the taste. So glad to find an ethical brand sourcing directly from Himalayan villages.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">19</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 47: Aditya Vardhan -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">A</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Aditya Vardhan</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">Bikaner, Rajasthan • 2 months ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">1 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Warm aroma reminiscent of traditional wood-fired bilona</h3>
+            <p class="ga-pr-card-text">The brass pot wood-fire cooking imparts a gentle, rich aroma that sets this ghee apart from any commercial factory brand. Truly authentic.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">16</span>)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Review 48: Reema Sen -->
+        <div class="ga-pr-card" data-stars="5" data-has-photo="false" data-tags="all, danedar, aroma" style="display: none;">
+          <div>
+            <div class="ga-pr-card-top">
+              <div class="ga-pr-avatar">R</div>
+              <div class="ga-pr-meta">
+                <div class="ga-pr-meta-row">
+                  <span class="ga-pr-reviewer-name">Reema Sen</span>
+                  <span class="ga-pr-verified-badge">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="ga-pr-meta-sub">South Mumbai, Maharashtra • 2 months ago</div>
+              </div>
+            </div>
+
+            <div class="ga-pr-stars-row">
+              <div class="ga-pr-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+              <span class="ga-pr-purchase-tag">2 Litre Glass Jar</span>
+            </div>
+
+            <h3 class="ga-pr-card-headline">Unbeatable pure quality and luxury experience</h3>
+            <p class="ga-pr-card-text">From the handwritten note by Manisha ji to the pristine golden bilona grains in the glass jar, everything about Ghar Aangan speaks of integrity and luxury. We are lifelong customers now.</p>
+          </div>
+
+          <div class="ga-pr-card-footer">
+            <span class="ga-pr-helpful-txt">Was this helpful?</span>
+            <button class="ga-pr-helpful-btn" data-voted="false" aria-label="Mark review as helpful">
+              <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+              <span>Helpful (<span class="ga-count">32</span>)</span>
+            </button>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Pagination (Ghee Only) -->
+    {%- if is_ghee -%}
+      <div class="ga-pr-pagination" id="ga-pr-pagination" aria-label="Customer reviews pagination">
+        <button type="button" class="ga-pr-page-btn ga-pr-page-prev" id="ga-pr-page-prev" aria-label="Previous page">
+          <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="ga-pr-page-numbers" id="ga-pr-page-numbers"></div>
+        <button type="button" class="ga-pr-page-btn ga-pr-page-next" id="ga-pr-page-next" aria-label="Next page">
+          <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </button>
+      </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -1639,8 +3012,8 @@
               {%- if is_ghee -%}
                 <option value="1 Litre Glass Jar">1 Litre Glass Jar</option>
                 <option value="550ml Glass Jar">550ml Glass Jar</option>
-                <option value="2 Litre Canister">2 Litre Canister</option>
-                <option value="5 Litre Canister">5 Litre Canister</option>
+                <option value="2 Litre Glass Jar">2 Litre Glass Jar</option>
+                <option value="5 Litre Steel Dolchi">5 Litre Steel Dolchi</option>
               {%- elsif product.variants.size > 0 -%}
                 {%- for variant in product.variants -%}
                   <option value="{{ variant.title | escape }}">{{ variant.title | escape }}</option>
@@ -1705,6 +3078,16 @@
       var productHandle = {{ product.handle | json }};
       var storageKey = 'ga_reviews_' + (productHandle || 'product');
 
+      var PAGE_SIZE = 10;
+      var currentPage = 1;
+      var visibleCards = [];
+
+      var reviewsList = document.getElementById('ga-reviews-list');
+      var paginationContainer = document.getElementById('ga-pr-pagination');
+      var prevBtn = document.getElementById('ga-pr-page-prev');
+      var nextBtn = document.getElementById('ga-pr-page-next');
+      var pageNumbersContainer = document.getElementById('ga-pr-page-numbers');
+
       // Lightbox Handlers
       var lightbox = document.getElementById('ga-photo-lightbox');
       var lightboxImg = document.getElementById('ga-lightbox-img');
@@ -1751,42 +3134,148 @@
       var helpfulBtns = document.querySelectorAll('.ga-pr-helpful-btn');
       helpfulBtns.forEach(attachHelpfulListener);
 
-      // Filter Pills & Search
+      // Scroll smoothly to reviews list top
+      function scrollToReviewsTop() {
+        var target = document.getElementById('ga-product-reviews');
+        if (target) {
+          var rect = target.getBoundingClientRect();
+          var offset = window.pageYOffset + rect.top - 70;
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+      }
+
+      // Pagination Controller
+      function applyPagination() {
+        if (!reviewsList) return;
+        var totalCards = visibleCards.length;
+        var totalPages = Math.ceil(totalCards / PAGE_SIZE) || 1;
+
+        if (currentPage > totalPages) currentPage = totalPages;
+        if (currentPage < 1) currentPage = 1;
+
+        var startIndex = (currentPage - 1) * PAGE_SIZE;
+        var endIndex = startIndex + PAGE_SIZE;
+
+        var allCards = reviewsList.querySelectorAll('.ga-pr-card');
+        allCards.forEach(function(card) {
+          card.style.display = 'none';
+        });
+
+        for (var i = startIndex; i < endIndex && i < totalCards; i++) {
+          visibleCards[i].style.display = 'flex';
+        }
+
+        renderPaginationControls(totalPages);
+      }
+
+      function renderPaginationControls(totalPages) {
+        if (!paginationContainer) return;
+
+        if (totalPages <= 1) {
+          paginationContainer.style.display = 'none';
+          return;
+        }
+        paginationContainer.style.display = 'flex';
+
+        if (prevBtn) prevBtn.disabled = (currentPage === 1);
+        if (nextBtn) nextBtn.disabled = (currentPage === totalPages);
+
+        if (pageNumbersContainer) {
+          pageNumbersContainer.innerHTML = '';
+          for (var p = 1; p <= totalPages; p++) {
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'ga-pr-page-btn' + (p === currentPage ? ' is-active' : '');
+            btn.textContent = p;
+            btn.setAttribute('data-page', p);
+            btn.setAttribute('aria-label', 'Go to page ' + p);
+            (function(pageNum) {
+              btn.addEventListener('click', function() {
+                currentPage = pageNum;
+                applyPagination();
+                scrollToReviewsTop();
+              });
+            })(p);
+            pageNumbersContainer.appendChild(btn);
+          }
+        }
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          if (currentPage > 1) {
+            currentPage--;
+            applyPagination();
+            scrollToReviewsTop();
+          }
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+          var totalPages = Math.ceil(visibleCards.length / PAGE_SIZE) || 1;
+          if (currentPage < totalPages) {
+            currentPage++;
+            applyPagination();
+            scrollToReviewsTop();
+          }
+        });
+      }
+
+      // Filter & Search Logic
+      function updateFilterAndPagination() {
+        if (!reviewsList) return;
+        var activePill = document.querySelector('.ga-pr-pill.is-active');
+        var filter = activePill ? activePill.getAttribute('data-filter') : 'all';
+        var searchInput = document.getElementById('ga-review-search');
+        var q = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+        var allCards = reviewsList.querySelectorAll('.ga-pr-card');
+        visibleCards = [];
+
+        allCards.forEach(function(card) {
+          var stars = card.getAttribute('data-stars');
+          var hasPhoto = card.getAttribute('data-has-photo') === 'true';
+          var tags = (card.getAttribute('data-tags') || '').toLowerCase();
+          var text = card.textContent.toLowerCase();
+
+          var matchesFilter = false;
+          if (filter === 'all') {
+            matchesFilter = true;
+          } else if (filter === 'photo') {
+            matchesFilter = hasPhoto;
+          } else if (filter === '5star') {
+            matchesFilter = (stars === '5');
+          } else {
+            matchesFilter = (tags.indexOf(filter) !== -1);
+          }
+
+          var matchesSearch = (!q || text.indexOf(q) !== -1);
+
+          if (matchesFilter && matchesSearch) {
+            visibleCards.push(card);
+          }
+        });
+
+        currentPage = 1;
+        applyPagination();
+      }
+
+      // Filter Pills Listener
       var pills = document.querySelectorAll('.ga-pr-pill');
       pills.forEach(function(pill) {
         pill.addEventListener('click', function() {
           pills.forEach(function(p) { p.classList.remove('is-active'); });
           pill.classList.add('is-active');
-          var filter = pill.getAttribute('data-filter');
-
-          var currentCards = document.querySelectorAll('.ga-pr-card');
-          currentCards.forEach(function(card) {
-            var stars = card.getAttribute('data-stars');
-            var hasPhoto = card.getAttribute('data-has-photo') === 'true';
-            var tags = (card.getAttribute('data-tags') || '').toLowerCase();
-
-            if (filter === 'all') {
-              card.style.display = 'flex';
-            } else if (filter === 'photo') {
-              card.style.display = hasPhoto ? 'flex' : 'none';
-            } else if (filter === '5star') {
-              card.style.display = (stars === '5') ? 'flex' : 'none';
-            } else {
-              card.style.display = tags.indexOf(filter) !== -1 ? 'flex' : 'none';
-            }
-          });
+          updateFilterAndPagination();
         });
       });
 
+      // Search Listener
       var searchInput = document.getElementById('ga-review-search');
       if (searchInput) {
         searchInput.addEventListener('input', function() {
-          var q = searchInput.value.toLowerCase().trim();
-          var currentCards = document.querySelectorAll('.ga-pr-card');
-          currentCards.forEach(function(card) {
-            var text = card.textContent.toLowerCase();
-            card.style.display = text.indexOf(q) !== -1 ? 'flex' : 'none';
-          });
+          updateFilterAndPagination();
         });
       }
 
@@ -1958,7 +3447,6 @@
       }
 
       // Load Saved Reviews from LocalStorage
-      var reviewsList = document.getElementById('ga-reviews-list');
       var savedReviews = [];
       try {
         var raw = localStorage.getItem(storageKey);
@@ -1970,12 +3458,14 @@
           renderReviewCard(rev, reviewsList, false);
         });
 
-        // Update hero badge count if on non-ghee product
         var heroCount = document.querySelector('.ga-hero-count--first');
         if (heroCount) {
           heroCount.textContent = '(' + savedReviews.length + ' ' + (savedReviews.length === 1 ? 'Review' : 'Reviews') + ')';
         }
       }
+
+      // Initialize filter & pagination on start
+      updateFilterAndPagination();
 
       // Form Submit
       var reviewForm = document.getElementById('ga-review-form');
@@ -2008,6 +3498,7 @@
 
           if (reviewsList) {
             renderReviewCard(reviewObj, reviewsList, true);
+            updateFilterAndPagination();
           }
 
           // Save to localStorage
@@ -2021,7 +3512,6 @@
             try {
               localStorage.setItem(storageKey, JSON.stringify(currentSaved));
             } catch(quotaErr) {
-              // Try saving without large base64 photo
               var fallback = currentSaved.map(function(item) {
                 return Object.assign({}, item, { photo: null });
               });
@@ -2031,7 +3521,6 @@
             console.warn('Could not save review locally', e);
           }
 
-          // Update hero badge
           var heroCount = document.querySelector('.ga-hero-count--first');
           if (heroCount) {
             var totalCount = (savedReviews ? savedReviews.length : 0) + 1;
@@ -2043,7 +3532,6 @@
           if (formView) formView.style.display = 'none';
           if (successView) successView.style.display = 'block';
 
-          // Reset form inputs
           reviewForm.reset();
           if (previewStrip) previewStrip.innerHTML = '';
         });
