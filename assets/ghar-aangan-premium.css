@@ -37,9 +37,9 @@ html, body {
 
 /* Product Page Section Streamlining: Hide unneeded redundant sections on product pages */
 body.template-product .hdt-section-ghar-aangan-trust-badges,
+body.template-product .hdt-section-ghar-aangan-trust-badges,
 body.template-product .hdt-section-ghar-aangan-benefits,
 body.template-product .hdt-section-ghar-aangan-process,
-body.template-product .hdt-section-ghar-aangan-reviews,
 body.template-product .hdt-section-ghar-aangan-storytelling,
 body.template-product .hdt-section-ghar-aangan-founder,
 body.template-product .hdt-section-ghar-aangan-heritage,
@@ -47,7 +47,6 @@ body.template-product .hdt-section-ghar-aangan-faq,
 body[class*="product"] [id*="ghar_aangan_trust_badges"],
 body[class*="product"] [id*="ghar_aangan_benefits"],
 body[class*="product"] [id*="ghar_aangan_process"],
-body[class*="product"] [id*="ghar_aangan_reviews"],
 body[class*="product"] [id*="ghar_aangan_storytelling"],
 body[class*="product"] [id*="ghar_aangan_founder"],
 body[class*="product"] [id*="ghar_aangan_heritage"],
@@ -55,7 +54,6 @@ body[class*="product"] [id*="ghar_aangan_faq"],
 body[class*="product"] .ga-badges-section,
 body[class*="product"] .ga-benefits-section,
 body[class*="product"] .ga-process-section,
-body[class*="product"] .ga-reviews-section,
 body[class*="product"] .ga-storytelling-section,
 body[class*="product"] .ga-founder-section,
 body[class*="product"] .ga-heritage-section,
@@ -95,12 +93,20 @@ body.template-product #MainContent > [id*="ghar_aangan_video_testimonials"] {
   order: 5 !important;
 }
 
-body.template-product #MainContent > [id*="related-products"] {
+body.template-product #MainContent > [id*="ghar_aangan_reviews"],
+body.template-product #MainContent > [id*="ghar_aangan_product_reviews"] {
   order: 6 !important;
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+}
+
+body.template-product #MainContent > [id*="related-products"] {
+  order: 7 !important;
 }
 
 body.template-product #MainContent > [id*="recently-products"] {
-  order: 7 !important;
+  order: 8 !important;
 }
 
 /* Base Styles & Typography */
