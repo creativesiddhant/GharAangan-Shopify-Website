@@ -99,7 +99,10 @@
   </script>
 
   {%- comment -%} 3. ORGANIZATION / BRAND SCHEMA (Google Knowledge Graph & Sitelinks) {%- endcomment -%}
-  {%- assign logo_url = settings.logo | image_url: width: 600 -%}
+  {%- assign logo_url = 'https://www.gharaangan.com/cdn/shop/files/logo_shopify.svg?v=1783989698&width=600' -%}
+  {%- if settings.logo != blank -%}
+    {%- assign logo_url = settings.logo | image_url: width: 600 -%}
+  {%- endif -%}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -108,10 +111,8 @@
       "legalName": "Ghar Aangan",
       "alternateName": ["GharAangan", "Ghar Aangan Foods"],
       "url": "{{ shop.url }}",
-      {%- if logo_url != blank -%}
-      "logo": "https:{{ logo_url }}",
-      "image": "https:{{ logo_url }}",
-      {%- endif -%}
+      "logo": "{{ logo_url }}",
+      "image": "{{ logo_url }}",
       "description": "Ghar Aangan brings authentic Himalayan foods and traditional wood-fired A2 Badri cow Bilona ghee handcrafted in Uttarakhand using ancient Vedic methods.",
       "sameAs": [
         "https://www.instagram.com/officialgharaangan/",
@@ -120,14 +121,17 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Customer Support",
-        "telephone": "{{ shop.phone | default: '+91-9876543210' }}",
-        "email": "{{ shop.email }}",
+        "telephone": "+91 90272 48335",
+        "email": "{{ shop.email | default: 'gharaanganmani@gmail.com' }}",
         "areaServed": "IN",
         "availableLanguage": ["English", "Hindi"]
       },
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Rajeev Nagar-1, Bindukhatta, Lalkuan",
+        "addressLocality": "Nainital",
         "addressRegion": "Uttarakhand",
+        "postalCode": "262402",
         "addressCountry": "IN"
       },
       "taxID": "05BTTPL1718D1ZQ",
