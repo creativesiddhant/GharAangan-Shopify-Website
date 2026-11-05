@@ -224,151 +224,17 @@
   }
 
   /* Filter & Sorting Controls */
-  .ga-judgeme-wrap .jdgm-row-actions,
-  .jdgm-row-actions {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    gap: 10px !important;
-    flex-wrap: wrap !important;
-    padding: 10px 0 !important;
-  }
-
-  .ga-judgeme-wrap .jdgm-sort-dropdown-wrapper,
-  .jdgm-sort-dropdown-wrapper,
-  .jdgm-rev-widg__sort-wrapper .jdgm-sort-dropdown-wrapper {
-    position: relative !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    cursor: pointer !important;
-    vertical-align: middle !important;
-    width: auto !important;
-    min-width: 125px !important;
-  }
-
-  .ga-judgeme-wrap .jdgm-sort-dropdown-wrapper:hover,
-  .jdgm-sort-dropdown-wrapper:hover {
-    border: none !important;
-    background: transparent !important;
-    opacity: 0.8 !important;
-  }
-
   .ga-judgeme-wrap .jdgm-sort-dropdown,
-  .jdgm-sort-dropdown,
-  .jdgm-sort-dropdown.jdgm-sort-dropdown,
-  .jdgm-rev-widg__sort-wrapper select {
-    border: none !important;
-    outline: none !important;
-    background: transparent !important;
-    background-image: none !important;
-    font-family: var(--ga-font-family-sans, 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif) !important;
-    font-size: 1.4rem !important;
-    font-weight: 500 !important;
-    color: #1a332c !important;
-    height: auto !important;
-    line-height: 1.4 !important;
-    padding: 6px 4px !important;
-    margin: 0 !important;
-    cursor: pointer !important;
-    appearance: none !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    box-sizing: content-box !important;
-    white-space: nowrap !important;
-    width: auto !important;
-    min-width: 125px !important;
-    overflow: visible !important;
-    text-align: left !important;
-    transition: opacity 0.2s ease !important;
-  }
-
-  .ga-judgeme-wrap .jdgm-sort-dropdown::-ms-expand,
-  .jdgm-sort-dropdown::-ms-expand {
-    display: none !important;
-  }
-
-  .ga-judgeme-wrap .jdgm-sort-dropdown:hover,
-  .jdgm-sort-dropdown:hover {
-    opacity: 0.8 !important;
-  }
-
-  /* Completely remove the sort arrow as requested */
-  .ga-judgeme-wrap .jdgm-sort-dropdown-arrow,
-  .jdgm-sort-dropdown-arrow,
-  .jdgm-sort-dropdown-wrapper .jdgm-sort-dropdown-arrow,
-  .jdgm-rev-widg__sort-wrapper .jdgm-sort-dropdown-arrow {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    width: 0 !important;
-    height: 0 !important;
-    max-width: 0 !important;
-    max-height: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    pointer-events: none !important;
-    position: absolute !important;
-    left: -9999px !important;
-    top: -9999px !important;
-  }
-
-  .ga-judgeme-wrap .jdgm-sort-dropdown-arrow:before,
-  .ga-judgeme-wrap .jdgm-sort-dropdown-arrow:after,
-  .jdgm-sort-dropdown-arrow:before,
-  .jdgm-sort-dropdown-arrow:after,
-  .jdgm-sort-dropdown-wrapper:before,
-  .jdgm-sort-dropdown-wrapper:after,
-  .jdgm-sort-dropdown:before,
-  .jdgm-sort-dropdown:after {
-    display: none !important;
-    content: none !important;
-    visibility: hidden !important;
-    width: 0 !important;
-    height: 0 !important;
-    font-size: 0 !important;
-    border: none !important;
-  }
-
   .ga-judgeme-wrap .jdgm-all-reviews-rating-filter,
-  .ga-judgeme-wrap .jdgm-custom-forms-filters__button {
-    position: static !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border: 1.5px solid rgba(26, 51, 44, 0.22) !important;
-    border-radius: 24px !important;
+  .ga-judgeme-wrap .jdgm-sort-dropdown-arrow {
+    border: 1px solid rgba(205, 162, 80, 0.35) !important;
+    border-radius: 20px !important;
     font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
-    font-size: 1.3rem !important;
-    font-weight: 500 !important;
-    height: 38px !important;
-    box-sizing: border-box !important;
-    padding: 0 16px !important;
+    padding: 7px 16px !important;
     background: #ffffff !important;
     color: #1a332c !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease !important;
-    vertical-align: middle !important;
-  }
-
-  .ga-judgeme-wrap .jdgm-all-reviews-rating-filter:hover,
-  .ga-judgeme-wrap .jdgm-custom-forms-filters__button:hover {
-    border-color: #cda250 !important;
-    background: #faf8f5 !important;
-  }
-
-  .ga-judgeme-wrap .jdgm-all-reviews-rating-filter:before,
-  .ga-judgeme-wrap .jdgm-custom-forms-filters__button:before {
-    font-family: "JudgemeIcons" !important;
+    font-size: 1.35rem !important;
+    font-weight: 500 !important;
   }
 
   /* Customer Photo Carousel / Thumbnail Strip */
@@ -630,32 +496,6 @@
         } else {
           s.style.setProperty('color', 'rgba(205, 162, 80, 0.28)', 'important');
         }
-      }
-
-      // 3. Remove distracting sort arrows completely from DOM and enforce full clean text
-      var sortArrows = document.querySelectorAll('.jdgm-sort-dropdown-arrow, [class*="sort-dropdown-arrow"]');
-      for (var k = 0; k < sortArrows.length; k++) {
-        sortArrows[k].remove();
-      }
-
-      var sortDropdowns = document.querySelectorAll('.jdgm-sort-dropdown');
-      for (var m = 0; m < sortDropdowns.length; m++) {
-        sortDropdowns[m].style.setProperty('min-width', '125px', 'important');
-        sortDropdowns[m].style.setProperty('width', 'auto', 'important');
-        sortDropdowns[m].style.setProperty('background', 'transparent', 'important');
-        sortDropdowns[m].style.setProperty('background-image', 'none', 'important');
-        sortDropdowns[m].style.setProperty('-webkit-appearance', 'none', 'important');
-        sortDropdowns[m].style.setProperty('appearance', 'none', 'important');
-        sortDropdowns[m].style.setProperty('border', 'none', 'important');
-        sortDropdowns[m].style.setProperty('outline', 'none', 'important');
-      }
-
-      var sortWrappers = document.querySelectorAll('.jdgm-sort-dropdown-wrapper');
-      for (var w = 0; w < sortWrappers.length; w++) {
-        sortWrappers[w].style.setProperty('min-width', '125px', 'important');
-        sortWrappers[w].style.setProperty('width', 'auto', 'important');
-        sortWrappers[w].style.setProperty('border', 'none', 'important');
-        sortWrappers[w].style.setProperty('background', 'transparent', 'important');
       }
     }
 
