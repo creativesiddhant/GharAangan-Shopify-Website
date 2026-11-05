@@ -3495,3 +3495,30 @@ body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
   background-color: #1a332c !important;
   color: #ffffff !important;
 }
+
+/* Judge.me Sitewide Star Rating Preview Badge */
+.jdgm-widget.jdgm-preview-badge {
+  cursor: pointer !important;
+}
+
+.jdgm-prev-badge__text {
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  color: #4a5550 !important;
+  font-size: 1.35rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  margin-left: 6px !important;
+}
+
+.jdgm-prev-badge__stars .jdgm-star {
+  color: #cda250 !important;
+}
+
+.hdt-card-product__info .jdgm-widget.jdgm-preview-badge {
+  margin-top: 4px !important;
+  margin-bottom: 6px !important;
+}
+
+.hdt-card-product__info .jdgm-prev-badge__text {
+  font-size: 1.2rem !important;
+}

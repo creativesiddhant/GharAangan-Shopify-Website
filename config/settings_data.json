@@ -38,6 +38,7 @@
     "badge_shape": "round",
     "label_onsale_style": "percentage",
     "use_new_badge": false,
+    "show_rating": true,
     "wishlist_mode": "1",
     "wis_atc_added": "1",
     "enable_compare_popup": true,

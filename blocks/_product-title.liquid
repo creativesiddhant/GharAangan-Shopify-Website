@@ -10,108 +10,52 @@
   <div class="hdt-product-info__item hdt-product__title" data-type="{{ block.type }}" {{ block.shopify_attributes }}>
     <a href="{{ product.url }}" class="hdt-inline-block hdt-s-text"><h2 class="hdt-product__title hdt-{{ block.settings.hdt_pr_title_size }}" {{ block.shopify_attributes }}>{{ product.title | escape }}</h2></a>
   </div>
+  <!-- Start of Judge.me code --> 
+  <div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}' data-auto-install='false'> 
+    {{ product.metafields.judgeme.badge }} 
+  </div> 
+  <!-- End of Judge.me code -->
 {%- else -%}
   <h1 class="hdt-product__title hdt-{{ block.settings.hdt_pr_title_size }}" {{ block.shopify_attributes }}>{{ product.title | escape }}</h1>
-  {%- if product.handle contains 'ghee' or product.type == 'Ghee' -%}
-    <a href="#judgeme_product_reviews" class="ga-hero-rating-badge" onclick="var r=document.getElementById('judgeme_product_reviews')||document.getElementById('ga-product-reviews');if(r){event.preventDefault();r.scrollIntoView({behavior:'smooth'});}" title="Jump to verified customer reviews">
-      <div class="ga-hero-stars" aria-hidden="true">
-        {%- for i in (1..5) -%}
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        {%- endfor -%}
-      </div>
-      <span class="ga-hero-score">4.9</span>
-      <span class="ga-hero-count" id="ga-header-review-count">(48 Verified Reviews)</span>
-      <span class="ga-hero-tag">Handcrafted in Uttarakhand</span>
-    </a>
-  {%- else -%}
-    <a href="#ga-product-reviews" class="ga-hero-rating-badge ga-hero-rating-badge--write" title="Be the first to review this specialty" onclick="if(window.gaOpenReviewModal){event.preventDefault();var s=document.getElementById('ga-product-reviews');if(s){s.scrollIntoView({behavior:'smooth'});setTimeout(window.gaOpenReviewModal,400);}else{window.gaOpenReviewModal();}}">
-      <div class="ga-hero-stars ga-hero-stars--muted" aria-hidden="true">
-        {%- for i in (1..5) -%}
-          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        {%- endfor -%}
-      </div>
-      <span class="ga-hero-count ga-hero-count--first" id="ga-header-review-count">Be the first to review</span>
-      <span class="ga-hero-tag">Handcrafted in Uttarakhand</span>
-    </a>
-  {%- endif -%}
-  <style>
-    .ga-hero-rating-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 8px;
-      margin-bottom: 12px;
-      text-decoration: none;
-      background: rgba(205, 162, 80, 0.08);
-      border: 1px solid rgba(205, 162, 80, 0.32);
-      padding: 5px 12px;
-      border-radius: 20px;
-      transition: all 0.25s ease;
-      cursor: pointer;
-      width: fit-content;
-    }
-    .ga-hero-rating-badge:hover {
-      background: rgba(205, 162, 80, 0.18);
-      border-color: #cda250;
-      transform: translateY(-1px);
-    }
-    .ga-hero-stars {
-      display: flex;
-      gap: 2px;
-      align-items: center;
-    }
-    .ga-hero-stars svg {
-      width: 15px;
-      height: 15px;
-      fill: #cda250;
-    }
-    .ga-hero-stars--muted svg {
-      fill: #cda250;
-      opacity: 0.55;
-    }
-    .ga-hero-score {
-      font-family: var(--ga-font-family-serif, 'Playfair Display', serif);
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: #1a332c;
-      line-height: 1;
-    }
-    .ga-hero-count {
-      font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
-      font-size: 1.25rem;
-      color: #4a5550;
-      font-weight: 500;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-    .ga-hero-count--first {
-      color: #1a332c;
-      font-weight: 600;
-    }
-    .ga-hero-tag {
-      display: inline-block;
-      font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
-      font-size: 1.1rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      background: #1a332c;
-      color: #ffffff;
-      padding: 2px 7px;
-      border-radius: 10px;
-      margin-left: 4px;
-    }
-    @media (max-width: 480px) {
-      .ga-hero-rating-badge {
-        gap: 6px;
-        padding: 4px 10px;
-      }
-      .ga-hero-tag {
-        display: none;
-      }
-    }
-  </style>
+  <!-- Start of Judge.me code --> 
+  <div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}' data-auto-install='false'> 
+    {{ product.metafields.judgeme.badge }} 
+  </div> 
+  <!-- End of Judge.me code -->
 {%- endif -%}
+<style>
+  .jdgm-widget.jdgm-preview-badge {
+    display: inline-block;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+  .jdgm-prev-badge__text {
+    font-family: var(--ga-font-family-sans, 'Outfit', sans-serif);
+    font-size: 1.35rem;
+    color: #4a5550;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    margin-left: 6px;
+  }
+  .jdgm-prev-badge__stars {
+    color: #cda250 !important;
+    font-size: 1.45rem;
+    vertical-align: middle;
+  }
+  .jdgm-prev-badge__stars .jdgm-star {
+    color: #cda250 !important;
+  }
+  @media (max-width: 767px) {
+    .jdgm-widget.jdgm-preview-badge {
+      margin-top: 6px;
+      margin-bottom: 10px;
+    }
+    .jdgm-prev-badge__text {
+      font-size: 1.25rem;
+    }
+  }
+</style>
 
 {% schema %}
 	{
