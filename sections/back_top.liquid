@@ -41,14 +41,8 @@
   }
 
   /* Auto-hide back to top when writing review, lightbox, or modal is open */
-  body.ga-modal-open .ga-back-to-top,
-  body:has(.jm-mfp-wrap) .ga-back-to-top,
-  body:has(.jdgm-write-review-modal) .ga-back-to-top,
-  body:has(.jdgm-modal) .ga-back-to-top,
-  body:has(.mfp-wrap) .ga-back-to-top,
-  body:has([class*="jdgm-write-review"]) .ga-back-to-top,
-  body:has(.jdgm-form-wrapper) .ga-back-to-top,
   body.jm-mfp-open .ga-back-to-top,
+  html.jm-mfp-open .ga-back-to-top,
   body.mfp-open .ga-back-to-top,
   body.jdgm-modal-open .ga-back-to-top {
     display: none !important;

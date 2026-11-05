@@ -27,14 +27,8 @@
     }
 
     /* Auto-hide sticky bar when writing a review, lightbox, or modal is open */
-    body.ga-modal-open .ga-sticky-atc-bar,
-    body:has(.jm-mfp-wrap) .ga-sticky-atc-bar,
-    body:has(.jdgm-write-review-modal) .ga-sticky-atc-bar,
-    body:has(.jdgm-modal) .ga-sticky-atc-bar,
-    body:has(.mfp-wrap) .ga-sticky-atc-bar,
-    body:has([class*="jdgm-write-review"]) .ga-sticky-atc-bar,
-    body:has(.jdgm-form-wrapper) .ga-sticky-atc-bar,
     body.jm-mfp-open .ga-sticky-atc-bar,
+    html.jm-mfp-open .ga-sticky-atc-bar,
     body.mfp-open .ga-sticky-atc-bar,
     body.jdgm-modal-open .ga-sticky-atc-bar {
       display: none !important;
@@ -166,9 +160,6 @@
     @media screen and (max-width: 1149px) {
       .ga-sticky-atc-bar {
         bottom: 0;
-      }
-      body:has(.hdt-toolbar) .ga-sticky-atc-bar {
-        bottom: 67px;
       }
     }
 
@@ -363,59 +354,10 @@
         }, { passive: true });
       }
 
-      // Auto-hide sticky bar and back to top when writing a review or when any modal/drawer is open
-      function checkModalOpen() {
-        var modalSelectors = [
-          '.jm-mfp-wrap',
-          '.mfp-wrap',
-          '.jdgm-write-review-modal',
-          '.jdgm-modal',
-          '.jdgm-full-rev-modal',
-          '[class*="jdgm-write-review"]',
-          '.jdgm-form-wrapper',
-          '.hdt-drawer.is-open',
-          'dialog[open]'
-        ];
-        var isModalActive = false;
-        for (var i = 0; i < modalSelectors.length; i++) {
-          var el = document.querySelector(modalSelectors[i]);
-          if (el) {
-            var s = window.getComputedStyle(el);
-            if (s.display !== 'none' && s.visibility !== 'hidden' && s.opacity !== '0') {
-              isModalActive = true;
-              break;
-            }
-          }
-        }
-        if (
-          document.body.classList.contains('jm-mfp-open') || 
-          document.body.classList.contains('mfp-open') || 
-          document.documentElement.classList.contains('jm-mfp-open') ||
-          document.body.classList.contains('jdgm-modal-open')
-        ) {
-          isModalActive = true;
-        }
-
-        if (isModalActive) {
-          document.body.classList.add('ga-modal-open');
-        } else {
-          document.body.classList.remove('ga-modal-open');
-        }
-      }
-
-      var modalObserver = new MutationObserver(checkModalOpen);
-      modalObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style', 'open'] });
-
-      // Immediate listeners for review write buttons and close buttons
+      // Hide sticky bar when customer clicks to write a review
       document.addEventListener('click', function(e) {
         if (e.target && (e.target.closest('.jdgm-write-rev-link') || e.target.closest('[class*="write-rev"]'))) {
-          setTimeout(checkModalOpen, 50);
-          setTimeout(checkModalOpen, 250);
-          setTimeout(checkModalOpen, 600);
-        }
-        if (e.target && (e.target.closest('.jm-mfp-close') || e.target.closest('.mfp-close') || e.target.closest('[class*="close"]'))) {
-          setTimeout(checkModalOpen, 50);
-          setTimeout(checkModalOpen, 300);
+          stickyBar.classList.remove('is-visible');
         }
       }, true);
     });

@@ -3530,32 +3530,15 @@ body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
    Judge.me Modal, Write-Review Popup & Lightbox Elevation (Sitewide)
    ========================================================================== */
 .jm-mfp-bg,
-.mfp-bg,
 .jdgm-modal__bg {
   z-index: 999998 !important;
 }
 
 .jm-mfp-wrap,
-.mfp-wrap,
 .jdgm-write-review-modal,
 .jdgm-modal,
 .jdgm-full-rev-modal,
 [class*="jdgm-write-review"],
 .jdgm-form-wrapper {
   z-index: 999999 !important;
-}
-
-@media screen and (max-width: 768px) {
-  .jm-mfp-wrap,
-  .mfp-wrap,
-  .jdgm-write-review-modal {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    z-index: 999999 !important;
-  }
 }
