@@ -3498,10 +3498,13 @@ body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
 
 /* Judge.me Sitewide Star Rating Preview Badge */
 .jdgm-widget.jdgm-preview-badge {
+  display: inline-block !important;
   cursor: pointer !important;
 }
 
 .jdgm-prev-badge__text {
+  visibility: visible !important;
+  display: inline-block !important;
   font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
   color: #4a5550 !important;
   font-size: 1.35rem !important;
