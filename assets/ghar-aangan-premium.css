@@ -3527,6 +3527,98 @@ body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
 }
 
 /* ==========================================================================
+   Judge.me Sort Dropdown & Filter Controls
+   ========================================================================== */
+.jdgm-sort-dropdown-wrapper {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  border: 1.5px solid rgba(26, 51, 44, 0.22) !important;
+  border-radius: 24px !important;
+  background: #ffffff !important;
+  padding: 0 30px 0 14px !important;
+  height: 38px !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  vertical-align: middle !important;
+}
+
+.jdgm-sort-dropdown-wrapper:hover {
+  border-color: #cda250 !important;
+  background: #faf8f5 !important;
+}
+
+.jdgm-sort-dropdown {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-size: 1.3rem !important;
+  font-weight: 500 !important;
+  color: #1a332c !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  line-height: 1.2 !important;
+}
+
+.jdgm-sort-dropdown-arrow {
+  position: absolute !important;
+  right: 10px !important;
+  top: 50% !important;
+  transform: translateY(-50%) rotate(90deg) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  width: auto !important;
+  height: auto !important;
+  pointer-events: none !important;
+  color: #1a332c !important;
+  display: inline-block !important;
+  line-height: 1 !important;
+}
+
+.jdgm-sort-dropdown-arrow:before {
+  font-family: "JudgemeIcons" !important;
+  font-size: 16px !important;
+  content: "\e003" !important;
+  color: #1a332c !important;
+  display: block !important;
+}
+
+.jdgm-all-reviews-rating-filter,
+.jdgm-custom-forms-filters__button {
+  border: 1.5px solid rgba(26, 51, 44, 0.22) !important;
+  border-radius: 24px !important;
+  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  font-size: 1.3rem !important;
+  font-weight: 500 !important;
+  padding: 8px 16px !important;
+  background: #ffffff !important;
+  color: #1a332c !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  vertical-align: middle !important;
+}
+
+.jdgm-all-reviews-rating-filter:hover,
+.jdgm-custom-forms-filters__button:hover {
+  border-color: #cda250 !important;
+  background: #faf8f5 !important;
+}
+
+.jdgm-all-reviews-rating-filter:before,
+.jdgm-custom-forms-filters__button:before {
+  font-family: "JudgemeIcons" !important;
+}
+
+/* ==========================================================================
    Judge.me Modal, Write-Review Popup & Lightbox Elevation (Sitewide)
    ========================================================================== */
 .jm-mfp-bg,
