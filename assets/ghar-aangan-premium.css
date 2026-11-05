@@ -3539,10 +3539,12 @@ body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
   padding: 10px 0 !important;
 }
 
-.jdgm-sort-dropdown-wrapper {
+.jdgm-sort-dropdown-wrapper,
+.jdgm-rev-widg__sort-wrapper .jdgm-sort-dropdown-wrapper {
   position: relative !important;
   display: inline-flex !important;
   align-items: center !important;
+  justify-content: center !important;
   border: none !important;
   background: transparent !important;
   box-shadow: none !important;
@@ -3550,6 +3552,8 @@ body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
   margin: 0 !important;
   cursor: pointer !important;
   vertical-align: middle !important;
+  width: auto !important;
+  min-width: 125px !important;
 }
 
 .jdgm-sort-dropdown-wrapper:hover {
@@ -3558,24 +3562,31 @@ body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
   opacity: 0.8 !important;
 }
 
-.jdgm-sort-dropdown {
+.jdgm-sort-dropdown,
+.jdgm-sort-dropdown.jdgm-sort-dropdown,
+.jdgm-rev-widg__sort-wrapper select {
   border: none !important;
   outline: none !important;
   background: transparent !important;
-  font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
+  background-image: none !important;
+  font-family: var(--ga-font-family-sans, 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif) !important;
   font-size: 1.4rem !important;
   font-weight: 500 !important;
   color: #1a332c !important;
   height: auto !important;
   line-height: 1.4 !important;
-  padding: 6px 8px !important;
+  padding: 6px 4px !important;
   margin: 0 !important;
   cursor: pointer !important;
   appearance: none !important;
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   white-space: nowrap !important;
+  width: auto !important;
+  min-width: 125px !important;
+  overflow: visible !important;
+  text-align: left !important;
   transition: opacity 0.2s ease !important;
 }
 
@@ -3588,21 +3599,40 @@ body[class*="5l"] .ga-cod-price-note:not(.ga-prepaid-tag) {
 }
 
 /* Completely remove the sort arrow as requested */
-.jdgm-sort-dropdown-arrow {
+.jdgm-sort-dropdown-arrow,
+.jdgm-sort-dropdown-wrapper .jdgm-sort-dropdown-arrow,
+.jdgm-rev-widg__sort-wrapper .jdgm-sort-dropdown-arrow {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   width: 0 !important;
   height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
   pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
 }
 
-.jdgm-sort-dropdown-arrow:before {
+.jdgm-sort-dropdown-arrow:before,
+.jdgm-sort-dropdown-arrow:after,
+.jdgm-sort-dropdown-wrapper:before,
+.jdgm-sort-dropdown-wrapper:after,
+.jdgm-sort-dropdown:before,
+.jdgm-sort-dropdown:after {
   display: none !important;
   content: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  font-size: 0 !important;
+  border: none !important;
 }
 
 .jdgm-all-reviews-rating-filter,
