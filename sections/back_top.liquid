@@ -18,13 +18,14 @@
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer !important;
-    z-index: 9999 !important;
+    z-index: 910 !important;
     opacity: 0;
     visibility: hidden;
     transform: translateY(12px) scale(0.9);
     transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                 visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                 background-color 0.2s ease,
                 box-shadow 0.2s ease !important;
     pointer-events: none;
@@ -32,17 +33,28 @@
     outline: none !important;
   }
 
+  /* Desktop & Tablet Product Pages: Position safely above Sticky Buy Now Bar */
   body.template-product .ga-back-to-top,
   body[class*="product"] .ga-back-to-top {
-    bottom: 80px !important;
+    bottom: 82px !important;
+    right: 28px !important;
   }
 
-  @media screen and (max-width: 749px) {
-    body.template-product .ga-back-to-top,
-    body[class*="product"] .ga-back-to-top {
-      bottom: 75px !important;
-      right: 14px !important;
-    }
+  /* Auto-hide back to top when writing review, lightbox, or modal is open */
+  body.ga-modal-open .ga-back-to-top,
+  body:has(.jm-mfp-wrap) .ga-back-to-top,
+  body:has(.jdgm-write-review-modal) .ga-back-to-top,
+  body:has(.jdgm-modal) .ga-back-to-top,
+  body:has(.mfp-wrap) .ga-back-to-top,
+  body:has([class*="jdgm-write-review"]) .ga-back-to-top,
+  body:has(.jdgm-form-wrapper) .ga-back-to-top,
+  body.jm-mfp-open .ga-back-to-top,
+  body.mfp-open .ga-back-to-top,
+  body.jdgm-modal-open .ga-back-to-top {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
   }
 
   .ga-back-to-top.is-visible {
@@ -82,13 +94,19 @@
   @media (max-width: 768px) {
     .ga-back-to-top {
       bottom: 20px !important;
-      right: 18px !important;
+      right: 16px !important;
       width: 40px !important;
       height: 40px !important;
     }
     .ga-back-to-top svg {
       width: 16px !important;
       height: 16px !important;
+    }
+    /* On mobile product pages, float cleanly ABOVE the sticky buy now bar */
+    body.template-product .ga-back-to-top,
+    body[class*="product"] .ga-back-to-top {
+      bottom: 78px !important;
+      right: 14px !important;
     }
   }
 {%- endstyle -%}

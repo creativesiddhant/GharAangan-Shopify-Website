@@ -14,9 +14,9 @@
       background: #ffffff;
       box-shadow: 0 -4px 20px rgba(26, 51, 44, 0.12);
       border-top: 1.5px solid var(--ga-gold-cream, #cda250);
-      z-index: 9990;
+      z-index: 900;
       transform: translateY(110%);
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
       padding: 0.9rem 1.6rem;
       pointer-events: none;
     }
@@ -24,6 +24,24 @@
     .ga-sticky-atc-bar.is-visible {
       transform: translateY(0);
       pointer-events: auto;
+    }
+
+    /* Auto-hide sticky bar when writing a review, lightbox, or modal is open */
+    body.ga-modal-open .ga-sticky-atc-bar,
+    body:has(.jm-mfp-wrap) .ga-sticky-atc-bar,
+    body:has(.jdgm-write-review-modal) .ga-sticky-atc-bar,
+    body:has(.jdgm-modal) .ga-sticky-atc-bar,
+    body:has(.mfp-wrap) .ga-sticky-atc-bar,
+    body:has([class*="jdgm-write-review"]) .ga-sticky-atc-bar,
+    body:has(.jdgm-form-wrapper) .ga-sticky-atc-bar,
+    body.jm-mfp-open .ga-sticky-atc-bar,
+    body.mfp-open .ga-sticky-atc-bar,
+    body.jdgm-modal-open .ga-sticky-atc-bar {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translateY(150%) !important;
     }
 
     .ga-sticky-atc-container {
@@ -147,27 +165,31 @@
 
     @media screen and (max-width: 1149px) {
       .ga-sticky-atc-bar {
+        bottom: 0;
+      }
+      body:has(.hdt-toolbar) .ga-sticky-atc-bar {
         bottom: 67px;
       }
     }
 
-    @media screen and (max-width: 1024px) {
+    /* Tablet optimization (641px - 1024px) */
+    @media screen and (min-width: 641px) and (max-width: 1024px) {
       .ga-sticky-atc-bar {
-        padding: 0.7rem 1.2rem;
+        padding: 0.75rem 1.4rem;
         box-sizing: border-box;
       }
       .ga-sticky-atc-left {
-        max-width: 60%;
-        gap: 0.8rem;
+        max-width: 55%;
+        gap: 1rem;
         overflow: hidden;
       }
       .ga-sticky-atc-img {
-        width: 3.8rem;
-        height: 3.8rem;
+        width: 4rem;
+        height: 4rem;
       }
       .ga-sticky-atc-title {
-        max-width: 180px;
-        font-size: 1.25rem;
+        max-width: 220px;
+        font-size: 1.3rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -176,17 +198,27 @@
         font-size: 1rem;
         padding: 0.1rem 0.5rem;
       }
-      .ga-sticky-btn-buy {
-        padding: 0.9rem 1.5rem;
+      .ga-sticky-atc-select {
         font-size: 1.2rem;
+        padding: 0.7rem 1rem;
+        max-width: 180px;
+      }
+      .ga-sticky-btn-buy {
+        padding: 0.9rem 1.6rem;
+        font-size: 1.25rem;
         letter-spacing: 0.04em;
+        white-space: nowrap;
       }
     }
 
+    /* Mobile optimization (max-width: 640px) */
     @media screen and (max-width: 640px) {
       .ga-sticky-atc-bar {
         padding: 0.6rem 1rem;
         box-sizing: border-box;
+      }
+      .ga-sticky-atc-container {
+        gap: 0.8rem;
       }
       .ga-sticky-atc-left {
         max-width: 58%;
@@ -196,9 +228,10 @@
       .ga-sticky-atc-img {
         width: 3.6rem;
         height: 3.6rem;
+        border-radius: 6px;
       }
       .ga-sticky-atc-title {
-        max-width: 130px;
+        max-width: 140px;
         font-size: 1.2rem;
         white-space: nowrap;
         overflow: hidden;
@@ -208,7 +241,8 @@
         display: none;
       }
       .ga-sticky-atc-price {
-        font-size: 1.3rem;
+        font-size: 1.35rem;
+        font-weight: 700;
       }
       .ga-sticky-atc-select {
         display: none;
@@ -217,10 +251,11 @@
         flex-shrink: 0;
       }
       .ga-sticky-btn-buy {
-        padding: 0.9rem 1.4rem;
+        padding: 0.85rem 1.4rem;
         font-size: 1.2rem;
         letter-spacing: 0.04em;
         white-space: nowrap;
+        min-height: 40px;
       }
     }
   {%- endstyle -%}
@@ -327,6 +362,62 @@
           }
         }, { passive: true });
       }
+
+      // Auto-hide sticky bar and back to top when writing a review or when any modal/drawer is open
+      function checkModalOpen() {
+        var modalSelectors = [
+          '.jm-mfp-wrap',
+          '.mfp-wrap',
+          '.jdgm-write-review-modal',
+          '.jdgm-modal',
+          '.jdgm-full-rev-modal',
+          '[class*="jdgm-write-review"]',
+          '.jdgm-form-wrapper',
+          '.hdt-drawer.is-open',
+          'dialog[open]'
+        ];
+        var isModalActive = false;
+        for (var i = 0; i < modalSelectors.length; i++) {
+          var el = document.querySelector(modalSelectors[i]);
+          if (el) {
+            var s = window.getComputedStyle(el);
+            if (s.display !== 'none' && s.visibility !== 'hidden' && s.opacity !== '0') {
+              isModalActive = true;
+              break;
+            }
+          }
+        }
+        if (
+          document.body.classList.contains('jm-mfp-open') || 
+          document.body.classList.contains('mfp-open') || 
+          document.documentElement.classList.contains('jm-mfp-open') ||
+          document.body.classList.contains('jdgm-modal-open')
+        ) {
+          isModalActive = true;
+        }
+
+        if (isModalActive) {
+          document.body.classList.add('ga-modal-open');
+        } else {
+          document.body.classList.remove('ga-modal-open');
+        }
+      }
+
+      var modalObserver = new MutationObserver(checkModalOpen);
+      modalObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style', 'open'] });
+
+      // Immediate listeners for review write buttons and close buttons
+      document.addEventListener('click', function(e) {
+        if (e.target && (e.target.closest('.jdgm-write-rev-link') || e.target.closest('[class*="write-rev"]'))) {
+          setTimeout(checkModalOpen, 50);
+          setTimeout(checkModalOpen, 250);
+          setTimeout(checkModalOpen, 600);
+        }
+        if (e.target && (e.target.closest('.jm-mfp-close') || e.target.closest('.mfp-close') || e.target.closest('[class*="close"]'))) {
+          setTimeout(checkModalOpen, 50);
+          setTimeout(checkModalOpen, 300);
+        }
+      }, true);
     });
   </script>
 {%- endif -%}
