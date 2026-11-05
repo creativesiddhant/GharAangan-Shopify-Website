@@ -239,22 +239,19 @@
     position: relative !important;
     display: inline-flex !important;
     align-items: center !important;
-    border: 1.5px solid rgba(26, 51, 44, 0.22) !important;
-    border-radius: 24px !important;
-    background: #ffffff !important;
-    height: 38px !important;
-    min-width: 140px !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
     padding: 0 !important;
     margin: 0 !important;
-    box-sizing: border-box !important;
     cursor: pointer !important;
-    transition: all 0.2s ease !important;
     vertical-align: middle !important;
   }
 
   .ga-judgeme-wrap .jdgm-sort-dropdown-wrapper:hover {
-    border-color: #cda250 !important;
-    background: #faf8f5 !important;
+    border: none !important;
+    background: transparent !important;
+    opacity: 0.8 !important;
   }
 
   .ga-judgeme-wrap .jdgm-sort-dropdown {
@@ -262,13 +259,12 @@
     outline: none !important;
     background: transparent !important;
     font-family: var(--ga-font-family-sans, 'Outfit', sans-serif) !important;
-    font-size: 1.3rem !important;
+    font-size: 1.4rem !important;
     font-weight: 500 !important;
     color: #1a332c !important;
-    height: 100% !important;
-    line-height: 36px !important;
-    width: 100% !important;
-    padding: 0 32px 0 14px !important;
+    height: auto !important;
+    line-height: 1.4 !important;
+    padding: 6px 8px !important;
     margin: 0 !important;
     cursor: pointer !important;
     appearance: none !important;
@@ -276,36 +272,35 @@
     -moz-appearance: none !important;
     box-sizing: border-box !important;
     white-space: nowrap !important;
+    transition: opacity 0.2s ease !important;
   }
 
-  .ga-judgeme-wrap .jdgm-sort-dropdown-arrow {
-    position: absolute !important;
-    right: 12px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
+  .ga-judgeme-wrap .jdgm-sort-dropdown::-ms-expand {
+    display: none !important;
+  }
+
+  .ga-judgeme-wrap .jdgm-sort-dropdown:hover {
+    opacity: 0.8 !important;
+  }
+
+  /* Completely remove the sort arrow as requested */
+  .ga-judgeme-wrap .jdgm-sort-dropdown-arrow,
+  .jdgm-sort-dropdown-arrow {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
     margin: 0 !important;
-    background: transparent !important;
-    width: 12px !important;
-    height: 12px !important;
+    padding: 0 !important;
+    border: none !important;
     pointer-events: none !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    line-height: 1 !important;
   }
 
-  .ga-judgeme-wrap .jdgm-sort-dropdown-arrow:before {
-    content: "" !important;
-    display: block !important;
-    width: 10px !important;
-    height: 10px !important;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a332c' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
+  .ga-judgeme-wrap .jdgm-sort-dropdown-arrow:before,
+  .jdgm-sort-dropdown-arrow:before {
+    display: none !important;
+    content: none !important;
   }
 
   .ga-judgeme-wrap .jdgm-all-reviews-rating-filter,
@@ -599,6 +594,12 @@
         } else {
           s.style.setProperty('color', 'rgba(205, 162, 80, 0.28)', 'important');
         }
+      }
+
+      // 3. Remove distracting sort arrows completely
+      var sortArrows = document.querySelectorAll('.jdgm-sort-dropdown-arrow');
+      for (var k = 0; k < sortArrows.length; k++) {
+        sortArrows[k].style.setProperty('display', 'none', 'important');
       }
     }
 
