@@ -266,8 +266,9 @@
         </div>
       </div>
 
-      <div class="ga-sticky-atc-actions">
-        <input type="hidden" id="GaStickyVariantId" value="{{ current_variant.id }}">
+      <form method="post" action="/cart/add" class="ga-sticky-atc-actions ga-sticky-form">
+        <input type="hidden" name="id" id="GaStickyVariantId" value="{{ current_variant.id }}">
+        <input type="hidden" name="quantity" value="1">
         
         {%- if product.variants.size > 1 -%}
           <select class="ga-sticky-atc-select" id="GaStickyVariantSelector" aria-label="Select variant">
@@ -310,7 +311,7 @@
         >
           <span>⚡ BUY NOW</span>
         </button>
-      </div>
+      </form>
     </div>
   </div>
 
