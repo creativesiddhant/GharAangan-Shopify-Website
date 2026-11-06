@@ -1,74 +1,16 @@
 {% comment %}
-  Ghar Aangan - Elegant Festive Diwali Fireworks & Sparkles
-  Engineered for high conversion, zero lag, and luxury aesthetics.
-  - Colors: Royal Gold, Amber, Saffron, Forest Emerald, and Sparkling White
-  - Physics-based particle simulation with gravity, friction, and twinkling trails
-  - Non-intrusive: 100% pointer-events: none (zero obstruction to checkout or clicks)
-  - Auto-quiescence: Plays celebratory bursts on entry, then rests to conserve battery
-  - Interactive: Subtle festive sparkles on user click / tap
+  Ghar Aangan - Grand Festive Diwali Celebration Fireworks
+  - Realistic one-time grand skyrocket & willow burst across the whole screen
+  - Fires upon page load, runs a spectacular 4-second grand festive show, then completely removes itself
+  - Zero UI badges or buttons (pure, elegant visual feast)
+  - 100% pointer-events: none (zero obstruction to desktop/mobile navigation or checkout)
+  - Retina/Desktop HD resolution rendering with 60 FPS physics
 {% endcomment %}
 
-<div id="ga-diwali-fireworks-container" aria-hidden="true" style="position: fixed; inset: 0; pointer-events: none; z-index: 999999; overflow: hidden;">
-  <canvas id="ga-diwali-canvas" style="display: block; width: 100vw; height: 100vh; pointer-events: none;"></canvas>
-
-  <!-- Elegant Floating Festive Badge (Subtle Himalayan Luxury Style) -->
-  <div id="ga-diwali-badge" style="
-    position: fixed;
-    bottom: 24px;
-    left: 20px;
-    pointer-events: auto;
-    z-index: 999999;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(26, 51, 44, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(205, 162, 80, 0.45);
-    border-radius: 30px;
-    padding: 7px 14px 7px 11px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(205, 162, 80, 0.2);
-    color: #fff;
-    font-family: var(--font-body-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    user-select: none;
-    -webkit-user-select: none;
-  ">
-    <span style="font-size: 15px; line-height: 1; filter: drop-shadow(0 0 4px #ffd700);">🪔</span>
-    <span style="color: #ebd9b5; font-weight: 500;">Happy Diwali!</span>
-    <span id="ga-diwali-btn-sparkle" style="
-      background: linear-gradient(135deg, #cda250, #f59e0b);
-      color: #1a332c;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 2px 7px;
-      border-radius: 12px;
-      margin-left: 2px;
-      letter-spacing: 0.05em;
-    ">Sparkle ✨</span>
-    <button id="ga-diwali-close-btn" type="button" aria-label="Close Diwali Greeting" style="
-      background: none;
-      border: none;
-      color: rgba(235, 217, 181, 0.6);
-      font-size: 14px;
-      cursor: pointer;
-      padding: 0 2px 0 6px;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      transition: color 0.2s;
-    " onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(235, 217, 181, 0.6)'">&times;</button>
-  </div>
-</div>
+<canvas id="ga-diwali-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999998; display: block;"></canvas>
 
 <script>
 (function() {
-  // Respect user preference for reduced motion
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
@@ -78,98 +20,243 @@
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  let width = (canvas.width = window.innerWidth);
-  let height = (canvas.height = window.innerHeight);
+  // Sharp HD rendering across high-DPI Desktop and Mobile
+  let dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let w = window.innerWidth;
+  let h = window.innerHeight;
 
-  window.addEventListener('resize', function() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  });
+  function resize() {
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
 
-  // Festive Himalayan Royal Color Palette
-  const festiveColors = [
-    '#ffd700', // Imperial Gold
-    '#cda250', // Ghar Aangan Antique Gold
-    '#f59e0b', // Deep Amber Marigold
-    '#ea580c', // Himalayan Saffron
-    '#10b981', // Pure Forest Emerald
-    '#f43f5e', // Festive Rose
-    '#ffffff', // Diamond White Spark
-    '#fed7aa'  // Warm Glow
+  // Authentic Indian Festive Palette (Imperial Golds, Saffron, Emerald, Diamond White)
+  const PALETTES = [
+    ['#ffd700', '#ffb700', '#cda250', '#ffffff', '#ffea75'], // Imperial Gold Willow
+    ['#ff4500', '#ff7a00', '#ffd700', '#ffffff', '#f43f5e'], // Royal Saffron & Ruby
+    ['#10b981', '#34d399', '#ffd700', '#ffffff', '#059669'], // Himalayan Emerald
+    ['#ffea00', '#ffa200', '#ffffff', '#cda250', '#ffe4b5']  // Pure Golden Anar Sparkle
   ];
 
+  const rockets = [];
   const particles = [];
-  let isRunning = true;
-  let autoBurstCount = 0;
-  const MAX_AUTO_BURSTS = 7; // Gentle festive greeting on arrival
+  let showFinished = false;
+  let animationFrameId = null;
 
-  class Particle {
-    constructor(x, y, color) {
+  class Rocket {
+    constructor(startX, targetX, targetY, colorPalette, delay) {
+      this.x = startX;
+      this.y = h + 10;
+      this.startX = startX;
+      this.targetX = targetX;
+      this.targetY = targetY;
+      this.palette = colorPalette;
+      this.delay = delay;
+      this.speed = Math.random() * 2 + 10;
+      this.angle = Math.atan2(targetY - this.y, targetX - this.x);
+      this.vx = Math.cos(this.angle) * this.speed;
+      this.vy = Math.sin(this.angle) * this.speed;
+      this.trail = [];
+      this.trailLength = 6;
+      this.alive = true;
+      this.exploded = false;
+      this.startTime = performance.now() + delay;
+    }
+
+    update(now) {
+      if (now < this.startTime) return;
+
+      this.trail.unshift({ x: this.x, y: this.y, alpha: 1 });
+      if (this.trail.length > this.trailLength) this.trail.pop();
+      for (let t of this.trail) t.alpha -= 0.16;
+
+      this.x += this.vx;
+      this.y += this.vy;
+
+      // Rocket reached apex or target height -> Explode!
+      if (this.vy < 0 && this.y <= this.targetY) {
+        this.explode();
+      }
+    }
+
+    draw(ctx) {
+      if (this.exploded || !this.alive) return;
+      if (this.trail.length > 1) {
+        ctx.save();
+        for (let i = 0; i < this.trail.length - 1; i++) {
+          const p1 = this.trail[i];
+          const p2 = this.trail[i + 1];
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(255, 215, 0, ${p1.alpha * 0.9})`;
+          ctx.lineWidth = Math.max(1, 3 - i * 0.4);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      // Bright glowing rocket head
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = '#ffd700';
+      ctx.fill();
+      ctx.restore();
+    }
+
+    explode() {
+      this.alive = false;
+      this.exploded = true;
+
+      // Create burst particles (65 to 110 sparks per explosion)
+      const count = Math.floor(Math.random() * 40 + 75);
+      const isGrand = this.targetY < h * 0.28; // Grand burst gets more particles
+      const particleTotal = isGrand ? count + 35 : count;
+
+      for (let i = 0; i < particleTotal; i++) {
+        const color = this.palette[Math.floor(Math.random() * this.palette.length)];
+        particles.push(new SparkParticle(this.x, this.y, color, isGrand));
+      }
+
+      // Add a brief golden center flash
+      particles.push(new CoreFlash(this.x, this.y));
+    }
+  }
+
+  class CoreFlash {
+    constructor(x, y) {
       this.x = x;
       this.y = y;
-      this.color = color || festiveColors[Math.floor(Math.random() * festiveColors.length)];
+      this.radius = 12;
+      this.alpha = 0.9;
+    }
+    update() {
+      this.radius += 2.5;
+      this.alpha -= 0.12;
+    }
+    draw(ctx) {
+      if (this.alpha <= 0) return;
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, this.alpha)})`;
+      ctx.shadowBlur = 15;
+      ctx.shadowColor = '#ffd700';
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  class SparkParticle {
+    constructor(x, y, color, isGrand) {
+      this.x = x;
+      this.y = y;
+      this.color = color;
       
       const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 5.5 + 1.5;
+      const speed = Math.random() * (isGrand ? 7.5 : 5.8) + 1.2;
       
       this.vx = Math.cos(angle) * speed;
       this.vy = Math.sin(angle) * speed;
       
-      this.friction = 0.955;
-      this.gravity = 0.085;
+      this.friction = 0.958;
+      this.gravity = 0.088;
       this.alpha = 1;
-      this.decay = Math.random() * 0.016 + 0.012;
-      this.radius = Math.random() * 2.2 + 1.2;
-      this.sparkle = Math.random() > 0.4;
+      this.decay = Math.random() * 0.015 + 0.011;
+      this.radius = Math.random() * 2.2 + 1.1;
+      this.twinkle = Math.random() > 0.45;
+      this.history = [];
+      this.maxHistory = 4;
     }
 
     update() {
+      this.history.unshift({ x: this.x, y: this.y, alpha: this.alpha });
+      if (this.history.length > this.maxHistory) this.history.pop();
+
       this.vx *= this.friction;
       this.vy *= this.friction;
       this.vy += this.gravity;
+      
       this.x += this.vx;
       this.y += this.vy;
+      
       this.alpha -= this.decay;
     }
 
     draw(ctx) {
       if (this.alpha <= 0) return;
+
+      // Realistic sparkling trail
+      if (this.history.length > 1) {
+        ctx.save();
+        for (let i = 0; i < this.history.length - 1; i++) {
+          const p1 = this.history[i];
+          const p2 = this.history[i + 1];
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = this.color;
+          ctx.globalAlpha = Math.max(0, p1.alpha * 0.45);
+          ctx.lineWidth = Math.max(0.6, this.radius * (1 - i * 0.22));
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      // Sparkle Head
       ctx.save();
-      ctx.globalAlpha = Math.max(0, this.alpha);
+      const currentAlpha = this.twinkle ? (Math.random() > 0.3 ? this.alpha : this.alpha * 0.4) : this.alpha;
+      ctx.globalAlpha = Math.max(0, currentAlpha);
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fillStyle = this.color;
-      ctx.shadowBlur = this.sparkle ? 7 : 3;
+      ctx.shadowBlur = this.twinkle ? 6 : 2;
       ctx.shadowColor = this.color;
       ctx.fill();
       ctx.restore();
     }
   }
 
-  function createFirework(x, y, count) {
-    const particleCount = count || Math.floor(Math.random() * 20 + 35);
-    const chosenColor = festiveColors[Math.floor(Math.random() * festiveColors.length)];
-    const secondaryColor = festiveColors[Math.floor(Math.random() * festiveColors.length)];
+  // Choreograph the One-Time Grand Display across the Whole Page:
+  function initGrandShow() {
+    // 5 Coordinated Rockets covering Left, Center-Left, Center, Center-Right, Right
+    // Rocket 1: Left skyward
+    rockets.push(new Rocket(w * 0.22, w * 0.20, h * 0.32, PALETTES[0], 0));
+    
+    // Rocket 2: Right skyward
+    rockets.push(new Rocket(w * 0.78, w * 0.80, h * 0.28, PALETTES[1], 350));
+    
+    // Rocket 3: Center-Left
+    rockets.push(new Rocket(w * 0.38, w * 0.35, h * 0.22, PALETTES[2], 750));
+    
+    // Rocket 4: Center-Right
+    rockets.push(new Rocket(w * 0.62, w * 0.65, h * 0.24, PALETTES[3], 1050));
+    
+    // Rocket 5: The Grand Central Golden Willow Finale
+    rockets.push(new Rocket(w * 0.50, w * 0.50, h * 0.18, PALETTES[0], 1450));
 
-    for (let i = 0; i < particleCount; i++) {
-      const color = Math.random() > 0.35 ? chosenColor : secondaryColor;
-      particles.push(new Particle(x, y, color));
+    animationFrameId = requestAnimationFrame(render);
+  }
+
+  function render(timestamp) {
+    // Semi-transparent clear creates smooth luminous motion blur
+    ctx.clearRect(0, 0, w, h);
+
+    // Update & draw ascending rockets
+    for (let rocket of rockets) {
+      rocket.update(timestamp);
+      rocket.draw(ctx);
     }
-  }
 
-  function triggerRandomBurst() {
-    // Burst in the upper-to-mid section of viewport for best visual aesthetics
-    const x = width * (0.15 + Math.random() * 0.7);
-    const y = height * (0.15 + Math.random() * 0.45);
-    createFirework(x, y);
-  }
-
-  // Animation Loop with clearRect for crisp 60fps performance
-  function loop() {
-    if (!isRunning) return;
-
-    ctx.clearRect(0, 0, width, height);
-
+    // Update & draw exploding particles
     for (let i = particles.length - 1; i >= 0; i--) {
       const p = particles[i];
       p.update();
@@ -179,75 +266,27 @@
       }
     }
 
-    requestAnimationFrame(loop);
-  }
-
-  requestAnimationFrame(loop);
-
-  // Initial Orchestrated Celebratory Bursts (Timed elegantly)
-  function scheduleInitialCelebration() {
-    const burstTimers = [400, 1100, 1800, 2600, 3500, 4400];
-    burstTimers.forEach(delay => {
-      setTimeout(() => {
-        if (!document.hidden && autoBurstCount < MAX_AUTO_BURSTS) {
-          triggerRandomBurst();
-          autoBurstCount++;
-        }
-      }, delay);
-    });
-  }
-
-  // Run on page load
-  if (document.readyState === 'complete') {
-    scheduleInitialCelebration();
-  } else {
-    window.addEventListener('load', scheduleInitialCelebration);
-  }
-
-  // Interactive Touch & Click Sparkles (Clean & Responsive)
-  document.addEventListener('click', function(e) {
-    // Avoid triggering when user clicks functional inputs, buttons or cart controls
-    const target = e.target;
-    if (target.closest('button, a, input, select, textarea, form, [role="button"]')) {
+    // Check if the grand one-time display is fully completed
+    const allRocketsExploded = rockets.every(r => r.exploded);
+    if (allRocketsExploded && particles.length === 0) {
+      showFinished = true;
+      cleanup();
       return;
     }
-    // Launch a gentle cluster of festive sparkles at click location
-    createFirework(e.clientX, e.clientY, 25);
-  });
 
-  // Badge Click Handler -> launches celebratory shower
-  const badge = document.getElementById('ga-diwali-badge');
-  const closeBtn = document.getElementById('ga-diwali-close-btn');
-
-  if (badge) {
-    badge.addEventListener('click', function(e) {
-      if (e.target === closeBtn || e.target.closest('#ga-diwali-close-btn')) return;
-      // Launch 3 festive bursts across the screen
-      triggerRandomBurst();
-      setTimeout(triggerRandomBurst, 200);
-      setTimeout(triggerRandomBurst, 450);
-    });
+    animationFrameId = requestAnimationFrame(render);
   }
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      if (badge) {
-        badge.style.opacity = '0';
-        badge.style.transform = 'translateY(15px)';
-        setTimeout(() => badge.remove(), 300);
-      }
-    });
-  }
-
-  // Battery & CPU optimization: pause when tab is inactive
-  document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-      isRunning = false;
-    } else {
-      isRunning = true;
-      requestAnimationFrame(loop);
+  function cleanup() {
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    ctx.clearRect(0, 0, w, h);
+    if (canvas && canvas.parentNode) {
+      canvas.parentNode.removeChild(canvas);
     }
-  });
+  }
+
+  // Launch right after page is interactive and preloader has completed
+  const launchDelay = 700; // 700ms gives time for preloader to fade so desktop & mobile see full spectacle
+  setTimeout(initGrandShow, launchDelay);
 })();
 </script>
