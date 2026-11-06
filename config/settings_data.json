@@ -38,13 +38,13 @@
     "badge_shape": "round",
     "label_onsale_style": "percentage",
     "use_new_badge": false,
-    "show_rating": true,
     "wishlist_mode": "1",
     "wis_atc_added": "1",
     "enable_compare_popup": true,
     "effect_secondary_image": "zoom",
     "show_quick_add": false,
     "show_qty": true,
+    "show_rating": true,
     "color_event": "hover",
     "remove_collection_url": true,
     "pick_mode": "first",
@@ -173,6 +173,11 @@
       },
       "14060646107696862457": {
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "3557650678667880288": {
+        "type": "shopify://apps/razorpay-cod-magic-checkout/blocks/magicx-script/c13c688d-5c45-4054-b95f-1edd63faa705",
         "disabled": false,
         "settings": {}
       }
