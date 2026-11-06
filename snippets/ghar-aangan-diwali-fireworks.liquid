@@ -1,211 +1,371 @@
 {% comment %}
-  Ghar Aangan - Festive Diwali Celebration (The Perfect Sweet Spot)
-  - Not too much, not too less: 3 grand, beautifully staggered bursts across the screen
-  - 100% butter-smooth 60-120 FPS on all Mobile and Desktop devices
-  - Zero scroll lag: Zero shadowBlur, lightweight 2-point trailing streaks
-  - 100% pointer-events: none (zero obstruction to touches, scrolling, or checkout)
-  - Self-cleaning: Automatically removes itself after the ~3.5s grand display
+  Ghar Aangan - Luxury Festive Diwali Fireworks Engine
+  Inspired by Namo Narayana's ambient skyrocket celebrations.
+  - Dual-layer zero-blur particle renderer: 60-120 FPS butter-smooth touch scrolling
+  - Physics-driven: delta-time, realistic air drag, gravity drift, and sparkling embers
+  - Balanced cadence: 1 elegant rocket every 2-3s (not too much, not too less)
+  - 100% non-intrusive: pointer-events: none, zero obstruction to taps, swipes, cart & checkout
+  - Vibrant heritage palette: Royal Imperial Gold, Warm Saffron, Himalayan Emerald, Ruby Rose, Champagne Spark
+  - Visible & stunning on both light/cream backgrounds and dark theme sections
+  - Full mobile & desktop support with battery-saving auto-pause
 {% endcomment %}
 
-<canvas id="ga-diwali-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999998; display: block; will-change: transform; transform: translateZ(0);"></canvas>
+<style>
+  .ga-diwali-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none !important;
+    z-index: 99999;
+    display: block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ga-diwali-canvas {
+      display: none !important;
+    }
+  }
+</style>
 
 <script>
 (function() {
+  'use strict';
+
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
 
-  const canvas = document.getElementById('ga-diwali-canvas');
-  if (!canvas) return;
+  // Prevent duplicate instances
+  if (document.querySelector('.ga-diwali-canvas')) {
+    return;
+  }
+
+  const canvas = document.createElement('canvas');
+  canvas.className = 'ga-diwali-canvas';
+  canvas.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(canvas);
+
   const ctx = canvas.getContext('2d', { alpha: true });
-  if (!ctx) return;
+  if (!ctx) {
+    canvas.remove();
+    return;
+  }
 
-  // 1:1 pixel ratio ensures maximum mobile/desktop rendering speed with zero scroll freeze
-  let w = (canvas.width = window.innerWidth);
-  let h = (canvas.height = window.innerHeight);
-
-  window.addEventListener('resize', function() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }, { passive: true });
-
-  // Rich Diwali Festive Colors (Ghar Aangan Gold, Saffron, Emerald, Diamond White)
-  const COLOR_PALETTES = [
-    ['#ffd700', '#ffb700', '#cda250', '#ffffff', '#ffe4b5'], // Imperial Gold Willow
-    ['#ff5722', '#f59e0b', '#ffd700', '#ffffff', '#fb923c'], // Saffron & Amber Flame
-    ['#ffd700', '#10b981', '#cda250', '#ffffff', '#ffea75']  // Gold with Emerald Sparkles
+  // Ghar Aangan Heritage Festive Palette (Vivid, rich tones visible on both white & dark backgrounds)
+  const PALETTES = [
+    {
+      name: 'Imperial Gold & Amber',
+      primary: '#f59e0b',
+      accent: '#fbbf24',
+      spark: '#fef3c7',
+      colors: ['#f59e0b', '#d97706', '#fbbf24', '#fcd34d', '#fffbeb']
+    },
+    {
+      name: 'Royal Saffron & Gold',
+      primary: '#ea580c',
+      accent: '#f97316',
+      spark: '#ffedd5',
+      colors: ['#ea580c', '#f97316', '#fb923c', '#fbbf24', '#ffffff']
+    },
+    {
+      name: 'Himalayan Emerald & Gold',
+      primary: '#059669',
+      accent: '#10b981',
+      spark: '#d1fae5',
+      colors: ['#059669', '#10b981', '#34d399', '#f59e0b', '#ffffff']
+    },
+    {
+      name: 'Festive Ruby & Rose Gold',
+      primary: '#e11d48',
+      accent: '#f43f5e',
+      spark: '#ffe4e6',
+      colors: ['#e11d48', '#f43f5e', '#fb7185', '#f59e0b', '#ffffff']
+    },
+    {
+      name: 'Ghar Aangan Champagne Gold',
+      primary: '#d4af37',
+      accent: '#e6c875',
+      spark: '#ffffff',
+      colors: ['#d4af37', '#e6c875', '#f3e5ab', '#f59e0b', '#ffffff']
+    }
   ];
+
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  let animationId = 0;
+  let lastTime = 0;
+  let nextLaunchTime = 0;
 
   const rockets = [];
   const sparks = [];
-  let animId = null;
+  const trails = [];
 
-  class Rocket {
-    constructor(startX, targetX, targetY, paletteIndex, delay) {
-      this.x = startX;
-      this.y = h + 10;
-      this.targetX = targetX;
-      this.targetY = targetY;
-      this.palette = COLOR_PALETTES[paletteIndex % COLOR_PALETTES.length];
-      this.delay = delay;
-      this.speed = 11.5;
-      const angle = Math.atan2(targetY - this.y, targetX - this.x);
-      this.vx = Math.cos(angle) * this.speed;
-      this.vy = Math.sin(angle) * this.speed;
-      this.alive = true;
-      this.startTime = performance.now() + delay;
-      this.prevX = this.x;
-      this.prevY = this.y;
-    }
-
-    update(now) {
-      if (now < this.startTime) return;
-      this.prevX = this.x;
-      this.prevY = this.y;
-      this.x += this.vx;
-      this.y += this.vy;
-      if (this.y <= this.targetY) {
-        this.explode();
-      }
-    }
-
-    draw(ctx) {
-      if (!this.alive) return;
-      // Rising spark trail
-      ctx.beginPath();
-      ctx.moveTo(this.prevX, this.prevY);
-      ctx.lineTo(this.x, this.y);
-      ctx.strokeStyle = 'rgba(255, 215, 0, 0.85)';
-      ctx.lineWidth = 2;
-      ctx.stroke();
-
-      // Rocket head
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, 2.2, 0, Math.PI * 2);
-      ctx.fillStyle = '#ffffff';
-      ctx.fill();
-    }
-
-    explode() {
-      this.alive = false;
-      // 42 to 48 sparks per burst (hits the sweet spot of fullness without lag)
-      const count = Math.floor(Math.random() * 8 + 42);
-      for (let i = 0; i < count; i++) {
-        const color = this.palette[i % this.palette.length];
-        sparks.push(new Spark(this.x, this.y, color));
-      }
-    }
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
-  class Spark {
-    constructor(x, y, color) {
-      this.x = x;
-      this.y = y;
-      this.prevX = x;
-      this.prevY = y;
-      this.color = color;
-      
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 4.6 + 1.2;
-      this.vx = Math.cos(angle) * speed;
-      this.vy = Math.sin(angle) * speed;
-      
-      this.friction = 0.962;
-      this.gravity = 0.075;
-      this.alpha = 1;
-      this.decay = Math.random() * 0.015 + 0.012; // ~1.9s life
-      this.size = Math.random() * 1.8 + 1.1;
-      this.twinkle = Math.random() > 0.4;
-    }
-
-    update() {
-      this.prevX = this.x;
-      this.prevY = this.y;
-      this.vx *= this.friction;
-      this.vy *= this.friction;
-      this.vy += this.gravity;
-      this.x += this.vx;
-      this.y += this.vy;
-      this.alpha -= this.decay;
-    }
-
-    draw(ctx) {
-      if (this.alpha <= 0) return;
-      
-      // Fast, lightweight streak line gives authentic firecracker burst look
-      ctx.globalAlpha = this.alpha * 0.55;
-      ctx.beginPath();
-      ctx.moveTo(this.prevX, this.prevY);
-      ctx.lineTo(this.x, this.y);
-      ctx.strokeStyle = this.color;
-      ctx.lineWidth = this.size;
-      ctx.stroke();
-
-      // Glittering head with subtle sparkle
-      const renderSize = this.twinkle ? (Math.random() > 0.5 ? this.size * 1.3 : this.size * 0.8) : this.size;
-      ctx.globalAlpha = this.alpha;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, renderSize, 0, Math.PI * 2);
-      ctx.fillStyle = this.color;
-      ctx.fill();
-    }
-  }
-
-  function startCelebration() {
-    // 3 perfectly balanced bursts across the screen:
-    // Burst 1: Left-Center golden bloom
-    rockets.push(new Rocket(w * 0.32, w * 0.35, h * 0.28, 0, 0));
-    
-    // Burst 2: Right-Center saffron & amber flame (staggered 300ms)
-    rockets.push(new Rocket(w * 0.68, w * 0.65, h * 0.25, 1, 300));
-    
-    // Burst 3: Grand Central Finale (staggered 650ms, highest apex)
-    rockets.push(new Rocket(w * 0.50, w * 0.50, h * 0.17, 2, 650));
-
-    animId = requestAnimationFrame(render);
-  }
-
-  function render(timestamp) {
-    ctx.clearRect(0, 0, w, h);
-
-    // Update & draw ascending rockets
-    for (let i = 0; i < rockets.length; i++) {
-      const r = rockets[i];
-      if (r.alive) {
-        r.update(timestamp);
-        r.draw(ctx);
-      }
-    }
-
-    // Update & draw sparks
-    for (let i = sparks.length - 1; i >= 0; i--) {
-      const s = sparks[i];
-      s.update();
-      s.draw(ctx);
-      if (s.alpha <= 0) {
-        sparks.splice(i, 1);
-      }
-    }
-
-    // Cleanup when grand show concludes
-    const allRocketsDone = rockets.every(r => !r.alive);
-    if (allRocketsDone && sparks.length === 0) {
-      cleanup();
+  function launchRocket() {
+    // Keep total active particles capped to protect 60-120 FPS
+    if (sparks.length > 70 || rockets.length >= 2) {
       return;
     }
 
-    animId = requestAnimationFrame(render);
+    const isMobile = width < 768;
+    let launchX;
+    let targetY;
+
+    if (isMobile) {
+      // Mobile: launch nicely within middle 70% width, burst in upper 18% to 42%
+      launchX = width * (0.15 + Math.random() * 0.70);
+      targetY = height * (0.18 + Math.random() * 0.24);
+    } else {
+      // Desktop: launch in ambient sides or upper framing area so content is not blocked
+      const side = Math.random();
+      if (side < 0.42) {
+        launchX = width * (0.08 + Math.random() * 0.28);
+      } else if (side < 0.84) {
+        launchX = width * (0.64 + Math.random() * 0.28);
+      } else {
+        launchX = width * (0.36 + Math.random() * 0.28);
+      }
+      targetY = height * (0.12 + Math.random() * 0.28);
+    }
+
+    const palette = PALETTES[Math.floor(Math.random() * PALETTES.length)];
+    const startY = height + 10;
+    const distance = startY - targetY;
+    const duration = 0.85 + Math.random() * 0.35; // 0.85s to 1.2s ascent
+
+    rockets.push({
+      x: launchX,
+      y: startY,
+      startY: startY,
+      targetY: targetY,
+      distance: distance,
+      duration: duration,
+      elapsed: 0,
+      palette: palette,
+      trailTimer: 0
+    });
   }
 
-  function cleanup() {
-    if (animId) cancelAnimationFrame(animId);
-    ctx.clearRect(0, 0, w, h);
-    if (canvas && canvas.parentNode) {
-      canvas.parentNode.removeChild(canvas);
+  function createExplosion(rocket) {
+    const palette = rocket.palette;
+    const isMobile = width < 768;
+    // Mobile: 32-38 sparks | Desktop: 38-46 sparks (Feather-light budget, zero scroll lag)
+    const count = isMobile ? (32 + Math.floor(Math.random() * 7)) : (38 + Math.floor(Math.random() * 9));
+    const burstStyle = Math.random();
+
+    for (let i = 0; i < count; i++) {
+      const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.2;
+      let speed;
+      let duration;
+      let gravity;
+
+      if (burstStyle < 0.45) {
+        // Style A: Golden Willow / Shimmering Rain (gentle cascade downward)
+        speed = 45 + Math.random() * 65;
+        duration = 1.3 + Math.random() * 0.6;
+        gravity = 38 + Math.random() * 20;
+      } else {
+        // Style B: Blooming Chrysanthemum (spherical flower with air friction)
+        speed = 60 + Math.random() * 75;
+        duration = 1.0 + Math.random() * 0.5;
+        gravity = 30 + Math.random() * 18;
+      }
+
+      const color = palette.colors[Math.floor(Math.random() * palette.colors.length)];
+      const size = 1.6 + Math.random() * 1.4;
+
+      sparks.push({
+        x: rocket.x,
+        y: rocket.y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        gravity: gravity,
+        drag: 0.965,
+        color: color,
+        size: size,
+        life: 0,
+        duration: duration,
+        twinklePhase: Math.random() * Math.PI * 2,
+        twinkleSpeed: 8 + Math.random() * 10
+      });
     }
   }
 
-  // Launch right after page preloader is complete (600ms)
-  setTimeout(startCelebration, 600);
+  function update(now) {
+    if (document.hidden) {
+      animationId = 0;
+      return;
+    }
+
+    if (!lastTime) lastTime = now;
+    const dt = Math.min((now - lastTime) / 1000, 0.04);
+    lastTime = now;
+
+    // Clear canvas
+    ctx.clearRect(0, 0, width, height);
+
+    // Launch cadence: 1 rocket every ~1.8s to 3.0s ("not too much not too less")
+    if (now >= nextLaunchTime) {
+      launchRocket();
+      nextLaunchTime = now + 1800 + Math.random() * 1200;
+    }
+
+    // 1. UPDATE & DRAW TRAILS
+    for (let i = trails.length - 1; i >= 0; i--) {
+      const tr = trails[i];
+      tr.life += dt;
+      if (tr.life >= tr.duration) {
+        trails.splice(i, 1);
+        continue;
+      }
+      tr.y += tr.vy * dt;
+      const alpha = (1 - (tr.life / tr.duration)) * 0.7;
+
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = tr.color;
+      ctx.beginPath();
+      ctx.arc(tr.x, tr.y, tr.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // 2. UPDATE & DRAW ROCKETS
+    for (let i = rockets.length - 1; i >= 0; i--) {
+      const r = rockets[i];
+      r.elapsed += dt;
+      const progress = Math.min(r.elapsed / r.duration, 1);
+
+      // Ease-out curve (slows naturally near peak)
+      const ease = 1 - Math.pow(1 - progress, 2);
+      r.y = r.startY - (r.distance * ease);
+
+      // Rocket ascent sparkling trail
+      r.trailTimer += dt;
+      if (r.trailTimer >= 0.04) {
+        r.trailTimer = 0;
+        trails.push({
+          x: r.x + (Math.random() - 0.5) * 3,
+          y: r.y + 4,
+          vy: 20 + Math.random() * 15,
+          color: r.palette.accent,
+          size: 1.2 + Math.random() * 1.0,
+          life: 0,
+          duration: 0.28 + Math.random() * 0.15
+        });
+      }
+
+      // Draw rocket head (glowing bright head)
+      ctx.globalAlpha = 0.35;
+      ctx.fillStyle = r.palette.primary;
+      ctx.beginPath();
+      ctx.arc(r.x, r.y, 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.globalAlpha = 0.95;
+      ctx.fillStyle = '#fffbeb';
+      ctx.beginPath();
+      ctx.arc(r.x, r.y, 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      if (progress >= 1) {
+        createExplosion(r);
+        rockets.splice(i, 1);
+      }
+    }
+
+    // 3. UPDATE & DRAW SPARKS (Zero-blur dual-pass glow for 120 FPS buttery scrolling)
+    for (let i = sparks.length - 1; i >= 0; i--) {
+      const s = sparks[i];
+      s.life += dt;
+
+      if (s.life >= s.duration) {
+        sparks.splice(i, 1);
+        continue;
+      }
+
+      // Physics: drag + gravity
+      s.vx *= Math.pow(s.drag, dt * 60);
+      s.vy *= Math.pow(s.drag, dt * 60);
+      s.vy += s.gravity * dt;
+      s.x += s.vx * dt;
+      s.y += s.vy * dt;
+
+      const progress = s.life / s.duration;
+      // Authentic Diwali ember twinkle
+      const twinkle = 0.8 + 0.2 * Math.sin(s.twinklePhase + s.life * s.twinkleSpeed);
+      const alpha = Math.max(0, (1 - progress) * twinkle);
+      const currentSize = s.size * (1 - progress * 0.25);
+
+      // Layer 1: Soft outer light aura
+      ctx.globalAlpha = alpha * 0.30;
+      ctx.fillStyle = s.color;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, currentSize * 2.2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Layer 2: Rich festive color body (vibrant on light & dark backgrounds)
+      ctx.globalAlpha = alpha * 0.85;
+      ctx.fillStyle = s.color;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, currentSize, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Layer 3: Hot diamond sparkling core
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = '#fffdf0';
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, currentSize * 0.4, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+    animationId = window.requestAnimationFrame(update);
+  }
+
+  function start() {
+    if (!animationId) {
+      lastTime = 0;
+      animationId = window.requestAnimationFrame(update);
+    }
+  }
+
+  function stop() {
+    if (animationId) {
+      window.cancelAnimationFrame(animationId);
+      animationId = 0;
+      lastTime = 0;
+      ctx.clearRect(0, 0, width, height);
+    }
+  }
+
+  // Handle screen resize
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  // Conserve 100% battery when tab is hidden or backgrounded
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      stop();
+    } else {
+      start();
+    }
+  });
+
+  // Start initial rocket gracefully after page preloader settles (700ms)
+  setTimeout(function() {
+    nextLaunchTime = performance.now() + 200;
+    start();
+  }, 700);
+
 })();
 </script>
