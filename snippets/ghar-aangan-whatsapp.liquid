@@ -5,7 +5,7 @@
 
 {%- liquid
   assign wa_phone = '919027248335'
-  assign wa_message = "Hey Ghar Aangan team, I'm interested in your products." | url_encode
+  assign wa_message = "Hey Ghar Aangan team, I'm interested in your products." | url_encode | replace: '+', '%20'
   assign wa_url = 'https://wa.me/' | append: wa_phone | append: '?text=' | append: wa_message
 -%}
 
