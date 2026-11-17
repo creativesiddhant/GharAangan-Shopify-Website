@@ -16,8 +16,8 @@
           "type": "_slide-item",
           "name": "t:sections.slideshow.blocks.slide.name",
           "settings": {
-            "image": "shopify://shop_images/WhatsApp_Image_2026-10-28_at_3.07.48_AM.jpg",
-            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-10-28_at_3.00.07_AM.jpg",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_10.06.43_AM.jpg",
+            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_10.06.44_AM.jpg",
             "url": "",
             "banner_target": false,
             "color_scheme": "",
@@ -131,8 +131,8 @@
           "type": "_slide-item",
           "name": "t:sections.slideshow.blocks.slide.name",
           "settings": {
-            "image": "shopify://shop_images/WhatsApp_Image_2026-10-28_at_3.16.26_AM.jpg",
-            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-10-28_at_3.23.08_AM.jpg",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_10.20.00_AM.jpg",
+            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_10.20.00_AM_1.jpg",
             "url": "",
             "banner_target": false,
             "color_scheme": "",
@@ -246,8 +246,8 @@
           "type": "_slide-item",
           "name": "t:sections.slideshow.blocks.slide.name",
           "settings": {
-            "image": "shopify://shop_images/WhatsApp_Image_2026-08-25_at_12.41.59_AM.jpg",
-            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-08-25_at_1.32.49_AM.jpg",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_11.55.10_AM.jpg",
+            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_11.55.10_AM_1.jpg",
             "url": "",
             "banner_target": false,
             "color_scheme": "",
@@ -386,6 +386,35 @@
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_rate": 75
+      }
+    },
+    "ghar_aangan_video": {
+      "type": "ghar-aangan-video",
+      "settings": {
+        "background_color": "#faf8f5",
+        "header_subtitle": "OUR HERITAGE IN MOTION",
+        "header_title": "Pure Pahadi Craftsmanship",
+        "header_description": "Watch how we churn pure A2 Pahadi Bilona ghee using traditional curd-churning methods in Uttarakhand.",
+        "video_url": "https://www.youtube.com/watch?v=jLSVeNXRaRs",
+        "video_aspect_ratio": "9_16",
+        "video_width_desktop": "medium",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ghar_aangan_founder": {
+      "type": "ghar-aangan-founder",
+      "settings": {
+        "background_color": "#ffffff",
+        "card_bg": "#faf8f5",
+        "image": "shopify://shop_images/WhatsApp_Image_2026-08-21_at_2.49.14_AM_3.jpg",
+        "subtitle": "THE FOUNDER'S JOURNEY",
+        "title": "Back to the Soil",
+        "description": "At Ghar Aangan, we believe that food is more than nourishment—it is tradition, heritage, family, and trust. Inspired by the timeless kitchens of Uttarakhand, our mission is to reconnect modern families with authentic Himalayan foods prepared using traditional methods that have been preserved for generations.",
+        "cta_label": "Explore Our Products",
+        "cta_link": "#ga-specialties-shop",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "ghar_aangan_specialties": {
@@ -640,35 +669,6 @@
         "title": "Authentic Pahadi Specialties & Pure A2 Bilona Ghee",
         "description": "Handcrafted over wood-fires from Himalayan Pahadi cattle alongside unpolished heirloom pulses, traditional Sil-Batta herbal salts, and watermill-milled ancient grains from Uttarakhand.",
         "padding_top": 40,
-        "padding_bottom": 60
-      }
-    },
-    "ghar_aangan_video": {
-      "type": "ghar-aangan-video",
-      "settings": {
-        "background_color": "#faf8f5",
-        "header_subtitle": "OUR HERITAGE IN MOTION",
-        "header_title": "Pure Pahadi Craftsmanship",
-        "header_description": "Watch how we churn pure A2 Pahadi Bilona ghee using traditional curd-churning methods in Uttarakhand.",
-        "video_url": "https://www.youtube.com/watch?v=jLSVeNXRaRs",
-        "video_aspect_ratio": "9_16",
-        "video_width_desktop": "medium",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "ghar_aangan_founder": {
-      "type": "ghar-aangan-founder",
-      "settings": {
-        "background_color": "#ffffff",
-        "card_bg": "#faf8f5",
-        "image": "shopify://shop_images/WhatsApp_Image_2026-08-21_at_2.49.14_AM_3.jpg",
-        "subtitle": "THE FOUNDER'S JOURNEY",
-        "title": "Back to the Soil",
-        "description": "At Ghar Aangan, we believe that food is more than nourishment—it is tradition, heritage, family, and trust. Inspired by the timeless kitchens of Uttarakhand, our mission is to reconnect modern families with authentic Himalayan foods prepared using traditional methods that have been preserved for generations.",
-        "cta_label": "Explore Our Products",
-        "cta_link": "#ga-specialties-shop",
-        "padding_top": 60,
         "padding_bottom": 60
       }
     },
