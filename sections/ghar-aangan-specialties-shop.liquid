@@ -86,12 +86,28 @@
       font-size: 12.5px;
     }
     .ga-spec-card {
-      padding: 16px;
+      padding: 0;
       border-radius: 16px;
     }
     .ga-spec-media-link {
-      height: 200px;
-      margin-bottom: 12px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      margin-bottom: 0;
+    }
+    .ga-spec-card-body {
+      padding: 15px 16px 18px;
+    }
+    .ga-spec-badge-left {
+      top: 12px;
+      left: 12px;
+      font-size: 9.5px;
+      padding: 4px 10px;
+    }
+    .ga-spec-badge-right {
+      top: 12px;
+      right: 12px;
+      font-size: 9.5px;
+      padding: 4px 9px;
     }
     .ga-spec-prod-name {
       font-size: 17px;
@@ -231,26 +247,54 @@
     color: #ffffff;
   }
 
-  /* Grid Layout: Responsive, fluid, and robust against overflow */
+  /* Grid Layout: Responsive, fluid, and robust across Desktop, Tablet Landscape, Tablet Portrait, and Mobile */
   .ga-spec-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
+    gap: 28px;
     width: 100%;
     box-sizing: border-box;
   }
 
-  @media (max-width: 1080px) {
+  /* Tablet Landscape (961px - 1199px) */
+  @media (min-width: 961px) and (max-width: 1199px) {
     .ga-spec-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
+    }
+    .ga-spec-card-body {
+      padding: 16px 16px 20px;
+    }
+    .ga-spec-prod-name {
+      font-size: 18px;
     }
   }
 
-  @media (max-width: 640px) {
+  /* Tablet Portrait (681px - 960px) */
+  @media (min-width: 681px) and (max-width: 960px) {
+    .ga-spec-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .ga-spec-card-body {
+      padding: 18px 20px 22px;
+    }
+    .ga-spec-prod-name {
+      font-size: 19px;
+    }
+  }
+
+  /* Mobile Devices (<= 680px) */
+  @media (max-width: 680px) {
     .ga-spec-grid {
       grid-template-columns: minmax(0, 1fr);
-      gap: 16px;
+      gap: 22px;
+    }
+    .ga-spec-card-body {
+      padding: 15px 16px 18px;
+    }
+    .ga-spec-prod-name {
+      font-size: 18px;
     }
   }
 
@@ -259,12 +303,13 @@
     background: #ffffff;
     border: 1.5px solid #eae3d5;
     border-radius: 18px;
-    padding: 20px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     position: relative;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 5px 18px rgba(26, 51, 44, 0.04);
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+    box-shadow: 0 4px 18px rgba(26, 51, 44, 0.04);
     min-width: 0;
     box-sizing: border-box;
     width: 100%;
@@ -272,35 +317,38 @@
 
   .ga-spec-card:hover {
     border-color: #c8933b;
-    transform: translateY(-4px);
-    box-shadow: 0 14px 34px rgba(26, 51, 44, 0.11);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 36px rgba(26, 51, 44, 0.12);
   }
 
   .ga-spec-card.is-featured {
     border: 2px solid #1a332c;
-    background: #fffdfa;
-    box-shadow: 0 8px 24px rgba(26, 51, 44, 0.08);
+    background: #ffffff;
+    box-shadow: 0 8px 26px rgba(26, 51, 44, 0.08);
   }
 
   .ga-spec-card.is-hidden {
     display: none !important;
   }
 
-  /* Badges */
+  /* Badges - Floating on top of the image */
   .ga-spec-badge-left {
     position: absolute;
     top: 14px;
     left: 14px;
-    background: #1a332c;
+    background: rgba(26, 51, 44, 0.94);
     color: #ffffff;
-    font-size: 10px;
+    font-size: 10.5px;
     font-weight: 800;
     letter-spacing: 0.6px;
     text-transform: uppercase;
-    padding: 5px 12px;
+    padding: 6px 13px;
     border-radius: 20px;
     z-index: 3;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    pointer-events: none;
   }
 
   .ga-spec-card.is-featured .ga-spec-badge-left {
@@ -314,57 +362,68 @@
     right: 14px;
     background: #b91c1c;
     color: #ffffff;
-    font-size: 10px;
+    font-size: 10.5px;
     font-weight: 800;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 20px;
     z-index: 3;
-    box-shadow: 0 2px 8px rgba(185, 28, 28, 0.2);
+    box-shadow: 0 3px 10px rgba(185, 28, 28, 0.28);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    pointer-events: none;
   }
 
-  /* Media / Image Wrap */
+  /* Media / Image Wrap - Namo Narayana style full bleed */
   .ga-spec-media-link {
     display: block;
     width: 100%;
-    height: 250px;
-    border-radius: 14px;
-    background: linear-gradient(180deg, #faf7f2 0%, #f4ede2 100%);
+    aspect-ratio: 1 / 1;
+    height: auto;
+    background: #fbf9f5;
     position: relative;
     overflow: hidden;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px;
-  }
-
-  @media (max-width: 767px) {
-    .ga-spec-media-link {
-      height: 240px;
-    }
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #f0e9dc;
+    flex-shrink: 0;
   }
 
   .ga-spec-img {
-    max-height: 100%;
-    max-width: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
-    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.06));
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center 42% !important;
+    display: block !important;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
     will-change: transform, opacity;
   }
 
   .ga-spec-card:hover .ga-spec-img {
-    transform: scale(1.07);
+    transform: scale(1.05);
   }
 
   .ga-spec-placeholder-icon {
     width: 70px;
     height: 70px;
     color: #b7a488;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Card Body */
+  .ga-spec-card-body {
+    padding: 20px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background: #ffffff;
+    box-sizing: border-box;
   }
 
   /* Metadata */
@@ -948,31 +1007,34 @@
           <a href="{{ product_url }}" class="ga-spec-media-link" data-spec-media-link aria-label="{{ product_title | escape }}">
             {%- if primary_img != blank -%}
               {%- if forloop.index <= 4 -%}
-                {{ primary_img | image_url: width: 460, format: 'webp' | image_tag: 
+                {{ primary_img | image_url: width: 800, format: 'webp' | image_tag: 
                   loading: 'eager', 
                   fetchpriority: 'high', 
                   decoding: 'async', 
                   class: 'ga-spec-img', 
                   alt: product_title, 
-                  widths: '240, 360, 460', 
-                  sizes: '(max-width: 680px) 240px, (max-width: 1100px) 360px, 420px' 
+                  widths: '360, 480, 600, 750, 900, 1080', 
+                  sizes: '(max-width: 680px) 100vw, (max-width: 960px) 50vw, 420px' 
                 }}
               {%- else -%}
-                {{ primary_img | image_url: width: 460, format: 'webp' | image_tag: 
+                {{ primary_img | image_url: width: 800, format: 'webp' | image_tag: 
                   loading: 'lazy', 
                   decoding: 'async', 
                   class: 'ga-spec-img', 
                   alt: product_title, 
-                  widths: '240, 360, 460', 
-                  sizes: '(max-width: 680px) 240px, (max-width: 1100px) 360px, 420px' 
+                  widths: '360, 480, 600, 750, 900, 1080', 
+                  sizes: '(max-width: 680px) 100vw, (max-width: 960px) 50vw, 420px' 
                 }}
               {%- endif -%}
             {%- elsif category == 'honey' -%}
-              <img src="{{ 'ghar-aangan-product-honey.jpg' | asset_url }}" loading="lazy" decoding="async" class="ga-spec-img" alt="{{ product_title }}" width="460" height="460">
+              <img src="{{ 'ghar-aangan-product-honey.jpg' | asset_url }}" loading="lazy" decoding="async" class="ga-spec-img" alt="{{ product_title }}" width="800" height="800">
             {%- else -%}
               <svg class="ga-spec-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
             {%- endif -%}
           </a>
+
+          <!-- Card Body Content -->
+          <div class="ga-spec-card-body">
 
           <!-- Origin & Ratings -->
           <div class="ga-spec-meta-row">
@@ -1010,11 +1072,13 @@
                     assign v_img_url = ''
                     assign v_img_srcset = ''
                     if v_img != blank
-                      assign v_img_url = v_img | image_url: width: 460, format: 'webp'
-                      assign v_w240 = v_img | image_url: width: 240, format: 'webp'
+                      assign v_img_url = v_img | image_url: width: 800, format: 'webp'
                       assign v_w360 = v_img | image_url: width: 360, format: 'webp'
-                      assign v_w460 = v_img | image_url: width: 460, format: 'webp'
-                      assign v_img_srcset = v_w240 | append: ' 240w, ' | append: v_w360 | append: ' 360w, ' | append: v_w460 | append: ' 460w'
+                      assign v_w480 = v_img | image_url: width: 480, format: 'webp'
+                      assign v_w600 = v_img | image_url: width: 600, format: 'webp'
+                      assign v_w800 = v_img | image_url: width: 800, format: 'webp'
+                      assign v_w1080 = v_img | image_url: width: 1080, format: 'webp'
+                      assign v_img_srcset = v_w360 | append: ' 360w, ' | append: v_w480 | append: ' 480w, ' | append: v_w600 | append: ' 600w, ' | append: v_w800 | append: ' 800w, ' | append: v_w1080 | append: ' 1080w'
                     endif
                     assign v_url = product_url | append: '?variant=' | append: variant.id
                   -%}
@@ -1086,6 +1150,7 @@
               </button>
             </div>
           </form>
+          </div>
         </div>
       {%- endfor -%}
     </div>
