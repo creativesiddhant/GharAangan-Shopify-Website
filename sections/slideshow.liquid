@@ -20,7 +20,7 @@
   }
 {%- endstyle -%}
 <div class="hdt-s-inner hdt-section-spacing" {%- unless section.index == 1 -%}hdt-reveal="fade-in"{%- endunless -%}>
-  <hdt-slideshow {% if section.settings.is_fade %}isfade {% endif %}id="Slider-{{ section.id }}" autoheight class="hdt-slider hdt-relative hdt-container{% if section.settings.full_width %}-full{% endif %} hdt-slideshow hdt-slides-1 hdt-relative" config='{"loop": {{ section.settings.loop }}, "navUI": {{ section.settings.navUI }}, "dotUI": {{ section.settings.dotUI }}, "autoPlay": {{ section.settings.auto_play | times: 1000 }}, "pauseOnHover": {{ section.settings.pause_hover }}, "align": "center", "classNames": true, "autoHeight": true, "slidesToScroll": 1 }'>
+  <hdt-slideshow {% if section.settings.is_fade %}isfade {% endif %}id="Slider-{{ section.id }}" autoheight class="hdt-slider hdt-relative hdt-container{% if section.settings.full_width %}-full{% endif %} hdt-slideshow hdt-slides-1 hdt-relative{% if section.settings.gauganga_style %} ga-gauganga-slider{% endif %}{% if section.settings.hide_text_overlay %} ga-hide-text-overlay{% endif %}" config='{"loop": {{ section.settings.loop }}, "navUI": {{ section.settings.navUI }}, "dotUI": {{ section.settings.dotUI }}, "autoPlay": {{ section.settings.auto_play | times: 1000 }}, "pauseOnHover": {{ section.settings.pause_hover }}, "align": "center", "classNames": true, "autoHeight": true, "slidesToScroll": 1 }'>
     <div class="hdt-slider__viewport md:hdt-height--{{ section.settings.image_height }} hdt-height--{{ section.settings.image_height_mb }}{% unless section.settings.full_width %} {{ section.settings.rounded }}{% endunless %}">
       <div class="hdt-slider__container">
         {% content_for "blocks" %}
@@ -54,6 +54,24 @@
     ]
   },
   "settings": [
+    {
+      "type": "header",
+      "content": "GauGanga Display Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "gauganga_style",
+      "label": "GauGanga Full Image Display (Zero Cropping)",
+      "default": true,
+      "info": "Adapts slider to exact 16:9 on Desktop and 2:3 on Mobile so 100% of the banner design is displayed with zero cropping. Uncheck to revert anytime."
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_text_overlay",
+      "label": "Hide Text Overlay & Buttons (Image-only mode)",
+      "default": true,
+      "info": "Hides headings and buttons on all slides so text inside the artwork is clear. Uncheck to show text overlay anytime."
+    },
     {
       "type": "header",
       "content": "t:sections.slideshow.settings.image_height.label"

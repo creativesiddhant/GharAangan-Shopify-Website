@@ -16,9 +16,9 @@
           "type": "_slide-item",
           "name": "t:sections.slideshow.blocks.slide.name",
           "settings": {
-            "image": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_10.06.43_AM.jpg",
-            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_10.06.44_AM.jpg",
-            "url": "",
+            "image": "shopify:\/\/shop_images\/WhatsApp_Image_2026-11-17_at_10.06.43_AM.jpg",
+            "image_mb": "shopify:\/\/shop_images\/WhatsApp_Image_2026-11-17_at_10.06.44_AM.jpg",
+            "url": "shopify:\/\/collections\/all",
             "banner_target": false,
             "color_scheme": "",
             "content_position": "center",
@@ -42,7 +42,7 @@
             "heading_tEi3zz": {
               "type": "heading",
               "settings": {
-                "heading": "<h2>Welcome to Ghar Aangan, Home of Pahadi Foods</h2>",
+                "heading": "<h2>Welcome to Ghar Aangan, Home of Pahadi Foods<\/h2>",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "line_height": "",
@@ -70,7 +70,7 @@
             "text_rCLzPV": {
               "type": "text",
               "settings": {
-                "text": "<p>Traditional Bilona craftsmanship, carefully prepared in Uttarakhand and brought straight to your home.</p>",
+                "text": "<p>Traditional Bilona craftsmanship, carefully prepared in Uttarakhand and brought straight to your home.<\/p>",
                 "icon_source": "",
                 "icon": "car",
                 "hidden_br_mobile": false,
@@ -100,7 +100,7 @@
               "type": "button",
               "settings": {
                 "label": "Shop Ghee & Groceries",
-                "link": "shopify://collections/all",
+                "link": "shopify:\/\/collections\/all",
                 "open_in_new_tab": false,
                 "full_width": false,
                 "style_class": "solid",
@@ -131,9 +131,9 @@
           "type": "_slide-item",
           "name": "t:sections.slideshow.blocks.slide.name",
           "settings": {
-            "image": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_10.20.00_AM.jpg",
-            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_10.20.00_AM_1.jpg",
-            "url": "",
+            "image": "shopify:\/\/shop_images\/WhatsApp_Image_2026-11-17_at_10.20.00_AM.jpg",
+            "image_mb": "shopify:\/\/shop_images\/WhatsApp_Image_2026-11-17_at_10.20.00_AM_1.jpg",
+            "url": "shopify:\/\/collections\/all",
             "banner_target": false,
             "color_scheme": "",
             "content_position": "center",
@@ -157,7 +157,7 @@
             "heading_HeKQhV": {
               "type": "heading",
               "settings": {
-                "heading": "<h2>From the Pahad, Made with Parampara</h2>",
+                "heading": "<h2>From the Pahad, Made with Parampara<\/h2>",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "line_height": "",
@@ -185,7 +185,7 @@
             "text_KtztLM": {
               "type": "text",
               "settings": {
-                "text": "<p>Explore our newly launched collection of authentic Pahadi foods, crafted with tradition and purity.</p>",
+                "text": "<p>Explore our newly launched collection of authentic Pahadi foods, crafted with tradition and purity.<\/p>",
                 "icon_source": "",
                 "icon": "car",
                 "hidden_br_mobile": false,
@@ -215,7 +215,7 @@
               "type": "button",
               "settings": {
                 "label": "Shop Ghee & Groceries",
-                "link": "shopify://collections/all",
+                "link": "shopify:\/\/collections\/all",
                 "open_in_new_tab": false,
                 "full_width": false,
                 "style_class": "solid",
@@ -246,9 +246,9 @@
           "type": "_slide-item",
           "name": "t:sections.slideshow.blocks.slide.name",
           "settings": {
-            "image": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_11.55.10_AM.jpg",
-            "image_mb": "shopify://shop_images/WhatsApp_Image_2026-11-17_at_11.55.10_AM_1.jpg",
-            "url": "",
+            "image": "shopify:\/\/shop_images\/WhatsApp_Image_2026-11-17_at_11.55.10_AM.jpg",
+            "image_mb": "shopify:\/\/shop_images\/WhatsApp_Image_2026-11-17_at_11.55.10_AM_1.jpg",
+            "url": "shopify:\/\/collections\/all",
             "banner_target": false,
             "color_scheme": "",
             "content_position": "center",
@@ -272,7 +272,7 @@
             "heading_wmLGMq": {
               "type": "heading",
               "settings": {
-                "heading": "<h2>Ghar Jaisa Shuddh,<br/>Parampara Jaisa Anmol</h2>",
+                "heading": "<h2>Ghar Jaisa Shuddh,<br\/>Parampara Jaisa Anmol<\/h2>",
                 "hidden_br_mobile": false,
                 "hidden_on_mobile": false,
                 "line_height": "",
@@ -300,7 +300,7 @@
             "text_AYEJAA": {
               "type": "text",
               "settings": {
-                "text": "<p>Pure, handcrafted Himalayan foods prepared using traditional methods.</p>",
+                "text": "<p>Pure, handcrafted Himalayan foods prepared using traditional methods.<\/p>",
                 "icon_source": "",
                 "icon": "car",
                 "hidden_br_mobile": false,
@@ -330,7 +330,7 @@
               "type": "button",
               "settings": {
                 "label": "Shop Ghee & Groceries",
-                "link": "shopify://collections/all",
+                "link": "shopify:\/\/collections\/all",
                 "open_in_new_tab": false,
                 "full_width": false,
                 "style_class": "solid",
@@ -364,9 +364,11 @@
         "slide_item_Xb9aRY"
       ],
       "settings": {
-        "image_height": "fixed",
+        "gauganga_style": true,
+        "hide_text_overlay": true,
+        "image_height": "adapt_image",
         "fixed_height": 580,
-        "image_height_mb": "fixed",
+        "image_height_mb": "adapt_image",
         "fixed_height_mb": 380,
         "is_fade": false,
         "loop": true,
@@ -374,7 +376,7 @@
         "pause_hover": false,
         "navUI": true,
         "nav_des": "default",
-        "nav_rounded_full": false,
+        "nav_rounded_full": true,
         "dotUI": true,
         "dot_vertical": false,
         "dot_style": "default",
@@ -395,7 +397,7 @@
         "header_subtitle": "OUR HERITAGE IN MOTION",
         "header_title": "Pure Pahadi Craftsmanship",
         "header_description": "Watch how we churn pure A2 Pahadi Bilona ghee using traditional curd-churning methods in Uttarakhand.",
-        "video_url": "https://www.youtube.com/watch?v=jLSVeNXRaRs",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=jLSVeNXRaRs",
         "video_aspect_ratio": "9_16",
         "video_width_desktop": "medium",
         "padding_top": 60,
@@ -407,7 +409,7 @@
       "settings": {
         "background_color": "#ffffff",
         "card_bg": "#faf8f5",
-        "image": "shopify://shop_images/WhatsApp_Image_2026-08-21_at_2.49.14_AM_3.jpg",
+        "image": "shopify:\/\/shop_images\/WhatsApp_Image_2026-08-21_at_2.49.14_AM_3.jpg",
         "subtitle": "THE FOUNDER'S JOURNEY",
         "title": "Back to the Soil",
         "description": "At Ghar Aangan, we believe that food is more than nourishment—it is tradition, heritage, family, and trust. Inspired by the timeless kitchens of Uttarakhand, our mission is to reconnect modern families with authentic Himalayan foods prepared using traditional methods that have been preserved for generations.",
@@ -520,7 +522,7 @@
             "badge_text": "Heirloom Red Rajma",
             "origin_tag": "Munsyari & Harsil Harvest",
             "highlight": "Naturally sun-dried unpolished heirloom red kidney beans. Tender melt-in-mouth texture with delicate sweet undertones.",
-            "single_size_label": "500g / 1kg Mountain Pack",
+            "single_size_label": "500g \/ 1kg Mountain Pack",
             "default_price": 39900,
             "default_compare_price": 44900
           }
@@ -535,7 +537,7 @@
             "badge_text": "Anthocyanin Superfood",
             "origin_tag": "Kumaoni & Garhwali Terraces",
             "highlight": "Indigenous black soybean celebrated across the hills for authentic Churkani & Dubke. Rich in natural antioxidants & plant protein.",
-            "single_size_label": "500g / 1kg Mountain Pack",
+            "single_size_label": "500g \/ 1kg Mountain Pack",
             "default_price": 39900,
             "default_compare_price": 44900
           }
@@ -544,13 +546,13 @@
           "type": "specialty_product",
           "settings": {
             "product_handle": "pahadi-gahat-gauhat-ki-dal-horsegram",
-            "title": "Pahadi Gahat Ki Dal (Horse Gram / Kulthi)",
+            "title": "Pahadi Gahat Ki Dal (Horse Gram \/ Kulthi)",
             "category": "dal",
             "is_featured": false,
             "badge_text": "Ayurvedic Therapeutic",
             "origin_tag": "High-Altitude Kulthi",
             "highlight": "Ancient mountain pulse revered in Ayurveda for natural warmth, sustained energy, and kidney & urinary wellness.",
-            "single_size_label": "500g / 1kg Mountain Pack",
+            "single_size_label": "500g \/ 1kg Mountain Pack",
             "default_price": 39900,
             "default_compare_price": 44900
           }
@@ -565,7 +567,7 @@
             "badge_text": "Easy on Digestion",
             "origin_tag": "Terrace Cultivation",
             "highlight": "Delicate, creamy unpolished cowpeas grown in Himalayan terrace fields. Exceptionally light on the stomach and rich in dietary folates.",
-            "single_size_label": "500g / 1kg Mountain Pack",
+            "single_size_label": "500g \/ 1kg Mountain Pack",
             "default_price": 39900,
             "default_compare_price": 44900
           }
@@ -640,7 +642,7 @@
             "badge_text": "Watermill Stone-Ground",
             "origin_tag": "Traditional Gharat Milled",
             "highlight": "Heirloom high-altitude finger millet cold stone-ground in traditional Himalayan watermills (Gharats). High calcium, iron & 100% gluten-free.",
-            "single_size_label": "1kg / 5kg Farm Pack",
+            "single_size_label": "1kg \/ 5kg Farm Pack",
             "default_price": 39900,
             "default_compare_price": 44900
           }
@@ -677,7 +679,7 @@
       "settings": {
         "background_color": "#faf8f5",
         "card_bg": "#ffffff",
-        "image": "shopify://shop_images/homepage_image_2.png",
+        "image": "shopify:\/\/shop_images\/homepage_image_2.png",
         "subtitle": "HIMALAYAN HERITAGE",
         "title": "Purity from the High Altitudes",
         "description": "From handcrafted Bilona A2 Ghee sourced from indigenous Badri and local Uttarakhand cattle to mountain-grown grains, heritage pulses, natural jaggery, medicinal fruit squashes, and traditional Himalayan seasonings, every product carries the warmth of home.",
@@ -806,7 +808,7 @@
       "type": "ghar-aangan-breed-clarification",
       "settings": {
         "subtitle": "TRANSPARENCY & CATTLE HERITAGE",
-        "title": "Understanding Breed Identity & A1/A2 Sourcing",
+        "title": "Understanding Breed Identity & A1\/A2 Sourcing",
         "description": "At Ghar Aangan, we celebrate Uttarakhand’s native Badri cattle while upholding complete transparency on milk genetics, breed characteristics, and verified beta-casein protein standards.",
         "background_color": "#ffffff",
         "padding_top": 60,
@@ -921,7 +923,7 @@
           "type": "video_review",
           "settings": {
             "video_id": "IKnymFl-grw",
-            "video_url": "https://youtube.com/shorts/IKnymFl-grw?feature=share",
+            "video_url": "https:\/\/youtube.com\/shorts\/IKnymFl-grw?feature=share",
             "video_title": "Her Words Say It All ❤️ | A Genuine Ghar Aangan Testimonial by Muskan",
             "product_tag": "A2 Badri Cow Ghee"
           }
@@ -930,7 +932,7 @@
           "type": "video_review",
           "settings": {
             "video_id": "b3qP2A4LTlM",
-            "video_url": "https://youtube.com/shorts/b3qP2A4LTlM?feature=share",
+            "video_url": "https:\/\/youtube.com\/shorts\/b3qP2A4LTlM?feature=share",
             "video_title": "From Uttarakhand to Punjab ❤️ | A Customer’s Honest Review of Ghar Aangan Ghee",
             "product_tag": "Badri Cow Bilona Ghee"
           }
@@ -939,7 +941,7 @@
           "type": "video_review",
           "settings": {
             "video_id": "YdaODr29LMY",
-            "video_url": "https://youtube.com/shorts/YdaODr29LMY?feature=share",
+            "video_url": "https:\/\/youtube.com\/shorts\/YdaODr29LMY?feature=share",
             "video_title": "When Women Support Women, It Hits Different ❤️ | Ghar Aangan",
             "product_tag": "A2 Himalayan Ghee"
           }
@@ -948,7 +950,7 @@
           "type": "video_review",
           "settings": {
             "video_id": "XwKeNwU-MCo",
-            "video_url": "https://youtube.com/shorts/XwKeNwU-MCo?feature=share",
+            "video_url": "https:\/\/youtube.com\/shorts\/XwKeNwU-MCo?feature=share",
             "video_title": "Bacche Kabhi Galat Nahi Bolte ❤️ | Cute & Genuine Testimonial by Mohd Daniyal",
             "product_tag": "A2 Badri Cow Ghee"
           }
@@ -957,7 +959,7 @@
           "type": "video_review",
           "settings": {
             "video_id": "2UanbLWqFSk",
-            "video_url": "https://youtube.com/shorts/2UanbLWqFSk?feature=share",
+            "video_url": "https:\/\/youtube.com\/shorts\/2UanbLWqFSk?feature=share",
             "video_title": "A Little Girl’s Honest Review of Ghar Aangan Ghee ❤️ | Parents Trust It, Why Not You?",
             "product_tag": "A2 Badri Cow Ghee"
           }
@@ -966,7 +968,7 @@
           "type": "video_review",
           "settings": {
             "video_id": "MIQTBn6N3pA",
-            "video_url": "https://youtube.com/shorts/MIQTBn6N3pA?feature=share",
+            "video_url": "https:\/\/youtube.com\/shorts\/MIQTBn6N3pA?feature=share",
             "video_title": "It’s Not Just Ghee, It’s a Little One’s Favourite! ❤️ | Ghar Aangan Ghee Unboxing",
             "product_tag": "Pahadi Heritage"
           }
@@ -975,7 +977,7 @@
           "type": "video_review",
           "settings": {
             "video_id": "R-_jiqCnIOA",
-            "video_url": "https://youtube.com/shorts/R-_jiqCnIOA?feature=share",
+            "video_url": "https:\/\/youtube.com\/shorts\/R-_jiqCnIOA?feature=share",
             "video_title": "Every Customer, Every Smile, Means the World to Us ❤️ | Ghar Aangan",
             "product_tag": "A2 Badri Cow Ghee"
           }
@@ -984,7 +986,7 @@
           "type": "video_review",
           "settings": {
             "video_id": "sagu0lGNL68",
-            "video_url": "https://youtube.com/shorts/sagu0lGNL68?feature=share",
+            "video_url": "https:\/\/youtube.com\/shorts\/sagu0lGNL68?feature=share",
             "video_title": "It’s Not Just the Packaging ❤️ | Our Dedication to Every Customer | Ghar Aangan",
             "product_tag": "Badri Cow Bilona Ghee"
           }
@@ -993,7 +995,7 @@
           "type": "video_review",
           "settings": {
             "video_id": "EA36pnBhptA",
-            "video_url": "https://youtube.com/shorts/EA36pnBhptA?feature=share",
+            "video_url": "https:\/\/youtube.com\/shorts\/EA36pnBhptA?feature=share",
             "video_title": "Our Tiny Little Star Unboxes Ghar Aangan Ghee!",
             "product_tag": "A2 Badri Cow Ghee"
           }
@@ -1028,49 +1030,49 @@
           "type": "faq",
           "settings": {
             "question": "What is the shelf life of Ghar Aangan Ghee?",
-            "answer": "<p>Pure, hand-churned ghee is highly stable and does not spoil easily. It can last up to 12-18 months at room temperature. Keep it in a dry, dark place and always use a clean, dry spoon to extend its shelf life.</p>"
+            "answer": "<p>Pure, hand-churned ghee is highly stable and does not spoil easily. It can last up to 12-18 months at room temperature. Keep it in a dry, dark place and always use a clean, dry spoon to extend its shelf life.<\/p>"
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
             "question": "Why is Badri cow ghee considered premium?",
-            "answer": "<p>Badri cattle are a recognised indigenous breed associated with the hilly terrain and livestock heritage of Uttarakhand. They free-graze on mountain pastures, herbs, and clean flora, yielding a limited, nutrient-rich milk that is deeply revered in traditional Pahadi culture.</p>"
+            "answer": "<p>Badri cattle are a recognised indigenous breed associated with the hilly terrain and livestock heritage of Uttarakhand. They free-graze on mountain pastures, herbs, and clean flora, yielding a limited, nutrient-rich milk that is deeply revered in traditional Pahadi culture.<\/p>"
           }
         },
         "faq_breed_clarification": {
           "type": "faq",
           "settings": {
             "question": "Why do we see Jersey or different cow breeds in your videos? Does breed define A1 or A2?",
-            "answer": "<p>A1 or A2 status is defined by the <strong>beta-casein protein variant</strong> in milk, not by cow breed alone. While Badri is a unique Uttarakhand hill breed, scientific studies confirm that A2A2 beta-casein exists within Jersey populations as well as indigenous Indian cattle. At Ghar Aangan, we work directly with Uttarakhand mountain farmers who rear Badri cattle, local Pahadi cattle, and other breeds including Jersey. We test every batch for verified A2 beta-casein while maintaining complete transparency about cattle sourcing.</p>"
+            "answer": "<p>A1 or A2 status is defined by the <strong>beta-casein protein variant<\/strong> in milk, not by cow breed alone. While Badri is a unique Uttarakhand hill breed, scientific studies confirm that A2A2 beta-casein exists within Jersey populations as well as indigenous Indian cattle. At Ghar Aangan, we work directly with Uttarakhand mountain farmers who rear Badri cattle, local Pahadi cattle, and other breeds including Jersey. We test every batch for verified A2 beta-casein while maintaining complete transparency about cattle sourcing.<\/p>"
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
             "question": "Does it need refrigeration?",
-            "answer": "<p>No, pure ghee does not require refrigeration. In fact, storing it in the fridge will alter its granular texture. It is best stored in its original glass jar in your kitchen pantry.</p>"
+            "answer": "<p>No, pure ghee does not require refrigeration. In fact, storing it in the fridge will alter its granular texture. It is best stored in its original glass jar in your kitchen pantry.<\/p>"
           }
         },
         "faq_4": {
           "type": "faq",
           "settings": {
             "question": "How is Pahadi Gud (Traditional Jaggery) prepared?",
-            "answer": "<p>Our traditional jaggery is made by slow wood-fired boiling of fresh sugarcane juice, unrefined and chemical-free. We blend it with native mountain herbs, seeds, and premium dry fruits (like Kaju, Badam, Kismis, and Saunf) to create delicious, mineral-rich sweetener options.</p>"
+            "answer": "<p>Our traditional jaggery is made by slow wood-fired boiling of fresh sugarcane juice, unrefined and chemical-free. We blend it with native mountain herbs, seeds, and premium dry fruits (like Kaju, Badam, Kismis, and Saunf) to create delicious, mineral-rich sweetener options.<\/p>"
           }
         },
         "faq_5": {
           "type": "faq",
           "settings": {
             "question": "What is Pisyu Loon (Salts) and Mandua Flour?",
-            "answer": "<p>Pisyu Loon is Uttarakhand's heritage salt, hand-crushed on traditional stone (Sil-Batta) with native mountain herbs, seeds (like Bhaang/Hemp), and chilis. Mandua Ka Aata (Ragi) is high-altitude, stone-ground finger millet flour that is naturally gluten-free and rich in calcium, iron, and fiber.</p>"
+            "answer": "<p>Pisyu Loon is Uttarakhand's heritage salt, hand-crushed on traditional stone (Sil-Batta) with native mountain herbs, seeds (like Bhaang\/Hemp), and chilis. Mandua Ka Aata (Ragi) is high-altitude, stone-ground finger millet flour that is naturally gluten-free and rich in calcium, iron, and fiber.<\/p>"
           }
         },
         "faq_6": {
           "type": "faq",
           "settings": {
             "question": "Are the pulses and fruit juices organic and natural?",
-            "answer": "<p>Yes! Our Heritage Dals & Pulses (like Rajma, Bhatt Ki Dal, Gauhat, and Lobia) are mountain-grown, unpolished, and protein-dense. Our Fruit Juices & Squashes (like Buransh/Rhododendron, Amla, and Orange) are crafted from wild-harvested Himalayan fruits and flowers, rich in Vitamin C and antioxidants.</p>"
+            "answer": "<p>Yes! Our Heritage Dals & Pulses (like Rajma, Bhatt Ki Dal, Gauhat, and Lobia) are mountain-grown, unpolished, and protein-dense. Our Fruit Juices & Squashes (like Buransh\/Rhododendron, Amla, and Orange) are crafted from wild-harvested Himalayan fruits and flowers, rich in Vitamin C and antioxidants.<\/p>"
           }
         }
       },

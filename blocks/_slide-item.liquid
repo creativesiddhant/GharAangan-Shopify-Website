@@ -42,11 +42,10 @@
         echo '</div>'
       endif
     -%}
-    <a {% if block.settings.url == blank %}
-      role="link" disabled="true"
-      {% else %}
-        href="{{ block.settings.url }}" 
-      {% endif %} target="{% if block.settings.banner_target %}_blank{% else %}_self{% endif %}" class="hdt-full-width-link" ></a>
+    {%- if block.settings.url != blank -%}
+      <a href="{{ block.settings.url }}" target="{% if block.settings.banner_target %}_blank{% else %}_self{% endif %}" class="hdt-full-width-link ga-full-slide-link" aria-label="Slide link"></a>
+    {%- endif -%}
+    {%- unless section.settings.hide_text_overlay and block.settings.show_text_overlay != true -%}
       <div class="hdt-grid hdt-h-full{% unless request.design_mode %} hdt-pe-none{% endunless %}">
         <div class="hdt-content hdt-radius hdt-place-self-{{ block.settings.content_position_mb }} md:hdt-place-self-{{ block.settings.content_position }} {% if block.settings.background_content %} hdt-background-content{% endif %}{% if block.settings.use_border_content %} hdt-content-use-border{% endif %}{% if block.settings.box_square %} hdt-content-boxsquare{% endif %}{% if block.settings.content_rounded %} hdt-radius-full{% endif %}"{% if block.settings.background_content %} style="--content-bg-opacity: {{ block.settings.bg_opacity | divided_by: 100.00 }};--content-border-opacity: {{ block.settings.border_opacity | divided_by: 100.00 }};--content-border-style: {{ block.settings.border_style }};--border-pd-dk: {{ block.settings.border_pd_dk }}px;--border-pd-mb: {{ block.settings.border_pd }}px;" reval{% endif %}>
           <div class="hdt-content-inner hdt-text-{{ block.settings.alignment_mb }} md:hdt-text-{{ block.settings.alignment }}">
@@ -54,6 +53,7 @@
           </div>
         </div>
       </div>
+    {%- endunless -%}
   </div>
 </div>
 
@@ -100,27 +100,32 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+      "label": "Desktop Image (1600 x 900 recommended)"
     },
     {
       "type": "image_picker",
       "id": "image_mb",
-      "label": "t:sections.slideshow.blocks.slide.settings.image_mb.label",
-      "info": "t:sections.slideshow.blocks.slide.settings.image_mb.info"
+      "label": "Mobile Image (800 x 1200 recommended)",
+      "info": "Leave blank to use Desktop image"
     },
     {
       "type": "url",
       "id": "url",
-      "label": "t:sections.slideshow.blocks.slide.settings.url.label",
-      "info": "t:sections.slideshow.blocks.slide.settings.url.info",
-      "visible_if": "{{ block.settings.image != blank }}"
+      "label": "Slide Link URL",
+      "info": "Clicking this slide navigates to this URL (e.g. /collections/all or /products/pure-a2-ghee)"
     },
     {
       "type": "checkbox",
       "id": "banner_target",
-      "label": "t:blocks.banner_item.settings.banner_target",
+      "label": "Open link in new tab",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_overlay",
+      "label": "Show text overlay & buttons on this slide",
       "default": false,
-      "visible_if": "{{ block.settings.url != blank and block.settings.image != blank }}"
+      "info": "Keep unchecked when your banner already has text designed in the image (GauGanga clean style). Check to restore text overlay anytime."
     },
     {
       "type": "color_scheme",
