@@ -5,7 +5,7 @@
 {%- style -%}
   .ga-back-to-top {
     position: fixed !important;
-    bottom: 30px !important;
+    bottom: 82px !important;
     right: 28px !important;
     width: 44px !important;
     height: 44px !important;
@@ -33,10 +33,10 @@
     outline: none !important;
   }
 
-  /* Desktop & Tablet Product Pages: Position safely above Sticky Buy Now Bar */
+  /* Desktop & Tablet Product Pages: Position safely above Sticky Buy Now Bar & WhatsApp */
   body.template-product .ga-back-to-top,
   body[class*="product"] .ga-back-to-top {
-    bottom: 82px !important;
+    bottom: 138px !important;
     right: 28px !important;
   }
 
@@ -87,7 +87,7 @@
 
   @media (max-width: 768px) {
     .ga-back-to-top {
-      bottom: 20px !important;
+      bottom: 130px !important;
       right: 16px !important;
       width: 40px !important;
       height: 40px !important;
@@ -96,11 +96,11 @@
       width: 16px !important;
       height: 16px !important;
     }
-    /* On mobile product pages, float cleanly ABOVE the sticky buy now bar */
+    /* On mobile product pages, float cleanly ABOVE WhatsApp and sticky buy bar */
     body.template-product .ga-back-to-top,
     body[class*="product"] .ga-back-to-top {
-      bottom: 78px !important;
-      right: 14px !important;
+      bottom: 130px !important;
+      right: 16px !important;
     }
   }
 {%- endstyle -%}

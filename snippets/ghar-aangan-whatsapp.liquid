@@ -1,0 +1,158 @@
+{%- comment -%}
+  Ghar Aangan - Premium WhatsApp Floating Chat Button
+  Direct WhatsApp Integration with Pre-filled Message
+{%- endcomment -%}
+
+{%- liquid
+  assign wa_phone = '919027248335'
+  assign wa_message = "Hey Ghar Aangan team, I'm interested in your products." | url_encode
+  assign wa_url = 'https://wa.me/' | append: wa_phone | append: '?text=' | append: wa_message
+-%}
+
+<style>
+  .ga-whatsapp-btn {
+    position: fixed !important;
+    bottom: 26px !important;
+    right: 24px !important;
+    height: 44px !important;
+    padding: 0 18px 0 13px !important;
+    background: linear-gradient(135deg, #25D366 0%, #1ea952 100%) !important;
+    color: #ffffff !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.32) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.38), 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 9px !important;
+    cursor: pointer !important;
+    z-index: 900 !important;
+    text-decoration: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.25px !important;
+    line-height: 1 !important;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.25s ease,
+                visibility 0.25s ease !important;
+    box-sizing: border-box !important;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  .ga-whatsapp-btn:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 8px 26px rgba(37, 211, 102, 0.52), 0 3px 8px rgba(0, 0, 0, 0.12) !important;
+    color: #ffffff !important;
+  }
+
+  .ga-whatsapp-btn:active {
+    transform: translateY(0) scale(0.98) !important;
+  }
+
+  .ga-whatsapp-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .ga-whatsapp-icon-wrap svg {
+    width: 22px !important;
+    height: 22px !important;
+    fill: #ffffff !important;
+    display: block !important;
+  }
+
+  .ga-whatsapp-text {
+    color: #ffffff !important;
+    white-space: nowrap !important;
+    font-weight: 700 !important;
+  }
+
+  /* Live Pulse Online Indicator */
+  .ga-whatsapp-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 7px;
+    height: 7px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1.5px #25D366;
+  }
+
+  .ga-whatsapp-dot::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    border: 1.5px solid #ffffff;
+    animation: ga-wa-radar 2.2s infinite cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  @keyframes ga-wa-radar {
+    0% { transform: scale(1); opacity: 0.9; }
+    70% { transform: scale(2.3); opacity: 0; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+
+  /* Desktop Product Pages: Safely position above Sticky Buy Now Bar if present */
+  body.template-product .ga-whatsapp-btn,
+  body[class*="product"] .ga-whatsapp-btn {
+    bottom: 82px !important;
+  }
+
+  /* Auto-hide when review modal, photo lightbox, cart drawer, or navigation menu is open */
+  body.jm-mfp-open .ga-whatsapp-btn,
+  html.jm-mfp-open .ga-whatsapp-btn,
+  body.mfp-open .ga-whatsapp-btn,
+  body.jdgm-modal-open .ga-whatsapp-btn,
+  body.hdt-drawer-open .ga-whatsapp-btn,
+  html.hdt-drawer-open .ga-whatsapp-btn {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* Mobile & Tablet Devices (<= 768px) */
+  @media (max-width: 768px) {
+    .ga-whatsapp-btn {
+      bottom: 78px !important;
+      right: 14px !important;
+      height: 42px !important;
+      padding: 0 14px 0 11px !important;
+      font-size: 13px !important;
+      gap: 7px !important;
+    }
+    .ga-whatsapp-icon-wrap svg {
+      width: 20px !important;
+      height: 20px !important;
+    }
+  }
+</style>
+
+<a
+  href="{{ wa_url }}"
+  class="ga-whatsapp-btn"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat with Ghar Aangan team on WhatsApp"
+  title="Chat with us on WhatsApp"
+>
+  <span class="ga-whatsapp-icon-wrap">
+    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path d="M16.002 0C7.164 0 0 7.164 0 16.002c0 2.827.738 5.586 2.14 8.016L.092 31.908l8.09-2.122a15.93 15.93 0 007.82 2.036c8.838 0 16.002-7.164 16.002-16.002S24.84 0 16.002 0zm0 29.32a13.31 13.31 0 01-6.78-1.854l-.486-.288-5.042 1.322 1.346-4.914-.316-.502a13.284 13.284 0 01-2.042-7.082c0-7.348 5.976-13.324 13.32-13.324 7.348 0 13.324 5.976 13.324 13.324 0 7.348-5.976 13.318-13.32 13.318zm7.306-9.98c-.402-.2-2.374-1.172-2.742-1.306-.368-.134-.636-.2-.904.2-.268.402-1.038 1.306-1.272 1.574-.234.268-.468.302-.87.1-.402-.2-1.7-.626-3.238-1.998-1.196-1.066-2.004-2.384-2.238-2.786-.234-.402-.024-.62.176-.82.18-.18.402-.468.602-.702.2-.234.268-.402.402-.67.134-.268.068-.502-.034-.702-.1-.2-.904-2.178-1.238-2.982-.326-.782-.656-.676-.904-.688-.234-.012-.502-.014-.77-.014-.268 0-.702.1-.1.07.368 1.07 1.372 1.606 3.376 1.606 4.38.234 1.004.302 2.21.368 3.482.068 1.272.77 2.478 1.406 3.348 2.04 2.784 4.886 4.314 7.498 4.314 2.612 0 3.242-1.774 3.242-2.576 0-.268-.134-.436-.402-.57z"/>
+    </svg>
+    <span class="ga-whatsapp-dot"></span>
+  </span>
+  <span class="ga-whatsapp-text">Chat with us</span>
+</a>
